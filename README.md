@@ -11,8 +11,8 @@ Tabela de Conteúdos
 
 *[Sobre](#sobre)<br><br>
 *[Pré-Requisitos](#pré-requisitos)<br><br>
-       * [Compilando a aplicação](#Compilando-a-aplicação)<br><br>
-       * [Executando a aplicação](#Executando-a-aplicação)<br><br>
+    * [Compilando a aplicação](#Compilando-a-aplicação)<br><br>
+    * [Executando a aplicação](#Executando-a-aplicação)<br><br>
 *[Tecnologias Utilizadas](#tecnologias-utilizadas)
 
 
