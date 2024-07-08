@@ -9,10 +9,10 @@ Projeto Integrador implementado na disciplina do curso Técnico em Desenvolvimen
 Tabela de Conteúdos
 -----------------------
 
-*[Sobre](#sobre)<br><br>
-*[Pré-Requisitos](#pré-requisitos)<br><br>
-    * [Compilando a aplicação](#Compilando-a-aplicação)<br><br>
-    * [Executando a aplicação](#Executando-a-aplicação)<br><br>
+*[Sobre](#sobre)
+*[Pré-Requisitos](#pré-requisitos)
+* [Compilando a aplicação](#Compilando-a-aplicação)
+* [Executando a aplicação](#Executando-a-aplicação)
 *[Tecnologias Utilizadas](#tecnologias-utilizadas)
 
 
@@ -23,6 +23,12 @@ Compilando a aplicação
 ------------------------
 ```bash
 $ javac Programa.java
+```
+
+Executando a aplicação
+--------------------------
+```bash
+$ java Programa
 ```
 
 Tecnologias Utilizadas
