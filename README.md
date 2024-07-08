@@ -10,6 +10,7 @@ Tabela de Conteúdos
 -----------------------
 
 *[Sobre](#sobre)
+
 *[Pré-Requisitos](#pré-requisitos)
 *[Tecnologias Utilizadas](#tecnologias-utilizadas)
 
