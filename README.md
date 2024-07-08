@@ -9,12 +9,10 @@ Projeto Integrador implementado na disciplina do curso Técnico em Desenvolvimen
 Tabela de Conteúdos
 -----------------------
 
-*[Sobre](#sobre)
-
-*[Pré-Requisitos](#pré-requisitos)
-<>
-    *[Compilando a aplicação](#compilando-a-aplicação)
-
+*[Sobre](#sobre)<br><br>
+*[Pré-Requisitos](#pré-requisitos)<br><br>
+    * [Compilando a aplicação](#Compilando-a-aplicação)<br><br>
+    * [Executando a aplicação](#Executando-a-aplicação)<br><br>
 *[Tecnologias Utilizadas](#tecnologias-utilizadas)
 
 
