@@ -10,9 +10,11 @@ Tabela de Conteúdos
 -----------------------
 
 *[Sobre](#sobre)
+
 *[Pré-Requisitos](#pré-requisitos)
 * [Compilando a aplicação](#Compilando-a-aplicação)
 * [Executando a aplicação](#Executando-a-aplicação)
+
 *[Tecnologias Utilizadas](#tecnologias-utilizadas)
 
 
