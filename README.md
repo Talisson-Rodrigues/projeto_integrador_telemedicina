@@ -12,6 +12,7 @@ Tabela de Conteúdos
 *[Sobre](#sobre)
 
 *[Pré-Requisitos](#pré-requisitos)
+      *[Compilando a aplicação](#Compilando-a-aplicação)
 
 *[Tecnologias Utilizadas](#tecnologias-utilizadas)
 
@@ -19,6 +20,11 @@ Tabela de Conteúdos
 # Pré-Requisitos
 ===================
 
+Compilando a aplicação
+------------------------
+```bash
+$ javac Programa.java
+```
 
 # Tecnologias Utilizadas
 ===========================
