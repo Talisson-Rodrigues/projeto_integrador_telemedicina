@@ -18,7 +18,7 @@ Tabela de Conteúdos
 *[Tecnologias Utilizadas](#tecnologias-utilizadas)
 
 
-# Pré-Requisitos
+Pré-Requisitos
 ===================
 
 Compilando a aplicação
@@ -27,5 +27,5 @@ Compilando a aplicação
 $ javac Programa.java
 ```
 
-# Tecnologias Utilizadas
+Tecnologias Utilizadas
 ===========================
