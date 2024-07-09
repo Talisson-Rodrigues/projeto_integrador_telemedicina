@@ -16,22 +16,38 @@ Tabela de Conteúdos
 * [Executando a aplicação](#Executando-a-aplicação)
 
 *[Tecnologias Utilizadas](#tecnologias-utilizadas)
+* [Autor](#autor)
 
+Pré-requisitos
+==============
+Comandos necessários para executar a aplicação
 
-Pré-Requisitos
-===================
+🚀 Compilando a aplicação
+----------------------
+Compilando programa em Java
 
-Compilando a aplicação
-------------------------
 ```bash
 $ javac Programa.java
 ```
 
-Executando a aplicação
---------------------------
+🚀 Executando a aplicação
+----------------------
+Rodando o programa em Java
+
 ```bash
 $ java Programa
 ```
 
-Tecnologias Utilizadas
-===========================
+
+Tecnologias utilizadas
+======================
+
+As seguintes tecnologias foram utilizadas na construção do projeto:
+
+- [Java](https://www.oracle.com/br/java/)
+- [Javascript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+- [MySql](https://www.mysql.com/)
+
+
+Autor
+=====
