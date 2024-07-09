@@ -51,3 +51,5 @@ As seguintes tecnologias foram utilizadas na construção do projeto:
 
 Autor
 =====
+Projeto feito no Curso Técnico em Desenvolvimento de Sistemas por:
+Talisson Pontes Rodrigues - [!{Linkedin Badge}]((https://img.shields.io/badge/-Talisson-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/talisson-pontes-rodrigues/)(https://www.linkedin.com/in/talisson-pontes-rodrigues/))
