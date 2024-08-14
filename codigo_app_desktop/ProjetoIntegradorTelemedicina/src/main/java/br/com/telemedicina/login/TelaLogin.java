@@ -4,7 +4,7 @@
  */
 package br.com.telemedicina.login;
 
-import br.com.telemedicina.subtelas.TelaCadastroPaciente;
+import br.com.telemedicina.subtelas.TelaCadastroUsuario;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -166,9 +166,9 @@ public class TelaLogin extends javax.swing.JDialog {
         }
         
         this.labelErro.setText("");
-        String past = "path";
+        String pash = "path";
         
-        try (BufferedReader br = new BufferedReader(new FileReader(past))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(pash))) {
             String linha;
             String[] dados = {};
             
@@ -187,14 +187,13 @@ public class TelaLogin extends javax.swing.JDialog {
             
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this,
-                    "Não fois possível iniciar o sistema!! Error: " + e.getMessage());
+                    "Não foi possível iniciar o sistema!! Error: " + e.getMessage());
         }
     }//GEN-LAST:event_botaoLoginActionPerformed
 
     private void botaoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastroActionPerformed
-        TelaCadastroPaciente cadastroPaciente = new TelaCadastroPaciente();
+        TelaCadastroUsuario cadastroPaciente = new TelaCadastroUsuario(null, true);
         cadastroPaciente.setVisible(true);
-        this.setVisible(false);
     }//GEN-LAST:event_botaoCadastroActionPerformed
 
     /**
