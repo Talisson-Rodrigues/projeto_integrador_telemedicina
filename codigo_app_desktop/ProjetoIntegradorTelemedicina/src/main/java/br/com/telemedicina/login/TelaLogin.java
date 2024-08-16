@@ -6,9 +6,11 @@ package br.com.telemedicina.login;
 
 import br.com.telemedicina.subtelas.TelaCadastroPaciente;
 import br.com.telemedicina.telaprincipal.Main;
+import java.awt.Frame;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,12 +19,14 @@ import javax.swing.JOptionPane;
  */
 public class TelaLogin extends javax.swing.JDialog {
 
+    private JDialog parentMain;
     /**
      * Creates new form TelaLogin
      */
-    public TelaLogin(java.awt.Frame parent, boolean modal) {
+    public TelaLogin(JDialog parent, boolean modal ) {
         super(parent, modal);
         initComponents();
+        this.parentMain = parent;
     }
 
     /**
@@ -238,7 +242,8 @@ public class TelaLogin extends javax.swing.JDialog {
             char[] passFile = dados[1].toCharArray();
             
             if (this.campoUsuario.getText().equals(dados[0]) && java.util.Arrays.equals(pass, passFile)) {
-                this.setVisible(false);
+                this.parentMain.setVisible(false);
+                this.setVisible(false);                
             } else {
                 this.labelErro.setText("Usuário/Senha incorretos!");
             }
@@ -284,7 +289,7 @@ public class TelaLogin extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TelaLogin dialog = new TelaLogin(new javax.swing.JFrame(), true);
+                TelaLogin dialog = new TelaLogin(new JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

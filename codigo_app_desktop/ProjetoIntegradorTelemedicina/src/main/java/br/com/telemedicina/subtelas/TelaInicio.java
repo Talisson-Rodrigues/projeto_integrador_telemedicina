@@ -5,6 +5,7 @@
 package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.login.TelaLogin;
+import java.awt.Window;
 
 /**
  *
@@ -38,9 +39,10 @@ public class TelaInicio extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("TELEMEDICINA");
         setBackground(new java.awt.Color(0, 204, 255));
+        setModalityType(java.awt.Dialog.ModalityType.DOCUMENT_MODAL);
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 42)); // NOI18N
@@ -142,7 +144,7 @@ public class TelaInicio extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoTelaLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoTelaLoginActionPerformed
-        TelaLogin login = new TelaLogin(null, true);
+        TelaLogin login = new TelaLogin(this, true);
         login.setVisible(true);
     }//GEN-LAST:event_botaoTelaLoginActionPerformed
 
