@@ -48,15 +48,15 @@ public class Main extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
+        consultaMenu = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        exameMenu = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        prescricaoMenu = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -212,12 +212,12 @@ public class Main extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jMenu3.setText("Consultas");
-        jMenu3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        consultaMenu.setText("Consultas");
+        consultaMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jMenuItem3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem3.setText("Consultas do Dia");
-        jMenu3.add(jMenuItem3);
+        consultaMenu.add(jMenuItem3);
 
         jMenuItem2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem2.setText("Histórico de consultas");
@@ -226,41 +226,41 @@ public class Main extends javax.swing.JFrame {
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem2);
+        consultaMenu.add(jMenuItem2);
 
         jMenuItem1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem1.setText("Nova Consulta");
-        jMenu3.add(jMenuItem1);
+        consultaMenu.add(jMenuItem1);
 
-        menuBar.add(jMenu3);
+        menuBar.add(consultaMenu);
 
-        jMenu4.setText("Exames");
-        jMenu4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        exameMenu.setText("Exames");
+        exameMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jMenuItem4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem4.setText("Consulta de Exames");
-        jMenu4.add(jMenuItem4);
+        exameMenu.add(jMenuItem4);
 
         jMenuItem5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem5.setText("Histórico de Exames");
-        jMenu4.add(jMenuItem5);
+        exameMenu.add(jMenuItem5);
 
         jMenuItem6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem6.setText("Agendar Exames");
-        jMenu4.add(jMenuItem6);
+        exameMenu.add(jMenuItem6);
 
-        menuBar.add(jMenu4);
+        menuBar.add(exameMenu);
 
-        jMenu5.setText("Prescrições");
-        jMenu5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        prescricaoMenu.setText("Prescrições");
+        prescricaoMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jMenuItem7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem7.setText("Consultar Prescrições");
-        jMenu5.add(jMenuItem7);
+        prescricaoMenu.add(jMenuItem7);
 
         jMenuItem9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem9.setText("Histórico de Prescrições");
-        jMenu5.add(jMenuItem9);
+        prescricaoMenu.add(jMenuItem9);
 
         jMenuItem8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem8.setText("Nova Prescrição");
@@ -269,9 +269,9 @@ public class Main extends javax.swing.JFrame {
                 jMenuItem8ActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem8);
+        prescricaoMenu.add(jMenuItem8);
 
-        menuBar.add(jMenu5);
+        menuBar.add(prescricaoMenu);
 
         setJMenuBar(menuBar);
 
@@ -342,7 +342,9 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu consultaMenu;
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JMenu exameMenu;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -351,9 +353,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -369,6 +368,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu prescricaoMenu;
     // End of variables declaration//GEN-END:variables
 
 }
