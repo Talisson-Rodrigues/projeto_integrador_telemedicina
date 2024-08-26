@@ -4,9 +4,14 @@
  */
 package br.com.telemedicina.subtelas;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author Talisson53899806
+ * @author 07701696199
  */
 public class TelaCadastroMedico extends javax.swing.JDialog {
 
@@ -27,21 +32,416 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
+        campoNomeMed = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        campoNumeroMed = new javax.swing.JFormattedTextField();
+        campoEnderecoMed = new javax.swing.JTextField();
+        campoGeneroMed = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        cancelButton = new javax.swing.JButton();
+        nextButton = new javax.swing.JButton();
+        campoRgMed = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        campoCpfMed = new javax.swing.JFormattedTextField();
+        jLabel15 = new javax.swing.JLabel();
+        campoEmailMed = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        campoDataNascMed = new javax.swing.JFormattedTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        errorLabel = new javax.swing.JLabel();
+        campoEspecializacaoMed = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        campoConclusaoGradMed = new javax.swing.JFormattedTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        campoAreaMed = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        campoCredenciaisMed = new javax.swing.JTextField();
+        campoClinicaMed = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        campoExperienciaMed = new javax.swing.JTextArea();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        campoCertificacaoMed = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        campoInstituicaoMed = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        campoRegistroMed = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setText("Nome Completo:");
+
+        campoNomeMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel10.setText("Telefone:");
+
+        campoNumeroMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        try {
+            campoNumeroMed.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        campoEnderecoMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        campoGeneroMed.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        campoGeneroMed.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Masculino", "Feminino" }));
+        campoGeneroMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        campoGeneroMed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoGeneroMedActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel12.setText("Endereço:");
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel11.setText("Gênero:");
+
+        cancelButton.setBackground(new java.awt.Color(255, 0, 0));
+        cancelButton.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        cancelButton.setForeground(new java.awt.Color(255, 255, 255));
+        cancelButton.setText("Cancelar");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
+
+        nextButton.setBackground(new java.awt.Color(0, 204, 0));
+        nextButton.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        nextButton.setForeground(new java.awt.Color(255, 255, 255));
+        nextButton.setText("Proximo");
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextButtonActionPerformed(evt);
+            }
+        });
+
+        campoRgMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel16.setText("RG:");
+
+        campoCpfMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        try {
+            campoCpfMed.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel15.setText("CPF:");
+
+        campoEmailMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel14.setText("E-mail:");
+
+        campoDataNascMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        try {
+            campoDataNascMed.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel13.setText("Data de Nascimento:");
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setText("CADASTRO DE MÉDICOS");
+
+        errorLabel.setForeground(new java.awt.Color(255, 0, 0));
+
+        campoEspecializacaoMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        campoEspecializacaoMed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoEspecializacaoMedActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel17.setText("Especialização:");
+
+        campoConclusaoGradMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        try {
+            campoConclusaoGradMed.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel18.setText("Conclusão de graduação:");
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel19.setText("Area de Interesse:");
+
+        campoAreaMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel20.setText("Credenciais:");
+
+        campoCredenciaisMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        campoClinicaMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        campoExperienciaMed.setColumns(20);
+        campoExperienciaMed.setRows(3);
+        campoExperienciaMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jScrollPane2.setViewportView(campoExperienciaMed);
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel21.setText("Experiência Profissional:");
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel22.setText("Clínica de Trabalho:");
+
+        campoCertificacaoMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel23.setText("Certificação:");
+
+        campoInstituicaoMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel24.setText("Instituição de Ensino:");
+
+        campoRegistroMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setText("Registro Médico:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(campoRegistroMed)
+                    .addComponent(campoInstituicaoMed)
+                    .addComponent(campoClinicaMed)
+                    .addComponent(jScrollPane2)
+                    .addComponent(campoCertificacaoMed)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel23)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel22))
+                        .addGap(167, 167, 167)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel20)
+                    .addComponent(campoEspecializacaoMed)
+                    .addComponent(campoAreaMed)
+                    .addComponent(campoCredenciaisMed)
+                    .addComponent(campoConclusaoGradMed, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(95, 95, 95))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(95, 95, 95)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cancelButton)
+                                .addGap(450, 450, 450)
+                                .addComponent(nextButton)
+                                .addGap(8, 8, 8))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel2)
+                                    .addComponent(campoNomeMed)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel11)
+                                    .addComponent(campoEnderecoMed)
+                                    .addComponent(campoGeneroMed, 0, 300, Short.MAX_VALUE)
+                                    .addComponent(campoNumeroMed))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel16)
+                                    .addComponent(campoEmailMed)
+                                    .addComponent(campoRgMed)
+                                    .addComponent(campoCpfMed)
+                                    .addComponent(campoDataNascMed, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addGap(120, 120, 120)))
+                    .addGap(95, 95, 95)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(422, 422, 422)
+                    .addComponent(errorLabel)
+                    .addContainerGap(422, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(330, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addGap(4, 4, 4)
+                        .addComponent(campoEspecializacaoMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoConclusaoGradMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoAreaMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoCredenciaisMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoRegistroMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel24)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoInstituicaoMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(campoCertificacaoMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel22)
+                        .addGap(18, 18, 18)
+                        .addComponent(campoClinicaMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel21)
+                        .addGap(2, 2, 2)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(62, 62, 62))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(20, 20, 20)
+                    .addComponent(jLabel1)
+                    .addGap(18, 18, 18)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(campoNomeMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel10)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(campoNumeroMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel12)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(campoEnderecoMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel11)
+                            .addGap(6, 6, 6)
+                            .addComponent(campoGeneroMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel13)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(campoDataNascMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(16, 16, 16)
+                            .addComponent(jLabel14)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(campoEmailMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel15)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(campoCpfMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel16)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(campoRgMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(18, 334, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cancelButton)
+                        .addComponent(nextButton))
+                    .addGap(21, 21, 21)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(193, 193, 193)
+                    .addComponent(errorLabel)
+                    .addContainerGap(510, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void campoGeneroMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoGeneroMedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoGeneroMedActionPerformed
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+        if (!validaCampos()) {
+            return;
+        }
+
+        try (BufferedWriter bw
+                = new BufferedWriter(new FileWriter("dados_medicos.txt"))) {
+
+            String nomeMed = campoNomeMed.getText();
+            String cpfMed = campoCpfMed.getText();
+            String emailMed = campoEmailMed.getText();
+            String dataNascMed = campoDataNascMed.getText();
+            String rgMed = campoRgMed.getText();
+            String telefoneMed = campoNumeroMed.getText();
+            String enderecoMed = campoEnderecoMed.getText();
+            int generoMed = campoGeneroMed.getSelectedIndex();
+            String area_de_atuacao = campoAreaMed.getText();
+            String certificacao = campoCertificacaoMed.getText();
+            String clinica_medica = campoClinicaMed.getText();
+            String conclusao_de_graduacao = campoConclusaoGradMed.getText();
+            String credenciais = campoCredenciaisMed.getText();
+            String especializacao = campoEspecializacaoMed.getText();
+            String experiencias = campoExperienciaMed.getText();
+            String instituicao_de_ensino = campoInstituicaoMed.getText();
+
+            bw.write(nomeMed + ", " + cpfMed + ", "
+                    + emailMed + ", " + dataNascMed + ", "
+                    + rgMed + ", " + telefoneMed + ", "
+                    + enderecoMed + ", " + generoMed + ", "
+                    + area_de_atuacao + ", " + certificacao + ", "
+                    + clinica_medica + ", " + conclusao_de_graduacao + ", "
+                    + credenciais + ", " + especializacao + ", " + experiencias + ", "
+                    + instituicao_de_ensino + ", ");
+
+            JOptionPane.showMessageDialog(this,
+                    "Primeira parte do Cadastro realizado com sucesso!!");
+            this.setVisible(false);
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this,
+                    "Não foi possível salvar os arquivos!! Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_nextButtonActionPerformed
+
+    private void campoEspecializacaoMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoEspecializacaoMedActionPerformed
+
+    }//GEN-LAST:event_campoEspecializacaoMedActionPerformed
 
     /**
      * @param args the command line arguments
@@ -85,6 +485,70 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         });
     }
 
+    private boolean validaCampos() {
+
+        if (this.campoNomeMed.getText() == null
+                || this.campoNumeroMed.getText() == null
+                || this.campoEnderecoMed.getText() == null
+                || this.campoGeneroMed.getSelectedIndex() == 0
+                || this.campoDataNascMed.getText() == null
+                || this.campoEmailMed.getText() == null
+                || this.campoCpfMed.getText() == null
+                || this.campoRgMed.getText() == null
+                || this.campoRegistroMed.getText() == null
+                || this.campoInstituicaoMed.getText() == null
+                || this.campoClinicaMed.getText() == null
+                || this.campoExperienciaMed.getText() == null
+                || this.campoEspecializacaoMed.getText() == null
+                || this.campoConclusaoGradMed.getText() == null
+                || this.campoAreaMed.getText() == null
+                || this.campoCredenciaisMed.getText() == null) {
+            this.errorLabel.setText("Há campos em branco, por favor revise e preencha!");
+            return false;
+        }
+
+        return true;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField campoAreaMed;
+    private javax.swing.JTextField campoCertificacaoMed;
+    private javax.swing.JTextField campoClinicaMed;
+    private javax.swing.JFormattedTextField campoConclusaoGradMed;
+    private javax.swing.JFormattedTextField campoCpfMed;
+    private javax.swing.JTextField campoCredenciaisMed;
+    private javax.swing.JFormattedTextField campoDataNascMed;
+    private javax.swing.JTextField campoEmailMed;
+    private javax.swing.JTextField campoEnderecoMed;
+    private javax.swing.JTextField campoEspecializacaoMed;
+    private javax.swing.JTextArea campoExperienciaMed;
+    private javax.swing.JComboBox<String> campoGeneroMed;
+    private javax.swing.JTextField campoInstituicaoMed;
+    private javax.swing.JTextField campoNomeMed;
+    private javax.swing.JFormattedTextField campoNumeroMed;
+    private javax.swing.JTextField campoRegistroMed;
+    private javax.swing.JTextField campoRgMed;
+    private javax.swing.JButton cancelButton;
+    private javax.swing.JLabel errorLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton nextButton;
     // End of variables declaration//GEN-END:variables
 }
