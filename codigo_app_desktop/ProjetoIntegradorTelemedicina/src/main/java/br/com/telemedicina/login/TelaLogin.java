@@ -4,9 +4,9 @@
  */
 package br.com.telemedicina.login;
 
+import br.com.telemedicina.subtelas.TelaCadastroMedico;
 import br.com.telemedicina.subtelas.TelaCadastroPaciente;
 import br.com.telemedicina.telaprincipal.Main;
-import br.com.telemedicina.telaprincipal.MainPaciente;
 import java.awt.Frame;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -62,7 +62,7 @@ public class TelaLogin extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(46, 169, 248));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Talisson53899806\\Downloads\\projeto_integrador_telemedicina\\codigo_app_desktop\\ProjetoIntegradorTelemedicina\\src\\main\\resources\\images\\7228311.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Talisson53899806\\Downloads\\Talisson-Pontes-Atividades\\projeto_integrador_telemedicina\\codigo_app_desktop\\ProjetoIntegradorTelemedicina\\src\\main\\resources\\images\\7228311.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -71,7 +71,7 @@ public class TelaLogin extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,6 +153,11 @@ public class TelaLogin extends javax.swing.JDialog {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Médico");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         labelErro.setForeground(new java.awt.Color(204, 0, 0));
 
@@ -277,10 +282,6 @@ public class TelaLogin extends javax.swing.JDialog {
             char[] passFile = dados[1].toCharArray();
             
             if (this.campoUsuario.getText().equals(dados[0]) && java.util.Arrays.equals(pass, passFile)) {
-                if (this.tipoUsuario.getSelectedIndex() == 1) {
-                    MainPaciente paciente = new MainPaciente();
-                    paciente.setVisible(true);
-                }
                 this.parentMain.setVisible(false);
                 this.setVisible(false);                
             } else {
@@ -297,6 +298,11 @@ public class TelaLogin extends javax.swing.JDialog {
         TelaCadastroPaciente cadastroPaciente = new TelaCadastroPaciente(null, true);
         cadastroPaciente.setVisible(true);
     }//GEN-LAST:event_botaoCadastroActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        TelaCadastroMedico cadastroMedico = new TelaCadastroMedico(null, true);
+        cadastroMedico.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

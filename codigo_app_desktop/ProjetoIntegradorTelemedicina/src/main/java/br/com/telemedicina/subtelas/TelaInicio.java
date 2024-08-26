@@ -130,22 +130,22 @@ public class TelaInicio extends javax.swing.JDialog {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Talisson53899806\\Downloads\\projeto_integrador_telemedicina\\codigo_app_desktop\\ProjetoIntegradorTelemedicina\\src\\main\\resources\\images\\5891885.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Talisson53899806\\Downloads\\Talisson-Pontes-Atividades\\projeto_integrador_telemedicina\\codigo_app_desktop\\ProjetoIntegradorTelemedicina\\src\\main\\resources\\images\\5891885.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(126, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addGap(159, 159, 159))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(179, 179, 179)
-                .addComponent(jLabel5)
+                .addGap(65, 65, 65)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -156,8 +156,7 @@ public class TelaInicio extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

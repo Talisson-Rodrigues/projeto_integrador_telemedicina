@@ -4,7 +4,6 @@
  */
 package br.com.telemedicina.telaprincipal;
 
-import br.com.telemedicina.login.TelaLogin;
 import br.com.telemedicina.subtelas.TelaInicio;
 
 /**
@@ -14,14 +13,12 @@ import br.com.telemedicina.subtelas.TelaInicio;
 public class Main extends javax.swing.JFrame {
 
     /**
-     * Creates new form TelaPrincipal
+     * Creates new form MainP
      */
-    
     public Main() {
         initComponents();
         TelaInicio inicio = new TelaInicio(this, true);
         inicio.setVisible(true);
-       
     }
 
     /**
@@ -33,43 +30,44 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
         desktopPane = new javax.swing.JDesktopPane();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jSplitPane2 = new javax.swing.JSplitPane();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
-        consultaMenu = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
-        exameMenu = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
-        prescricaoMenu = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        desktopPane.setForeground(new java.awt.Color(255, 255, 255));
+        jSplitPane1.setDividerLocation(350);
+        jSplitPane1.setDividerSize(0);
 
         jPanel1.setBackground(new java.awt.Color(46, 169, 248));
 
@@ -102,32 +100,28 @@ public class Main extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addGap(89, 89, 89))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(53, 53, 53)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(42, 42, 42)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jSplitPane1.setLeftComponent(jPanel1);
 
-        jButton3.setBackground(new java.awt.Color(242, 242, 242));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setText("Imprimir Agenda");
-        jButton3.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -155,6 +149,12 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(242, 242, 242));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(0, 0, 0));
+        jButton3.setText("Imprimir Agenda");
+        jButton3.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
+
         jButton4.setBackground(new java.awt.Color(242, 242, 242));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jButton4.setForeground(new java.awt.Color(0, 0, 0));
@@ -166,58 +166,130 @@ public class Main extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(293, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
-                .addGap(39, 39, 39))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(238, 238, 238)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(490, Short.MAX_VALUE))
         );
 
-        desktopPane.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        desktopPane.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jSplitPane1.setRightComponent(jPanel2);
 
-        javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
-        desktopPane.setLayout(desktopPaneLayout);
-        desktopPaneLayout.setHorizontalGroup(
-            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(desktopPaneLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jTabbedPane1.addTab("Médico", jSplitPane1);
+
+        jSplitPane2.setDividerLocation(350);
+        jSplitPane2.setDividerSize(0);
+
+        jPanel3.setBackground(new java.awt.Color(46, 169, 248));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Consultas");
+
+        jTable2.setBackground(new java.awt.Color(255, 255, 255));
+        jTable2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jTable2.setForeground(new java.awt.Color(0, 0, 0));
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome Médico", "Horário Marcado", ""
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable2);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(116, 116, 116)
+                .addComponent(jLabel3)
+                .addContainerGap(134, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
-        desktopPaneLayout.setVerticalGroup(
-            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
-        consultaMenu.setText("Consultas");
-        consultaMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jSplitPane2.setLeftComponent(jPanel3);
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Olá {Paciente}");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel4)
+                .addContainerGap(512, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(jLabel4)
+                .addContainerGap(546, Short.MAX_VALUE))
+        );
+
+        jSplitPane2.setRightComponent(jPanel4);
+
+        jTabbedPane1.addTab("Paciente", jSplitPane2);
+
+        desktopPane.add(jTabbedPane1);
+        jTabbedPane1.setBounds(0, -40, 1140, 680);
+
+        jMenu3.setText("Consultas");
+        jMenu3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jMenuItem3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem3.setText("Consultas do Dia");
-        consultaMenu.add(jMenuItem3);
+        jMenu3.add(jMenuItem3);
 
         jMenuItem2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem2.setText("Histórico de consultas");
@@ -226,41 +298,41 @@ public class Main extends javax.swing.JFrame {
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        consultaMenu.add(jMenuItem2);
+        jMenu3.add(jMenuItem2);
 
         jMenuItem1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem1.setText("Nova Consulta");
-        consultaMenu.add(jMenuItem1);
+        jMenu3.add(jMenuItem1);
 
-        menuBar.add(consultaMenu);
+        menuBar.add(jMenu3);
 
-        exameMenu.setText("Exames");
-        exameMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jMenu4.setText("Exames");
+        jMenu4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jMenuItem4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem4.setText("Consulta de Exames");
-        exameMenu.add(jMenuItem4);
+        jMenu4.add(jMenuItem4);
 
         jMenuItem5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem5.setText("Histórico de Exames");
-        exameMenu.add(jMenuItem5);
+        jMenu4.add(jMenuItem5);
 
         jMenuItem6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem6.setText("Agendar Exames");
-        exameMenu.add(jMenuItem6);
+        jMenu4.add(jMenuItem6);
 
-        menuBar.add(exameMenu);
+        menuBar.add(jMenu4);
 
-        prescricaoMenu.setText("Prescrições");
-        prescricaoMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jMenu5.setText("Prescrições");
+        jMenu5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jMenuItem7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem7.setText("Consultar Prescrições");
-        prescricaoMenu.add(jMenuItem7);
+        jMenu5.add(jMenuItem7);
 
         jMenuItem9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem9.setText("Histórico de Prescrições");
-        prescricaoMenu.add(jMenuItem9);
+        jMenu5.add(jMenuItem9);
 
         jMenuItem8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem8.setText("Nova Prescrição");
@@ -269,9 +341,9 @@ public class Main extends javax.swing.JFrame {
                 jMenuItem8ActionPerformed(evt);
             }
         });
-        prescricaoMenu.add(jMenuItem8);
+        jMenu5.add(jMenuItem8);
 
-        menuBar.add(prescricaoMenu);
+        menuBar.add(jMenu5);
 
         setJMenuBar(menuBar);
 
@@ -279,23 +351,15 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1128, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -304,6 +368,14 @@ public class Main extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -336,24 +408,24 @@ public class Main extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                 new Main().setVisible(true);
+                new Main().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu consultaMenu;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu exameMenu;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
@@ -365,10 +437,16 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JSplitPane jSplitPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenu prescricaoMenu;
     // End of variables declaration//GEN-END:variables
 
 }
