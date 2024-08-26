@@ -40,7 +40,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         campoGeneroMed = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        cancelButton = new javax.swing.JButton();
         nextButton = new javax.swing.JButton();
         campoRgMed = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
@@ -106,18 +105,8 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel11.setText("Gênero:");
 
-        cancelButton.setBackground(new java.awt.Color(255, 0, 0));
-        cancelButton.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        cancelButton.setForeground(new java.awt.Color(255, 255, 255));
-        cancelButton.setText("Cancelar");
-        cancelButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelButtonActionPerformed(evt);
-            }
-        });
-
         nextButton.setBackground(new java.awt.Color(0, 204, 0));
-        nextButton.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        nextButton.setFont(new java.awt.Font("Arial Black", 3, 18)); // NOI18N
         nextButton.setForeground(new java.awt.Color(255, 255, 255));
         nextButton.setText("Proximo");
         nextButton.addActionListener(new java.awt.event.ActionListener() {
@@ -238,8 +227,8 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
                             .addComponent(jLabel23)
                             .addComponent(jLabel21)
                             .addComponent(jLabel22))
-                        .addGap(167, 167, 167)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                        .addGap(158, 158, 158)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel19)
                     .addComponent(jLabel17)
@@ -249,52 +238,50 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
                     .addComponent(campoAreaMed)
                     .addComponent(campoCredenciaisMed)
                     .addComponent(campoConclusaoGradMed, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(370, 370, 370)
+                .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(95, 95, 95)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cancelButton)
-                                .addGap(450, 450, 450)
-                                .addComponent(nextButton)
-                                .addGap(8, 8, 8))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel2)
-                                    .addComponent(campoNomeMed)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel11)
-                                    .addComponent(campoEnderecoMed)
-                                    .addComponent(campoGeneroMed, 0, 300, Short.MAX_VALUE)
-                                    .addComponent(campoNumeroMed))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel16)
-                                    .addComponent(campoEmailMed)
-                                    .addComponent(campoRgMed)
-                                    .addComponent(campoCpfMed)
-                                    .addComponent(campoDataNascMed, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(212, 212, 212)
                             .addComponent(jLabel1)
-                            .addGap(120, 120, 120)))
+                            .addGap(120, 120, 120))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(95, 95, 95)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel2)
+                                .addComponent(campoNomeMed)
+                                .addComponent(jLabel10)
+                                .addComponent(jLabel12)
+                                .addComponent(jLabel11)
+                                .addComponent(campoEnderecoMed)
+                                .addComponent(campoGeneroMed, 0, 300, Short.MAX_VALUE)
+                                .addComponent(campoNumeroMed))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel15)
+                                .addComponent(jLabel13)
+                                .addComponent(jLabel14)
+                                .addComponent(jLabel16)
+                                .addComponent(campoEmailMed)
+                                .addComponent(campoRgMed)
+                                .addComponent(campoCpfMed)
+                                .addComponent(campoDataNascMed, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))))
                     .addGap(95, 95, 95)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(422, 422, 422)
                     .addComponent(errorLabel)
-                    .addContainerGap(438, Short.MAX_VALUE)))
+                    .addContainerGap(422, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(330, Short.MAX_VALUE)
+                .addGap(343, 343, 343)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel17)
@@ -332,7 +319,9 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
                         .addComponent(jLabel21)
                         .addGap(2, 2, 2)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(62, 62, 62))
+                .addGap(39, 39, 39)
+                .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(20, 20, 20)
@@ -371,16 +360,12 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
                             .addComponent(jLabel16)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(campoRgMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(18, 334, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cancelButton)
-                        .addComponent(nextButton))
-                    .addGap(21, 21, 21)))
+                    .addContainerGap(436, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(193, 193, 193)
                     .addComponent(errorLabel)
-                    .addContainerGap(510, Short.MAX_VALUE)))
+                    .addContainerGap(563, Short.MAX_VALUE)))
         );
 
         pack();
@@ -389,10 +374,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
     private void campoGeneroMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoGeneroMedActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoGeneroMedActionPerformed
-
-    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         if (!validaCampos()) {
@@ -528,7 +509,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField campoNumeroMed;
     private javax.swing.JTextField campoRegistroMed;
     private javax.swing.JTextField campoRgMed;
-    private javax.swing.JButton cancelButton;
     private javax.swing.JLabel errorLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
