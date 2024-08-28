@@ -260,10 +260,7 @@ public class TelaLogin extends javax.swing.JDialog {
     }//GEN-LAST:event_botaoFecharActionPerformed
 
     private void botaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLoginActionPerformed
-        if (this.campoSenha.getPassword().length <= 0 ||
-            this.campoUsuario.getText().equals("") ||
-            this.tipoUsuario.getSelectedIndex() == 0) {
-            this.labelErro.setText("Informe um usuario ou uma senha ou selecione uma opção de login!!");
+        if (!validaCampos()) {
             return;
         }
         
@@ -293,7 +290,16 @@ public class TelaLogin extends javax.swing.JDialog {
                     "Não foi possível iniciar o sistema!! Error: " + e.getMessage());
         }
     }//GEN-LAST:event_botaoLoginActionPerformed
-
+    private boolean validaCampos() {
+        if (this.campoSenha.getPassword().length <= 0 ||
+            this.campoUsuario.getText().equals("") ||
+            this.tipoUsuario.getSelectedIndex() == 0) {
+            
+            this.labelErro.setText("Informe um usuario ou uma senha ou selecione uma opção de login!!");
+            return false;
+        }
+        return true;
+    }
     private void botaoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastroActionPerformed
         TelaCadastroPaciente cadastroPaciente = new TelaCadastroPaciente(null, true);
         cadastroPaciente.setVisible(true);
