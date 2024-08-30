@@ -1,3 +1,7 @@
+CREATE DATABASE projetoIntegradorTelemedicina;
+
+use projetoIntegradorTelemedicina;
+
 CREATE TABLE Paciente 
 ( 
  ID INT PRIMARY KEY AUTO_INCREMENT,  
