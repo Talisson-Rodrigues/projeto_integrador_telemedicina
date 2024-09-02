@@ -34,7 +34,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         errorLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        campoNomeCompletoConsulta = new javax.swing.JTextField();
+        campoNomeConsulta = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         campoIdadeConsulta = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -47,16 +47,18 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         campoCpfConsulta = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        campoAreaAtendimentoConsulta = new javax.swing.JTextArea();
-        jLabel10 = new javax.swing.JLabel();
-        campoDataConsulta = new javax.swing.JFormattedTextField();
+        campoAtendimentoConsulta = new javax.swing.JTextArea();
         jLabel11 = new javax.swing.JLabel();
         jSplitPane2 = new javax.swing.JSplitPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        campoDataConsulta1 = new javax.swing.JFormattedTextField();
+        campoDataConsulta = new javax.swing.JFormattedTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        botaoDisponibilidade = new javax.swing.JButton();
+        botaoAgendar = new javax.swing.JButton();
 
         setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setClosable(true);
@@ -82,7 +84,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(120, 120, 120)
                 .addComponent(jLabel1)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -97,9 +99,9 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nome Completo: ");
 
-        campoNomeCompletoConsulta.setBackground(new java.awt.Color(102, 102, 102));
-        campoNomeCompletoConsulta.setForeground(new java.awt.Color(255, 255, 255));
-        campoNomeCompletoConsulta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        campoNomeConsulta.setBackground(new java.awt.Color(102, 102, 102));
+        campoNomeConsulta.setForeground(new java.awt.Color(255, 255, 255));
+        campoNomeConsulta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -156,25 +158,12 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Qual área você procura atendimento: ");
 
-        campoAreaAtendimentoConsulta.setBackground(new java.awt.Color(102, 102, 102));
-        campoAreaAtendimentoConsulta.setColumns(26);
-        campoAreaAtendimentoConsulta.setForeground(new java.awt.Color(255, 255, 255));
-        campoAreaAtendimentoConsulta.setRows(4);
-        campoAreaAtendimentoConsulta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jScrollPane1.setViewportView(campoAreaAtendimentoConsulta);
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("Data da consulta: ");
-
-        campoDataConsulta.setBackground(new java.awt.Color(102, 102, 102));
-        campoDataConsulta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        campoDataConsulta.setForeground(new java.awt.Color(255, 255, 255));
-        try {
-            campoDataConsulta.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        campoAtendimentoConsulta.setBackground(new java.awt.Color(102, 102, 102));
+        campoAtendimentoConsulta.setColumns(26);
+        campoAtendimentoConsulta.setForeground(new java.awt.Color(255, 255, 255));
+        campoAtendimentoConsulta.setRows(4);
+        campoAtendimentoConsulta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jScrollPane1.setViewportView(campoAtendimentoConsulta);
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 204, 0));
@@ -196,7 +185,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
                         .addGap(40, 40, 40)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(campoNomeCompletoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoNomeConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
                             .addComponent(selecioneGeneroConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)
@@ -211,8 +200,6 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
                             .addComponent(campoTelefoneConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)
                             .addComponent(campoCpfConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10)
-                            .addComponent(campoDataConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -229,7 +216,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoNomeCompletoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoNomeConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoIdadeConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -248,14 +235,10 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
                     .addComponent(campoRgConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoCpfConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
+                .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoDataConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addComponent(jLabel11)
                 .addGap(15, 15, 15))
         );
@@ -285,7 +268,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addComponent(jLabel12)
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addContainerGap(229, Short.MAX_VALUE))
         );
 
         jSplitPane2.setLeftComponent(jPanel3);
@@ -296,14 +279,52 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Data da consulta: ");
 
-        campoDataConsulta1.setBackground(new java.awt.Color(102, 102, 102));
-        campoDataConsulta1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        campoDataConsulta1.setForeground(new java.awt.Color(255, 255, 255));
+        campoDataConsulta.setBackground(new java.awt.Color(102, 102, 102));
+        campoDataConsulta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        campoDataConsulta.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            campoDataConsulta1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            campoDataConsulta.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+
+        jTable1.setBackground(new java.awt.Color(102, 102, 102));
+        jTable1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(255, 255, 255));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome do médico", "Disponível"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
+
+        botaoDisponibilidade.setBackground(new java.awt.Color(255, 102, 0));
+        botaoDisponibilidade.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        botaoDisponibilidade.setForeground(new java.awt.Color(255, 255, 255));
+        botaoDisponibilidade.setText("Disponibilidade");
+        botaoDisponibilidade.setToolTipText("");
+
+        botaoAgendar.setBackground(new java.awt.Color(0, 204, 0));
+        botaoAgendar.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        botaoAgendar.setForeground(new java.awt.Color(255, 255, 255));
+        botaoAgendar.setText("Agendar");
+        botaoAgendar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAgendarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -312,18 +333,32 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
-                    .addComponent(campoDataConsulta1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(460, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(campoDataConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botaoDisponibilidade))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(botaoAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(396, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoDataConsulta1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57))
+                .addComponent(campoDataConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(botaoDisponibilidade, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botaoAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jSplitPane2.setRightComponent(jPanel4);
@@ -346,19 +381,40 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botaoAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAgendarActionPerformed
+       if(!validaCampos()) {
+           return;
+       }
+       
+    }//GEN-LAST:event_botaoAgendarActionPerformed
+    private boolean validaCampos() {
+        if (this.campoAtendimentoConsulta.getText() == null ||
+            this.campoCpfConsulta.getText() == null         ||
+            this.campoDataConsulta.getText() == null        ||
+            this.campoIdadeConsulta.getText() == null       ||
+            this.campoNomeConsulta.getText() == null        ||
+            this.campoRgConsulta.getText() == null          ||
+            this.campoTelefoneConsulta.getText() == null) {
+            
+            this.errorLabel.setText("Ainda há campos em brancos!!");
+            return false;
+        }
+        this.errorLabel.setText("");
+        return true;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea campoAreaAtendimentoConsulta;
+    private javax.swing.JButton botaoAgendar;
+    private javax.swing.JButton botaoDisponibilidade;
+    private javax.swing.JTextArea campoAtendimentoConsulta;
     private javax.swing.JFormattedTextField campoCpfConsulta;
     private javax.swing.JFormattedTextField campoDataConsulta;
-    private javax.swing.JFormattedTextField campoDataConsulta1;
     private javax.swing.JTextField campoIdadeConsulta;
-    private javax.swing.JTextField campoNomeCompletoConsulta;
+    private javax.swing.JTextField campoNomeConsulta;
     private javax.swing.JTextField campoRgConsulta;
     private javax.swing.JFormattedTextField campoTelefoneConsulta;
     private javax.swing.JLabel errorLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -375,9 +431,11 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> selecioneGeneroConsulta;
     // End of variables declaration//GEN-END:variables
 }
