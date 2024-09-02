@@ -1,8 +1,6 @@
 use projetoIntegradorTelemedicina;
 
-INSERT INTO Consulta 
-(dataConsulta, formatoConsulta, pagamentoConsulta, areaProcura)
-VALUES 
+INSERT INTO Consulta (dataConsulta, formatoConsulta, pagamentoConsulta, areaProcura) VALUES 
 ('2024-08-01', 'Presencial', 250.00, 'Cardiologia Preventiva'),
 ('2024-08-02', 'Online', 200.00, 'Dermatologia Estética'),
 ('2024-08-03', 'Presencial', 300.00, 'Gastroenterologia Clínica'),
@@ -23,3 +21,35 @@ VALUES
 ('2024-08-28', 'Online', 220.00, 'Pneumologia'),
 ('2024-08-29', 'Presencial', 280.00, 'Endocrinologia Infantil'),
 ('2024-08-30', 'Online', 185.00, 'Medicina de Família e Comunidade'),
+('2024-09-11', 'Presencial', 270.00, 'Nefrologia Pediátrica'),
+('2024-09-12', 'Online', 215.00, 'Cirurgia Plástica Estética'),
+('2024-09-13', 'Presencial', 255.00, 'Oftalmologia Pediátrica'),
+('2024-09-14', 'Online', 225.00, 'Hematologia Oncológica'),
+('2024-09-15', 'Presencial', 280.00, 'Gastroenterologia Hepática'),
+('2024-09-16', 'Online', 195.00, 'Urologia Oncológica'),
+('2024-09-17', 'Presencial', 240.00, 'Endocrinologia Clínica'),
+('2024-09-18', 'Online', 210.00, 'Pneumologia Oncológica'),
+('2024-09-19', 'Presencial', 265.00, 'Reumatologia Clínica'),
+('2024-09-20', 'Online', 200.00, 'Medicina do Trabalho'),
+('2024-09-21', 'Presencial', 275.00, 'Ortopedia Pediátrica'),
+('2024-09-22', 'Online', 225.00, 'Medicina Física e Reabilitação'),
+('2024-09-23', 'Presencial', 250.00, 'Geriatria'),
+('2024-09-24', 'Online', 200.00, 'Endocrinologia Reprodutiva'),
+('2024-09-25', 'Presencial', 260.00, 'Cardiologia de Reabilitação'),
+('2024-09-26', 'Online', 215.00, 'Oftalmologia Preventiva'),
+('2024-09-27', 'Presencial', 240.00, 'Cirurgia de Cabeça e Pescoço'),
+('2024-09-28', 'Online', 220.00, 'Pediatria Cardiovascular'),
+('2024-09-29', 'Presencial', 275.00, 'Dermatologia Pediátrica'),
+('2024-09-30', 'Online', 190.00, 'Nefrologia Geral'),
+('2024-10-01', 'Presencial', 290.00, 'Cirurgia Bariátrica'),
+('2024-10-02', 'Online', 230.00, 'Cardiologia Intervencionista'),
+('2024-10-03', 'Presencial', 260.00, 'Infectologia Geral'),
+('2024-10-04', 'Online', 210.00, 'Ginecologia Reprodutiva'),
+('2024-10-05', 'Presencial', 275.00, 'Neurologia Infantil'),
+('2024-10-06', 'Online', 200.00, 'Endocrinologia Metabólica'),
+('2024-10-07', 'Presencial', 250.00, 'Oftalmologia Cirúrgica'),
+('2024-10-08', 'Online', 220.00, 'Gastroenterologia Oncológica'),
+('2024-10-09', 'Presencial', 265.00, 'Dermatologia Estética'),
+('2024-10-10', 'Online', 190.00, 'Medicina do Trabalho');
+
+select * FROM Consulta;
