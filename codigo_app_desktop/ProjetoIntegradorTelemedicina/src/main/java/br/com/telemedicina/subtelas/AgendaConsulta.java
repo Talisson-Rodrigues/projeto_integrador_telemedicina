@@ -100,6 +100,9 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Agendamento de Consulta");
 
+        errorLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        errorLabel.setForeground(new java.awt.Color(255, 0, 0));
+
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nome Completo: ");
