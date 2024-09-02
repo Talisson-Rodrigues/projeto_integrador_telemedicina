@@ -4,6 +4,11 @@
  */
 package br.com.telemedicina.subtelas;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Talisson53899806
@@ -245,7 +250,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
 
         jSplitPane1.setRightComponent(jPanel2);
 
-        jTabbedPane1.addTab("tab1", jSplitPane1);
+        jTabbedPane1.addTab("Dados", jSplitPane1);
 
         jSplitPane2.setDividerLocation(300);
         jSplitPane2.setDividerSize(0);
@@ -363,7 +368,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
 
         jSplitPane2.setRightComponent(jPanel4);
 
-        jTabbedPane1.addTab("tab2", jSplitPane2);
+        jTabbedPane1.addTab("Agendamento", jSplitPane2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -386,6 +391,29 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
            return;
        }
        
+       try (BufferedWriter bw
+               = new BufferedWriter(new FileWriter("a", true))) {
+           
+           String atendimentoConsulta = this.campoAtendimentoConsulta.getText();
+           String cpfConsulta         = this.campoCpfConsulta.getText();
+           String dataConsulta        = this.campoDataConsulta.getText();
+           String idadeConsulta       = this.campoIdadeConsulta.getText();
+           String nomeConsulta        = this.campoNomeConsulta.getText();
+           String rgConsulta          = this.campoRgConsulta.getText();
+           String telefoneConsulta    = this.campoTelefoneConsulta.getText();
+           
+           bw.write(nomeConsulta + ", " + cpfConsulta + ", " + dataConsulta + ", " +
+                    idadeConsulta + ", " + rgConsulta + ", " + telefoneConsulta + ", " +
+                    atendimentoConsulta);
+           
+           JOptionPane.showMessageDialog(this,
+                    "Consulta realizada com sucesso!");
+           this.setVisible(false);
+       } catch (IOException e) {
+           JOptionPane.showMessageDialog(this,
+                    "Não foi possível fazer a consulta! Error: " + e.getMessage());
+           e.printStackTrace();
+       }
     }//GEN-LAST:event_botaoAgendarActionPerformed
     private boolean validaCampos() {
         if (this.campoAtendimentoConsulta.getText() == null ||
