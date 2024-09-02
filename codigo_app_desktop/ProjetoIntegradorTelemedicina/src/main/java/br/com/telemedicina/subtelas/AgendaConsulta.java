@@ -250,7 +250,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
 
         jSplitPane1.setRightComponent(jPanel2);
 
-        jTabbedPane1.addTab("tab1", jSplitPane1);
+        jTabbedPane1.addTab("Dados", jSplitPane1);
 
         jSplitPane2.setDividerLocation(300);
         jSplitPane2.setDividerSize(0);
@@ -368,7 +368,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
 
         jSplitPane2.setRightComponent(jPanel4);
 
-        jTabbedPane1.addTab("tab2", jSplitPane2);
+        jTabbedPane1.addTab("Agendamento", jSplitPane2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
