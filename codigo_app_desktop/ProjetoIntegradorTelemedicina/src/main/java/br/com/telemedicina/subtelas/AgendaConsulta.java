@@ -4,6 +4,11 @@
  */
 package br.com.telemedicina.subtelas;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Talisson53899806
@@ -386,6 +391,29 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
            return;
        }
        
+       try (BufferedWriter bw
+               = new BufferedWriter(new FileWriter("a", true))) {
+           
+           String atendimentoConsulta = this.campoAtendimentoConsulta.getText();
+           String cpfConsulta         = this.campoCpfConsulta.getText();
+           String dataConsulta        = this.campoDataConsulta.getText();
+           String idadeConsulta       = this.campoIdadeConsulta.getText();
+           String nomeConsulta        = this.campoNomeConsulta.getText();
+           String rgConsulta          = this.campoRgConsulta.getText();
+           String telefoneConsulta    = this.campoTelefoneConsulta.getText();
+           
+           bw.write(nomeConsulta + ", " + cpfConsulta + ", " + dataConsulta + ", " +
+                    idadeConsulta + ", " + rgConsulta + ", " + telefoneConsulta + ", " +
+                    atendimentoConsulta);
+           
+           JOptionPane.showMessageDialog(this,
+                    "Consulta realizada com sucesso!");
+           this.setVisible(false);
+       } catch (IOException e) {
+           JOptionPane.showMessageDialog(this,
+                    "Não foi possível fazer a consulta! Error: " + e.getMessage());
+           e.printStackTrace();
+       }
     }//GEN-LAST:event_botaoAgendarActionPerformed
     private boolean validaCampos() {
         if (this.campoAtendimentoConsulta.getText() == null ||
