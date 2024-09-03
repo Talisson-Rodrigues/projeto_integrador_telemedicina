@@ -16,7 +16,7 @@ Tabela de Conteúdos
 * [Executando a aplicação](#Executando-a-aplicação)
 
 *[Tecnologias Utilizadas](#tecnologias-utilizadas)
-* [Autor](#autor)
+* [Autor](#autor) 
 
 Pré-requisitos
 ==============

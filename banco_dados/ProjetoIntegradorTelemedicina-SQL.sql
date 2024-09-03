@@ -69,7 +69,8 @@ CREATE TABLE Exame
  ID_CLINICA INT,  
  dataExame DATE,  
  localExame VARCHAR(200),  
- descricaoExame VARCHAR(300)  
+ descricaoExame VARCHAR(300),
+ valorExame FLOAT
 ); 
 
 CREATE TABLE Prescricao 

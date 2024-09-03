@@ -323,6 +323,11 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         botaoDisponibilidade.setForeground(new java.awt.Color(255, 255, 255));
         botaoDisponibilidade.setText("Disponibilidade");
         botaoDisponibilidade.setToolTipText("");
+        botaoDisponibilidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoDisponibilidadeActionPerformed(evt);
+            }
+        });
 
         botaoAgendar.setBackground(new java.awt.Color(0, 204, 0));
         botaoAgendar.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
@@ -418,6 +423,10 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
            e.printStackTrace();
        }
     }//GEN-LAST:event_botaoAgendarActionPerformed
+
+    private void botaoDisponibilidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDisponibilidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoDisponibilidadeActionPerformed
     private boolean validaCampos() {
         if (this.campoAtendimentoConsulta.getText() == null ||
             this.campoCpfConsulta.getText() == null         ||
