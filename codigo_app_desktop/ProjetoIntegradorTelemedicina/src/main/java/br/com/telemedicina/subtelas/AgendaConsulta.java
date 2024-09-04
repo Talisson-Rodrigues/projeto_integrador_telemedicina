@@ -140,6 +140,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        campoTelefoneConsulta.setText("");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
@@ -161,6 +162,8 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        campoCpfConsulta.setText("");
+        campoCpfConsulta.setToolTipText("");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
@@ -395,48 +398,48 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAgendarActionPerformed
-       if(!validaCampos()) {
-           return;
-       }
-       
-       try (BufferedWriter bw
-               = new BufferedWriter(new FileWriter("a", true))) {
-           
-           String atendimentoConsulta = this.campoAtendimentoConsulta.getText();
-           String cpfConsulta         = this.campoCpfConsulta.getText();
-           String dataConsulta        = this.campoDataConsulta.getText();
-           String idadeConsulta       = this.campoIdadeConsulta.getText();
-           String nomeConsulta        = this.campoNomeConsulta.getText();
-           String rgConsulta          = this.campoRgConsulta.getText();
-           String telefoneConsulta    = this.campoTelefoneConsulta.getText();
-           
-           bw.write(nomeConsulta + ", " + cpfConsulta + ", " + dataConsulta + ", " +
-                    idadeConsulta + ", " + rgConsulta + ", " + telefoneConsulta + ", " +
-                    atendimentoConsulta);
-           
-           JOptionPane.showMessageDialog(this,
-                    "Consulta realizada com sucesso!");
-           this.setVisible(false);
-       } catch (IOException e) {
-           JOptionPane.showMessageDialog(this,
-                    "Não foi possível fazer a consulta! Error: " + e.getMessage());
-           e.printStackTrace();
-       }
+        if (validaCampos()) {
+            return;
+        }
+        
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("consulta.txt"))) {
+            
+            String atendimento = this.campoAtendimentoConsulta.getText();
+            String cpf         = this.campoCpfConsulta.getText();
+            String data        = this.campoDataConsulta.getText();
+            String idade       = this.campoIdadeConsulta.getText();
+            String nome        = this.campoNomeConsulta.getText();
+            String rg          = this.campoRgConsulta.getText();
+            String telefone    = this.campoTelefoneConsulta.getText();
+            
+            bw.write(atendimento + ", " + cpf + ", " + data + ", " +
+                     idade + ", " + nome + ", " + rg + ", " + telefone);
+            
+            JOptionPane.showMessageDialog(this,
+                    "Consulta realizada com Sucesso!!!");
+            
+            this.setVisible(false);
+            
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this,
+                    "Consulta não realizada!!! Error: " + e.getMessage());
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_botaoAgendarActionPerformed
 
     private void botaoDisponibilidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDisponibilidadeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botaoDisponibilidadeActionPerformed
     private boolean validaCampos() {
-        if (this.campoAtendimentoConsulta.getText() == null ||
-            this.campoCpfConsulta.getText() == null         ||
-            this.campoDataConsulta.getText() == null        ||
-            this.campoIdadeConsulta.getText() == null       ||
-            this.campoNomeConsulta.getText() == null        ||
-            this.campoRgConsulta.getText() == null          ||
-            this.campoTelefoneConsulta.getText() == null) {
+        if (   this.campoAtendimentoConsulta.getText() == null 
+            || this.campoCpfConsulta.getText()         == null
+            || this.campoDataConsulta.getText()        == null
+            || this.campoIdadeConsulta.getText()       == null
+            || this.campoNomeConsulta.getText()        == null
+            || this.campoRgConsulta.getText()          == null
+            || this.campoTelefoneConsulta.getText()    == null) {
             
-            this.errorLabel.setText("Ainda há campos em brancos!!");
+            this.errorLabel.setText("Há campos em branco!!");
             return false;
         }
         this.errorLabel.setText("");

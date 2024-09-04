@@ -1,4 +1,4 @@
-INSERT INTO Prescricao (assinatura, medicamento, ID_PACIENTE, ID_MEDICO) VALUES
+INSERT INTO Prescricao (assinatura, medicamento) VALUES
 ('Dr. Ana Souza', 'Paracetamol 500mg - 30 comprimidos'),
 ('Dr. João Silva', 'Ibuprofeno 400mg - 20 cápsulas'),
 ('Dra. Maria Oliveira', 'Amoxicilina 500mg - 15 cápsulas'),
@@ -49,3 +49,5 @@ INSERT INTO Prescricao (assinatura, medicamento, ID_PACIENTE, ID_MEDICO) VALUES
 ('Dra. Luciana Freitas', 'Propafenona 150mg - 20 comprimidos'),
 ('Dr. Pedro Martins', 'Colchicina 0,5mg - 10 comprimidos'),
 ('Dra. Roberta Oliveira', 'Piroxicam 20mg - 30 cápsulas');
+
+select * from Prescricao;

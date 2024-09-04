@@ -51,9 +51,8 @@ public class Main extends javax.swing.JFrame {
         statusLabel = new javax.swing.JLabel();
         carregaDadosMedico = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        nomeMedLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jSplitPane2 = new javax.swing.JSplitPane();
         jPanel3 = new javax.swing.JPanel();
@@ -63,10 +62,9 @@ public class Main extends javax.swing.JFrame {
         statusLabelPaciente = new javax.swing.JLabel();
         carregaDadosPaciente = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        nomePacientLabel = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
-        diaConsulta = new javax.swing.JMenuItem();
         historicoConsulta = new javax.swing.JMenuItem();
         novaConsulta = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -166,11 +164,11 @@ public class Main extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Olá {Médico}");
-        jPanel2.add(jLabel2);
-        jLabel2.setBounds(19, 40, 240, 57);
+        nomeMedLabel.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
+        nomeMedLabel.setForeground(new java.awt.Color(0, 0, 0));
+        nomeMedLabel.setText("Olá {Médico}");
+        jPanel2.add(nomeMedLabel);
+        nomeMedLabel.setBounds(19, 40, 240, 57);
 
         jButton1.setBackground(new java.awt.Color(242, 242, 242));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -183,15 +181,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton1);
-        jButton1.setBounds(331, 115, 103, 40);
-
-        jButton3.setBackground(new java.awt.Color(242, 242, 242));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setText("Consultas do Dia");
-        jButton3.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
-        jPanel2.add(jButton3);
-        jButton3.setBounds(599, 115, 134, 40);
+        jButton1.setBounds(460, 110, 103, 40);
 
         jButton4.setBackground(new java.awt.Color(242, 242, 242));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -199,7 +189,7 @@ public class Main extends javax.swing.JFrame {
         jButton4.setText("Nova Prescrição");
         jButton4.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
         jPanel2.add(jButton4);
-        jButton4.setBounds(452, 115, 129, 40);
+        jButton4.setBounds(600, 110, 129, 40);
 
         jSplitPane1.setRightComponent(jPanel2);
 
@@ -282,9 +272,9 @@ public class Main extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Olá {Paciente}");
+        nomePacientLabel.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
+        nomePacientLabel.setForeground(new java.awt.Color(0, 0, 0));
+        nomePacientLabel.setText("Olá {Paciente}");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -292,14 +282,14 @@ public class Main extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel4)
+                .addComponent(nomePacientLabel)
                 .addContainerGap(512, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(jLabel4)
+                .addComponent(nomePacientLabel)
                 .addContainerGap(586, Short.MAX_VALUE))
         );
 
@@ -312,10 +302,6 @@ public class Main extends javax.swing.JFrame {
 
         jMenu3.setText("Consultas");
         jMenu3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-
-        diaConsulta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        diaConsulta.setText("Consultas do Dia");
-        jMenu3.add(diaConsulta);
 
         historicoConsulta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         historicoConsulta.setText("Histórico de consultas");
@@ -420,7 +406,7 @@ public class Main extends javax.swing.JFrame {
             return; // Se não conectar ao banco, não faz sentido continuar
         }
 
-        String query = "SELECT nome, cpf, dataNascimento FROM Paciente";
+        String query = "SELECT nome, cpf, dataNascimento FROM Paciente WHERE ID <= 10";
         PreparedStatement ps = banco.getPreparedStatement(query);
         
         try {
@@ -506,9 +492,8 @@ public class Main extends javax.swing.JFrame {
                 this.jTabbedPane1.removeTabAt(1);
            } else if (dados[1].equals("Paciente")) {
                //ativar a aba correspondente
-                this.jTabbedPane1.removeTabAt(0);
-           }
-           
+                this.jTabbedPane1.removeTabAt(0);    
+           }        
            
        } catch (IOException e) {
            JOptionPane.showMessageDialog(this,
@@ -560,17 +545,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem consultaExame;
     private javax.swing.JMenuItem consultaPrescricao;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenuItem diaConsulta;
     private javax.swing.JMenuItem historicoConsulta;
     private javax.swing.JMenuItem historicoExame;
     private javax.swing.JMenuItem historicoPrescricao;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
@@ -586,6 +567,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable jTableMedico;
     private javax.swing.JTable jTablePaciente;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JLabel nomeMedLabel;
+    private javax.swing.JLabel nomePacientLabel;
     private javax.swing.JMenuItem novaConsulta;
     private javax.swing.JMenuItem novaPrescricao;
     private javax.swing.JLabel statusLabel;
