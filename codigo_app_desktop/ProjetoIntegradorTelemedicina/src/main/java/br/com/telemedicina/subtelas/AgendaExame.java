@@ -4,10 +4,15 @@
  */
 package br.com.telemedicina.subtelas;
 
+import br.com.telemedicina.bd.BD;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -366,7 +371,36 @@ public class AgendaExame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botaoAgendarActionPerformed
 
     private void botaoDisponibilidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDisponibilidadeActionPerformed
-        // TODO add your handling code here:
+        BD banco = new BD();
+        boolean resultado = banco.conectaBD();
+
+        String query = "SELECT nome, cpf, dataNascimento FROM Paciente WHERE ID <= 10";
+        PreparedStatement ps = banco.getPreparedStatement(query);
+        
+        try {
+            ResultSet rs = ps.executeQuery();
+            
+            DefaultTableModel model = (DefaultTableModel) this.jTable1.getModel();
+            if (model.getRowCount() > 0) {
+                model.setNumRows(0);
+            }
+
+            
+            while (rs.next()) {
+               String[] dados = { rs.getString("nome"),
+                                  rs.getString("cpf"),
+                                  rs.getDate("dataNascimento").toString()}; 
+               
+               model.addRow(dados);
+            }
+            this.jTable1.setModel(model);
+            rs.close();
+            ps.close();
+            banco.encerrarConexao();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, 
+            "Não foi possível realizar a consulta no BD. Erro: " + ex.getMessage());
+        }
     }//GEN-LAST:event_botaoDisponibilidadeActionPerformed
     private boolean validaCampos() {
         if (this.campoDataHoraExame.getText() == null  ||
