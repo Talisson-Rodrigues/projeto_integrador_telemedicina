@@ -7,6 +7,9 @@ package br.com.telemedicina.telaprincipal;
 import br.com.telemedicina.bd.BD;
 import br.com.telemedicina.subtelas.AgendaConsulta;
 import br.com.telemedicina.subtelas.TelaInicio;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -77,6 +80,11 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jSplitPane1.setDividerLocation(350);
         jSplitPane1.setDividerSize(0);
@@ -481,6 +489,33 @@ public class Main extends javax.swing.JFrame {
             "Não foi possível realizar a consulta no BD. Erro: " + ex.getMessage());
         }
     }//GEN-LAST:event_carregaDadosPacienteActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+         //ler o arquivo que contem as informacao de quem esta logado no sistema
+       try (BufferedReader br = new BufferedReader(new FileReader("sessao"))) {
+           //verificar qual o tipo de quem esta logado (medico ou paciente)
+           String linha;
+           String[] dados = {};
+           
+           while ((linha = br.readLine()) != null) {
+               dados = linha.split(",");
+           }
+           
+           if(dados[1].equals("Médico")) {
+                //ativar a aba correspondente
+                this.jTabbedPane1.removeTabAt(1);
+           } else if (dados[1].equals("Paciente")) {
+               //ativar a aba correspondente
+                this.jTabbedPane1.removeTabAt(0);
+           }
+           
+           
+       } catch (IOException e) {
+           JOptionPane.showMessageDialog(this,
+                   "Não foi possível iniciar o sistema!! Error: " + e.getMessage());
+           e.printStackTrace();
+       }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

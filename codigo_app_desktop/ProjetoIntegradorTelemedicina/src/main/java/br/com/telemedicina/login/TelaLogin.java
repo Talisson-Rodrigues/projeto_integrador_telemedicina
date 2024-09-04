@@ -9,7 +9,9 @@ import br.com.telemedicina.subtelas.TelaCadastroPaciente;
 import br.com.telemedicina.telaprincipal.Main;
 import java.awt.Frame;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -279,6 +281,16 @@ public class TelaLogin extends javax.swing.JDialog {
             char[] passFile = dados[1].toCharArray();
             
             if (this.campoUsuario.getText().equals(dados[0]) && java.util.Arrays.equals(pass, passFile)) {
+                
+                //salvar em um arquivo a informacao de quem esta logado
+                try (BufferedWriter bw = new BufferedWriter(new FileWriter("sessao"))) {
+                    bw.write(this.campoUsuario.getText() + "," + this.tipoUsuario.getSelectedItem().toString());
+           
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(this,
+                            "Não foi possível iniciar o sistema!! Error: " + e.getMessage());
+                }
+                ///////////////////////////////////////////
                 this.parentMain.setVisible(false);
                 this.setVisible(false);                
             } else {
