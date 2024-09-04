@@ -44,9 +44,9 @@ public class Main extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableMedico = new javax.swing.JTable();
         statusLabel = new javax.swing.JLabel();
-        carregaDados = new javax.swing.JButton();
+        carregaDadosMedico = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -56,7 +56,9 @@ public class Main extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTablePaciente = new javax.swing.JTable();
+        statusLabelPaciente = new javax.swing.JLabel();
+        carregaDadosPaciente = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
@@ -85,10 +87,10 @@ public class Main extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Pacientes do dia");
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableMedico.setBackground(new java.awt.Color(255, 255, 255));
+        jTableMedico.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jTableMedico.setForeground(new java.awt.Color(0, 0, 0));
+        jTableMedico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -104,14 +106,14 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableMedico);
 
-        carregaDados.setBackground(new java.awt.Color(0, 204, 0));
-        carregaDados.setForeground(new java.awt.Color(255, 255, 255));
-        carregaDados.setText("Carregar Dados");
-        carregaDados.addActionListener(new java.awt.event.ActionListener() {
+        carregaDadosMedico.setBackground(new java.awt.Color(0, 204, 0));
+        carregaDadosMedico.setForeground(new java.awt.Color(255, 255, 255));
+        carregaDadosMedico.setText("Carregar Dados");
+        carregaDadosMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                carregaDadosActionPerformed(evt);
+                carregaDadosMedicoActionPerformed(evt);
             }
         });
 
@@ -123,7 +125,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -134,7 +136,7 @@ public class Main extends javax.swing.JFrame {
                         .addContainerGap(344, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(carregaDados, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(carregaDadosMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -147,7 +149,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(statusLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(carregaDados, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(carregaDadosMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(63, Short.MAX_VALUE))
         );
 
@@ -204,15 +206,15 @@ public class Main extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Consultas");
 
-        jTable2.setBackground(new java.awt.Color(255, 255, 255));
-        jTable2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jTable2.setForeground(new java.awt.Color(0, 0, 0));
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePaciente.setBackground(new java.awt.Color(255, 255, 255));
+        jTablePaciente.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jTablePaciente.setForeground(new java.awt.Color(0, 0, 0));
+        jTablePaciente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nome Médico", "Horário Marcado", ""
+                "Nome Médico", "Horário Marcado", "Modelo de Consulta"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -223,29 +225,49 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(jTablePaciente);
+
+        carregaDadosPaciente.setBackground(new java.awt.Color(0, 204, 0));
+        carregaDadosPaciente.setForeground(new java.awt.Color(255, 255, 255));
+        carregaDadosPaciente.setText("Carregar Dados");
+        carregaDadosPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                carregaDadosPacienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(116, 116, 116)
+                .addGap(110, 110, 110)
                 .addComponent(jLabel3)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(statusLabelPaciente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(carregaDadosPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(statusLabelPaciente)
+                    .addComponent(carregaDadosPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         jSplitPane2.setLeftComponent(jPanel3);
@@ -380,7 +402,7 @@ public class Main extends javax.swing.JFrame {
         consulta.setVisible(true);
     }//GEN-LAST:event_novaConsultaActionPerformed
 
-    private void carregaDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carregaDadosActionPerformed
+    private void carregaDadosMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carregaDadosMedicoActionPerformed
         BD banco = new BD();
         boolean resultado = banco.conectaBD();
         if (resultado == true) {
@@ -396,7 +418,7 @@ public class Main extends javax.swing.JFrame {
         try {
             ResultSet rs = ps.executeQuery();
             
-            DefaultTableModel model = (DefaultTableModel) this.jTable1.getModel();
+            DefaultTableModel model = (DefaultTableModel) this.jTableMedico.getModel();
             if (model.getRowCount() > 0) {
                 model.setNumRows(0);
             }
@@ -409,7 +431,7 @@ public class Main extends javax.swing.JFrame {
                
                model.addRow(dados);
             }
-            this.jTable1.setModel(model);
+            this.jTableMedico.setModel(model);
             rs.close();
             ps.close();
             banco.encerrarConexao();
@@ -418,7 +440,47 @@ public class Main extends javax.swing.JFrame {
             "Não foi possível realizar a consulta no BD. Erro: " + ex.getMessage());
         }
     
-    }//GEN-LAST:event_carregaDadosActionPerformed
+    }//GEN-LAST:event_carregaDadosMedicoActionPerformed
+
+    private void carregaDadosPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carregaDadosPacienteActionPerformed
+        BD banco = new BD();
+        boolean resultado = banco.conectaBD();
+        if (resultado == true) {
+            this.statusLabelPaciente.setText("Status: Conectado ao Banco de Dados!!");
+        } else {
+            this.statusLabelPaciente.setText("Status: Não conectado ao Banco de dados!!");
+            return; // Se não conectar ao banco, não faz sentido continuar
+        }
+
+        String query = "SELECT ID_MEDICO, dataConsulta, formatoConsulta FROM Consulta";
+        PreparedStatement ps = banco.getPreparedStatement(query);
+        
+        try {
+            ResultSet rs = ps.executeQuery();
+            
+            DefaultTableModel model = (DefaultTableModel) this.jTablePaciente.getModel();
+            if (model.getRowCount() > 0) {
+                model.setNumRows(0);
+            }
+
+            
+            while (rs.next()) {
+               String[] dados = { rs.getString("ID_MEDICO"),
+                                  rs.getString("formatoConsulta"),
+                                  rs.getDate("dataConsulta").toString()}; 
+               
+               model.addRow(dados);
+            }
+            this.jTablePaciente.setModel(model);
+            rs.close();
+            ps.close();
+            banco.encerrarConexao();
+            this.carregaDadosPaciente.setVisible(false);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, 
+            "Não foi possível realizar a consulta no BD. Erro: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_carregaDadosPacienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -458,7 +520,8 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem agendaExame;
-    private javax.swing.JButton carregaDados;
+    private javax.swing.JButton carregaDadosMedico;
+    private javax.swing.JButton carregaDadosPaciente;
     private javax.swing.JMenuItem consultaExame;
     private javax.swing.JMenuItem consultaPrescricao;
     private javax.swing.JDesktopPane desktopPane;
@@ -485,12 +548,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTableMedico;
+    private javax.swing.JTable jTablePaciente;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem novaConsulta;
     private javax.swing.JMenuItem novaPrescricao;
     private javax.swing.JLabel statusLabel;
+    private javax.swing.JLabel statusLabelPaciente;
     // End of variables declaration//GEN-END:variables
 
 }
