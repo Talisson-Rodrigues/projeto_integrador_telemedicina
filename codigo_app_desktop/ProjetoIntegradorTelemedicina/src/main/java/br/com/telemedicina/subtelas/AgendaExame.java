@@ -4,10 +4,15 @@
  */
 package br.com.telemedicina.subtelas;
 
+import br.com.telemedicina.bd.BD;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -50,6 +55,7 @@ public class AgendaExame extends javax.swing.JInternalFrame {
         botaoAgendar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         campoDataExame = new javax.swing.JFormattedTextField();
+        statusLabel = new javax.swing.JLabel();
 
         jSplitPane1.setDividerLocation(620);
         jSplitPane1.setDividerSize(0);
@@ -216,6 +222,10 @@ public class AgendaExame extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
 
+        statusLabel.setBackground(new java.awt.Color(255, 255, 255));
+        statusLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        statusLabel.setForeground(new java.awt.Color(0, 204, 51));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -231,16 +241,19 @@ public class AgendaExame extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addComponent(campoDataExame, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(campoDataExame, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(statusLabel))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(statusLabel)
+                .addGap(9, 9, 9)
                 .addComponent(jLabel5)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -248,7 +261,7 @@ public class AgendaExame extends javax.swing.JInternalFrame {
                         .addComponent(campoDataExame, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(botaoClinicas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(52, Short.MAX_VALUE))
+                        .addContainerGap(68, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botaoAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -309,7 +322,42 @@ public class AgendaExame extends javax.swing.JInternalFrame {
     }
     
     private void botaoClinicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoClinicasActionPerformed
-        // TODO add your handling code here:
+        BD banco = new BD();
+        boolean resultado =  banco.conectaBD();
+        if (resultado == true) {
+            this.statusLabel.setText("Status: Conectado ao banco de Dados!!");
+        } else {
+            this.statusLabel.setText("Status: Não conectado ao banco de dados!!");
+            return;
+        }
+        
+        String query = "SELECT nomeClinica, enderecoClinica FROM Clinica WHERE ID <= 10";
+        PreparedStatement ps = banco.getPreparedStatement(query);
+        
+        try {
+           ResultSet rs = ps.executeQuery();
+           
+           DefaultTableModel model = (DefaultTableModel) this.agendaExameTabela.getModel();
+           if (model.getRowCount() > 0) {
+               model.setRowCount(0);
+           }
+           
+           while (rs.next()) {
+               String[] dados = {rs.getString("nomeClinica"),
+                                 rs.getString("enderecoClinica")};
+               
+               model.addRow(dados);
+           }
+           
+           this.agendaExameTabela.setModel(model);
+           rs.close();
+           ps.close();
+           banco.encerrarConexao();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this,
+                    "Não foi possivel realizar a consulta no BD !!! Error: " + ex.getMessage());
+        }
+        
     }//GEN-LAST:event_botaoClinicasActionPerformed
 
 
@@ -333,5 +381,6 @@ public class AgendaExame extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JLabel statusLabel;
     // End of variables declaration//GEN-END:variables
 }
