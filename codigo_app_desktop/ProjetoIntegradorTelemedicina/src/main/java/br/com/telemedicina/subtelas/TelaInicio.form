@@ -222,7 +222,7 @@
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Talisson53899806\Downloads\Talisson-Pontes-Atividades\projeto_integrador_telemedicina\codigo_app_desktop\ProjetoIntegradorTelemedicina\src\main\resources\images\5891885.png"/>
+              <Image iconType="3" name="/images/imagemInicio.png"/>
             </Property>
           </Properties>
         </Component>

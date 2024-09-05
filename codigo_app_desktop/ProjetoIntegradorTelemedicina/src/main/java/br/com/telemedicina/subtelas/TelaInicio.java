@@ -130,7 +130,7 @@ public class TelaInicio extends javax.swing.JDialog {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Talisson53899806\\Downloads\\Talisson-Pontes-Atividades\\projeto_integrador_telemedicina\\codigo_app_desktop\\ProjetoIntegradorTelemedicina\\src\\main\\resources\\images\\5891885.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imagemInicio.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
