@@ -67,6 +67,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Agendar Exames"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="agendaExameActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -137,12 +140,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="desktopPane" pref="1128" max="32767" attributes="0"/>
+          <Component id="desktopPane" pref="1218" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="desktopPane" min="-2" pref="641" max="-2" attributes="0"/>
+          <Component id="desktopPane" alignment="0" pref="743" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -156,7 +159,7 @@
         <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="-40" width="1140" height="720"/>
+              <AbsoluteConstraints x="0" y="-40" width="1840" height="790"/>
             </Constraint>
           </Constraints>
 
@@ -222,13 +225,13 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="473" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="statusLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
+                              <Component id="statusLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="20" max="32767" attributes="0"/>
                               <Component id="carregaDadosMedico" min="-2" pref="30" max="-2" attributes="0"/>
-                              <EmptySpace pref="63" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -351,7 +354,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="460" y="110" width="-1" height="40"/>
+                          <AbsoluteConstraints x="370" y="110" width="-1" height="40"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -379,7 +382,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="600" y="110" width="-1" height="40"/>
+                          <AbsoluteConstraints x="480" y="110" width="-1" height="40"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -451,7 +454,7 @@
                                   <Component id="statusLabelPaciente" min="-2" max="-2" attributes="0"/>
                                   <Component id="carregaDadosPaciente" min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="89" max="32767" attributes="0"/>
+                              <EmptySpace pref="159" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -533,7 +536,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="nomePacientLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="512" max="32767" attributes="0"/>
+                              <EmptySpace pref="1212" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -542,7 +545,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                               <Component id="nomePacientLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="586" max="32767" attributes="0"/>
+                              <EmptySpace pref="656" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>

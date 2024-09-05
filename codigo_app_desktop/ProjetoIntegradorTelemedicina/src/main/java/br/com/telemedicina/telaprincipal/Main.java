@@ -6,6 +6,7 @@ package br.com.telemedicina.telaprincipal;
 
 import br.com.telemedicina.bd.BD;
 import br.com.telemedicina.subtelas.AgendaConsulta;
+import br.com.telemedicina.subtelas.AgendaExame;
 import br.com.telemedicina.subtelas.TelaInicio;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -150,13 +151,13 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(78, 78, 78)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(statusLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(statusLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(carregaDadosMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addGap(65, 65, 65))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -181,7 +182,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton1);
-        jButton1.setBounds(460, 110, 103, 40);
+        jButton1.setBounds(370, 110, 103, 40);
 
         jButton4.setBackground(new java.awt.Color(242, 242, 242));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -189,7 +190,7 @@ public class Main extends javax.swing.JFrame {
         jButton4.setText("Nova Prescrição");
         jButton4.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
         jPanel2.add(jButton4);
-        jButton4.setBounds(600, 110, 129, 40);
+        jButton4.setBounds(480, 110, 129, 40);
 
         jSplitPane1.setRightComponent(jPanel2);
 
@@ -265,7 +266,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(statusLabelPaciente)
                     .addComponent(carregaDadosPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
         jSplitPane2.setLeftComponent(jPanel3);
@@ -283,14 +284,14 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(nomePacientLabel)
-                .addContainerGap(512, Short.MAX_VALUE))
+                .addContainerGap(1212, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(nomePacientLabel)
-                .addContainerGap(586, Short.MAX_VALUE))
+                .addContainerGap(656, Short.MAX_VALUE))
         );
 
         jSplitPane2.setRightComponent(jPanel4);
@@ -298,7 +299,7 @@ public class Main extends javax.swing.JFrame {
         jTabbedPane1.addTab("Paciente", jSplitPane2);
 
         desktopPane.add(jTabbedPane1);
-        jTabbedPane1.setBounds(0, -40, 1140, 720);
+        jTabbedPane1.setBounds(0, -40, 1840, 790);
 
         jMenu3.setText("Consultas");
         jMenu3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -336,6 +337,11 @@ public class Main extends javax.swing.JFrame {
 
         agendaExame.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         agendaExame.setText("Agendar Exames");
+        agendaExame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendaExameActionPerformed(evt);
+            }
+        });
         jMenu4.add(agendaExame);
 
         menuBar.add(jMenu4);
@@ -368,11 +374,11 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1128, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1218, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 743, Short.MAX_VALUE)
         );
 
         pack();
@@ -501,6 +507,12 @@ public class Main extends javax.swing.JFrame {
            e.printStackTrace();
        }
     }//GEN-LAST:event_formWindowOpened
+
+    private void agendaExameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendaExameActionPerformed
+        AgendaExame exame = new AgendaExame();
+        this.desktopPane.add(exame);
+        exame.setVisible(true);
+    }//GEN-LAST:event_agendaExameActionPerformed
 
     /**
      * @param args the command line arguments

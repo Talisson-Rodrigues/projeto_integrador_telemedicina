@@ -4,19 +4,14 @@
  */
 package br.com.telemedicina.subtelas;
 
-import br.com.telemedicina.bd.BD;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Josue53508706
+ * @author Talisson53899806
  */
 public class AgendaExame extends javax.swing.JInternalFrame {
 
@@ -36,377 +31,275 @@ public class AgendaExame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         errorLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        campoNomeExame = new javax.swing.JTextField();
+        campoNomePaciente = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        campoDataHoraExame = new javax.swing.JTextField();
+        campoTipoExame = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         campoDescricaoExame = new javax.swing.JTextArea();
-        jLabel7 = new javax.swing.JLabel();
-        campoTipoExame = new javax.swing.JTextField();
+        imageLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jSplitPane2 = new javax.swing.JSplitPane();
-        jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel8 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        agendaExameTabela = new javax.swing.JTable();
+        botaoClinicas = new javax.swing.JButton();
         botaoAgendar = new javax.swing.JButton();
-        botaoDisponibilidade = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        campoDataExame = new javax.swing.JFormattedTextField();
 
-        setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        setClosable(true);
-
-        jSplitPane1.setDividerLocation(350);
+        jSplitPane1.setDividerLocation(620);
         jSplitPane1.setDividerSize(0);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(46, 169, 248));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 42)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Agendar Exame");
 
-        errorLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        errorLabel.setToolTipText("");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Nome do Paciente:");
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Nome do Paciente: ");
 
-        campoNomeExame.setBackground(new java.awt.Color(102, 102, 102));
-        campoNomeExame.setForeground(new java.awt.Color(255, 255, 255));
-        campoNomeExame.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        campoNomePaciente.setBackground(new java.awt.Color(102, 102, 102));
+        campoNomePaciente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        campoNomePaciente.setForeground(new java.awt.Color(255, 255, 255));
+        campoNomePaciente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Data/Hora:");
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Tipo de Exame: ");
 
-        campoDataHoraExame.setBackground(new java.awt.Color(102, 102, 102));
-        campoDataHoraExame.setForeground(new java.awt.Color(255, 255, 255));
-        campoDataHoraExame.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        campoTipoExame.setBackground(new java.awt.Color(102, 102, 102));
+        campoTipoExame.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        campoTipoExame.setForeground(new java.awt.Color(255, 255, 255));
+        campoTipoExame.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Tipo do Exame:");
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Descrição do Exame: ");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Descrição do Exame:");
+        jScrollPane1.setBackground(new java.awt.Color(102, 102, 102));
+        jScrollPane1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         campoDescricaoExame.setBackground(new java.awt.Color(102, 102, 102));
-        campoDescricaoExame.setColumns(20);
+        campoDescricaoExame.setColumns(24);
+        campoDescricaoExame.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campoDescricaoExame.setForeground(new java.awt.Color(255, 255, 255));
         campoDescricaoExame.setRows(5);
         campoDescricaoExame.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jScrollPane1.setViewportView(campoDescricaoExame);
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel7.setText("Vá para a proxima pagina para encontrar uma clínica");
-
-        campoTipoExame.setBackground(new java.awt.Color(102, 102, 102));
-        campoTipoExame.setForeground(new java.awt.Color(255, 255, 255));
-        campoTipoExame.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/4430167.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(campoDataHoraExame, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
-                    .addComponent(jLabel3)
-                    .addComponent(campoNomeExame)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoNomePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoTipoExame, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(26, 26, 26))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3))
+                .addGap(38, 38, 38))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(errorLabel)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(182, 182, 182))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addContainerGap())))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(193, 193, 193)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(323, 323, 323)
+                        .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(207, 207, 207)
+                        .addComponent(imageLabel)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(errorLabel)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
+                .addComponent(imageLabel)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoNomeExame, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoNomePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoTipoExame, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel6))
+                .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campoDataHoraExame, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(97, 97, 97)
-                        .addComponent(jLabel7)))
-                .addGap(53, 115, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
-        jSplitPane1.setRightComponent(jPanel1);
+        jSplitPane1.setLeftComponent(jPanel1);
 
-        jPanel2.setBackground(new java.awt.Color(46, 169, 248));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(145, 145, 145)
-                .addComponent(jLabel5)
-                .addContainerGap(205, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(224, 224, 224)
-                .addComponent(jLabel5)
-                .addContainerGap(333, Short.MAX_VALUE))
-        );
-
-        jSplitPane1.setLeftComponent(jPanel2);
-
-        jTabbedPane1.addTab("Dados", jSplitPane1);
-
-        jSplitPane2.setBackground(new java.awt.Color(255, 255, 255));
-        jSplitPane2.setDividerLocation(350);
-        jSplitPane2.setDividerSize(0);
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-
-        jTable1.setBackground(new java.awt.Color(102, 102, 102));
-        jTable1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        agendaExameTabela.setBackground(new java.awt.Color(102, 102, 102));
+        agendaExameTabela.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        agendaExameTabela.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        agendaExameTabela.setForeground(new java.awt.Color(255, 255, 255));
+        agendaExameTabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Clínica", "Disponível"
+                "Nome Clínica", "Endereço Clinica"
             }
-        ));
-        jScrollPane2.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Data do Exame:");
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(agendaExameTabela);
 
-        jFormattedTextField1.setBackground(new java.awt.Color(102, 102, 102));
-        jFormattedTextField1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jFormattedTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##/##/####"))));
-        jFormattedTextField1.setText("  /  /");
+        botaoClinicas.setBackground(new java.awt.Color(255, 153, 51));
+        botaoClinicas.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        botaoClinicas.setForeground(new java.awt.Color(255, 255, 255));
+        botaoClinicas.setText("Ver clínicas");
+        botaoClinicas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botaoClinicas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoClinicasActionPerformed(evt);
+            }
+        });
 
         botaoAgendar.setBackground(new java.awt.Color(0, 204, 0));
         botaoAgendar.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         botaoAgendar.setForeground(new java.awt.Color(255, 255, 255));
         botaoAgendar.setText("Agendar");
+        botaoAgendar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoAgendar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoAgendarActionPerformed(evt);
             }
         });
 
-        botaoDisponibilidade.setBackground(new java.awt.Color(255, 102, 0));
-        botaoDisponibilidade.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        botaoDisponibilidade.setForeground(new java.awt.Color(255, 255, 255));
-        botaoDisponibilidade.setText("Disponibilidade");
-        botaoDisponibilidade.setToolTipText("");
-        botaoDisponibilidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoDisponibilidadeActionPerformed(evt);
-            }
-        });
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Data da Consulta: ");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        campoDataExame.setBackground(new java.awt.Color(102, 102, 102));
+        campoDataExame.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        campoDataExame.setForeground(new java.awt.Color(255, 255, 255));
+        try {
+            campoDataExame.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(botaoClinicas, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botaoAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botaoDisponibilidade))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(campoDataExame, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(botaoDisponibilidade)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botaoAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addComponent(jLabel5)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoDataExame, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(botaoClinicas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(52, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botaoAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41))))
         );
 
-        jSplitPane2.setRightComponent(jPanel3);
-
-        jPanel4.setBackground(new java.awt.Color(46, 169, 248));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(148, 148, 148)
-                .addComponent(jLabel9)
-                .addContainerGap(202, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(241, 241, 241)
-                .addComponent(jLabel9)
-                .addContainerGap(316, Short.MAX_VALUE))
-        );
-
-        jSplitPane2.setLeftComponent(jPanel4);
-
-        jTabbedPane1.addTab("Agendamento", jSplitPane2);
+        jSplitPane1.setRightComponent(jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1250, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jSplitPane1)
         );
-
-        jTabbedPane1.getAccessibleContext().setAccessibleName("Dados");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAgendarActionPerformed
-        if(!validaCampos()) {
+        if (!validaCampos()) {
             return;
         }
-
-        try (BufferedWriter bw
-            = new BufferedWriter(new FileWriter("a", true))) {
-
-            String descricaoExame      = this.campoDescricaoExame.getText();
-            String dataHoraExame       = this.campoDataHoraExame.getText();
-            String nomeExame           = this.campoNomeExame.getText();
-            String tipoExame           = this.campoTipoExame.getText();
-
-            bw.write(nomeExame + ", " + dataHoraExame + ", " + tipoExame + ", " + ", " + descricaoExame);
-
+        
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("Exame.txt"))) {
+            
+            String nomePaciente   = this.campoNomePaciente.getText();
+            String tipoExame      = this.campoTipoExame.getText();
+            String descricaoExame = this.campoDescricaoExame.getText();
+            String dataExame      = this.campoDataExame.getText();
+            
+            bw.write(nomePaciente + ", " + tipoExame + ", " + descricaoExame + ", " + dataExame);
+            
             JOptionPane.showMessageDialog(this,
-                "Exame realizada com sucesso!");
+                    "Cadastro de exame Concluído!!");
             this.setVisible(false);
+                    
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this,
-                "Não foi possível fazer a exame! Error: " + e.getMessage());
-            e.printStackTrace();
+                    "Erro ao cadastrar Exame!! Error: " + e.getMessage());
         }
     }//GEN-LAST:event_botaoAgendarActionPerformed
 
-    private void botaoDisponibilidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDisponibilidadeActionPerformed
-        BD banco = new BD();
-        boolean resultado = banco.conectaBD();
-
-        String query = "SELECT nome, cpf, dataNascimento FROM Paciente WHERE ID <= 10";
-        PreparedStatement ps = banco.getPreparedStatement(query);
-        
-        try {
-            ResultSet rs = ps.executeQuery();
-            
-            DefaultTableModel model = (DefaultTableModel) this.jTable1.getModel();
-            if (model.getRowCount() > 0) {
-                model.setNumRows(0);
-            }
-
-            
-            while (rs.next()) {
-               String[] dados = { rs.getString("nome"),
-                                  rs.getString("cpf"),
-                                  rs.getDate("dataNascimento").toString()}; 
-               
-               model.addRow(dados);
-            }
-            this.jTable1.setModel(model);
-            rs.close();
-            ps.close();
-            banco.encerrarConexao();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, 
-            "Não foi possível realizar a consulta no BD. Erro: " + ex.getMessage());
-        }
-    }//GEN-LAST:event_botaoDisponibilidadeActionPerformed
     private boolean validaCampos() {
-        if (this.campoDataHoraExame.getText() == null  ||
+        if (this.campoNomePaciente.getText()   == null ||
+            this.campoTipoExame.getText()      == null ||
             this.campoDescricaoExame.getText() == null ||
-            this.campoNomeExame.getText() == null      ||
-            this.campoTipoExame.getText() == null) {
+            this.campoDataExame.getText()   == null) {
             
             this.errorLabel.setText("Ainda há campos em branco!!");
             return false;
@@ -414,34 +307,31 @@ public class AgendaExame extends javax.swing.JInternalFrame {
         this.errorLabel.setText("");
         return true;
     }
+    
+    private void botaoClinicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoClinicasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoClinicasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable agendaExameTabela;
     private javax.swing.JButton botaoAgendar;
-    private javax.swing.JButton botaoDisponibilidade;
-    private javax.swing.JTextField campoDataHoraExame;
+    private javax.swing.JButton botaoClinicas;
+    private javax.swing.JFormattedTextField campoDataExame;
     private javax.swing.JTextArea campoDescricaoExame;
-    private javax.swing.JTextField campoNomeExame;
+    private javax.swing.JTextField campoNomePaciente;
     private javax.swing.JTextField campoTipoExame;
     private javax.swing.JLabel errorLabel;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JLabel imageLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JSplitPane jSplitPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
