@@ -620,7 +620,7 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
             String especializacao    = this.campoEspecializacaoMed.getText();
             String experiencias      = this.campoExperienciaMed.getText();
             String instituicaoEnsino = this.campoInstituicaoMed.getText();
-            String senhaMed          = this.campoCriaSenha.getText();
+            char[] senhaMed          = this.campoCriaSenha.getPassword();
             
             bw.write(nomeMed + ", " + cpfMed + ", " + emailMed + ", " + 
                      dataNascMed + ", " + rgMed + ", " + telefoneMed + ", " +
@@ -701,8 +701,8 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
                 || this.campoAreaMed.getText() == null
                 || this.campoCredenciaisMed.getText() == null
                 || this.campoCertificacaoMed.getText() == null
-                || this.campoCriaSenha.getText() == null
-                || this.campoConfirmaSenha.getText() == null) {
+                || this.campoCriaSenha.getPassword()== null
+                || this.campoConfirmaSenha.getPassword() == null) {
             
             this.erroLabel1.setText("Há campos em branco, por favor revise e preencha!");
             this.erroLabel.setText("Há campos em branco, por favor revise e preencha!");
@@ -710,7 +710,9 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
             
         }
         
-        if (!campoCriaSenha.getText().equals(campoConfirmaSenha.getText())) {
+        char[] pass_one = campoCriaSenha.getPassword();
+        char[] pass_two = campoConfirmaSenha.getPassword();
+        if (!java.util.Arrays.equals(pass_one, pass_two)) {
             erroLabel.setText("As senhas não coincidem!!");
             erroLabel1.setText("As senhas não coincidem!!");
             return false;
