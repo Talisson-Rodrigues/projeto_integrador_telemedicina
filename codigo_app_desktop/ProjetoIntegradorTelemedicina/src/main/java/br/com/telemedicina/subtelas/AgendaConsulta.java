@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -436,14 +437,35 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         BD banco = new BD();
         banco.conectaBD();
         
-        String query = "SELECT m.nomeMed, cl.nomeClinica, cl.enderecoClinica FROM Medico m  inner join Atende ate ON m.ID = ate.ID_MEDICO inner join Clinica cl on cl.ID = ate.ID_CLINICA   WHERE m.ID <= 10";
+        String query = "SELECT m.nomeMed, cl.nomeClinica, cl.enderecoClinica FROM Medico m  inner join Atende ate ON m.ID = ate.ID_MEDICO inner join Clinica cl on cl.ID = ate.ID_CLINICA   WHERE cl.enderecoClinica \n" +
+"like \"%DF\";";
         PreparedStatement ps = banco.getPreparedStatement(query);
         
         try {
             ResultSet rs = ps.executeQuery();
             
+            DefaultTableModel model = (DefaultTableModel) this.jTable1.getModel();
+            if (model.getRowCount() > 0) {
+                model.setRowCount(0);
+            }
             
+            while (rs.next()) {
+                String[] dados = {
+                    rs.getString("m.nomeMed"),
+                    rs.getString("cl.nomeClinica"),
+                    rs.getString("cl.enderecoClinica")
+                };
+                
+                model.addRow(dados);
+            }
+            
+            this.jTable1.setModel(model);
+            rs.close();
+            ps.close();
+            banco.encerrarConexao();
         } catch (SQLException se) {
+            JOptionPane.showMessageDialog(this,
+                    "Não foi possível realizar a consulta no BD!! Error: " + se.getMessage());
             
         }
         

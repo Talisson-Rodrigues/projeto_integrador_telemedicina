@@ -52,4 +52,4 @@ INSERT INTO Clinica (nomeClinica, enderecoClinica, cnpjClinica, telefoneClinica,
 ('Clínica Nova Saúde', 'Rua dos Cedros, 1414, Centro, Goiânia, GO', '21.234.567/0001-40', '(62) 2345-6789', 'suporte@novasaude.com.br'),
 ('Clínica Total Bem-Estar', 'Av. João Pessoa, 1515, Centro, São Luís, MA', '32.345.678/0001-41', '(98) 3456-7890', 'contato@totalbemestar.com.br');
 
-select * from Clinica;
+select * from Clinica ;
