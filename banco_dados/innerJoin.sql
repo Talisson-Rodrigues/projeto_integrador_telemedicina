@@ -1,0 +1,2 @@
+SELECT m.nomeMed, cl.nomeClinica, cl.enderecoClinica FROM Medico m  inner join Atende ate ON m.ID = ate.ID_MEDICO inner join Clinica cl on cl.ID = ate.ID_CLINICA   WHERE cl.enderecoClinica 
+like "%DF";
