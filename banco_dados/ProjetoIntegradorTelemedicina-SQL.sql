@@ -12,7 +12,8 @@ CREATE TABLE Paciente
  telefone VARCHAR(15),  
  endereco VARCHAR(200),  
  email VARCHAR(100),  
- rg VARCHAR(16)
+ rg VARCHAR(16),
+ senha VARCHAR(12)
 ); 
 
 CREATE TABLE Medico 
@@ -31,10 +32,10 @@ CREATE TABLE Medico
  instituicaoEnsino VARCHAR(100),  
  conclusaoGrad DATE,  
  certificacao VARCHAR(100),  
- areaInteresse VARCHAR(100),  
- clinicaTrabalho VARCHAR(100),  
+ areaInteresse VARCHAR(100),
  credenciais VARCHAR(100),  
- experiencias VARCHAR(1500)
+ experiencias VARCHAR(1500),
+ senhaMed VARCHAR(12)
 ); 
 
 CREATE TABLE Consulta 

@@ -53,3 +53,5 @@ INSERT INTO Medico (nomeMed, cpfMed, nascimentoMed, generoMed, telefoneMed, ende
 ('Fernanda Almeida', '741.963.852-48', '1984-04-30', 'F', '(91) 12345-6789', 'Rua do Rio, 753, Belém, PA', 'fernanda.almeida@email.com', '98.765.432-8', 'CRM33447', 'Nefrologia', 'UFPA', '2008-07-20', 'Certificação VWX', 'Nefrologia Clínica', 'Membro da SBN', '16 anos de experiência em nefrologia.', 'senha90123'),
 ('Rafael Gomes', '852.741.963-49', '1976-11-23', 'M', '(51) 23456-7890', 'Rua das Flores, 951, Porto Alegre, RS', 'rafael.gomes@email.com', '32.654.987-0', 'CRM44568', 'Cirurgia Torácica', 'UFRGS', '2001-05-15', 'Certificado YZA', 'Cirurgia Torácica e Pulmonar', 'Membro da SBCT', '23 anos de experiência em cirurgia torácica.', 'senha01234'),
 ('Beatriz Almeida', '963.741.852-50', '1989-07-20', 'F', '(31) 34567-8901', 'Rua dos Jasmins, 123, Belo Horizonte, MG', 'beatriz.almeida@email.com', '21.987.654-1', 'CRM55681', 'Hematologia', 'UFMG', '2014-10-22', 'Certificação ZYX', 'Hematologia Clínica', 'Membro da SBH', '10 anos de experiência em hematologia.', 'senha12345');
+
+SELECT * FROM Medico;

@@ -1,3 +1,5 @@
+USE projetoIntegradorTelemedicina;
+
 INSERT INTO Clinica (nomeClinica, enderecoClinica, cnpjClinica, telefoneClinica, emailClinica) VALUES
 ('Clinica Saúde e Vida', 'Rua das Flores, 123, Centro, São Paulo, SP', '12.345.678/0001-90', '(11) 1234-5678', 'contato@saudevida.com.br'),
 ('Clínica Boa Saúde', 'Av. Paulista, 456, Bela Vista, São Paulo, SP', '23.456.789/0001-91', '(11) 2345-6789', 'atendimento@boasaude.com.br'),
@@ -52,4 +54,4 @@ INSERT INTO Clinica (nomeClinica, enderecoClinica, cnpjClinica, telefoneClinica,
 ('Clínica Nova Saúde', 'Rua dos Cedros, 1414, Centro, Goiânia, GO', '21.234.567/0001-40', '(62) 2345-6789', 'suporte@novasaude.com.br'),
 ('Clínica Total Bem-Estar', 'Av. João Pessoa, 1515, Centro, São Luís, MA', '32.345.678/0001-41', '(98) 3456-7890', 'contato@totalbemestar.com.br');
 
-select * from Clinica ;
+select * from Clinica;

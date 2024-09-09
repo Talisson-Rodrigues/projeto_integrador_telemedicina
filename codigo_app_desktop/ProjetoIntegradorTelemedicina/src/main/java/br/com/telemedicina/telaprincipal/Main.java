@@ -452,7 +452,7 @@ public class Main extends javax.swing.JFrame {
             return; // Se não conectar ao banco, não faz sentido continuar
         }
 
-        String query = "SELECT ID_MEDICO, dataConsulta, formatoConsulta FROM Consulta";
+        String query = "SELECT m.nomeMed, cs.dataConsulta, cs.formatoConsulta FROM Medico m INNER JOIN Consulta cs ON m.ID = cs.ID_MEDICO WHERE m.enderecoMed LIKE '%DF'    ";
         PreparedStatement ps = banco.getPreparedStatement(query);
         
         try {
@@ -465,9 +465,9 @@ public class Main extends javax.swing.JFrame {
 
             
             while (rs.next()) {
-               String[] dados = { rs.getString("ID_MEDICO"),
-                                  rs.getString("formatoConsulta"),
-                                  rs.getDate("dataConsulta").toString()}; 
+               String[] dados = { rs.getString("m.nomeMed"),
+                                  rs.getDate("cs.dataConsulta").toString(),
+                                  rs.getString("cs.formatoConsulta")}; 
                
                model.addRow(dados);
             }
@@ -498,7 +498,8 @@ public class Main extends javax.swing.JFrame {
                 this.jTabbedPane1.removeTabAt(1);
            } else if (dados[1].equals("Paciente")) {
                //ativar a aba correspondente
-                this.jTabbedPane1.removeTabAt(0);    
+                this.jTabbedPane1.removeTabAt(0);
+                this.agendaExame.remove(agendaExame);
            }        
            
        } catch (IOException e) {
