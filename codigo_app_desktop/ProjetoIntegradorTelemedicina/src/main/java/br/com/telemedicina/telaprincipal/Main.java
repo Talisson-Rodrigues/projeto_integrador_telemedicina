@@ -7,6 +7,7 @@ package br.com.telemedicina.telaprincipal;
 import br.com.telemedicina.bd.BD;
 import br.com.telemedicina.subtelas.AgendaConsulta;
 import br.com.telemedicina.subtelas.AgendaExame;
+import br.com.telemedicina.subtelas.HistoricoConsulta;
 import br.com.telemedicina.subtelas.TelaInicio;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -69,11 +70,9 @@ public class Main extends javax.swing.JFrame {
         historicoConsulta = new javax.swing.JMenuItem();
         novaConsulta = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        consultaExame = new javax.swing.JMenuItem();
         historicoExame = new javax.swing.JMenuItem();
         agendaExame = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
-        consultaPrescricao = new javax.swing.JMenuItem();
         historicoPrescricao = new javax.swing.JMenuItem();
         novaPrescricao = new javax.swing.JMenuItem();
 
@@ -327,10 +326,6 @@ public class Main extends javax.swing.JFrame {
         jMenu4.setText("Exames");
         jMenu4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        consultaExame.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        consultaExame.setText("Consulta de Exames");
-        jMenu4.add(consultaExame);
-
         historicoExame.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         historicoExame.setText("Histórico de Exames");
         jMenu4.add(historicoExame);
@@ -348,10 +343,6 @@ public class Main extends javax.swing.JFrame {
 
         jMenu5.setText("Prescrições");
         jMenu5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-
-        consultaPrescricao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        consultaPrescricao.setText("Consultar Prescrições");
-        jMenu5.add(consultaPrescricao);
 
         historicoPrescricao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         historicoPrescricao.setText("Histórico de Prescrições");
@@ -389,7 +380,9 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void historicoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoConsultaActionPerformed
-        // TODO add your handling code here:
+        HistoricoConsulta histoConsulta = new HistoricoConsulta();
+        this.desktopPane.add(histoConsulta);
+        histoConsulta.setVisible(true);
     }//GEN-LAST:event_historicoConsultaActionPerformed
 
     private void novaPrescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novaPrescricaoActionPerformed
@@ -555,8 +548,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem agendaExame;
     private javax.swing.JButton carregaDadosMedico;
     private javax.swing.JButton carregaDadosPaciente;
-    private javax.swing.JMenuItem consultaExame;
-    private javax.swing.JMenuItem consultaPrescricao;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem historicoConsulta;
     private javax.swing.JMenuItem historicoExame;

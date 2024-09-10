@@ -57,6 +57,8 @@ public class AgendaExame extends javax.swing.JInternalFrame {
         campoDataExame = new javax.swing.JFormattedTextField();
         statusLabel = new javax.swing.JLabel();
 
+        setClosable(true);
+
         jSplitPane1.setDividerLocation(500);
         jSplitPane1.setDividerSize(0);
 

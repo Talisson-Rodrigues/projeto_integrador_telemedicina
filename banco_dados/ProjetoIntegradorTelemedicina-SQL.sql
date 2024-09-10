@@ -68,16 +68,15 @@ CREATE TABLE Exame
  ID_PACIENTE INT,  
  ID_MEDICO INT,  
  ID_CLINICA INT,  
- dataExame DATE,  
- localExame VARCHAR(200),  
+ dataExame DATE, 
  descricaoExame VARCHAR(300),
  valorExame FLOAT
 ); 
 
 CREATE TABLE Prescricao 
 ( 
- assinatura VARCHAR(100),  
- medicamento VARCHAR(300),  
+ medicamento VARCHAR(300),
+ observacao VARCHAR(500),
  ID INT PRIMARY KEY AUTO_INCREMENT,  
  ID_PACIENTE INT,  
  ID_MEDICO INT  
