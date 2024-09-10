@@ -8,6 +8,9 @@ import br.com.telemedicina.bd.BD;
 import br.com.telemedicina.subtelas.AgendaConsulta;
 import br.com.telemedicina.subtelas.AgendaExame;
 import br.com.telemedicina.subtelas.HistoricoConsulta;
+import br.com.telemedicina.subtelas.HistoricoExame;
+import br.com.telemedicina.subtelas.HistoricoPrescricao;
+import br.com.telemedicina.subtelas.NovaPrescricao;
 import br.com.telemedicina.subtelas.TelaInicio;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -328,6 +331,11 @@ public class Main extends javax.swing.JFrame {
 
         historicoExame.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         historicoExame.setText("Histórico de Exames");
+        historicoExame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historicoExameActionPerformed(evt);
+            }
+        });
         jMenu4.add(historicoExame);
 
         agendaExame.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -346,6 +354,11 @@ public class Main extends javax.swing.JFrame {
 
         historicoPrescricao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         historicoPrescricao.setText("Histórico de Prescrições");
+        historicoPrescricao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historicoPrescricaoActionPerformed(evt);
+            }
+        });
         jMenu5.add(historicoPrescricao);
 
         novaPrescricao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -386,7 +399,9 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_historicoConsultaActionPerformed
 
     private void novaPrescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novaPrescricaoActionPerformed
-        // TODO add your handling code here:
+        NovaPrescricao prescricao = new NovaPrescricao();
+        this.desktopPane.add(prescricao);
+        prescricao.setVisible(true);
     }//GEN-LAST:event_novaPrescricaoActionPerformed
 
     private void novaConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novaConsultaActionPerformed
@@ -507,6 +522,18 @@ public class Main extends javax.swing.JFrame {
         this.desktopPane.add(exame);
         exame.setVisible(true);
     }//GEN-LAST:event_agendaExameActionPerformed
+
+    private void historicoExameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoExameActionPerformed
+        HistoricoExame histoExame = new HistoricoExame();
+        this.desktopPane.add(histoExame);
+        histoExame.setVisible(true);
+    }//GEN-LAST:event_historicoExameActionPerformed
+
+    private void historicoPrescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoPrescricaoActionPerformed
+        HistoricoPrescricao histoPrescricao = new HistoricoPrescricao();
+        this.desktopPane.add(histoPrescricao);
+        histoPrescricao.setVisible(true);
+    }//GEN-LAST:event_historicoPrescricaoActionPerformed
 
     /**
      * @param args the command line arguments

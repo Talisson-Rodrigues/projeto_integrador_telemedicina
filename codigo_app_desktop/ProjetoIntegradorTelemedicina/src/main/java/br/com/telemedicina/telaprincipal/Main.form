@@ -51,6 +51,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Hist&#xf3;rico de Exames"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="historicoExameActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="agendaExame">
               <Properties>
@@ -80,6 +83,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Hist&#xf3;rico de Prescri&#xe7;&#xf5;es"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="historicoPrescricaoActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="novaPrescricao">
               <Properties>

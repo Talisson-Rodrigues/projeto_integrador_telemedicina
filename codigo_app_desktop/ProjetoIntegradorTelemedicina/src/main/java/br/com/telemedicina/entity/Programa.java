@@ -25,7 +25,7 @@ public class Programa{
         System.out.println(co.exibeDados());
         System.out.println("");
 
-        Prescricao pre = new Prescricao("Medica: Maria, Paciente: Alexx ", " 1 comprimido de Amoxilina de 12 em 12 horas por 7 dias","000.000.000-00", new Date("1970/06/12"), "maria@gmail.com", "F","Maria da Silva", "0.000.000", 97474, new Date("2000/12/12"), new Date("2006/12/12"), "Certificada em Neurologia", "Trabalhou no HUB", "Neurologista", "Formada em Neurologia", "0000.0000");
+        Prescricao pre = new Prescricao("Medica: Maria, Paciente: Alexx ", " 1 comprimido de Amoxilina de 12 em 12 horas por 7 dias",new Date(),"000.000.000-00", new Date("1970/06/12"), "maria@gmail.com", "F","Maria da Silva", "0.000.000", 97474, new Date("2000/12/12"), new Date("2006/12/12"), "Certificada em Neurologia", "Trabalhou no HUB", "Neurologista", "Formada em Neurologia", "0000.0000");
         System.out.println(pre.exibeDados());
     }
 }
