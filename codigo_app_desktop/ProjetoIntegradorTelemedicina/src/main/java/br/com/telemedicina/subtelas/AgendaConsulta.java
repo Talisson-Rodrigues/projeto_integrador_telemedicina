@@ -492,6 +492,14 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         String especializacao = (String) this.escolhaEspecializacao.getSelectedItem();
         String formato        = (String) this.escolhaFormato.getSelectedItem();
         
+        if (estado == "Selecione" ||
+            especializacao == "Selecione" ||
+            formato == "Selecione") {
+            
+            JOptionPane.showMessageDialog(this,
+                    "Selecione uma opção em cada!!!");
+            return;
+        }
         
         try {
             ps.setString(1, '%' + estado);
@@ -506,7 +514,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
             
             while (rs.next()) {
                 String[] dados = {
-                        rs.getString("m.nomMed"),
+                        rs.getString("m.nomeMed"),
                         rs.getString("m.especializacao"),
                         rs.getString("ta.formato"),
                         rs.getString("cl.nomeClinica"),

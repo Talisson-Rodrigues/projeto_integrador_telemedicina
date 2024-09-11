@@ -341,7 +341,6 @@ public class TelaCadastroPaciente extends javax.swing.JDialog {
        }
        
        try {
-           
            BD banco = new BD();
            banco.conectaBD();
            
@@ -396,29 +395,31 @@ public class TelaCadastroPaciente extends javax.swing.JDialog {
            
        } catch (SQLException e) {
            JOptionPane.showMessageDialog(this,
-                   "Não foi possível salvar os arquivos!! Error: " + e.getMessage());
+                   "Não foi possível cadastrar o paciente!! Error: " + e.getMessage());
            e.printStackTrace();
        }
     }//GEN-LAST:event_botaoCadastrarActionPerformed
 
     private boolean validaCampos() {
         
-        if (this.campoConfirmaSenha.getText()       == null ||
-            this.campoCpf.getText()                 == null ||
-            this.campoCriaSenha.getText()           == null ||
-            this.campoDataNascimento.getText()      == null ||
-            this.campoEmail.getText()               == null ||
-            this.campoEndereco.getText()            == null ||
-            this.campoNome.getText()                == null ||
-            this.campoRg.getText()                  == null ||
-            this.campoTelefone.getText()            == null ||
-            this.selecionaGenero.getSelectedIndex() == 0) {
+        if (this.campoConfirmaSenha.getPassword()       == null ||
+            this.campoCpf.getText()                     == null ||
+            this.campoCriaSenha.getPassword()           == null ||
+            this.campoDataNascimento.getText()          == null ||
+            this.campoEmail.getText()                   == null ||
+            this.campoEndereco.getText()                == null ||
+            this.campoNome.getText()                    == null ||
+            this.campoRg.getText()                      == null ||
+            this.campoTelefone.getText()                == null ||
+            this.selecionaGenero.getSelectedIndex()     == 0) {
             
             this.errorLabel.setText("Há campos em branco, por favor revise e preencha!!");
             return false;
         }
         
-        if (!campoCriaSenha.getText().equals(campoConfirmaSenha.getText())) {
+        char[] pass_one = campoCriaSenha.getPassword();
+        char[] pass_two = campoConfirmaSenha.getPassword();
+        if (!java.util.Arrays.equals(pass_one, pass_two)) {
             errorLabel.setText("As senhas não coincidem!!");
             return false;
         }
@@ -426,6 +427,7 @@ public class TelaCadastroPaciente extends javax.swing.JDialog {
         errorLabel.setText("");
         return true;
     }
+    
     /**
      * @param args the command line arguments
      */
@@ -468,7 +470,7 @@ public class TelaCadastroPaciente extends javax.swing.JDialog {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCadastrar;
     private javax.swing.JPasswordField campoConfirmaSenha;

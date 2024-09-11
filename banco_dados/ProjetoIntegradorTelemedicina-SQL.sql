@@ -8,7 +8,7 @@ CREATE TABLE Paciente
  nome VARCHAR(100),  
  cpf VARCHAR(15),  
  dataNascimento DATE,  
- genero CHAR(1),  
+ genero VARCHAR(10),  
  telefone VARCHAR(15),  
  endereco VARCHAR(200),  
  email VARCHAR(100),  
@@ -22,7 +22,7 @@ CREATE TABLE Medico
  nomeMed VARCHAR(100),  
  cpfMed VARCHAR(15),  
  nascimentoMed DATE,  
- generoMed CHAR(1),  
+ generoMed VARCHAR(10),  
  telefoneMed VARCHAR(15),  
  enderecoMed VARCHAR(200),  
  emailMed VARCHAR(100),  
@@ -87,7 +87,14 @@ CREATE TABLE Atende
 ( 
  ID_MEDICO INT,  
  ID_CLINICA INT  
-); 
+);
+
+CREATE TABLE TipoAtendimento
+(
+ ID_MEDICO INT,
+ formato VARCHAR(15),
+ valorConsulta FLOAT
+);
 
 
 ALTER TABLE Consulta ADD FOREIGN KEY(ID_PACIENTE) REFERENCES Paciente (ID);
@@ -100,3 +107,4 @@ ALTER TABLE Prescricao ADD FOREIGN KEY(ID_PACIENTE) REFERENCES Paciente (ID);
 ALTER TABLE Prescricao ADD FOREIGN KEY(ID_MEDICO) REFERENCES Medico (ID);
 ALTER TABLE Atende ADD FOREIGN KEY(ID_MEDICO) REFERENCES Medico (ID);
 ALTER TABLE Atende ADD FOREIGN KEY(ID_CLINICA) REFERENCES Clinica (ID);
+ALTER TABLE TipoAtendimento ADD FOREIGN KEY(ID_MEDICO) REFERENCES Medico (ID);

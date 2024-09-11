@@ -4,9 +4,15 @@
  */
 package br.com.telemedicina.subtelas;
 
+import br.com.telemedicina.bd.BD;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -79,8 +85,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         campoCertificacaoMed = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         campoAreaMed = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
-        campoClinicaMed = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         campoCredenciaisMed = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
@@ -431,14 +435,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         campoAreaMed.setForeground(new java.awt.Color(255, 255, 255));
         campoAreaMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel19.setText("Clínica onde trabalha: ");
-
-        campoClinicaMed.setBackground(new java.awt.Color(102, 102, 102));
-        campoClinicaMed.setForeground(new java.awt.Color(255, 255, 255));
-        campoClinicaMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
         jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setText("Credenciais: ");
@@ -489,7 +485,7 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
                             .addComponent(jLabel13)
                             .addComponent(jLabel15)
                             .addComponent(campoInstituicaoMed, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(campoEspecializacaoMed, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel14)
@@ -506,21 +502,16 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(campoAreaMed, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(19, 19, 19))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel21))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(botaoCadastroMed, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(campoClinicaMed, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel19))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                                    .addComponent(jLabel21)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel20)
                                     .addComponent(campoCredenciaisMed, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -559,17 +550,13 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
                     .addComponent(campoAreaMed, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
-                    .addComponent(jLabel20))
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel21))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campoClinicaMed, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoCredenciaisMed, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel21)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                    .addComponent(campoCredenciaisMed, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
                 .addComponent(botaoCadastroMed, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -582,7 +569,7 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1045, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -601,42 +588,83 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
             return;
         }
         
-        try (BufferedWriter bw 
-                = new BufferedWriter(new FileWriter("dados_medico.txt", true))) {
+        try {
+            BD banco = new BD();
+            banco.conectaBD();
             
             String nomeMed           = this.campoNomeMed.getText();
-            String cpfMed            = this.campoEmailMed.getText();
+            String cpfMed            = this.campoCpfMed.getText();
             String emailMed          = this.campoEmailMed.getText();
             String dataNascMed       = this.campoDataNascMed.getText();
             String rgMed             = this.campoRgMed.getText();
             String telefoneMed       = this.campoNumeroMed.getText();
             String enderecoMed       = this.campoEnderecoMed.getText();
-            int    generoMed         = this.campoGeneroMed.getSelectedIndex();
+            String generoMed         = (String) this.campoGeneroMed.getSelectedItem();
             String areaAtuacao       = this.campoAreaMed.getText();
             String certificacao      = this.campoCertificacaoMed.getText();
-            String clinicaMed        = this.campoClinicaMed.getText();
             String conclusaoGrad     = this.campoConclusaoGradMed.getText();
             String credenciais       = this.campoCredenciaisMed.getText();
             String especializacao    = this.campoEspecializacaoMed.getText();
             String experiencias      = this.campoExperienciaMed.getText();
             String instituicaoEnsino = this.campoInstituicaoMed.getText();
             char[] senhaMed          = this.campoCriaSenha.getPassword();
+            String registroMed       = this.campoRegistroMed.getText();
             
-            bw.write(nomeMed + ", " + cpfMed + ", " + emailMed + ", " + 
-                     dataNascMed + ", " + rgMed + ", " + telefoneMed + ", " +
-                     enderecoMed + ", " + generoMed + ", " + areaAtuacao + ", " +
-                     certificacao + ", " + clinicaMed + ", " + conclusaoGrad + ", " +
-                     credenciais + ", " + especializacao + ", " + experiencias + ", " + 
-                     instituicaoEnsino + ", " + senhaMed);
+            SimpleDateFormat formatoEntrada = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat formatoSaida = new SimpleDateFormat("yyyy-MM-dd");
+            
+            String dataNascimentoFormatada = null;
+            String dataConclusaoGraduacao = null;
+            
+            try {
+                Date data = formatoEntrada.parse(dataNascMed);
+                dataNascimentoFormatada = formatoSaida.format(data);
+                
+                Date dataGrad = formatoEntrada.parse(conclusaoGrad);
+                dataConclusaoGraduacao = formatoSaida.format(dataGrad);
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(this,
+                        "Formato de data inválido. Use DD/MM/YYYY.",
+                        "Erro: ", JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();
+                return;
+            }
+            
+            String sql = "INSERT INTO Medico (nomeMed, cpfMed, nascimentoMed, generoMed, telefoneMed, enderecoMed, emailMed, rgMed, registroMed, especializacao, instituicaoEnsino, conclusaoGrad, certificacao, areaInteresse, credenciais, experiencias, senhaMed) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            
+            PreparedStatement ps = banco.getPreparedStatement(sql);
+            
+            ps.setString(1, nomeMed);
+            ps.setString(2, cpfMed);
+            ps.setString(3, dataNascimentoFormatada);
+            ps.setString(4, generoMed);
+            ps.setString(5, telefoneMed);
+            ps.setString(6, enderecoMed);
+            ps.setString(7, emailMed);
+            ps.setString(8, rgMed);
+            ps.setString(9, registroMed);
+            ps.setString(10, especializacao);
+            ps.setString(11, instituicaoEnsino);
+            ps.setString(12, dataConclusaoGraduacao);
+            ps.setString(13, certificacao);
+            ps.setString(14, areaAtuacao);
+            ps.setString(15, credenciais);
+            ps.setString(16, experiencias);
+            ps.setString(17, new String(senhaMed));
+            
+            ps.execute();
             
             JOptionPane.showMessageDialog(this,
                     "Cadastro realizado com sucesso!!");
-            this.setVisible(false);
+            this.dispose();
             
-        } catch (IOException e) {
+            ps.close();
+            banco.encerrarConexao();
+            
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this,
-                    "Não foi possível cadastrar o Médico!! Error: " + e.getMessage());
-            e.printStackTrace();
+                    "Não foi possível cadastrar o Médico!! Error: " + ex.getMessage());
+            ex.printStackTrace();
         }
     }//GEN-LAST:event_botaoCadastroMedActionPerformed
 
@@ -694,7 +722,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
                 || this.campoRgMed.getText() == null
                 || this.campoRegistroMed.getText() == null
                 || this.campoInstituicaoMed.getText() == null
-                || this.campoClinicaMed.getText() == null
                 || this.campoExperienciaMed.getText() == null
                 || this.campoEspecializacaoMed.getText() == null
                 || this.campoConclusaoGradMed.getText() == null
@@ -727,7 +754,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
     private javax.swing.JButton botaoCadastroMed;
     private javax.swing.JTextField campoAreaMed;
     private javax.swing.JTextField campoCertificacaoMed;
-    private javax.swing.JTextField campoClinicaMed;
     private javax.swing.JFormattedTextField campoConclusaoGradMed;
     private javax.swing.JPasswordField campoConfirmaSenha;
     private javax.swing.JFormattedTextField campoCpfMed;
@@ -756,7 +782,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
