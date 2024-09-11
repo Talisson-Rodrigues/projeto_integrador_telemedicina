@@ -4,9 +4,15 @@
  */
 package br.com.telemedicina.subtelas;
 
+import br.com.telemedicina.bd.BD;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -334,8 +340,10 @@ public class TelaCadastroPaciente extends javax.swing.JDialog {
            return;
        }
        
-       try (BufferedWriter bw =
-               new BufferedWriter(new FileWriter("dados_paciente.txt"))) {
+       try {
+           
+           BD banco = new BD();
+           banco.conectaBD();
            
            String nome = campoNome.getText();
            String cpf = campoCpf.getText();
@@ -344,18 +352,49 @@ public class TelaCadastroPaciente extends javax.swing.JDialog {
            String rg = campoRg.getText();
            String telefone = campoTelefone.getText();
            String endereco = campoEndereco.getText();
-           int genero = selecionaGenero.getSelectedIndex();
-           String senha = campoCriaSenha.getText();
+           String genero = (String) selecionaGenero.getSelectedItem();
+           char[] senha = this.campoCriaSenha.getPassword();
            
-           bw.write(nome + ", " + cpf + ", " + 
-                    email + ", " + dataNascimento + ", " + 
-                    rg + ", " + telefone + ", " + 
-                    endereco + ", " + genero + ", " + senha);
+           SimpleDateFormat formatoEntrada = new SimpleDateFormat("dd/MM/yyyy");
+           SimpleDateFormat formatoSaida = new SimpleDateFormat("yyyy-MM-dd");
+           
+           String dataNascimentoFormatada = null;
+           
+           try {
+               Date data = formatoEntrada.parse(dataNascimento);
+               dataNascimentoFormatada = formatoSaida.format(data);
+           } catch (ParseException e) {
+               JOptionPane.showMessageDialog(this,
+                 "Formato de data inválido. Use DD/MM/YYYY.",
+                  "Erro", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+            return;
+           }
+           
+           String sql = "INSERT INTO paciente (nome, cpf, email, dataNascimento, rg, telefone, endereco, genero, senha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+           
+           PreparedStatement statement = banco.getPreparedStatement(sql);
+           
+           statement.setString(1, nome);
+           statement.setString(2, cpf);
+           statement.setString(3, email);
+           statement.setString(4, dataNascimentoFormatada);
+           statement.setString(5, rg);
+           statement.setString(6, telefone);
+           statement.setString(7, endereco);
+           statement.setString(8, genero);
+           statement.setString(9, new String(senha));
+           
+           statement.execute();
            
            JOptionPane.showMessageDialog(this,
                    "Cadastro realizado com sucesso!!");
            this.dispose();
-       } catch (IOException e) {
+           
+           statement.close();
+           banco.encerrarConexao();
+           
+       } catch (SQLException e) {
            JOptionPane.showMessageDialog(this,
                    "Não foi possível salvar os arquivos!! Error: " + e.getMessage());
            e.printStackTrace();
