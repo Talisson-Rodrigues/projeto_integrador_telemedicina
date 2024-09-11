@@ -68,6 +68,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         botaoConsultaBanco = new javax.swing.JButton();
         botaoAgendarConsulta = new javax.swing.JButton();
         erroLabel = new javax.swing.JLabel();
+        escolhaEstados = new javax.swing.JComboBox<>();
 
         setClosable(true);
 
@@ -92,7 +93,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(106, 106, 106)
                 .addComponent(imagemLabel)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -232,13 +233,13 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(219, 219, 219)
                         .addComponent(jLabel1)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(errorLabel)
                 .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,7 +273,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoProcura, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoDataConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel2);
@@ -300,7 +301,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(108, 108, 108)
                 .addComponent(jLabel11)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         jSplitPane2.setLeftComponent(jPanel3);
@@ -353,6 +354,17 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         erroLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         erroLabel.setForeground(new java.awt.Color(255, 0, 0));
 
+        escolhaEstados.setBackground(new java.awt.Color(102, 102, 102));
+        escolhaEstados.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        escolhaEstados.setForeground(new java.awt.Color(255, 255, 255));
+        escolhaEstados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "BA", "CE", "DF", "MG", "PA", "PE", "PR", "RJ", "RS", "SP" }));
+        escolhaEstados.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        escolhaEstados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                escolhaEstadosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -360,13 +372,18 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(erroLabel)
-                            .addComponent(botaoConsultaBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botaoConsultaBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(erroLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botaoAgendarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botaoAgendarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(escolhaEstados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -374,12 +391,14 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(erroLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botaoConsultaBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(escolhaEstados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoAgendarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(erroLabel))
+                    .addComponent(botaoConsultaBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35))
         );
 
@@ -437,11 +456,13 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         BD banco = new BD();
         banco.conectaBD();
         
-        String query = "SELECT m.nomeMed, cl.nomeClinica, cl.enderecoClinica FROM Medico m  inner join Atende ate ON m.ID = ate.ID_MEDICO inner join Clinica cl on cl.ID = ate.ID_CLINICA   WHERE cl.enderecoClinica \n" +
-"like \"%DF\";";
+        String query = "SELECT m.nomeMed, cl.nomeClinica, cl.enderecoClinica FROM Medico m inner join Atende ate ON m.ID = ate.ID_MEDICO inner join Clinica cl on cl.ID = ate.ID_CLINICA WHERE cl.enderecoClinica like ?";
         PreparedStatement ps = banco.getPreparedStatement(query);
+        String estado = (String) this.escolhaEstados.getSelectedItem();
+        
         
         try {
+            ps.setString(1, '%' + estado);
             ResultSet rs = ps.executeQuery();
             
             DefaultTableModel model = (DefaultTableModel) this.jTable1.getModel();
@@ -471,6 +492,10 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_botaoConsultaBancoActionPerformed
+
+    private void escolhaEstadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escolhaEstadosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_escolhaEstadosActionPerformed
 
        private boolean validaCampos() {
            if (this.campoNome.getText().equals("")           ||
@@ -503,6 +528,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField campoTelefone;
     private javax.swing.JLabel erroLabel;
     private javax.swing.JLabel errorLabel;
+    private javax.swing.JComboBox<String> escolhaEstados;
     private javax.swing.JLabel imagemLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
