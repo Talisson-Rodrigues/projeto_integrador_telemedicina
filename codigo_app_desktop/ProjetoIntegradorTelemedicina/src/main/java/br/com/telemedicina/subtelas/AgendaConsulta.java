@@ -54,8 +54,6 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         campoRg = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         campoCpf = new javax.swing.JFormattedTextField();
-        jLabel9 = new javax.swing.JLabel();
-        campoProcura = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         campoDataConsulta = new javax.swing.JFormattedTextField();
         errorLabel = new javax.swing.JLabel();
@@ -69,6 +67,11 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         botaoAgendarConsulta = new javax.swing.JButton();
         erroLabel = new javax.swing.JLabel();
         escolhaEstados = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        escolhaEspecializacao = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
+        escolhaFormato = new javax.swing.JComboBox<>();
 
         setClosable(true);
 
@@ -93,7 +96,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(106, 106, 106)
                 .addComponent(imagemLabel)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -174,15 +177,6 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         }
         campoCpf.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("O que você procura: ");
-
-        campoProcura.setBackground(new java.awt.Color(102, 102, 102));
-        campoProcura.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campoProcura.setForeground(new java.awt.Color(255, 255, 255));
-        campoProcura.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Data da Consulta: ");
@@ -214,9 +208,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
                             .addComponent(jLabel5)
                             .addComponent(selecionaGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)
-                            .addComponent(campoRg, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)
-                            .addComponent(campoProcura, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(campoRg, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(115, 115, 115)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(campoDataConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -233,13 +225,13 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(219, 219, 219)
                         .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addComponent(errorLabel)
                 .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,14 +258,10 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
                     .addComponent(campoRg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
+                .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoProcura, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoDataConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addComponent(campoDataConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(152, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel2);
@@ -301,7 +289,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(108, 108, 108)
                 .addComponent(jLabel11)
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(220, Short.MAX_VALUE))
         );
 
         jSplitPane2.setLeftComponent(jPanel3);
@@ -316,11 +304,11 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Nome Médico", "Nome Clínica", "Endereco Clínica "
+                "Nome Médico", "Especialização", "Formato", "Nome Clínica", "Endereco Clínica ", "Valor Consulta"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -365,6 +353,31 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Selecione seu Estado, a Especialização e o formato:  ");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("|");
+
+        escolhaEspecializacao.setBackground(new java.awt.Color(102, 102, 102));
+        escolhaEspecializacao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        escolhaEspecializacao.setForeground(new java.awt.Color(255, 255, 255));
+        escolhaEspecializacao.setMaximumRowCount(50);
+        escolhaEspecializacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Anestegiologia", "Cardiologia", "Cirurgia Geral", "Cirurgia Plástica", "Cirurgia Torácica", "Dermatologia", "Endocrinologia", "Gastroenterologia", "Geriatria", "Ginecologia", "Hematologia", "Imunologia", "Medicina de Família", "Nefrologia", "Neurologia", "Oftalmologia", "Oncologia", "Ortopedia", "Otorrinolaringologia", "Pediatria", "Pneumologia", "Psiquiatria", "Radiologia", "Urologia" }));
+        escolhaEspecializacao.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setText("|");
+
+        escolhaFormato.setBackground(new java.awt.Color(102, 102, 102));
+        escolhaFormato.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        escolhaFormato.setForeground(new java.awt.Color(255, 255, 255));
+        escolhaFormato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Presencial", "Telemedicina" }));
+        escolhaFormato.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -372,7 +385,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 863, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(botaoConsultaBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -382,7 +395,18 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botaoAgendarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(escolhaEstados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(escolhaEstados, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(escolhaEspecializacao, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(escolhaFormato, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -394,8 +418,15 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(erroLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(escolhaEstados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(escolhaEstados, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(escolhaEspecializacao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(escolhaFormato, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoAgendarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoConsultaBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -410,7 +441,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1175, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -433,12 +464,10 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
             String telefone       = this.campoTelefone.getText();
             String rg             = this.campoRg.getText();
             String cpf            = this.campoCpf.getText();
-            String procura        = this.campoProcura.getText();
             String dataConsulta   = this.campoDataConsulta.getText();
             
             bw.write(nomeCompleto + ", " + dataNascimento + ", " + genero + ", " +
-                     telefone + ", " + rg + ", " + cpf + ", " +
-                     procura + ", " + dataConsulta);
+                     telefone + ", " + rg + ", " + cpf + ", " +", " + dataConsulta);
             
             JOptionPane.showMessageDialog(this,
                     "Cadastro de consulta realizado com sucesso!!");
@@ -456,13 +485,18 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         BD banco = new BD();
         banco.conectaBD();
         
-        String query = "SELECT m.nomeMed, cl.nomeClinica, cl.enderecoClinica FROM Medico m inner join Atende ate ON m.ID = ate.ID_MEDICO inner join Clinica cl on cl.ID = ate.ID_CLINICA WHERE cl.enderecoClinica like ?";
-        PreparedStatement ps = banco.getPreparedStatement(query);
-        String estado = (String) this.escolhaEstados.getSelectedItem();
+        String query = "SELECT m.nomeMed, m.especializacao, ta.formato, cl.nomeClinica, cl.enderecoClinica, ta.valorConsulta FROM Medico m INNER JOIN Atende ate ON m.ID =ate.ID_MEDICO INNER JOIN Clinica cl ON cl.ID = ate.ID_CLINICA INNER JOIN TipoAtendimento ta ON ta.ID_MEDICO = m.ID WHERE cl.enderecoClinica LIKE ? AND m.especializacao LIKE ? AND ta.formato LIKE ?";
+        
+        PreparedStatement ps  = banco.getPreparedStatement(query);
+        String estado         = (String) this.escolhaEstados.getSelectedItem();
+        String especializacao = (String) this.escolhaEspecializacao.getSelectedItem();
+        String formato        = (String) this.escolhaFormato.getSelectedItem();
         
         
         try {
             ps.setString(1, '%' + estado);
+            ps.setString(2, especializacao);
+            ps.setString(3, formato);
             ResultSet rs = ps.executeQuery();
             
             DefaultTableModel model = (DefaultTableModel) this.jTable1.getModel();
@@ -472,9 +506,12 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
             
             while (rs.next()) {
                 String[] dados = {
-                    rs.getString("m.nomeMed"),
-                    rs.getString("cl.nomeClinica"),
-                    rs.getString("cl.enderecoClinica")
+                        rs.getString("m.nomMed"),
+                        rs.getString("m.especializacao"),
+                        rs.getString("ta.formato"),
+                        rs.getString("cl.nomeClinica"),
+                        rs.getString("cl.enderecoClinica"),
+                        rs.getString("ta.valorConsulta")
                 };
                 
                 model.addRow(dados);
@@ -504,7 +541,6 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
                this.campoTelefone.getText().equals("")       ||
                this.campoRg.getText().equals("")             ||
                this.campoCpf.getText().equals("")            ||
-               this.campoProcura.getText().equals("")        ||
                this.campoDataConsulta.getText().equals("")) {
                
                this.errorLabel.setText("Há campos em branco!!!");
@@ -523,16 +559,19 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField campoDataConsulta;
     private javax.swing.JFormattedTextField campoDataNascimento;
     private javax.swing.JTextField campoNome;
-    private javax.swing.JTextField campoProcura;
     private javax.swing.JTextField campoRg;
     private javax.swing.JFormattedTextField campoTelefone;
     private javax.swing.JLabel erroLabel;
     private javax.swing.JLabel errorLabel;
+    private javax.swing.JComboBox<String> escolhaEspecializacao;
     private javax.swing.JComboBox<String> escolhaEstados;
+    private javax.swing.JComboBox<String> escolhaFormato;
     private javax.swing.JLabel imagemLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

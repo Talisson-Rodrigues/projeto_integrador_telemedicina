@@ -460,7 +460,7 @@ public class Main extends javax.swing.JFrame {
             return; // Se não conectar ao banco, não faz sentido continuar
         }
 
-        String query = "SELECT m.nomeMed, cs.dataConsulta, cs.formatoConsulta FROM Medico m INNER JOIN Consulta cs ON m.ID = cs.ID_MEDICO WHERE m.enderecoMed LIKE '%DF'    ";
+        String query = "SELECT m.nomeMed, cs.dataConsulta, cs.formatoConsulta FROM Medico m INNER JOIN Consulta cs ON m.ID = cs.ID_MEDICO WHERE m.enderecoMed LIKE '%DF'";
         PreparedStatement ps = banco.getPreparedStatement(query);
         
         try {
