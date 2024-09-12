@@ -124,13 +124,11 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("CADASTRO DE MÉDICOS");
 
         erroLabel.setForeground(new java.awt.Color(204, 0, 0));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Nome Completo:");
 
         campoNomeMed.setBackground(new java.awt.Color(102, 102, 102));
@@ -143,7 +141,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Data de Nascimento:");
 
         campoDataNascMed.setBackground(new java.awt.Color(102, 102, 102));
@@ -156,7 +153,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         }
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Telefone:");
 
         campoNumeroMed.setBackground(new java.awt.Color(102, 102, 102));
@@ -169,7 +165,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         }
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Email:");
 
         campoEmailMed.setBackground(new java.awt.Color(102, 102, 102));
@@ -177,7 +172,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         campoEmailMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Endereço:");
 
         campoEnderecoMed.setBackground(new java.awt.Color(102, 102, 102));
@@ -185,7 +179,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         campoEnderecoMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("CPF:");
 
         campoCpfMed.setBackground(new java.awt.Color(102, 102, 102));
@@ -198,7 +191,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         }
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Gênero:");
 
         campoGeneroMed.setBackground(new java.awt.Color(102, 102, 102));
@@ -207,7 +199,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         campoGeneroMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("RG:");
 
         campoRgMed.setBackground(new java.awt.Color(102, 102, 102));
@@ -215,7 +206,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         campoRgMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
         jLabel22.setText("Crie uma senha: ");
 
         campoCriaSenha.setBackground(new java.awt.Color(102, 102, 102));
@@ -223,7 +213,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         campoCriaSenha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
         jLabel23.setText("Confirme a Senha: ");
 
         campoConfirmaSenha.setBackground(new java.awt.Color(102, 102, 102));
@@ -231,11 +220,9 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         campoConfirmaSenha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(0, 0, 0));
         jLabel24.setText("Após Preencher tudo na aba Pessoal");
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(0, 0, 0));
         jLabel25.setText("Clique na Aba Profissional para terminar o cadastro");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -288,7 +275,7 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
                                 .addGap(6, 6, 6)
                                 .addComponent(jLabel25))
                             .addComponent(jLabel24))))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,11 +364,9 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("CADASTRO DE MÉDICOS");
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Registro Médico:");
 
         campoRegistroMed.setBackground(new java.awt.Color(102, 102, 102));
@@ -389,7 +374,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         campoRegistroMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Especialização:");
 
         campoEspecializacaoMed.setBackground(new java.awt.Color(102, 102, 102));
@@ -399,7 +383,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         erroLabel1.setForeground(new java.awt.Color(204, 0, 0));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Instituição de Ensino: ");
 
         campoInstituicaoMed.setBackground(new java.awt.Color(102, 102, 102));
@@ -407,7 +390,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         campoInstituicaoMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Conclusão de Graduação:");
 
         campoConclusaoGradMed.setBackground(new java.awt.Color(102, 102, 102));
@@ -420,7 +402,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         }
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Certificação:");
 
         campoCertificacaoMed.setBackground(new java.awt.Color(102, 102, 102));
@@ -428,7 +409,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         campoCertificacaoMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Área de Interesse: ");
 
         campoAreaMed.setBackground(new java.awt.Color(102, 102, 102));
@@ -436,7 +416,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         campoAreaMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setText("Credenciais: ");
 
         campoCredenciaisMed.setBackground(new java.awt.Color(102, 102, 102));
@@ -444,7 +423,6 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         campoCredenciaisMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setText("Experiências Profissionais: ");
 
         jScrollPane1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -485,7 +463,7 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
                             .addComponent(jLabel13)
                             .addComponent(jLabel15)
                             .addComponent(campoInstituicaoMed, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(campoEspecializacaoMed, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel14)
@@ -569,7 +547,9 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
