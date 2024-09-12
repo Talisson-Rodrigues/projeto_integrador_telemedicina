@@ -55,6 +55,7 @@ public class Main extends javax.swing.JFrame {
         jTableMedico = new javax.swing.JTable();
         statusLabel = new javax.swing.JLabel();
         carregaDadosMedico = new javax.swing.JButton();
+        botaoExcluirMed = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         nomeMedLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -66,6 +67,7 @@ public class Main extends javax.swing.JFrame {
         jTablePaciente = new javax.swing.JTable();
         statusLabelPaciente = new javax.swing.JLabel();
         carregaDadosPaciente = new javax.swing.JButton();
+        botaoExcluirPac = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         nomePacientLabel = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
@@ -118,11 +120,24 @@ public class Main extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableMedico);
 
         carregaDadosMedico.setBackground(new java.awt.Color(0, 204, 0));
+        carregaDadosMedico.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         carregaDadosMedico.setForeground(new java.awt.Color(255, 255, 255));
         carregaDadosMedico.setText("Carregar Dados");
+        carregaDadosMedico.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         carregaDadosMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 carregaDadosMedicoActionPerformed(evt);
+            }
+        });
+
+        botaoExcluirMed.setBackground(new java.awt.Color(255, 0, 0));
+        botaoExcluirMed.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        botaoExcluirMed.setForeground(new java.awt.Color(255, 255, 255));
+        botaoExcluirMed.setText("Excluir");
+        botaoExcluirMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botaoExcluirMed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoExcluirMedActionPerformed(evt);
             }
         });
 
@@ -142,11 +157,12 @@ public class Main extends javax.swing.JFrame {
                         .addGap(89, 89, 89))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(statusLabel)
-                        .addContainerGap(344, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(carregaDadosMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .addContainerGap(344, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(carregaDadosMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botaoExcluirMed, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,9 +173,11 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addComponent(carregaDadosMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(carregaDadosMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoExcluirMed, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -229,11 +247,24 @@ public class Main extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTablePaciente);
 
         carregaDadosPaciente.setBackground(new java.awt.Color(0, 204, 0));
+        carregaDadosPaciente.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         carregaDadosPaciente.setForeground(new java.awt.Color(255, 255, 255));
         carregaDadosPaciente.setText("Carregar Dados");
+        carregaDadosPaciente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         carregaDadosPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 carregaDadosPacienteActionPerformed(evt);
+            }
+        });
+
+        botaoExcluirPac.setBackground(new java.awt.Color(255, 0, 0));
+        botaoExcluirPac.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        botaoExcluirPac.setForeground(new java.awt.Color(255, 255, 255));
+        botaoExcluirPac.setText("Excluir");
+        botaoExcluirPac.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botaoExcluirPac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoExcluirPacActionPerformed(evt);
             }
         });
 
@@ -242,20 +273,24 @@ public class Main extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(statusLabelPaciente)
+                        .addGap(110, 110, 110)
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(carregaDadosPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(carregaDadosPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botaoExcluirPac, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(statusLabelPaciente)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,10 +300,12 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(statusLabelPaciente)
-                    .addComponent(carregaDadosPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addComponent(statusLabelPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(carregaDadosPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoExcluirPac, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
 
         jSplitPane2.setLeftComponent(jPanel3);
@@ -382,7 +419,7 @@ public class Main extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 743, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 685, Short.MAX_VALUE)
         );
 
         pack();
@@ -483,7 +520,6 @@ public class Main extends javax.swing.JFrame {
             rs.close();
             ps.close();
             banco.encerrarConexao();
-            this.carregaDadosPaciente.setVisible(false);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, 
             "Não foi possível realizar a consulta no BD. Erro: " + ex.getMessage());
@@ -535,6 +571,104 @@ public class Main extends javax.swing.JFrame {
         histoPrescricao.setVisible(true);
     }//GEN-LAST:event_historicoPrescricaoActionPerformed
 
+    private void botaoExcluirMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirMedActionPerformed
+        int linhaSelecionada = this.jTableMedico.getSelectedRow();
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(this,
+                    "Favor selecione um registro para excluir!");
+            return;
+        }
+        
+        String idPaciente =
+                (String) this.jTableMedico.getValueAt(linhaSelecionada, 0);
+        
+        int opcao = JOptionPane.showConfirmDialog(this,
+                "Deseja realmente excluir o Paciente " + idPaciente + "?",
+                "Excluir", JOptionPane.OK_CANCEL_OPTION);
+        
+        if (opcao == 0) {
+            BD banco = new BD();
+            banco.conectaBD();
+            
+            String query2 = "DELETE FROM Consulta WHERE ID_PACIENTE = (SELECT ID FROM Paciente WHERE nome = ?)";
+            String query = "DELETE FROM Paciente WHERE nome = ?";
+            
+            try (PreparedStatement ps =banco.getPreparedStatement(query)){
+                ps.setString(1, query2);
+                ps.setString(1, query);
+                boolean linhaApagada = ps.execute();
+                
+                 
+                if (linhaApagada == false) {
+                    //Remove a linha da jTable
+                    DefaultTableModel model = (DefaultTableModel) this.jTableMedico.getModel();
+                    model.removeRow(linhaSelecionada);
+                    JOptionPane.showMessageDialog(this,
+                            "Registro excluido com sucesso!!");
+                
+                } else {
+                    JOptionPane.showMessageDialog(this,
+                            "Nenhum registro encontrado para excluir.");
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this,
+                        "Erro ao excluir o registro: " + ex.getMessage());
+                ex.printStackTrace();
+            } finally {
+                return;
+            }
+        }
+    }//GEN-LAST:event_botaoExcluirMedActionPerformed
+
+    private void botaoExcluirPacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirPacActionPerformed
+        int linhaSelecionada = this.jTablePaciente.getSelectedRow();
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(this,
+                    "Favor selecione um registro para excluir!");
+            return;
+        }
+        
+        String idMedico =
+                (String) this.jTablePaciente.getValueAt(linhaSelecionada, 0);
+        
+        int opcao = JOptionPane.showConfirmDialog(this,
+                "Deseja realmente excluir a Consulta com " + idMedico + "?",
+                "Excluir", JOptionPane.OK_CANCEL_OPTION);
+        
+        if (opcao == 0) {
+            BD banco = new BD();
+            banco.conectaBD();
+            
+            String query2 = "DELETE FROM Consulta WHERE ID_MEDICO = (SELECT ID FROM Medico WHERE nomeMed = ?)";
+            String query = "DELETE FROM Medico WHERE nomeMed = ?";
+            
+            try (PreparedStatement ps =banco.getPreparedStatement(query)){
+                ps.setString(1, query2);
+                ps.setString(1, query);
+                boolean linhaApagada = ps.execute();
+                
+                 
+                if (linhaApagada == false) {
+                    //Remove a linha da jTable
+                    DefaultTableModel model = (DefaultTableModel) this.jTablePaciente.getModel();
+                    model.removeRow(linhaSelecionada);
+                    JOptionPane.showMessageDialog(this,
+                            "Registro excluido com sucesso!!");
+                
+                } else {
+                    JOptionPane.showMessageDialog(this,
+                            "Nenhum registro encontrado para excluir.");
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this,
+                        "Erro ao excluir o registro: " + ex.getMessage());
+                ex.printStackTrace();
+            } finally {
+                return;
+            }
+        }
+    }//GEN-LAST:event_botaoExcluirPacActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -573,6 +707,8 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem agendaExame;
+    private javax.swing.JButton botaoExcluirMed;
+    private javax.swing.JButton botaoExcluirPac;
     private javax.swing.JButton carregaDadosMedico;
     private javax.swing.JButton carregaDadosPaciente;
     private javax.swing.JDesktopPane desktopPane;

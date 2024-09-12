@@ -72,6 +72,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         escolhaEspecializacao = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         escolhaFormato = new javax.swing.JComboBox<>();
+        botaoExcluir = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -378,6 +379,17 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         escolhaFormato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Presencial", "Telemedicina" }));
         escolhaFormato.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        botaoExcluir.setBackground(new java.awt.Color(255, 0, 0));
+        botaoExcluir.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        botaoExcluir.setForeground(new java.awt.Color(255, 255, 255));
+        botaoExcluir.setText("Excluir");
+        botaoExcluir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botaoExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoExcluirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -388,11 +400,14 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 863, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botaoConsultaBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(botaoConsultaBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(botaoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(9, 9, 9)
                                 .addComponent(erroLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 491, Short.MAX_VALUE)
                         .addComponent(botaoAgendarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -429,7 +444,8 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoAgendarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoConsultaBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botaoConsultaBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35))
         );
 
@@ -452,33 +468,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoAgendarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAgendarConsultaActionPerformed
-        if(!validaCampos()) {
-            return;
-        }
-        
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("consulta.txt", true))) {
-           
-            String nomeCompleto   = this.campoNome.getText();
-            String dataNascimento = this.campoDataNascimento.getText();
-            int    genero         = this.selecionaGenero.getSelectedIndex();
-            String telefone       = this.campoTelefone.getText();
-            String rg             = this.campoRg.getText();
-            String cpf            = this.campoCpf.getText();
-            String dataConsulta   = this.campoDataConsulta.getText();
-            
-            bw.write(nomeCompleto + ", " + dataNascimento + ", " + genero + ", " +
-                     telefone + ", " + rg + ", " + cpf + ", " +", " + dataConsulta);
-            
-            JOptionPane.showMessageDialog(this,
-                    "Cadastro de consulta realizado com sucesso!!");
-            
-            this.setVisible(false);
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this,
-                    "O cadastro não foi concluído!! Error: " + ex.getMessage());
-            ex.printStackTrace();
-        }
-        
+
     }//GEN-LAST:event_botaoAgendarConsultaActionPerformed
 
     private void botaoConsultaBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConsultaBancoActionPerformed
@@ -542,6 +532,10 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_escolhaEstadosActionPerformed
 
+    private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
+
+    }//GEN-LAST:event_botaoExcluirActionPerformed
+
        private boolean validaCampos() {
            if (this.campoNome.getText().equals("")           ||
                this.campoDataNascimento.getText().equals("") ||
@@ -563,6 +557,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoAgendarConsulta;
     private javax.swing.JButton botaoConsultaBanco;
+    private javax.swing.JButton botaoExcluir;
     private javax.swing.JFormattedTextField campoCpf;
     private javax.swing.JFormattedTextField campoDataConsulta;
     private javax.swing.JFormattedTextField campoDataNascimento;
