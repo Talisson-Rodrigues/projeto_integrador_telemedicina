@@ -468,7 +468,17 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoAgendarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAgendarConsultaActionPerformed
-
+        if(!validaCampos()) {
+            return;
+        }
+        
+        BD banco = new BD();
+        banco.conectaBD();
+        
+        String dataConsulta = this.campoDataConsulta.getText();
+        String formato      = (String) this.escolhaFormato.getSelectedItem();
+        String nomePaciente = this.campoNome.getText();
+        String query = "INSERT INTO Consulta () VALUES ()";
     }//GEN-LAST:event_botaoAgendarConsultaActionPerformed
 
     private void botaoConsultaBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConsultaBancoActionPerformed
@@ -533,7 +543,52 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_escolhaEstadosActionPerformed
 
     private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
-
+        int linhaSelecionada = this.jTable1.getSelectedRow();
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(this,
+                    "Favor selecione um registro para excluir!");
+            return;
+        }
+        
+        String idMedico =
+                (String) this.jTable1.getValueAt(linhaSelecionada, 0);
+        
+        int opcao = JOptionPane.showConfirmDialog(this,
+                "Deseja realmente excluir o medico " + idMedico + "?",
+                "Excluir", JOptionPane.OK_CANCEL_OPTION);
+        
+        if (opcao == 0) {
+            BD banco = new BD();
+            banco.conectaBD();
+            
+            String query2 = "DELETE FROM Consulta WHERE ID_MEDICO = (SELECT ID FROM Medico WHERE nomeMed = ?)";
+            String query = "DELETE FROM Medico WHERE nomeMed = ?";
+            
+            try (PreparedStatement ps =banco.getPreparedStatement(query)){
+                ps.setString(1, query2);
+                ps.setString(1, query);
+                boolean linhaApagada = ps.execute();
+                
+                 
+                if (linhaApagada == false) {
+                    //Remove a linha da jTable
+                    DefaultTableModel model = (DefaultTableModel) this.jTable1.getModel();
+                    model.removeRow(linhaSelecionada);
+                    JOptionPane.showMessageDialog(this,
+                            "Registro excluido com sucesso!!");
+                
+                } else {
+                    JOptionPane.showMessageDialog(this,
+                            "Nenhum registro encontrado para excluir.");
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this,
+                        "Erro ao excluir o registro: " + ex.getMessage());
+                ex.printStackTrace();
+            } finally {
+                return;
+            }
+        }
     }//GEN-LAST:event_botaoExcluirActionPerformed
 
        private boolean validaCampos() {
