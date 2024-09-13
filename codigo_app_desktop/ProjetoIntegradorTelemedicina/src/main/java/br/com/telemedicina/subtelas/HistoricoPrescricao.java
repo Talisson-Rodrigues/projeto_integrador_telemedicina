@@ -73,6 +73,7 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 42)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Histórico de Prescrições");
 
         jTable1.setBackground(new java.awt.Color(102, 102, 102));

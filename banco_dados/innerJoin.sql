@@ -13,3 +13,5 @@ INNER JOIN TipoAtendimento ta ON ta.ID_MEDICO = m.ID WHERE cl.enderecoClinica LI
 
 INSERT INTO Medico (nomeMed, cpfMed, nascimentoMed, generoMed, telefoneMed, enderecoMed, emailMed, rgMed, registroMed, especializacao, instituicaoEnsino, conclusaoGrad, certificacao, areaInteresse, credenciais, experiencias, senhaMed) VALUES 
 (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?); 
+
+INSERT INTO Consulta (dataConsulta, formatoConsulta, ID_PACIENTE, ID_MEDICO, ID_CLINICA, pagamentoConsulta, areaProcura) VALUES (?, ?, ?, ?, ?, ?, ?);

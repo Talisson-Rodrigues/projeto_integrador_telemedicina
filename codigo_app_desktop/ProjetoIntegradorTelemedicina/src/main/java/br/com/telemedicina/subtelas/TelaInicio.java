@@ -37,6 +37,7 @@ public class TelaInicio extends javax.swing.JDialog {
         botaoTelaLogin = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         botaoTelaCadastro = new javax.swing.JButton();
+        fecharBotao = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -60,30 +61,47 @@ public class TelaInicio extends javax.swing.JDialog {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Você deseja: ");
 
-        botaoTelaLogin.setBackground(new java.awt.Color(117, 185, 92));
+        botaoTelaLogin.setBackground(new java.awt.Color(0, 204, 0));
         botaoTelaLogin.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         botaoTelaLogin.setForeground(new java.awt.Color(255, 255, 255));
         botaoTelaLogin.setText("ENTRAR");
+        botaoTelaLogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoTelaLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoTelaLoginActionPerformed(evt);
             }
         });
 
+        jComboBox1.setBackground(new java.awt.Color(102, 102, 102));
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Médico", "Paciente" }));
+        jComboBox1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
 
-        botaoTelaCadastro.setBackground(new java.awt.Color(56, 182, 255));
+        botaoTelaCadastro.setBackground(new java.awt.Color(51, 153, 255));
         botaoTelaCadastro.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         botaoTelaCadastro.setForeground(new java.awt.Color(255, 255, 255));
         botaoTelaCadastro.setText("CADASTRAR");
+        botaoTelaCadastro.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoTelaCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoTelaCadastroActionPerformed(evt);
+            }
+        });
+
+        fecharBotao.setBackground(new java.awt.Color(255, 255, 255));
+        fecharBotao.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        fecharBotao.setForeground(new java.awt.Color(0, 0, 0));
+        fecharBotao.setText("FECHAR");
+        fecharBotao.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        fecharBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fecharBotaoActionPerformed(evt);
             }
         });
 
@@ -107,7 +125,10 @@ public class TelaInicio extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botaoTelaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(botaoTelaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(fecharBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -120,12 +141,14 @@ public class TelaInicio extends javax.swing.JDialog {
                 .addGap(92, 92, 92)
                 .addComponent(jLabel3)
                 .addGap(77, 77, 77)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoTelaLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoTelaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(fecharBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -146,7 +169,7 @@ public class TelaInicio extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -195,6 +218,10 @@ public class TelaInicio extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    private void fecharBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharBotaoActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_fecharBotaoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -240,6 +267,7 @@ public class TelaInicio extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoTelaCadastro;
     private javax.swing.JButton botaoTelaLogin;
+    private javax.swing.JButton fecharBotao;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

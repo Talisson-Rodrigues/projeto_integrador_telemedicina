@@ -471,14 +471,27 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         if(!validaCampos()) {
             return;
         }
-        
-        BD banco = new BD();
-        banco.conectaBD();
-        
-        String dataConsulta = this.campoDataConsulta.getText();
-        String formato      = (String) this.escolhaFormato.getSelectedItem();
-        String nomePaciente = this.campoNome.getText();
-        String query = "INSERT INTO Consulta () VALUES ()";
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("Consulta.txt", true))) {
+            
+            String nomePaciente   = this.campoNome.getText();
+            String dataNascimento = this.campoDataNascimento.getText();
+            String genero         = (String) this.selecionaGenero.getSelectedItem();
+            String telefone       = this.campoTelefone.getText();
+            String rg             = this.campoRg.getText();
+            String cpf            = this.campoCpf.getText();
+            String dataConsulta   = this.campoDataConsulta.getText();
+            
+            bw.write(nomePaciente + ", " + dataNascimento + ", " + genero + ", " +
+                     telefone + ", " + rg + ", " + cpf + ", " + dataConsulta);
+            
+            JOptionPane.showMessageDialog(this,
+                    "Cadastro de Consulta Concluído!!");
+            this.setVisible(false);
+                    
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this,
+                    "Erro ao cadastrar Consulta!! Error: " + e.getMessage());
+        }
     }//GEN-LAST:event_botaoAgendarConsultaActionPerformed
 
     private void botaoConsultaBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConsultaBancoActionPerformed
