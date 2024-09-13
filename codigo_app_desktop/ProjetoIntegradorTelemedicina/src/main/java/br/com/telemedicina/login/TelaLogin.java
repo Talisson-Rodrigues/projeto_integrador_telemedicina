@@ -4,6 +4,7 @@
  */
 package br.com.telemedicina.login;
 
+import br.com.telemedicina.bd.BD;
 import br.com.telemedicina.subtelas.TelaCadastroMedico;
 import br.com.telemedicina.subtelas.TelaCadastroPaciente;
 import br.com.telemedicina.telaprincipal.Main;
@@ -13,6 +14,9 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
@@ -96,6 +100,11 @@ public class TelaLogin extends javax.swing.JDialog {
         campoUsuario.setBackground(new java.awt.Color(102, 102, 102));
         campoUsuario.setForeground(new java.awt.Color(255, 255, 255));
         campoUsuario.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        campoUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campoUsuarioKeyPressed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
@@ -104,6 +113,11 @@ public class TelaLogin extends javax.swing.JDialog {
         campoSenha.setBackground(new java.awt.Color(102, 102, 102));
         campoSenha.setForeground(new java.awt.Color(255, 255, 255));
         campoSenha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        campoSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campoSenhaKeyPressed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -257,51 +271,72 @@ public class TelaLogin extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void adicionarListeners() {
+        campoUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+                    botaoLoginActionPerformed(null);
+                }
+            }
+        });
+        
+        campoSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+                    botaoLoginActionPerformed(null);
+                }
+            }
+        });
+    }
+    
     private void botaoFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFecharActionPerformed
         System.exit(0);
     }//GEN-LAST:event_botaoFecharActionPerformed
 
     private void botaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLoginActionPerformed
+        String usuario = this.campoUsuario.getText();
+        String senha = new String (this.campoSenha.getPassword());
+        String tipo = (String) this.tipoUsuario.getSelectedItem();
+        
         if (!validaCampos()) {
             return;
         }
         
         this.labelErro.setText("");
-        String pash = "path";
         
-        try (BufferedReader br = new BufferedReader(new FileReader(pash))) {
-            String linha;
-            String[] dados = {};
+        try {
+            BD banco = new BD();
+            banco.conectaBD();
             
-            while ((linha = br.readLine()) != null) {
-                dados = linha.split(",");
+            String sql = "";
+            
+            if (tipo.equals("Paciente")) {
+                sql = "SELECT * FROM paciente WHERE email = ? AND senha = ?";
+            } else if (tipo.equals("Médico")) {
+                sql = "SELECT * FROM medico WHERE emailMed = ? AND senhaMed = ?";
             }
             
-            char[] pass = this.campoSenha.getPassword();
-            char[] passFile = dados[1].toCharArray();
-            
-            if (this.campoUsuario.getText().equals(dados[0]) && java.util.Arrays.equals(pass, passFile)) {
+            try (PreparedStatement statement = banco.getPreparedStatement(sql)) {
+                statement.setString(1, usuario);
+                statement.setString(2, senha);
                 
-                //salvar em um arquivo a informacao de quem esta logado
-                try (BufferedWriter bw = new BufferedWriter(new FileWriter("sessao"))) {
-                    bw.write(this.campoUsuario.getText() + "," + this.tipoUsuario.getSelectedItem().toString());
-           
-                } catch (IOException e) {
-                    JOptionPane.showMessageDialog(this,
-                            "Não foi possível iniciar o sistema!! Error: " + e.getMessage());
+                try (ResultSet rs = statement.executeQuery()) {
+                    if (rs.next()) {
+                        this.parentMain.setVisible(false);
+                        this.setVisible(false); 
+                    } else {
+                        this.labelErro.setText("Usuário/Senha incorretos!");
+                    }
                 }
-                ///////////////////////////////////////////
-                this.parentMain.setVisible(false);
-                this.setVisible(false);                
-            } else {
-                this.labelErro.setText("Usuário/Senha incorretos!");
-            }
+            }      
             
-        } catch (IOException e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(this,
                     "Não foi possível iniciar o sistema!! Error: " + e.getMessage());
         }
+
     }//GEN-LAST:event_botaoLoginActionPerformed
+    
     private boolean validaCampos() {
         if (this.campoSenha.getPassword().length <= 0 ||
             this.campoUsuario.getText().equals("") ||
@@ -321,6 +356,14 @@ public class TelaLogin extends javax.swing.JDialog {
         TelaCadastroMedico cadastroMedico = new TelaCadastroMedico(null, true);
         cadastroMedico.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void campoUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoUsuarioKeyPressed
+        adicionarListeners();
+    }//GEN-LAST:event_campoUsuarioKeyPressed
+
+    private void campoSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoSenhaKeyPressed
+        adicionarListeners();
+    }//GEN-LAST:event_campoSenhaKeyPressed
 
     /**
      * @param args the command line arguments
