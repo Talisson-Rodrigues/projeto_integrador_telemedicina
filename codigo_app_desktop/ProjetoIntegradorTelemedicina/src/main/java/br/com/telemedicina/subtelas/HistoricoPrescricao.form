@@ -173,12 +173,10 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="5" rowCount="0">
+                      <Table columnCount="3" rowCount="0">
                         <Column editable="false" title="Nome M&#xe9;dico" type="java.lang.Object"/>
                         <Column editable="false" title="Nome Paciente" type="java.lang.Object"/>
                         <Column editable="false" title="Data Prescri&#xe7;&#xe3;o" type="java.lang.Object"/>
-                        <Column editable="false" title="Medicamento" type="java.lang.Object"/>
-                        <Column editable="false" title="Observa&#xe7;&#xe3;o" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>

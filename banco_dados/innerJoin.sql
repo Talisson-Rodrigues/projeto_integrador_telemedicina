@@ -15,3 +15,5 @@ INSERT INTO Medico (nomeMed, cpfMed, nascimentoMed, generoMed, telefoneMed, ende
 (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?); 
 
 INSERT INTO Consulta (dataConsulta, formatoConsulta, ID_PACIENTE, ID_MEDICO, ID_CLINICA, pagamentoConsulta, areaProcura) VALUES (?, ?, ?, ?, ?, ?, ?);
+
+SELECT cl.nomeClinica, cl.enderecoClinica, ex.valorExame FROM Clinica cl INNER JOIN Exame ex ON cl.ID = ex.ID_CLINICA WHERE cl.enderecoClinica LIKE '%DF';

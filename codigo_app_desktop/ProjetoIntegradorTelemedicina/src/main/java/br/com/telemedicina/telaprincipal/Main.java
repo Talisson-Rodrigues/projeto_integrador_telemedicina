@@ -58,8 +58,8 @@ public class Main extends javax.swing.JFrame {
         botaoExcluirMed = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         nomeMedLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        botaoNovoExame = new javax.swing.JButton();
+        botaoNovaPrescricao = new javax.swing.JButton();
         jSplitPane2 = new javax.swing.JSplitPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -74,10 +74,10 @@ public class Main extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         historicoConsulta = new javax.swing.JMenuItem();
         novaConsulta = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        examesMenu = new javax.swing.JMenu();
         historicoExame = new javax.swing.JMenuItem();
         agendaExame = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        prescricoesMenu = new javax.swing.JMenu();
         historicoPrescricao = new javax.swing.JMenuItem();
         novaPrescricao = new javax.swing.JMenuItem();
 
@@ -191,26 +191,31 @@ public class Main extends javax.swing.JFrame {
         jPanel2.add(nomeMedLabel);
         nomeMedLabel.setBounds(19, 40, 240, 57);
 
-        jButton1.setBackground(new java.awt.Color(242, 242, 242));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Novo Exame");
-        jButton1.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botaoNovoExame.setBackground(new java.awt.Color(242, 242, 242));
+        botaoNovoExame.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        botaoNovoExame.setForeground(new java.awt.Color(0, 0, 0));
+        botaoNovoExame.setText("Novo Exame");
+        botaoNovoExame.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
+        botaoNovoExame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botaoNovoExameActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1);
-        jButton1.setBounds(370, 110, 103, 40);
+        jPanel2.add(botaoNovoExame);
+        botaoNovoExame.setBounds(490, 110, 103, 40);
 
-        jButton4.setBackground(new java.awt.Color(242, 242, 242));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(0, 0, 0));
-        jButton4.setText("Nova Prescrição");
-        jButton4.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
-        jPanel2.add(jButton4);
-        jButton4.setBounds(480, 110, 129, 40);
+        botaoNovaPrescricao.setBackground(new java.awt.Color(242, 242, 242));
+        botaoNovaPrescricao.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        botaoNovaPrescricao.setForeground(new java.awt.Color(0, 0, 0));
+        botaoNovaPrescricao.setText("Nova Prescrição");
+        botaoNovaPrescricao.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
+        botaoNovaPrescricao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoNovaPrescricaoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(botaoNovaPrescricao);
+        botaoNovaPrescricao.setBounds(610, 110, 129, 40);
 
         jSplitPane1.setRightComponent(jPanel2);
 
@@ -363,8 +368,8 @@ public class Main extends javax.swing.JFrame {
 
         menuBar.add(jMenu3);
 
-        jMenu4.setText("Exames");
-        jMenu4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        examesMenu.setText("Exames");
+        examesMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         historicoExame.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         historicoExame.setText("Histórico de Exames");
@@ -373,7 +378,7 @@ public class Main extends javax.swing.JFrame {
                 historicoExameActionPerformed(evt);
             }
         });
-        jMenu4.add(historicoExame);
+        examesMenu.add(historicoExame);
 
         agendaExame.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         agendaExame.setText("Agendar Exames");
@@ -382,12 +387,12 @@ public class Main extends javax.swing.JFrame {
                 agendaExameActionPerformed(evt);
             }
         });
-        jMenu4.add(agendaExame);
+        examesMenu.add(agendaExame);
 
-        menuBar.add(jMenu4);
+        menuBar.add(examesMenu);
 
-        jMenu5.setText("Prescrições");
-        jMenu5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        prescricoesMenu.setText("Prescrições");
+        prescricoesMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         historicoPrescricao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         historicoPrescricao.setText("Histórico de Prescrições");
@@ -396,7 +401,7 @@ public class Main extends javax.swing.JFrame {
                 historicoPrescricaoActionPerformed(evt);
             }
         });
-        jMenu5.add(historicoPrescricao);
+        prescricoesMenu.add(historicoPrescricao);
 
         novaPrescricao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         novaPrescricao.setText("Nova Prescrição");
@@ -405,9 +410,9 @@ public class Main extends javax.swing.JFrame {
                 novaPrescricaoActionPerformed(evt);
             }
         });
-        jMenu5.add(novaPrescricao);
+        prescricoesMenu.add(novaPrescricao);
 
-        menuBar.add(jMenu5);
+        menuBar.add(prescricoesMenu);
 
         setJMenuBar(menuBar);
 
@@ -425,9 +430,11 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void botaoNovoExameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovoExameActionPerformed
+        AgendaExame exame = new AgendaExame();
+        this.desktopPane.add(exame);
+        exame.setVisible(true);
+    }//GEN-LAST:event_botaoNovoExameActionPerformed
 
     private void historicoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoConsultaActionPerformed
         HistoricoConsulta histoConsulta = new HistoricoConsulta();
@@ -543,7 +550,10 @@ public class Main extends javax.swing.JFrame {
            } else if (dados[1].equals("Paciente")) {
                //ativar a aba correspondente
                 this.jTabbedPane1.removeTabAt(0);
-                this.agendaExame.remove(agendaExame);
+                
+                //Remove as opções de menu para Agendar exame e Nova prescrição
+                this.examesMenu.remove(agendaExame);
+                this.prescricoesMenu.remove(novaPrescricao);
            }        
            
        } catch (IOException e) {
@@ -669,6 +679,12 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botaoExcluirPacActionPerformed
 
+    private void botaoNovaPrescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovaPrescricaoActionPerformed
+        NovaPrescricao prescricao = new NovaPrescricao();
+        this.desktopPane.add(prescricao);
+        prescricao.setVisible(true);
+    }//GEN-LAST:event_botaoNovaPrescricaoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -709,19 +725,18 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem agendaExame;
     private javax.swing.JButton botaoExcluirMed;
     private javax.swing.JButton botaoExcluirPac;
+    private javax.swing.JButton botaoNovaPrescricao;
+    private javax.swing.JButton botaoNovoExame;
     private javax.swing.JButton carregaDadosMedico;
     private javax.swing.JButton carregaDadosPaciente;
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JMenu examesMenu;
     private javax.swing.JMenuItem historicoConsulta;
     private javax.swing.JMenuItem historicoExame;
     private javax.swing.JMenuItem historicoPrescricao;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -738,6 +753,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel nomePacientLabel;
     private javax.swing.JMenuItem novaConsulta;
     private javax.swing.JMenuItem novaPrescricao;
+    private javax.swing.JMenu prescricoesMenu;
     private javax.swing.JLabel statusLabel;
     private javax.swing.JLabel statusLabelPaciente;
     // End of variables declaration//GEN-END:variables

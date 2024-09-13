@@ -84,11 +84,11 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Nome Médico", "Nome Paciente", "Data Prescrição", "Medicamento", "Observação"
+                "Nome Médico", "Nome Paciente", "Data Prescrição"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -190,7 +190,7 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
             return;
         }
         
-        String query = "SELECT me.nomeMed, pa.nome, pr.dataPrescricao, pr.medicamento, pr.observacao FROM Medico me INNER JOIN prescricao pr ON me.ID = pr.ID_MEDICO INNER JOIN Paciente pa ON pa.ID = pr.ID_PACIENTE";
+        String query = "SELECT me.nomeMed, pa.nome, pr.dataPrescricao FROM Medico me INNER JOIN prescricao pr ON me.ID = pr.ID_MEDICO INNER JOIN Paciente pa ON pa.ID = pr.ID_PACIENTE";
         PreparedStatement ps = banco.getPreparedStatement(query);
         
         try {
@@ -204,9 +204,7 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
             while (rs.next()) {
                 String[] dados = {  rs.getString("me.nomeMed"),
                                     rs.getString("pa.nome"),
-                                    rs.getDate("pr.dataPrescricao").toString(),
-                                    rs.getString("pr.medicamento"),
-                                    rs.getString("pr.observacao")};
+                                    rs.getDate("pr.dataPrescricao").toString()};
                 
                 model.addRow(dados);
             }
@@ -222,6 +220,7 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botaoConsultaActionPerformed
 
     private void botaoExcluirMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirMedActionPerformed
+        //Codigo de exclusão de registro de prescrição
         int linhaSelecionada = this.jTable1.getSelectedRow();
         if (linhaSelecionada == -1) {
             JOptionPane.showMessageDialog(this,
@@ -240,12 +239,12 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
             BD banco = new BD();
             banco.conectaBD();
             
-            String query3 = "DELETE FROM Prescricao WHERE ID_MEDICO = (SELECT ID FROM Medico WHERE nomeMed = ?)"; 
-            String query = "DELETE FROM Prescricao WHERE medicamento = ?";
+            String query1 = "DELETE FROM Prescricao WHERE ID_MEDICO = (SELECT ID FROM Medico WHERE nomeMed = ?)"; 
+            String query2 = "DELETE FROM Prescricao WHERE medicamento = ?";
 
-            try (PreparedStatement ps =banco.getPreparedStatement(query)){
-                ps.setString(1, query3);
-                ps.setString(1, query);
+            try (PreparedStatement ps =banco.getPreparedStatement(query2)){
+                ps.setString(1, query1);
+                ps.setString(1, query2);
                 boolean linhaApagada = ps.execute();
 
                 if (linhaApagada == false) {
