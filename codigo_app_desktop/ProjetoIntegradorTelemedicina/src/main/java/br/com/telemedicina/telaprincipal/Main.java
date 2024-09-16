@@ -19,6 +19,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -544,9 +545,13 @@ public class Main extends javax.swing.JFrame {
                dados = linha.split(",");
            }
            
+           BD banco = new BD();
+           banco.conectaBD();
+           
            if(dados[1].equals("Médico")) {
                 //ativar a aba correspondente
                 this.jTabbedPane1.removeTabAt(1);
+                
            } else if (dados[1].equals("Paciente")) {
                //ativar a aba correspondente
                 this.jTabbedPane1.removeTabAt(0);
