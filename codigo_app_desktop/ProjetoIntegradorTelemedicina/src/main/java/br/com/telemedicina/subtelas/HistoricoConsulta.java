@@ -194,7 +194,7 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
             return;
         }
         
-        String query = "SELECT m.nomeMed, cs.dataConsulta, cs.formatoConsulta, cs.pagamentoConsulta FROM Medico m INNER JOIN Consulta cs ON m.ID = cs.ID_MEDICO WHERE m.ID <= 10";
+        String query = "SELECT m.nomeMed, cs.dataConsulta, cs.formatoConsulta, cs.pagamentoConsulta FROM Medico m INNER JOIN Consulta cs ON m.ID = cs.ID_MEDICO";
         PreparedStatement ps = banco.getPreparedStatement(query);
         
         try {

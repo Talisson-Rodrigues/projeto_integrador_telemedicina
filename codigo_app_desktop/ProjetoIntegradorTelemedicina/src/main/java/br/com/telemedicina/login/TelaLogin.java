@@ -322,6 +322,12 @@ public class TelaLogin extends javax.swing.JDialog {
                 
                 try (ResultSet rs = statement.executeQuery()) {
                     if (rs.next()) {
+                        try (BufferedWriter bw = new BufferedWriter(new FileWriter("sessao"))) {
+                             bw.write(usuario + "," + tipo);
+                        } catch (IOException ex) {
+                            JOptionPane.showMessageDialog(this,
+                                    "Não foi possível iniciar o sistema!! Error: " + ex.getMessage());
+                        }
                         this.parentMain.setVisible(false);
                         this.setVisible(false); 
                     } else {

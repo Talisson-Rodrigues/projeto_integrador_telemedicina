@@ -186,7 +186,7 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
             return;
         }
 
-        String query = "SELECT cl.nomeClinica, ex.descricaoExame, ex.dataExame, ex.statusExame, ex.diagnosticoExame, ex.valorExame FROM Clinica cl INNER JOIN Exame ex ON cl.ID = ex.ID_CLINICA WHERE cl.ID <= 10";
+        String query = "SELECT cl.nomeClinica, ex.descricaoExame, ex.dataExame, ex.statusExame, ex.diagnosticoExame, ex.valorExame FROM Clinica cl INNER JOIN Exame ex ON cl.ID = ex.ID_CLINICA";
         PreparedStatement ps = banco.getPreparedStatement(query);
 
         try {
