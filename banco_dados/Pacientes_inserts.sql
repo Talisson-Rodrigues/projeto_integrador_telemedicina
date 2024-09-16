@@ -52,6 +52,6 @@ INSERT INTO Paciente (nome, cpf, dataNascimento, genero, telefone, endereco, ema
 ('Guilherme Souza', '901.234.567-12', '1985-01-05', 'M', '(91) 99012-3689', 'Avenida dos Manacás, 4747', 'guilherme.souza@example.com', 'AM-90.123.789'),
 ('Viviane Lima', '012.345.678-23', '1996-02-27', 'F', '(61) 99123-5790', 'Rua das Orquídeas, 4848', 'viviane.lima@example.com', 'DF-01.234.790'),
 ('Beatriz Almeida', '963.741.852-50', '1989-07-20', 'F', '(31) 34567-8901', 'Rua dos Jasmins, 123, Belo Horizonte, MG', 'beatriz.almeida@email.com', 'MG-21.987.654'),
-('Rafael Gomes', '852.741.963-49', '1976-11-23', 'M', '(51) 23456-7890', 'Rua das Flores, 951, Porto Alegre, RS', 'rafael.gomes@email.com', '32.654.987-0');
+('Rafael Gomes', '852.741.963-49', '1976-11-23', 'M', '(51) 23456-7890', 'Rua das Flores, 951, Porto Alegre, RS', 'rafael.gomes@email.com', 'RS-32.654.987');
 
 select * from Paciente;

@@ -290,7 +290,7 @@ public class TelaLogin extends javax.swing.JDialog {
     }
     
     private void botaoFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFecharActionPerformed
-        System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_botaoFecharActionPerformed
 
     private void botaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLoginActionPerformed
