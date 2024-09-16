@@ -497,59 +497,24 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
     private void botaoConsultaBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConsultaBancoActionPerformed
         BD banco = new BD();
         banco.conectaBD();
-        String where = " WHERE ";
-        String filtro = "";
-        int contador = 1;
         
         String estado         = (String) this.escolhaEstados.getSelectedItem();
         String especializacao = (String) this.escolhaEspecializacao.getSelectedItem();
         String formato        = (String) this.escolhaFormato.getSelectedItem();
-        
-        if (!estado.equals("")) {
-            filtro += " cl.enderecoClinica LIKE ? ";
-            contador = 1;
-        }else if (!especializacao.equals("")) {
-            
-            if (!filtro.equals("")) {
-                filtro += "AND m.especializacao LIKE ?";
-                contador = 2;
-            } else {
-                filtro += " m.especializacao LIKE ?";
-                contador = 1;
-            }
-            
-        } else if (!formato.equals("")) {
-            
-            if (!filtro.equals("")) {
-                filtro += "AND ta.formato";
-                contador = 3;
-            } else {
-                filtro += " ta.formato";
-                contador = 1;
-            }
-            
-        } else {
-            JOptionPane.showMessageDialog(this,
-                    "Escolha pelo menos uma opção!!");
-        }
-        
-        String query = "SELECT m.nomeMed, m.especializacao, ta.formato, cl.nomeClinica, cl.enderecoClinica, ta.valorConsulta "
-                        + "FROM Medico m INNER JOIN Atende ate ON m.ID =ate.ID_MEDICO "
-                        + "INNER JOIN Clinica cl ON cl.ID = ate.ID_CLINICA "
-                        + "INNER JOIN TipoAtendimento ta ON ta.ID_MEDICO = m.ID";
-         if (!filtro.equals("")) {
-           query+= where + filtro;  
-         } 
+  
+        String query = "SELECT m.nomeMed, m.especializacao, ta.formato, cl.nomeClinica, cl.enderecoClinica, ta.valorConsulta FROM Medico m INNER JOIN Atende ate ON m.ID =ate.ID_MEDICO INNER JOIN Clinica cl ON cl.ID = ate.ID_CLINICA INNER JOIN TipoAtendimento ta ON ta.ID_MEDICO = m.ID WHERE cl.enderecoClinica LIKE ? AND m.especializacao LIKE ? AND ta.formato LIKE ?";
         
         PreparedStatement ps  = banco.getPreparedStatement(query);
         
-        
+        if(estado.equals("Selecione") || especializacao.equals("Selecione") || formato.equals("Selecione")) {
+           JOptionPane.showMessageDialog(this,
+                    "Escolha as três opções!!!");
+        }
         
         try {
-            //verificacao
-            ps.setString(contador, '%' + estado);
-            ps.setString(contador, especializacao);
-            ps.setString(contador, formato);
+            ps.setString(1, "%" + estado);
+            ps.setString(2, especializacao);
+            ps.setString(3, formato);
             
             ResultSet rs = ps.executeQuery();
             

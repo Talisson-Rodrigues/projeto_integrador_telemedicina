@@ -198,11 +198,11 @@ public class TelaInicio extends javax.swing.JDialog {
     private void botaoTelaCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoTelaCadastroActionPerformed
         String escolha = (String) jComboBox1.getSelectedItem();
 
-    if ("Médico".equals(escolha)) {
+    if (escolha.equals("Médico")) {
         // Abre a tela de cadastro para Médico
         TelaCadastroMedico cadastroMedico = new TelaCadastroMedico(null, true);
         cadastroMedico.setVisible(true);
-    } else if ("Paciente".equals(escolha)) {
+    } else if (escolha.equals("Paciente")) {
         // Abre a tela de cadastro para Paciente
         TelaCadastroPaciente cadastroPaciente = new TelaCadastroPaciente(null, true);
         cadastroPaciente.setVisible(true);
