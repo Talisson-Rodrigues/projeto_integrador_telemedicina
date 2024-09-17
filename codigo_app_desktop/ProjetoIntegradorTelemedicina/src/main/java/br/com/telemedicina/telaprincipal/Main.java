@@ -122,7 +122,7 @@ public class Main extends javax.swing.JFrame {
 
         carregaDadosMedico.setBackground(new java.awt.Color(0, 204, 0));
         carregaDadosMedico.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        carregaDadosMedico.setForeground(new java.awt.Color(255, 255, 255));
+        carregaDadosMedico.setForeground(new java.awt.Color(0, 0, 0));
         carregaDadosMedico.setText("Carregar Dados");
         carregaDadosMedico.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         carregaDadosMedico.addActionListener(new java.awt.event.ActionListener() {
@@ -133,7 +133,7 @@ public class Main extends javax.swing.JFrame {
 
         botaoExcluirMed.setBackground(new java.awt.Color(255, 0, 0));
         botaoExcluirMed.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        botaoExcluirMed.setForeground(new java.awt.Color(255, 255, 255));
+        botaoExcluirMed.setForeground(new java.awt.Color(0, 0, 0));
         botaoExcluirMed.setText("Excluir");
         botaoExcluirMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoExcluirMed.addActionListener(new java.awt.event.ActionListener() {
@@ -176,9 +176,9 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(statusLabel)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(carregaDadosMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoExcluirMed, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(62, Short.MAX_VALUE))
+                    .addComponent(carregaDadosMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoExcluirMed, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -192,10 +192,11 @@ public class Main extends javax.swing.JFrame {
         jPanel2.add(nomeMedLabel);
         nomeMedLabel.setBounds(19, 40, 240, 57);
 
-        botaoNovoExame.setBackground(new java.awt.Color(242, 242, 242));
+        botaoNovoExame.setBackground(new java.awt.Color(0, 153, 0));
         botaoNovoExame.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         botaoNovoExame.setForeground(new java.awt.Color(0, 0, 0));
-        botaoNovoExame.setText("Novo Exame");
+        botaoNovoExame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exame.png"))); // NOI18N
+        botaoNovoExame.setText("Exame");
         botaoNovoExame.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
         botaoNovoExame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,12 +204,13 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jPanel2.add(botaoNovoExame);
-        botaoNovoExame.setBounds(490, 110, 103, 40);
+        botaoNovoExame.setBounds(440, 100, 140, 50);
 
-        botaoNovaPrescricao.setBackground(new java.awt.Color(242, 242, 242));
+        botaoNovaPrescricao.setBackground(new java.awt.Color(0, 153, 0));
         botaoNovaPrescricao.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         botaoNovaPrescricao.setForeground(new java.awt.Color(0, 0, 0));
-        botaoNovaPrescricao.setText("Nova Prescrição");
+        botaoNovaPrescricao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/prescricao.png"))); // NOI18N
+        botaoNovaPrescricao.setText("Prescrição");
         botaoNovaPrescricao.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
         botaoNovaPrescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -216,7 +218,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jPanel2.add(botaoNovaPrescricao);
-        botaoNovaPrescricao.setBounds(610, 110, 129, 40);
+        botaoNovaPrescricao.setBounds(610, 100, 150, 50);
 
         jSplitPane1.setRightComponent(jPanel2);
 
