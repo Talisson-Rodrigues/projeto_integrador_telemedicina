@@ -75,7 +75,6 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 42)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Histórico de Consultas");
 
         jTable1.setBackground(new java.awt.Color(102, 102, 102));
@@ -102,7 +101,6 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
 
         botaoConsulta.setBackground(new java.awt.Color(255, 153, 0));
         botaoConsulta.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        botaoConsulta.setForeground(new java.awt.Color(255, 255, 255));
         botaoConsulta.setText("Consultar");
         botaoConsulta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoConsulta.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +114,6 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
 
         botaoExcluirMed.setBackground(new java.awt.Color(255, 0, 0));
         botaoExcluirMed.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        botaoExcluirMed.setForeground(new java.awt.Color(255, 255, 255));
         botaoExcluirMed.setText("Excluir");
         botaoExcluirMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoExcluirMed.addActionListener(new java.awt.event.ActionListener() {
