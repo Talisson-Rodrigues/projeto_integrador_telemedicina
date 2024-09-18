@@ -63,7 +63,7 @@ public class TelaInicio extends javax.swing.JDialog {
 
         botaoTelaLogin.setBackground(new java.awt.Color(0, 204, 0));
         botaoTelaLogin.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        botaoTelaLogin.setForeground(new java.awt.Color(255, 255, 255));
+        botaoTelaLogin.setForeground(new java.awt.Color(0, 0, 0));
         botaoTelaLogin.setText("ENTRAR");
         botaoTelaLogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoTelaLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +85,7 @@ public class TelaInicio extends javax.swing.JDialog {
 
         botaoTelaCadastro.setBackground(new java.awt.Color(51, 153, 255));
         botaoTelaCadastro.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        botaoTelaCadastro.setForeground(new java.awt.Color(255, 255, 255));
+        botaoTelaCadastro.setForeground(new java.awt.Color(0, 0, 0));
         botaoTelaCadastro.setText("CADASTRAR");
         botaoTelaCadastro.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoTelaCadastro.addActionListener(new java.awt.event.ActionListener() {

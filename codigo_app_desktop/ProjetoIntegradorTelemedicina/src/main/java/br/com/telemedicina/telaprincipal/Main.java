@@ -59,8 +59,8 @@ public class Main extends javax.swing.JFrame {
         botaoExcluirMed = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         nomeMedLabel = new javax.swing.JLabel();
-        botaoNovoExame = new javax.swing.JButton();
-        botaoNovaPrescricao = new javax.swing.JButton();
+        botaoExame = new javax.swing.JButton();
+        botaoPrescricao = new javax.swing.JButton();
         jSplitPane2 = new javax.swing.JSplitPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -71,7 +71,6 @@ public class Main extends javax.swing.JFrame {
         botaoExcluirPac = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         nomePacientLabel = new javax.swing.JLabel();
-        botaoAgendaConsulta = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         historicoConsulta = new javax.swing.JMenuItem();
@@ -91,8 +90,12 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        desktopPane.setAutoscrolls(true);
+        desktopPane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         jSplitPane1.setDividerLocation(350);
         jSplitPane1.setDividerSize(0);
+        jSplitPane1.setOneTouchExpandable(true);
 
         jPanel1.setBackground(new java.awt.Color(46, 169, 248));
 
@@ -121,9 +124,9 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableMedico);
 
-        carregaDadosMedico.setBackground(new java.awt.Color(0, 204, 0));
+        carregaDadosMedico.setBackground(new java.awt.Color(0, 153, 0));
         carregaDadosMedico.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        carregaDadosMedico.setForeground(new java.awt.Color(0, 0, 0));
+        carregaDadosMedico.setForeground(new java.awt.Color(255, 255, 255));
         carregaDadosMedico.setText("Carregar Dados");
         carregaDadosMedico.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         carregaDadosMedico.addActionListener(new java.awt.event.ActionListener() {
@@ -132,9 +135,9 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        botaoExcluirMed.setBackground(new java.awt.Color(255, 0, 0));
+        botaoExcluirMed.setBackground(new java.awt.Color(204, 0, 0));
         botaoExcluirMed.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        botaoExcluirMed.setForeground(new java.awt.Color(0, 0, 0));
+        botaoExcluirMed.setForeground(new java.awt.Color(255, 255, 255));
         botaoExcluirMed.setText("Excluir");
         botaoExcluirMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoExcluirMed.addActionListener(new java.awt.event.ActionListener() {
@@ -151,19 +154,19 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(statusLabel)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addGap(89, 89, 89))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(statusLabel)
-                        .addContainerGap(344, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(carregaDadosMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botaoExcluirMed, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botaoExcluirMed, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
@@ -179,7 +182,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(carregaDadosMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoExcluirMed, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -193,33 +196,21 @@ public class Main extends javax.swing.JFrame {
         jPanel2.add(nomeMedLabel);
         nomeMedLabel.setBounds(19, 40, 240, 57);
 
-        botaoNovoExame.setBackground(new java.awt.Color(0, 153, 0));
-        botaoNovoExame.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        botaoNovoExame.setForeground(new java.awt.Color(0, 0, 0));
-        botaoNovoExame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exame.png"))); // NOI18N
-        botaoNovoExame.setText("Exame");
-        botaoNovoExame.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
-        botaoNovoExame.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoNovoExameActionPerformed(evt);
-            }
-        });
-        jPanel2.add(botaoNovoExame);
-        botaoNovoExame.setBounds(440, 100, 140, 50);
+        botaoExame.setBackground(new java.awt.Color(0, 0, 153));
+        botaoExame.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        botaoExame.setForeground(new java.awt.Color(255, 255, 255));
+        botaoExame.setText("Exame");
+        botaoExame.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.add(botaoExame);
+        botaoExame.setBounds(430, 140, 130, 40);
 
-        botaoNovaPrescricao.setBackground(new java.awt.Color(0, 153, 0));
-        botaoNovaPrescricao.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        botaoNovaPrescricao.setForeground(new java.awt.Color(0, 0, 0));
-        botaoNovaPrescricao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/prescricao.png"))); // NOI18N
-        botaoNovaPrescricao.setText("Prescrição");
-        botaoNovaPrescricao.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
-        botaoNovaPrescricao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoNovaPrescricaoActionPerformed(evt);
-            }
-        });
-        jPanel2.add(botaoNovaPrescricao);
-        botaoNovaPrescricao.setBounds(610, 100, 150, 50);
+        botaoPrescricao.setBackground(new java.awt.Color(0, 102, 153));
+        botaoPrescricao.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        botaoPrescricao.setForeground(new java.awt.Color(255, 255, 255));
+        botaoPrescricao.setText("Prescrição");
+        botaoPrescricao.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.add(botaoPrescricao);
+        botaoPrescricao.setBounds(590, 140, 130, 40);
 
         jSplitPane1.setRightComponent(jPanel2);
 
@@ -282,6 +273,10 @@ public class Main extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(statusLabelPaciente)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
@@ -291,15 +286,10 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(carregaDadosPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botaoExcluirPac, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(statusLabelPaciente)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,11 +300,11 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(statusLabelPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(45, 45, 45)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(carregaDadosPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoExcluirPac, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         jSplitPane2.setLeftComponent(jPanel3);
@@ -325,40 +315,21 @@ public class Main extends javax.swing.JFrame {
         nomePacientLabel.setForeground(new java.awt.Color(0, 0, 0));
         nomePacientLabel.setText("Olá {Paciente}");
 
-        botaoAgendaConsulta.setBackground(new java.awt.Color(0, 153, 0));
-        botaoAgendaConsulta.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        botaoAgendaConsulta.setForeground(new java.awt.Color(0, 0, 0));
-        botaoAgendaConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/consulta.png"))); // NOI18N
-        botaoAgendaConsulta.setToolTipText("Agendar Nova Consulta");
-        botaoAgendaConsulta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botaoAgendaConsulta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoAgendaConsultaActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(524, 524, 524)
-                        .addComponent(botaoAgendaConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(nomePacientLabel)))
-                .addContainerGap(828, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addComponent(nomePacientLabel)
+                .addContainerGap(547, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(nomePacientLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botaoAgendaConsulta)
-                .addContainerGap(594, Short.MAX_VALUE))
+                .addContainerGap(626, Short.MAX_VALUE))
         );
 
         jSplitPane2.setRightComponent(jPanel4);
@@ -366,7 +337,7 @@ public class Main extends javax.swing.JFrame {
         jTabbedPane1.addTab("Paciente", jSplitPane2);
 
         desktopPane.add(jTabbedPane1);
-        jTabbedPane1.setBounds(0, -40, 1840, 790);
+        jTabbedPane1.setBounds(0, -37, 1175, 760);
 
         jMenu3.setText("Consultas");
         jMenu3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -443,21 +414,18 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1218, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1175, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 746, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 723, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void botaoNovoExameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovoExameActionPerformed
-        AgendaExame exame = new AgendaExame();
-        this.desktopPane.add(exame);
-        exame.setVisible(true);
-    }//GEN-LAST:event_botaoNovoExameActionPerformed
 
     private void historicoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoConsultaActionPerformed
         HistoricoConsulta histoConsulta = new HistoricoConsulta();
@@ -706,18 +674,6 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botaoExcluirPacActionPerformed
 
-    private void botaoNovaPrescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovaPrescricaoActionPerformed
-        NovaPrescricao prescricao = new NovaPrescricao();
-        this.desktopPane.add(prescricao);
-        prescricao.setVisible(true);
-    }//GEN-LAST:event_botaoNovaPrescricaoActionPerformed
-
-    private void botaoAgendaConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAgendaConsultaActionPerformed
-        AgendaConsulta consulta = new AgendaConsulta();
-        this.desktopPane.add(consulta);
-        consulta.setVisible(true);
-    }//GEN-LAST:event_botaoAgendaConsultaActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -756,11 +712,10 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem agendaExame;
-    private javax.swing.JButton botaoAgendaConsulta;
+    private javax.swing.JButton botaoExame;
     private javax.swing.JButton botaoExcluirMed;
     private javax.swing.JButton botaoExcluirPac;
-    private javax.swing.JButton botaoNovaPrescricao;
-    private javax.swing.JButton botaoNovoExame;
+    private javax.swing.JButton botaoPrescricao;
     private javax.swing.JButton carregaDadosMedico;
     private javax.swing.JButton carregaDadosPaciente;
     private javax.swing.JDesktopPane desktopPane;
