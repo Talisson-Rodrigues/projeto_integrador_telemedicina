@@ -66,10 +66,9 @@ public class Main extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTablePaciente = new javax.swing.JTable();
         statusLabelPaciente = new javax.swing.JLabel();
-        carregaDadosPaciente = new javax.swing.JButton();
         botaoExcluirPac = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        nomePacientLabel = new javax.swing.JLabel();
+        nomePacienteLabel = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         historicoConsulta = new javax.swing.JMenuItem();
@@ -178,9 +177,9 @@ public class Main extends javax.swing.JFrame {
 
         nomeMedLabel.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
         nomeMedLabel.setForeground(new java.awt.Color(0, 0, 0));
-        nomeMedLabel.setText("Olá {Médico}");
+        nomeMedLabel.setText("as");
         jPanel2.add(nomeMedLabel);
-        nomeMedLabel.setBounds(19, 40, 240, 57);
+        nomeMedLabel.setBounds(9, 40, 810, 57);
 
         botaoExame.setBackground(new java.awt.Color(0, 0, 153));
         botaoExame.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
@@ -232,17 +231,6 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTablePaciente);
 
-        carregaDadosPaciente.setBackground(new java.awt.Color(0, 204, 0));
-        carregaDadosPaciente.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        carregaDadosPaciente.setForeground(new java.awt.Color(255, 255, 255));
-        carregaDadosPaciente.setText("Carregar Dados");
-        carregaDadosPaciente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        carregaDadosPaciente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                carregaDadosPacienteActionPerformed(evt);
-            }
-        });
-
         botaoExcluirPac.setBackground(new java.awt.Color(255, 0, 0));
         botaoExcluirPac.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         botaoExcluirPac.setForeground(new java.awt.Color(255, 255, 255));
@@ -272,8 +260,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(carregaDadosPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(botaoExcluirPac, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -286,36 +273,33 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(statusLabelPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(carregaDadosPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoExcluirPac, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addComponent(botaoExcluirPac, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63))
         );
 
         jSplitPane2.setLeftComponent(jPanel3);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        nomePacientLabel.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
-        nomePacientLabel.setForeground(new java.awt.Color(0, 0, 0));
-        nomePacientLabel.setText("Olá {Paciente}");
+        nomePacienteLabel.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
+        nomePacienteLabel.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(nomePacientLabel)
-                .addContainerGap(547, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(nomePacienteLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 813, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(nomePacientLabel)
-                .addContainerGap(626, Short.MAX_VALUE))
+                .addComponent(nomePacienteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(602, Short.MAX_VALUE))
         );
 
         jSplitPane2.setRightComponent(jPanel4);
@@ -431,12 +415,6 @@ public class Main extends javax.swing.JFrame {
         consulta.setVisible(true);
     }//GEN-LAST:event_novaConsultaActionPerformed
 
-    private void carregaDadosPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carregaDadosPacienteActionPerformed
-
-
-       
-    }//GEN-LAST:event_carregaDadosPacienteActionPerformed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
          //ler o arquivo que contem as informacao de quem esta logado no sistema
        try (BufferedReader br = new BufferedReader(new FileReader("sessao"))) {
@@ -451,12 +429,14 @@ public class Main extends javax.swing.JFrame {
            BD banco = new BD();
            banco.conectaBD();
            
+           //Aba Médico
            if(dados[1].equals("Médico")) {
                 //ativar a aba correspondente
                 this.jTabbedPane1.removeTabAt(1);
                  
                 //Inicia a tabela junto ao sistema
-                String query = "SELECT nome, cpf, dataNascimento FROM Paciente WHERE ID <= 10";
+                String query  = "SELECT nome, cpf, dataNascimento FROM Paciente WHERE ID <= 10";
+                String query2 = "SELECT nomeMed FROM Medico WHERE emailMed LIKE ?";
                 PreparedStatement ps = banco.getPreparedStatement(query);
 
                 try {
@@ -469,13 +449,28 @@ public class Main extends javax.swing.JFrame {
 
 
                     while (rs.next()) {
-                       String[] dado = { rs.getString("nome"),
+                       String[] dadosMedico = { rs.getString("nome"),
                                           rs.getString("cpf"),
                                           rs.getDate("dataNascimento").toString()}; 
 
-                       model.addRow(dado);
+                       model.addRow(dadosMedico);
                     }
                     this.jTableMedico.setModel(model);
+                    
+                    ps = banco.getPreparedStatement(query2);
+                    
+                    ps.setString(1, dados[0]);
+                    
+                    rs = ps.executeQuery();
+                    
+                    String dadosNomeMed = "";
+                    
+                    while (rs.next()) {
+                        dadosNomeMed = rs.getString("nomeMed");
+                    }
+                    
+                    this.nomeMedLabel.setText("Olá, " + dadosNomeMed + " Seja Muito Bem-Vindo!!");
+                    
                     rs.close();
                     ps.close();
                     banco.encerrarConexao();
@@ -485,7 +480,7 @@ public class Main extends javax.swing.JFrame {
                 }
                 
                 
-                
+             //Aba Paciente
            } else if (dados[1].equals("Paciente")) {
                //ativar a aba correspondente
                 this.jTabbedPane1.removeTabAt(0);
@@ -495,7 +490,8 @@ public class Main extends javax.swing.JFrame {
                 this.prescricoesMenu.remove(novaPrescricao);
                 
                 //Inicia a tabela junto ao sistema
-                 String query = "SELECT m.nomeMed, cs.dataConsulta, cs.formatoConsulta FROM Medico m INNER JOIN Consulta cs ON m.ID = cs.ID_MEDICO WHERE m.enderecoMed LIKE '%DF'";
+                String query = "SELECT m.nomeMed, cs.dataConsulta, cs.formatoConsulta FROM Medico m INNER JOIN Consulta cs ON m.ID = cs.ID_MEDICO WHERE m.enderecoMed LIKE '%DF'";
+                String query2 = "SELECT nome FROM Paciente WHERE email LIKE ?";
                 PreparedStatement ps = banco.getPreparedStatement(query);
         
                 try {
@@ -508,13 +504,26 @@ public class Main extends javax.swing.JFrame {
 
 
                     while (rs.next()) {
-                       String[] dado = { rs.getString("m.nomeMed"),
+                       String[] dadosPaciente = { rs.getString("m.nomeMed"),
                                           rs.getDate("cs.dataConsulta").toString(),
                                           rs.getString("cs.formatoConsulta")}; 
 
-                       model.addRow(dados);
+                       model.addRow(dadosPaciente);
                     }
                     this.jTablePaciente.setModel(model);
+                    
+                    ps = banco.getPreparedStatement(query2);
+                    
+                    ps.setString(1, dados[0]);
+                    
+                    rs = ps.executeQuery();
+                    
+                    String dadosNomePac = "";
+                    while (rs.next()) {
+                        dadosNomePac = rs.getString("nome");
+                        
+                    }
+                    this.nomePacienteLabel.setText("Olá, " + dadosNomePac + " Seja Muito Bem-Vindo!!");
                     rs.close();
                     ps.close();
                     banco.encerrarConexao();
@@ -689,7 +698,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton botaoExcluirMed;
     private javax.swing.JButton botaoExcluirPac;
     private javax.swing.JButton botaoPrescricao;
-    private javax.swing.JButton carregaDadosPaciente;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu examesMenu;
     private javax.swing.JMenuItem historicoConsulta;
@@ -711,7 +719,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable jTablePaciente;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JLabel nomeMedLabel;
-    private javax.swing.JLabel nomePacientLabel;
+    private javax.swing.JLabel nomePacienteLabel;
     private javax.swing.JMenuItem novaConsulta;
     private javax.swing.JMenuItem novaPrescricao;
     private javax.swing.JMenu prescricoesMenu;
