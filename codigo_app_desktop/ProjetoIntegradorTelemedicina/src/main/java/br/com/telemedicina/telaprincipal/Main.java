@@ -55,7 +55,6 @@ public class Main extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableMedico = new javax.swing.JTable();
         statusLabel = new javax.swing.JLabel();
-        carregaDadosMedico = new javax.swing.JButton();
         botaoExcluirMed = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         nomeMedLabel = new javax.swing.JLabel();
@@ -124,17 +123,6 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableMedico);
 
-        carregaDadosMedico.setBackground(new java.awt.Color(0, 153, 0));
-        carregaDadosMedico.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        carregaDadosMedico.setForeground(new java.awt.Color(255, 255, 255));
-        carregaDadosMedico.setText("Carregar Dados");
-        carregaDadosMedico.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        carregaDadosMedico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                carregaDadosMedicoActionPerformed(evt);
-            }
-        });
-
         botaoExcluirMed.setBackground(new java.awt.Color(204, 0, 0));
         botaoExcluirMed.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         botaoExcluirMed.setForeground(new java.awt.Color(255, 255, 255));
@@ -160,14 +148,14 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(statusLabel)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(89, 89, 89))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(carregaDadosMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botaoExcluirMed, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGap(0, 85, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(89, 89, 89))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(botaoExcluirMed, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,9 +167,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusLabel)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(carregaDadosMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoExcluirMed, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(botaoExcluirMed, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -445,83 +431,10 @@ public class Main extends javax.swing.JFrame {
         consulta.setVisible(true);
     }//GEN-LAST:event_novaConsultaActionPerformed
 
-    private void carregaDadosMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carregaDadosMedicoActionPerformed
-        BD banco = new BD();
-        boolean resultado = banco.conectaBD();
-        if (resultado == true) {
-            this.statusLabel.setText("Status: Conectado ao Banco de Dados!!");
-        } else {
-            this.statusLabel.setText("Status: Não conectado ao Banco de dados!!");
-            return; // Se não conectar ao banco, não faz sentido continuar
-        }
-
-        String query = "SELECT nome, cpf, dataNascimento FROM Paciente WHERE ID <= 10";
-        PreparedStatement ps = banco.getPreparedStatement(query);
-        
-        try {
-            ResultSet rs = ps.executeQuery();
-            
-            DefaultTableModel model = (DefaultTableModel) this.jTableMedico.getModel();
-            if (model.getRowCount() > 0) {
-                model.setNumRows(0);
-            }
-
-            
-            while (rs.next()) {
-               String[] dados = { rs.getString("nome"),
-                                  rs.getString("cpf"),
-                                  rs.getDate("dataNascimento").toString()}; 
-               
-               model.addRow(dados);
-            }
-            this.jTableMedico.setModel(model);
-            rs.close();
-            ps.close();
-            banco.encerrarConexao();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, 
-            "Não foi possível realizar a consulta no BD. Erro: " + ex.getMessage());
-        }
-    
-    }//GEN-LAST:event_carregaDadosMedicoActionPerformed
-
     private void carregaDadosPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carregaDadosPacienteActionPerformed
-        BD banco = new BD();
-        boolean resultado = banco.conectaBD();
-        if (resultado == true) {
-            this.statusLabelPaciente.setText("Status: Conectado ao Banco de Dados!!");
-        } else {
-            this.statusLabelPaciente.setText("Status: Não conectado ao Banco de dados!!");
-            return; // Se não conectar ao banco, não faz sentido continuar
-        }
 
-        String query = "SELECT m.nomeMed, cs.dataConsulta, cs.formatoConsulta FROM Medico m INNER JOIN Consulta cs ON m.ID = cs.ID_MEDICO WHERE m.enderecoMed LIKE '%DF'";
-        PreparedStatement ps = banco.getPreparedStatement(query);
-        
-        try {
-            ResultSet rs = ps.executeQuery();
-            
-            DefaultTableModel model = (DefaultTableModel) this.jTablePaciente.getModel();
-            if (model.getRowCount() > 0) {
-                model.setNumRows(0);
-            }
 
-            
-            while (rs.next()) {
-               String[] dados = { rs.getString("m.nomeMed"),
-                                  rs.getDate("cs.dataConsulta").toString(),
-                                  rs.getString("cs.formatoConsulta")}; 
-               
-               model.addRow(dados);
-            }
-            this.jTablePaciente.setModel(model);
-            rs.close();
-            ps.close();
-            banco.encerrarConexao();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, 
-            "Não foi possível realizar a consulta no BD. Erro: " + ex.getMessage());
-        }
+       
     }//GEN-LAST:event_carregaDadosPacienteActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -541,6 +454,37 @@ public class Main extends javax.swing.JFrame {
            if(dados[1].equals("Médico")) {
                 //ativar a aba correspondente
                 this.jTabbedPane1.removeTabAt(1);
+                 
+                //Inicia a tabela junto ao sistema
+                String query = "SELECT nome, cpf, dataNascimento FROM Paciente WHERE ID <= 10";
+                PreparedStatement ps = banco.getPreparedStatement(query);
+
+                try {
+                    ResultSet rs = ps.executeQuery();
+
+                    DefaultTableModel model = (DefaultTableModel) this.jTableMedico.getModel();
+                    if (model.getRowCount() > 0) {
+                        model.setNumRows(0);
+                    }
+
+
+                    while (rs.next()) {
+                       String[] dado = { rs.getString("nome"),
+                                          rs.getString("cpf"),
+                                          rs.getDate("dataNascimento").toString()}; 
+
+                       model.addRow(dado);
+                    }
+                    this.jTableMedico.setModel(model);
+                    rs.close();
+                    ps.close();
+                    banco.encerrarConexao();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, 
+                    "Não foi possível realizar a consulta no BD. Erro: " + ex.getMessage());
+                }
+                
+                
                 
            } else if (dados[1].equals("Paciente")) {
                //ativar a aba correspondente
@@ -549,7 +493,36 @@ public class Main extends javax.swing.JFrame {
                 //Remove as opções de menu para Agendar exame e Nova prescrição
                 this.examesMenu.remove(agendaExame);
                 this.prescricoesMenu.remove(novaPrescricao);
-           }        
+                
+                //Inicia a tabela junto ao sistema
+                 String query = "SELECT m.nomeMed, cs.dataConsulta, cs.formatoConsulta FROM Medico m INNER JOIN Consulta cs ON m.ID = cs.ID_MEDICO WHERE m.enderecoMed LIKE '%DF'";
+                PreparedStatement ps = banco.getPreparedStatement(query);
+        
+                try {
+                    ResultSet rs = ps.executeQuery();
+
+                    DefaultTableModel model = (DefaultTableModel) this.jTablePaciente.getModel();
+                    if (model.getRowCount() > 0) {
+                        model.setNumRows(0);
+                    }
+
+
+                    while (rs.next()) {
+                       String[] dado = { rs.getString("m.nomeMed"),
+                                          rs.getDate("cs.dataConsulta").toString(),
+                                          rs.getString("cs.formatoConsulta")}; 
+
+                       model.addRow(dados);
+                    }
+                    this.jTablePaciente.setModel(model);
+                    rs.close();
+                    ps.close();
+                    banco.encerrarConexao();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, 
+                    "Não foi possível realizar a consulta no BD. Erro: " + ex.getMessage());
+                }
+                   }        
            
        } catch (IOException e) {
            JOptionPane.showMessageDialog(this,
@@ -716,7 +689,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton botaoExcluirMed;
     private javax.swing.JButton botaoExcluirPac;
     private javax.swing.JButton botaoPrescricao;
-    private javax.swing.JButton carregaDadosMedico;
     private javax.swing.JButton carregaDadosPaciente;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu examesMenu;
