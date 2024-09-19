@@ -4,6 +4,7 @@
  */
 package br.com.telemedicina.subtelas;
 
+import br.com.telemedicina.bd.BD;
 import java.sql.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -322,26 +323,7 @@ public class pagamento extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        BD banco = new BD();
-        boolean resultado = banco.conectaBD();
         
-        String query = "SELECT ID_MEDICO, formato, valorConsulta FROM TipoAtendimento";
-        PreparedStatement ps = banco.getPreparedStatement(query);
-        
-        Random rand = new Random();
-        int rand_int1 = rand.nextInt(1000);
-        
-        try {
-            ResultSet rs = ps.executeQuery();
-            
-            nfLabel = getText();
-            
-            nfLabel = setText();
-            codigoLabel = setText(rand_int1);
-            
-        } catch(SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Não foi póssivel adquerir os dados. Erro: " + ex.getMessage());
-        }
     }//GEN-LAST:event_formWindowOpened
 
     /**
