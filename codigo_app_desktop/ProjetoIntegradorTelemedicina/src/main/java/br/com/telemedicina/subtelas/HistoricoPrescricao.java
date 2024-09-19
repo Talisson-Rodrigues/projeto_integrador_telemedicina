@@ -45,6 +45,7 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
         botaoExcluirMed = new javax.swing.JButton();
 
         setClosable(true);
+        setForeground(new java.awt.Color(0, 0, 0));
 
         jSplitPane1.setDividerLocation(350);
         jSplitPane1.setDividerSize(0);
@@ -104,7 +105,7 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
 
         botaoConsulta.setBackground(new java.awt.Color(255, 153, 0));
         botaoConsulta.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        botaoConsulta.setForeground(new java.awt.Color(255, 255, 255));
+        botaoConsulta.setForeground(new java.awt.Color(0, 0, 0));
         botaoConsulta.setText("Consultar");
         botaoConsulta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoConsulta.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +116,7 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
 
         botaoExcluirMed.setBackground(new java.awt.Color(255, 0, 0));
         botaoExcluirMed.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        botaoExcluirMed.setForeground(new java.awt.Color(255, 255, 255));
+        botaoExcluirMed.setForeground(new java.awt.Color(0, 0, 0));
         botaoExcluirMed.setText("Excluir");
         botaoExcluirMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoExcluirMed.addActionListener(new java.awt.event.ActionListener() {

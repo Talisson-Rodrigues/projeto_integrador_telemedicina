@@ -105,9 +105,11 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 42)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Agendar Consulta");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nome Completo: ");
 
         campoNome.setBackground(new java.awt.Color(102, 102, 102));
@@ -116,6 +118,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         campoNome.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Data de Nascimento: ");
 
         campoDataNascimento.setBackground(new java.awt.Color(102, 102, 102));
@@ -129,6 +132,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         campoDataNascimento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Gênero: ");
 
         selecionaGenero.setBackground(new java.awt.Color(102, 102, 102));
@@ -138,6 +142,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         selecionaGenero.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Número de Telefone: ");
 
         campoTelefone.setBackground(new java.awt.Color(102, 102, 102));
@@ -151,6 +156,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         campoTelefone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("RG: ");
 
         campoRg.setBackground(new java.awt.Color(102, 102, 102));
@@ -159,6 +165,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         campoRg.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("CPF: ");
 
         campoCpf.setBackground(new java.awt.Color(102, 102, 102));
@@ -172,6 +179,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         campoCpf.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Data da Consulta: ");
 
         campoDataConsulta.setBackground(new java.awt.Color(102, 102, 102));
@@ -312,6 +320,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
 
         botaoConsultaBanco.setBackground(new java.awt.Color(255, 153, 0));
         botaoConsultaBanco.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        botaoConsultaBanco.setForeground(new java.awt.Color(0, 0, 0));
         botaoConsultaBanco.setText("Consultar");
         botaoConsultaBanco.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoConsultaBanco.addActionListener(new java.awt.event.ActionListener() {
@@ -322,7 +331,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
 
         botaoAgendarConsulta.setBackground(new java.awt.Color(0, 153, 0));
         botaoAgendarConsulta.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        botaoAgendarConsulta.setForeground(new java.awt.Color(255, 255, 255));
+        botaoAgendarConsulta.setForeground(new java.awt.Color(0, 0, 0));
         botaoAgendarConsulta.setText("Agendar");
         botaoAgendarConsulta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoAgendarConsulta.addActionListener(new java.awt.event.ActionListener() {
@@ -346,6 +355,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Selecione seu Estado, a Especialização e o formato:  ");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -369,6 +379,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
 
         botaoExcluir.setBackground(new java.awt.Color(255, 0, 0));
         botaoExcluir.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        botaoExcluir.setForeground(new java.awt.Color(0, 0, 0));
         botaoExcluir.setText("Excluir");
         botaoExcluir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoExcluir.addActionListener(new java.awt.event.ActionListener() {

@@ -37,7 +37,7 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaHistoricoExames = new javax.swing.JTable();
         botaoConsulta = new javax.swing.JButton();
         statusLabel = new javax.swing.JLabel();
         botaoExcluirMed = new javax.swing.JButton();
@@ -53,11 +53,12 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 42)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Histórico de Exames");
 
-        jTable1.setBackground(new java.awt.Color(102, 102, 102));
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaHistoricoExames.setBackground(new java.awt.Color(102, 102, 102));
+        tabelaHistoricoExames.setForeground(new java.awt.Color(255, 255, 255));
+        tabelaHistoricoExames.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -73,11 +74,11 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelaHistoricoExames);
 
         botaoConsulta.setBackground(new java.awt.Color(255, 102, 0));
         botaoConsulta.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        botaoConsulta.setForeground(new java.awt.Color(255, 255, 255));
+        botaoConsulta.setForeground(new java.awt.Color(0, 0, 0));
         botaoConsulta.setText("Consultar");
         botaoConsulta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoConsulta.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +92,7 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
 
         botaoExcluirMed.setBackground(new java.awt.Color(204, 0, 0));
         botaoExcluirMed.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        botaoExcluirMed.setForeground(new java.awt.Color(255, 255, 255));
+        botaoExcluirMed.setForeground(new java.awt.Color(0, 0, 0));
         botaoExcluirMed.setText("Excluir");
         botaoExcluirMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoExcluirMed.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +103,7 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
 
         BotaoEditar.setBackground(new java.awt.Color(0, 0, 255));
         BotaoEditar.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        BotaoEditar.setForeground(new java.awt.Color(255, 255, 255));
+        BotaoEditar.setForeground(new java.awt.Color(0, 0, 0));
         BotaoEditar.setText("Editar");
         BotaoEditar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         BotaoEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -206,7 +207,7 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
         try {
             ResultSet rs = ps.executeQuery();
 
-            DefaultTableModel model = (DefaultTableModel) this.jTable1.getModel();
+            DefaultTableModel model = (DefaultTableModel) this.tabelaHistoricoExames.getModel();
             if (model.getRowCount() > 0) {
                 model.setNumRows(0);
             }
@@ -222,7 +223,7 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
                 model.addRow(dados);
             }
 
-            this.jTable1.setModel(model);
+            this.tabelaHistoricoExames.setModel(model);
             rs.close();
             ps.close();
             banco.encerrarConexao();
@@ -233,7 +234,7 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botaoConsultaActionPerformed
 
     private void botaoExcluirMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirMedActionPerformed
-        int linhaSelecionada = this.jTable1.getSelectedRow();
+        int linhaSelecionada = this.tabelaHistoricoExames.getSelectedRow();
         if (linhaSelecionada == -1) {
             JOptionPane.showMessageDialog(this,
                 "Favor selecione um histórico para excluir!");
@@ -241,7 +242,7 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
         }
 
         String idPaciente =
-        (String) this.jTable1.getValueAt(linhaSelecionada, 0);
+        (String) this.tabelaHistoricoExames.getValueAt(linhaSelecionada, 0);
 
         int opcao = JOptionPane.showConfirmDialog(this,
             "Deseja realmente excluir o Exame " + idPaciente + "?",
@@ -261,73 +262,43 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
 
                 if (linhaApagada == false) {
                     //Remove a linha da jTable
-                    DefaultTableModel model = (DefaultTableModel) this.jTable1.getModel();
+                    DefaultTableModel model = (DefaultTableModel) this.tabelaHistoricoExames.getModel();
                     model.removeRow(linhaSelecionada);
                     JOptionPane.showMessageDialog(this,
                         "Histórico excluido com sucesso!!");
-
+                    
                 } else {
                     JOptionPane.showMessageDialog(this,
-                        "Nenhum histórico encontrado para excluir.");
+                        "Nenhum histórico encontrado para excluir.");   
+                    
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this,
                     "Erro ao excluir o histórico: " + ex.getMessage());
                 ex.printStackTrace();
+                
             } finally {
                 return;
+                
             }
         }
     }//GEN-LAST:event_botaoExcluirMedActionPerformed
 
     private void BotaoEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoEditarActionPerformed
-        int linhaSelecionada = this.jTable1.getSelectedRow();
-        if (linhaSelecionada == -1) {
-            JOptionPane.showMessageDialog(this,
-                "Favor selecione um histórico para editar!");
-            return;
-        }
+        BD banco = new BD();
+        banco.conectaBD();
         
-        String idPaciente =
-        (String) this.jTable1.getValueAt(linhaSelecionada, 0);
-
-        int opcao = JOptionPane.showConfirmDialog(this,
-            "Deseja realmente editar o Exame " + idPaciente + "?",
-            "Editar", JOptionPane.OK_CANCEL_OPTION);
-
-        if (opcao == 0) {
-            BD banco = new BD();
-            banco.conectaBD();
-
-            String query3 = "UPDATE Exame set nomeClinica";
-            String query4 = "DELETE FROM Exame WHERE diagnosticoExame = ?";
-
-            try (PreparedStatement ps =banco.getPreparedStatement(query4)){
-                ps.setString(1, query3);
-                ps.setString(1, query4);
-                boolean linhaApagada = ps.execute();
-
-                if (linhaApagada == false) {
-                    //Remove a linha da jTable
-                    DefaultTableModel model = (DefaultTableModel) this.jTable1.getModel();
-                    model.removeRow(linhaSelecionada);
-                    JOptionPane.showMessageDialog(this,
-                        "Histórico editado com sucesso!!");
-
-                } else {
-                    JOptionPane.showMessageDialog(this,
-                        "Nenhum histórico encontrado para editar.");
-                }
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this,
-                    "Erro ao editar o histórico: " + ex.getMessage());
-                ex.printStackTrace();
-            } finally {
-                return;
-            }
+        String query = "";
+        PreparedStatement ps =banco.getPreparedStatement(query);
+        
+        try {
+            ResultSet rs = ps.executeQuery();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this,
+                    "Não foi possível editar o registro!! Error: " + ex.getMessage());
         }
     }//GEN-LAST:event_BotaoEditarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoEditar;
@@ -339,7 +310,7 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel statusLabel;
+    private javax.swing.JTable tabelaHistoricoExames;
     // End of variables declaration//GEN-END:variables
 }

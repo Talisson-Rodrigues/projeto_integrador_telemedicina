@@ -59,6 +59,7 @@ public class AgendaExame extends javax.swing.JInternalFrame {
         escolhaEstado = new javax.swing.JComboBox<>();
 
         setClosable(true);
+        setForeground(new java.awt.Color(0, 0, 0));
 
         jSplitPane1.setDividerLocation(450);
         jSplitPane1.setDividerSize(0);
@@ -66,7 +67,7 @@ public class AgendaExame extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(46, 169, 248));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 42)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Agendar Exame");
 
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
@@ -75,6 +76,7 @@ public class AgendaExame extends javax.swing.JInternalFrame {
         imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/4430167.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nome do Paciente: ");
 
         campoNomePaciente.setBackground(new java.awt.Color(102, 102, 102));
@@ -83,6 +85,7 @@ public class AgendaExame extends javax.swing.JInternalFrame {
         campoNomePaciente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Descrição do Exame: ");
 
         jScrollPane1.setBackground(new java.awt.Color(102, 102, 102));
@@ -98,7 +101,7 @@ public class AgendaExame extends javax.swing.JInternalFrame {
 
         botaoAgendar.setBackground(new java.awt.Color(0, 153, 0));
         botaoAgendar.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        botaoAgendar.setForeground(new java.awt.Color(255, 255, 255));
+        botaoAgendar.setForeground(new java.awt.Color(0, 0, 0));
         botaoAgendar.setText("Agendar");
         botaoAgendar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoAgendar.addActionListener(new java.awt.event.ActionListener() {
@@ -108,6 +111,7 @@ public class AgendaExame extends javax.swing.JInternalFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Data do Exame: ");
 
         campoDataExame.setBackground(new java.awt.Color(102, 102, 102));
@@ -175,7 +179,7 @@ public class AgendaExame extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoDataExame, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botaoAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botaoAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
 
@@ -185,6 +189,7 @@ public class AgendaExame extends javax.swing.JInternalFrame {
 
         botaoClinicas.setBackground(new java.awt.Color(255, 153, 51));
         botaoClinicas.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        botaoClinicas.setForeground(new java.awt.Color(0, 0, 0));
         botaoClinicas.setText("Ver clínicas");
         botaoClinicas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoClinicas.addActionListener(new java.awt.event.ActionListener() {
@@ -221,6 +226,7 @@ public class AgendaExame extends javax.swing.JInternalFrame {
 
         botaoExcluir.setBackground(new java.awt.Color(255, 0, 0));
         botaoExcluir.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        botaoExcluir.setForeground(new java.awt.Color(0, 0, 0));
         botaoExcluir.setText("Excluir");
         botaoExcluir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -230,6 +236,7 @@ public class AgendaExame extends javax.swing.JInternalFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Escolha o estado: ");
 
         escolhaEstado.setBackground(new java.awt.Color(102, 102, 102));
@@ -269,10 +276,10 @@ public class AgendaExame extends javax.swing.JInternalFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(escolhaEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoClinicas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botaoClinicas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
 

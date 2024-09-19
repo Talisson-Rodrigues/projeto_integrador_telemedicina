@@ -456,7 +456,9 @@ public class Main extends javax.swing.JFrame {
                        model.addRow(dadosMedico);
                     }
                     this.jTableMedico.setModel(model);
+                    //Termina carregamento da tabela
                     
+                    //Coloca o nome no Jlabel
                     ps = banco.getPreparedStatement(query2);
                     
                     ps.setString(1, dados[0]);

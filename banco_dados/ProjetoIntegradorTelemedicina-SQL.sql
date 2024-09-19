@@ -91,6 +91,7 @@ CREATE TABLE Atende
 
 CREATE TABLE TipoAtendimento
 (
+ ID INT PRIMARY KEY AUTO_INCREMENT,
  ID_MEDICO INT,
  formato VARCHAR(15),
  valorConsulta FLOAT
