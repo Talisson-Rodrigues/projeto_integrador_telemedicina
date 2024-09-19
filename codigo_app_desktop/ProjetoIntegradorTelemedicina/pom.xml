@@ -19,6 +19,12 @@
             <artifactId>AbsoluteLayout</artifactId>
             <version>RELEASE190</version>
         </dependency>
+        
+        <dependency>
+            <groupId>io.nayuki</groupId>
+            <artifactId>qrcodegen</artifactId>
+            <version>1.8.0</version>
+        </dependency>
     </dependencies>
     
     <properties>
@@ -36,5 +42,41 @@
             <layout>default</layout>
         </repository>
     </repositories>
+    
+    <name>QR Code generator library</name>
+	<description>High quality QR Code generator library</description>
+	<url>https://www.nayuki.io/page/qr-code-generator-library</url>
+	<inceptionYear>2016</inceptionYear>
+	<licenses>
+		<license>
+			<name>The MIT License</name>
+			<url>https://opensource.org/licenses/MIT</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<name>Project Nayuki</name>
+			<email>me@nayuki.io</email>
+			<url>https://www.nayuki.io/</url>
+		</developer>
+	</developers>
+	
+	<scm>
+		<connection>scm:git:git://github.com/nayuki/QR-Code-generator.git</connection>
+		<developerConnection>scm:git:ssh://github.com:nayuki/QR-Code-generator.git</developerConnection>
+		<url>https://github.com/nayuki/QR-Code-generator/tree/master/java</url>
+	  <tag>qrcodegen-1.8.0</tag>
+  </scm>
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
     
 </project>
