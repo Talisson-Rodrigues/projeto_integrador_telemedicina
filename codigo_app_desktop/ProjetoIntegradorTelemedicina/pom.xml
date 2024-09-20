@@ -43,7 +43,7 @@
         </repository>
     </repositories>
     
-    <name>QR Code generator library</name>
+    <name>ProjetoIntegradorTelemedicina</name>
 	<description>High quality QR Code generator library</description>
 	<url>https://www.nayuki.io/page/qr-code-generator-library</url>
 	<inceptionYear>2016</inceptionYear>

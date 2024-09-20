@@ -62,7 +62,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaConsulta = new javax.swing.JTable();
         botaoConsultaBanco = new javax.swing.JButton();
         botaoAgendarConsulta = new javax.swing.JButton();
         erroLabel = new javax.swing.JLabel();
@@ -297,10 +297,10 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setBackground(new java.awt.Color(102, 102, 102));
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaConsulta.setBackground(new java.awt.Color(102, 102, 102));
+        tabelaConsulta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tabelaConsulta.setForeground(new java.awt.Color(255, 255, 255));
+        tabelaConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -316,7 +316,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelaConsulta);
 
         botaoConsultaBanco.setBackground(new java.awt.Color(255, 153, 0));
         botaoConsultaBanco.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
@@ -478,9 +478,11 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
             String rg             = this.campoRg.getText();
             String cpf            = this.campoCpf.getText();
             String dataConsulta   = this.campoDataConsulta.getText();
+            int linhaSelecionada  = this.tabelaConsulta.getSelectedRow();
+            String Consulta       = (String) this.tabelaConsulta.getValueAt(linhaSelecionada, 5);
             
             bw.write(nomePaciente + ", " + dataNascimento + ", " + genero + ", " +
-                     telefone + ", " + rg + ", " + cpf + ", " + dataConsulta);
+                     telefone + ", " + rg + ", " + cpf + ", " + dataConsulta + "," + linhaSelecionada + ", " + Consulta + "\n");
             
             JOptionPane.showMessageDialog(this,
                     "Cadastro de Consulta Concluído!!");
@@ -516,7 +518,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
             
             ResultSet rs = ps.executeQuery();
             
-            DefaultTableModel model = (DefaultTableModel) this.jTable1.getModel();
+            DefaultTableModel model = (DefaultTableModel) this.tabelaConsulta.getModel();
             if (model.getRowCount() > 0) {
                 model.setRowCount(0);
             }
@@ -534,7 +536,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
                 model.addRow(dados);
             }
             
-            this.jTable1.setModel(model);
+            this.tabelaConsulta.setModel(model);
             rs.close();
             ps.close();
             banco.encerrarConexao();
@@ -552,7 +554,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_escolhaEstadosActionPerformed
 
     private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
-        int linhaSelecionada = this.jTable1.getSelectedRow();
+        int linhaSelecionada = this.tabelaConsulta.getSelectedRow();
         if (linhaSelecionada == -1) {
             JOptionPane.showMessageDialog(this,
                     "Favor selecione um registro para excluir!");
@@ -560,7 +562,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         }
         
         String idMedico =
-                (String) this.jTable1.getValueAt(linhaSelecionada, 0);
+                (String) this.tabelaConsulta.getValueAt(linhaSelecionada, 0);
         
         int opcao = JOptionPane.showConfirmDialog(this,
                 "Deseja realmente excluir o medico " + idMedico + "?",
@@ -581,7 +583,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
                  
                 if (!linhaApagada) {
                     //Remove a linha da jTable
-                    DefaultTableModel model = (DefaultTableModel) this.jTable1.getModel();
+                    DefaultTableModel model = (DefaultTableModel) this.tabelaConsulta.getModel();
                     model.removeRow(linhaSelecionada);
                     JOptionPane.showMessageDialog(this,
                             "Registro excluido com sucesso!!");
@@ -607,7 +609,8 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
                this.campoTelefone.getText().equals("")       ||
                this.campoRg.getText().equals("")             ||
                this.campoCpf.getText().equals("")            ||
-               this.campoDataConsulta.getText().equals("")) {
+               this.campoDataConsulta.getText().equals("")   ||
+               this.tabelaConsulta.getSelectedRow() == -1){
                
                this.errorLabel.setText("Há campos em branco!!!");
                this.erroLabel.setText("Há campos em branco!!!");
@@ -654,7 +657,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> selecionaGenero;
+    private javax.swing.JTable tabelaConsulta;
     // End of variables declaration//GEN-END:variables
 }

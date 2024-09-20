@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package br.com.telemedicina.subtelas;
-
+import br.com.telemedicina.subtelas.AgendaConsulta;
 import br.com.telemedicina.bd.BD;
 import java.sql.*;
 import javax.swing.*;
@@ -59,6 +59,9 @@ public class pagamento extends javax.swing.JDialog {
         nfLabel = new javax.swing.JLabel();
         codigoLabel = new javax.swing.JLabel();
         valorLabel = new javax.swing.JLabel();
+        labelNf = new javax.swing.JLabel();
+        labelCodigoPagamento = new javax.swing.JLabel();
+        labelValor = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -74,25 +77,30 @@ public class pagamento extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(46, 169, 248));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 42)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Pagamento");
 
         pixRadioButton.setBackground(new java.awt.Color(255, 255, 255));
         pixRadioButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        pixRadioButton.setForeground(new java.awt.Color(0, 0, 0));
         pixRadioButton.setText("Pix");
         pixRadioButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         cartaoDRadioButton.setBackground(new java.awt.Color(255, 255, 255));
         cartaoDRadioButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        cartaoDRadioButton.setForeground(new java.awt.Color(0, 0, 0));
         cartaoDRadioButton.setText("Cartão de Débito");
         cartaoDRadioButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         cartaoCRadioButton.setBackground(new java.awt.Color(255, 255, 255));
         cartaoCRadioButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        cartaoCRadioButton.setForeground(new java.awt.Color(0, 0, 0));
         cartaoCRadioButton.setText("Cartão de Credito");
         cartaoCRadioButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         boletoRadioButton.setBackground(new java.awt.Color(255, 255, 255));
         boletoRadioButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        boletoRadioButton.setForeground(new java.awt.Color(0, 0, 0));
         boletoRadioButton.setText("Boleto");
         boletoRadioButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -138,8 +146,10 @@ public class pagamento extends javax.swing.JDialog {
         jSplitPane1.setLeftComponent(jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Número do cartão:");
 
         jTextField1.setBackground(new java.awt.Color(102, 102, 102));
@@ -148,6 +158,7 @@ public class pagamento extends javax.swing.JDialog {
         jTextField1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Validade:");
 
         jFormattedTextField1.setBackground(new java.awt.Color(102, 102, 102));
@@ -158,6 +169,7 @@ public class pagamento extends javax.swing.JDialog {
         jFormattedTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Código de segurança:");
 
         jTextField2.setBackground(new java.awt.Color(102, 102, 102));
@@ -166,6 +178,7 @@ public class pagamento extends javax.swing.JDialog {
         jTextField2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Nome do cartão:");
 
         jTextField3.setBackground(new java.awt.Color(102, 102, 102));
@@ -174,6 +187,7 @@ public class pagamento extends javax.swing.JDialog {
         jTextField3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Parcelas (para o cartão):");
 
         jTextField4.setBackground(new java.awt.Color(102, 102, 102));
@@ -184,15 +198,19 @@ public class pagamento extends javax.swing.JDialog {
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Resumo da Compra/Serviço");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("NF:");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Código do pagamento:");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Valor:");
 
         nfLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -200,6 +218,15 @@ public class pagamento extends javax.swing.JDialog {
         codigoLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         valorLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+
+        labelNf.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelNf.setForeground(new java.awt.Color(0, 0, 0));
+
+        labelCodigoPagamento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelCodigoPagamento.setForeground(new java.awt.Color(0, 0, 0));
+
+        labelValor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelValor.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -212,13 +239,31 @@ public class pagamento extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(valorLabel)
-                    .addComponent(codigoLabel)
-                    .addComponent(nfLabel)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel8))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(codigoLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(labelCodigoPagamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(valorLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel10)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(labelValor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(46, 46, 46))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(nfLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(labelNf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(46, 46, 46))))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,21 +272,38 @@ public class pagamento extends javax.swing.JDialog {
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(jLabel8)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(nfLabel))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelNf, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nfLabel)
-                .addGap(65, 65, 65)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(codigoLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(codigoLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelCodigoPagamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(valorLabel)
-                .addGap(61, 61, 61))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(valorLabel))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelValor, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         jButton1.setBackground(new java.awt.Color(0, 153, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Pagar");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -301,7 +363,7 @@ public class pagamento extends javax.swing.JDialog {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
@@ -312,7 +374,7 @@ public class pagamento extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1170, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1175, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,7 +385,7 @@ public class pagamento extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -393,6 +455,9 @@ public class pagamento extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel labelCodigoPagamento;
+    private javax.swing.JLabel labelNf;
+    private javax.swing.JLabel labelValor;
     private javax.swing.JLabel nfLabel;
     private javax.swing.JRadioButton pixRadioButton;
     private javax.swing.JLabel valorLabel;
