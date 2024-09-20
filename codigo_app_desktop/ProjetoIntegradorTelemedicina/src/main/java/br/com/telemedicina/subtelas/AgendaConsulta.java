@@ -482,10 +482,16 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
             String Consulta       = (String) this.tabelaConsulta.getValueAt(linhaSelecionada, 5);
             
             bw.write(nomePaciente + ", " + dataNascimento + ", " + genero + ", " +
-                     telefone + ", " + rg + ", " + cpf + ", " + dataConsulta + "," + linhaSelecionada + ", " + Consulta + "\n");
+                     telefone + ", " + rg + ", " + cpf + ", " + 
+                    dataConsulta + ", " + Consulta + "\n");
             
             JOptionPane.showMessageDialog(this,
                     "Cadastro de Consulta Concluído!!");
+            
+            Pagamento pg = new Pagamento(null, true);
+            pg.setInformacoesPagamento(Float.parseFloat(Consulta));
+            pg.setVisible(true);
+            
             this.setVisible(false);
                     
         } catch (IOException e) {
