@@ -481,7 +481,7 @@ public class Pagamento extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-        //Validação De Escolha
+    //Validação De Escolha
     private boolean validaEscolha() {
          // Verifica se algum dos RadioButtons foi selecionado
         if (!this.pixRadioButton.isSelected()     &&
