@@ -326,7 +326,7 @@ public class Main extends javax.swing.JFrame {
         jTabbedPane1.addTab("Paciente", jSplitPane2);
 
         desktopPane.add(jTabbedPane1);
-        jTabbedPane1.setBounds(0, -37, 1260, 760);
+        jTabbedPane1.setBounds(0, -37, 1280, 760);
 
         jMenu3.setText("Consultas");
         jMenu3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -403,7 +403,7 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1260, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1277, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
