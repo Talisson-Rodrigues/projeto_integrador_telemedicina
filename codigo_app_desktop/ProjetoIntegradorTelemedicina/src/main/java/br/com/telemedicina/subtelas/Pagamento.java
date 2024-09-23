@@ -12,6 +12,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Random;
+import java.util.UUID;
+import java.util.regex.Pattern;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -62,6 +66,14 @@ public class Pagamento extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
+        numeroCartaoCampo = new javax.swing.JTextField();
+        nomePagamentoCampo = new javax.swing.JTextField();
+        cvvCampo = new javax.swing.JFormattedTextField();
+        cvvLabel = new javax.swing.JLabel();
+        cvvLabel1 = new javax.swing.JLabel();
+        cvvLabel2 = new javax.swing.JLabel();
+        cvvLabel3 = new javax.swing.JLabel();
+        vencimentoCampo = new javax.swing.JFormattedTextField();
         jPanel5 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -155,7 +167,7 @@ public class Pagamento extends javax.swing.JDialog {
                 .addComponent(cartaoCRadioButton)
                 .addGap(35, 35, 35)
                 .addComponent(boletoRadioButton)
-                .addContainerGap(323, Short.MAX_VALUE))
+                .addContainerGap(467, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -235,18 +247,94 @@ public class Pagamento extends javax.swing.JDialog {
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Pagar");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
+
+        try {
+            cvvCampo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        cvvCampo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cvvCampoActionPerformed(evt);
+            }
+        });
+
+        cvvLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        cvvLabel.setForeground(new java.awt.Color(0, 0, 0));
+        cvvLabel.setText("NOME COMPLETO");
+
+        cvvLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        cvvLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        cvvLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        cvvLabel1.setText("VENCIMENTO");
+
+        cvvLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        cvvLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        cvvLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        cvvLabel2.setText("CVV");
+
+        cvvLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        cvvLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        cvvLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        cvvLabel3.setText("NUMERO DO CARTÃO");
+
+        try {
+            vencimentoCampo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 421, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cvvLabel3)
+                            .addComponent(numeroCartaoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cvvLabel1)
+                            .addComponent(vencimentoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(cvvLabel2)
+                        .addComponent(cvvCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cvvLabel)
+                        .addComponent(nomePagamentoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 24, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 491, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(cvvLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nomePagamentoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(cvvLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(numeroCartaoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(cvvLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(vencimentoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(cvvLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cvvCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(306, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Crédito", jPanel4);
@@ -261,7 +349,7 @@ public class Pagamento extends javax.swing.JDialog {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 491, Short.MAX_VALUE)
+            .addGap(0, 635, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Débito", jPanel5);
@@ -348,6 +436,78 @@ public class Pagamento extends javax.swing.JDialog {
         this.jTabbedPane1.addTab("Crédito", jPanel4);
     }//GEN-LAST:event_cartaoCRadioButtonMouseClicked
 
+    private void cvvCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cvvCampoActionPerformed
+        cvvCampo.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                String cvv = cvvCampo.getText();
+                String regex = "^[0-9]{3,4}$";
+                if (!cvv.matches(regex)) {
+                    JOptionPane.showMessageDialog(null,"CVV Invalido, Deve conter apenas 3 digitos");
+                    cvvCampo.setText(""); //Limpa o campo
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+            
+        });
+    }//GEN-LAST:event_cvvCampoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //Valida se te uma escolha
+        if(!validaEscolha()) {
+            return;
+        }
+        
+        //Faz o Código Pix Copia e Cola
+        String pixCopiaCola = gerarCodigoPix();
+        if(this.pixRadioButton.isSelected()) {
+            JOptionPane.showMessageDialog(this, 
+                    "O pix copía e cola foi Gerado: \n" +
+                    pixCopiaCola);
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Outra Opção Escolhida!");
+        }
+        
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+        //Validação De Escolha
+    private boolean validaEscolha() {
+         // Verifica se algum dos RadioButtons foi selecionado
+        if (!this.pixRadioButton.isSelected()     &&
+            !this.cartaoCRadioButton.isSelected() &&
+            !this.cartaoDRadioButton.isSelected() &&
+            !this.boletoRadioButton.isSelected()   ) {
+            // Mostra uma mensagem de erro se nenhuma opção foi selecionada
+            JOptionPane.showMessageDialog(this,
+                    "Escolha uma Opção!!!");
+            return false;
+        }
+        // Retorna true se alguma opção foi selecionada
+        return true;
+    }
+    
+    //Gerador de Código Pix
+    public static String gerarCodigoPix() {
+        String codigoAleatorio = UUID.randomUUID().toString().replace("-", "").toUpperCase();
+        
+        String codigoPix = "00020126" + "0014BR.GOV.BCB.PIX0114" + "5531987654321" +
+                           "5204000053039865404" + "20.005802BR5909Empresa6009SAO PAULO" +
+                           "62070503***6304" + codigoAleatorio;
+        
+        return codigoPix;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -402,6 +562,11 @@ public class Pagamento extends javax.swing.JDialog {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton cartaoCRadioButton;
     private javax.swing.JRadioButton cartaoDRadioButton;
+    private javax.swing.JFormattedTextField cvvCampo;
+    private javax.swing.JLabel cvvLabel;
+    private javax.swing.JLabel cvvLabel1;
+    private javax.swing.JLabel cvvLabel2;
+    private javax.swing.JLabel cvvLabel3;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -418,6 +583,9 @@ public class Pagamento extends javax.swing.JDialog {
     private javax.swing.JLabel labelCodigoPagamento;
     private javax.swing.JLabel labelNf;
     private javax.swing.JLabel labelValor;
+    private javax.swing.JTextField nomePagamentoCampo;
+    private javax.swing.JTextField numeroCartaoCampo;
     private javax.swing.JRadioButton pixRadioButton;
+    private javax.swing.JFormattedTextField vencimentoCampo;
     // End of variables declaration//GEN-END:variables
 }
