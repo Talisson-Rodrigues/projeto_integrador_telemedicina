@@ -69,12 +69,22 @@ public class Pagamento extends javax.swing.JDialog {
         numeroCartaoCampo = new javax.swing.JTextField();
         nomePagamentoCampo = new javax.swing.JTextField();
         cvvCampo = new javax.swing.JFormattedTextField();
-        cvvLabel = new javax.swing.JLabel();
-        cvvLabel1 = new javax.swing.JLabel();
-        cvvLabel2 = new javax.swing.JLabel();
-        cvvLabel3 = new javax.swing.JLabel();
+        nomeCreditoLabel = new javax.swing.JLabel();
+        vencimentoCreditoLabel = new javax.swing.JLabel();
+        cvvCreditoLabel = new javax.swing.JLabel();
+        numeroCreditoLabel = new javax.swing.JLabel();
         vencimentoCampo = new javax.swing.JFormattedTextField();
+        numeroParcelasCredito = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
+        nomeDebitoLabel = new javax.swing.JLabel();
+        nomePagamentoDebitoCampo = new javax.swing.JTextField();
+        numeroCartaoDebitoCampo = new javax.swing.JTextField();
+        numeroDebitoLabel = new javax.swing.JLabel();
+        vencimentoDebitoLabel = new javax.swing.JLabel();
+        vencimentoDebitoCampo = new javax.swing.JFormattedTextField();
+        cvvDebitoCampo = new javax.swing.JFormattedTextField();
+        cvvDebitoLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -266,24 +276,24 @@ public class Pagamento extends javax.swing.JDialog {
             }
         });
 
-        cvvLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        cvvLabel.setForeground(new java.awt.Color(0, 0, 0));
-        cvvLabel.setText("NOME COMPLETO");
+        nomeCreditoLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        nomeCreditoLabel.setForeground(new java.awt.Color(0, 0, 0));
+        nomeCreditoLabel.setText("NOME COMPLETO");
 
-        cvvLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        cvvLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        cvvLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        cvvLabel1.setText("VENCIMENTO");
+        vencimentoCreditoLabel.setBackground(new java.awt.Color(0, 0, 0));
+        vencimentoCreditoLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        vencimentoCreditoLabel.setForeground(new java.awt.Color(0, 0, 0));
+        vencimentoCreditoLabel.setText("VENCIMENTO");
 
-        cvvLabel2.setBackground(new java.awt.Color(0, 0, 0));
-        cvvLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        cvvLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        cvvLabel2.setText("CVV");
+        cvvCreditoLabel.setBackground(new java.awt.Color(0, 0, 0));
+        cvvCreditoLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        cvvCreditoLabel.setForeground(new java.awt.Color(0, 0, 0));
+        cvvCreditoLabel.setText("CVV");
 
-        cvvLabel3.setBackground(new java.awt.Color(0, 0, 0));
-        cvvLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        cvvLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        cvvLabel3.setText("NUMERO DO CARTÃO");
+        numeroCreditoLabel.setBackground(new java.awt.Color(0, 0, 0));
+        numeroCreditoLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        numeroCreditoLabel.setForeground(new java.awt.Color(0, 0, 0));
+        numeroCreditoLabel.setText("N° DO CARTÃO");
 
         try {
             vencimentoCampo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##")));
@@ -291,49 +301,77 @@ public class Pagamento extends javax.swing.JDialog {
             ex.printStackTrace();
         }
 
+        numeroParcelasCredito.setBackground(new java.awt.Color(0, 0, 0));
+        numeroParcelasCredito.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        numeroParcelasCredito.setForeground(new java.awt.Color(0, 0, 0));
+        numeroParcelasCredito.setText("N° DE PARCELAS");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x", "9x", "10x", "11x", "12x" }));
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nomePagamentoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cvvLabel3)
-                            .addComponent(numeroCartaoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cvvCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addComponent(cvvCreditoLabel)))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cvvLabel1)
-                            .addComponent(vencimentoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cvvLabel2)
-                        .addComponent(cvvCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cvvLabel)
-                        .addComponent(nomePagamentoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 24, Short.MAX_VALUE))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(numeroParcelasCredito)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(nomeCreditoLabel))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(numeroCartaoCampo)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(numeroCreditoLabel)))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(vencimentoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(vencimentoCreditoLabel)))))
+                .addGap(0, 13, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(74, 74, 74)
-                .addComponent(cvvLabel)
+                .addComponent(nomeCreditoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nomePagamentoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(cvvLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numeroCartaoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(numeroParcelasCredito)
+                        .addGap(48, 48, 48))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(cvvLabel1)
+                        .addComponent(nomePagamentoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(numeroCreditoLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(numeroCartaoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(vencimentoCreditoLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(vencimentoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(cvvCreditoLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(vencimentoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(cvvLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cvvCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cvvCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(306, Short.MAX_VALUE))
         );
 
@@ -341,15 +379,95 @@ public class Pagamento extends javax.swing.JDialog {
 
         jPanel5.setBackground(new java.awt.Color(204, 204, 204));
 
+        nomeDebitoLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        nomeDebitoLabel.setForeground(new java.awt.Color(0, 0, 0));
+        nomeDebitoLabel.setText("NOME COMPLETO");
+
+        numeroDebitoLabel.setBackground(new java.awt.Color(0, 0, 0));
+        numeroDebitoLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        numeroDebitoLabel.setForeground(new java.awt.Color(0, 0, 0));
+        numeroDebitoLabel.setText("N° DO CARTÃO");
+
+        vencimentoDebitoLabel.setBackground(new java.awt.Color(0, 0, 0));
+        vencimentoDebitoLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        vencimentoDebitoLabel.setForeground(new java.awt.Color(0, 0, 0));
+        vencimentoDebitoLabel.setText("VENCIMENTO");
+
+        try {
+            vencimentoDebitoCampo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            cvvDebitoCampo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        cvvDebitoCampo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cvvDebitoCampoActionPerformed(evt);
+            }
+        });
+
+        cvvDebitoLabel.setBackground(new java.awt.Color(0, 0, 0));
+        cvvDebitoLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        cvvDebitoLabel.setForeground(new java.awt.Color(0, 0, 0));
+        cvvDebitoLabel.setText("CVV");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 421, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(nomeDebitoLabel))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(numeroCartaoDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                                    .addGap(36, 36, 36)
+                                    .addComponent(numeroDebitoLabel)))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(vencimentoDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(vencimentoDebitoLabel)))
+                        .addComponent(nomePagamentoDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cvvDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addComponent(cvvDebitoLabel)))))
+                .addGap(21, 21, 21))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 635, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(nomeDebitoLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nomePagamentoDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(numeroDebitoLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(numeroCartaoDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(vencimentoDebitoLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(vencimentoDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
+                .addComponent(cvvDebitoLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cvvDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(309, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Débito", jPanel5);
@@ -359,14 +477,14 @@ public class Pagamento extends javax.swing.JDialog {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -386,7 +504,7 @@ public class Pagamento extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1208, Short.MAX_VALUE)
+            .addComponent(jSplitPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -481,6 +599,10 @@ public class Pagamento extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void cvvDebitoCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cvvDebitoCampoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cvvDebitoCampoActionPerformed
+
     //Validação De Escolha
     private boolean validaEscolha() {
          // Verifica se algum dos RadioButtons foi selecionado
@@ -563,11 +685,12 @@ public class Pagamento extends javax.swing.JDialog {
     private javax.swing.JRadioButton cartaoCRadioButton;
     private javax.swing.JRadioButton cartaoDRadioButton;
     private javax.swing.JFormattedTextField cvvCampo;
-    private javax.swing.JLabel cvvLabel;
-    private javax.swing.JLabel cvvLabel1;
-    private javax.swing.JLabel cvvLabel2;
-    private javax.swing.JLabel cvvLabel3;
+    private javax.swing.JFormattedTextField cvvCampoDebito;
+    private javax.swing.JLabel cvvCreditoLabel;
+    private javax.swing.JFormattedTextField cvvDebitoCampo;
+    private javax.swing.JLabel cvvDebitoLabel;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
@@ -583,9 +706,19 @@ public class Pagamento extends javax.swing.JDialog {
     private javax.swing.JLabel labelCodigoPagamento;
     private javax.swing.JLabel labelNf;
     private javax.swing.JLabel labelValor;
+    private javax.swing.JLabel nomeCreditoLabel;
+    private javax.swing.JLabel nomeDebitoLabel;
     private javax.swing.JTextField nomePagamentoCampo;
+    private javax.swing.JTextField nomePagamentoDebitoCampo;
     private javax.swing.JTextField numeroCartaoCampo;
+    private javax.swing.JTextField numeroCartaoDebitoCampo;
+    private javax.swing.JLabel numeroCreditoLabel;
+    private javax.swing.JLabel numeroDebitoLabel;
+    private javax.swing.JLabel numeroParcelasCredito;
     private javax.swing.JRadioButton pixRadioButton;
     private javax.swing.JFormattedTextField vencimentoCampo;
+    private javax.swing.JLabel vencimentoCreditoLabel;
+    private javax.swing.JFormattedTextField vencimentoDebitoCampo;
+    private javax.swing.JLabel vencimentoDebitoLabel;
     // End of variables declaration//GEN-END:variables
 }
