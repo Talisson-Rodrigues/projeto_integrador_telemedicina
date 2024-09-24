@@ -63,11 +63,11 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Nome Clínica", "Descrição Exame", "Data Exame", "Status Exame", "Diagnostico Exame", "Valor Exame"
+                "ID", "Nome Clínica", "Descrição Exame", "Data Exame", "Status Exame", "Diagnostico Exame", "Valor Exame"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -117,7 +117,7 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(140, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(188, 188, 188))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -181,7 +181,7 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 985, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,7 +201,7 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
             return;
         }
 
-        String query = "SELECT cl.nomeClinica, ex.descricaoExame, ex.dataExame, ex.statusExame, ex.diagnosticoExame, ex.valorExame FROM Clinica cl INNER JOIN Exame ex ON cl.ID = ex.ID_CLINICA";
+        String query = "SELECT ex.ID, cl.nomeClinica, ex.descricaoExame, ex.dataExame, ex.statusExame, ex.diagnosticoExame, ex.valorExame FROM Clinica cl INNER JOIN Exame ex ON cl.ID = ex.ID_CLINICA";
         PreparedStatement ps = banco.getPreparedStatement(query);
 
         try {
@@ -213,7 +213,8 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
             }
 
             while (rs.next()) {
-                String[] dados = {  rs.getString("cl.nomeClinica"),
+                String[] dados = {  rs.getString("ex.ID"),
+                                    rs.getString("cl.nomeClinica"),
                                     rs.getString("ex.descricaoExame"),
                                     rs.getDate("ex.dataExame").toString(),
                                     rs.getString("ex.statusExame"),
@@ -253,7 +254,7 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
             banco.conectaBD();
 
             String query2 = "DELETE FROM Exame WHERE ID_CLINICA = (SELECT ID FROM Medico WHERE nomeClinica = ?)";
-            String query = "DELETE FROM Exame WHERE diagnosticoExame = ?";
+            String query = "DELETE FROM Exame WHERE ID = ?";
 
             try (PreparedStatement ps =banco.getPreparedStatement(query)){
                 ps.setString(1, query2);
@@ -285,18 +286,85 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botaoExcluirMedActionPerformed
 
     private void BotaoEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoEditarActionPerformed
-        BD banco = new BD();
-        banco.conectaBD();
-        
-        String query = "";
-        PreparedStatement ps =banco.getPreparedStatement(query);
-        
-        try {
-            ResultSet rs = ps.executeQuery();
-            
-        } catch (SQLException ex) {
+        int linhaSelecionada = this.tabelaHistoricoExames.getSelectedRow();
+        if (linhaSelecionada == -1) {
             JOptionPane.showMessageDialog(this,
-                    "Não foi possível editar o registro!! Error: " + ex.getMessage());
+                    "Favor selecione um registro pra editar!!");
+            
+            return;
+        }
+        
+        //Obtendo os dados da linha selecionada
+        String ID               = (String) this.tabelaHistoricoExames.getValueAt(linhaSelecionada, 0);
+        String nomeClinica      = (String) this.tabelaHistoricoExames.getValueAt(linhaSelecionada, 1);
+        String descricaoClinica = (String) this.tabelaHistoricoExames.getValueAt(linhaSelecionada, 2);
+        String dataExame        = (String) this.tabelaHistoricoExames.getValueAt(linhaSelecionada, 3);
+        String statusExame      = (String) this.tabelaHistoricoExames.getValueAt(linhaSelecionada, 4);
+        String diagnosticoExame = (String) this.tabelaHistoricoExames.getValueAt(linhaSelecionada, 5);
+        String valorExame       = (String) this.tabelaHistoricoExames.getValueAt(linhaSelecionada, 6);
+        
+        //Solicitando a nova informação
+        String novaDataExame = JOptionPane.showInputDialog(this,
+                "Editar a data do Exame (YYYY-MM-DD):",
+                dataExame);
+        
+        String novoStatusExame = JOptionPane.showInputDialog(this,
+                "Editar o Status do Exame (Finalizado, Em andamento):",
+                statusExame);
+        
+        String novoDiagnosticoExame = JOptionPane.showInputDialog(this,
+                "Editar o Diagnóstico do Exame:",
+                diagnosticoExame);
+        
+        String novoValorExame = JOptionPane.showInputDialog(this,
+                "Editar o Valor do Exame (0.00):",
+                valorExame);
+        
+        if (novaDataExame        != null ||
+            novoStatusExame      != null ||
+            novoDiagnosticoExame != null ||
+            novoValorExame       != null) {
+         
+            BD banco = new BD();
+            boolean conectado =banco.conectaBD();
+            
+            if (!conectado) {
+                JOptionPane.showMessageDialog(this,
+                        "Erro ao conectar no Banco de Dados!!");
+                
+                return;
+            }
+            
+            //Atualiza data, status, diagnostico, valor
+            String updateQuery = "UPDATE Exame SET statusExame = ?, dataExame = ?, descricaoExame = ?, valorExame = ? WHERE ID = ?";
+            
+            try (PreparedStatement ps = banco.getPreparedStatement(updateQuery)) {
+                ps.setString(1, novoStatusExame);
+                ps.setString(2,novaDataExame);
+                ps.setString(3, novoDiagnosticoExame);
+                ps.setString(4, novoValorExame);
+                ps.setString(5, ID);
+                
+                int rowsUpdated = ps.executeUpdate();
+                
+                if (rowsUpdated > 0) {
+                    JOptionPane.showMessageDialog(this,
+                            "Registro atualizado com sucesso!!");
+                    
+                    botaoConsultaActionPerformed(evt);
+                } else {
+                    JOptionPane.showMessageDialog(this,
+                            "Nenhum Registro encontrado para atualizar!!");
+                    
+                }
+            
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this,
+                        "Erro ao atualizar o registro!! Error: " + ex.getMessage());
+            
+            } finally {
+                banco.encerrarConexao();
+            }
         }
     }//GEN-LAST:event_BotaoEditarActionPerformed
 

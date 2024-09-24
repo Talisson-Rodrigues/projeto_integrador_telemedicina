@@ -54,7 +54,6 @@ public class AgendaExame extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         agendaExameTabela = new javax.swing.JTable();
         statusLabel = new javax.swing.JLabel();
-        botaoExcluir = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         escolhaEstado = new javax.swing.JComboBox<>();
 
@@ -224,17 +223,6 @@ public class AgendaExame extends javax.swing.JInternalFrame {
         statusLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         statusLabel.setForeground(new java.awt.Color(0, 204, 51));
 
-        botaoExcluir.setBackground(new java.awt.Color(255, 0, 0));
-        botaoExcluir.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        botaoExcluir.setForeground(new java.awt.Color(0, 0, 0));
-        botaoExcluir.setText("Excluir");
-        botaoExcluir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botaoExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoExcluirActionPerformed(evt);
-            }
-        });
-
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Escolha o estado: ");
@@ -252,13 +240,10 @@ public class AgendaExame extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(botaoClinicas, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botaoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botaoClinicas, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(statusLabel)
                             .addComponent(jLabel3)
                             .addComponent(escolhaEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -277,9 +262,7 @@ public class AgendaExame extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(escolhaEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoClinicas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(botaoClinicas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
 
@@ -382,61 +365,11 @@ public class AgendaExame extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_botaoClinicasActionPerformed
 
-    private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
-        int linhaSelecionada = this.agendaExameTabela.getSelectedRow();
-        if (linhaSelecionada == -1) {
-            JOptionPane.showMessageDialog(this,
-                    "Favor selecione um registro para excluir!");
-            return;
-        }
-        
-        String idMedico =
-                (String) this.agendaExameTabela.getValueAt(linhaSelecionada, 0);
-        
-        int opcao = JOptionPane.showConfirmDialog(this,
-                "Deseja realmente excluir o medico " + idMedico + "?",
-                "Excluir", JOptionPane.OK_CANCEL_OPTION);
-        
-        if (opcao == 0) {
-            BD banco = new BD();
-            banco.conectaBD();
-            
-            String query2 = "DELETE FROM Consulta WHERE ID_MEDICO = (SELECT ID FROM Medico WHERE nomeMed = ?)";
-            String query = "DELETE FROM Medico WHERE nomeMed = ?";
-            
-            try (PreparedStatement ps =banco.getPreparedStatement(query)){
-                ps.setString(1, query2);
-                ps.setString(1, query);
-                boolean linhaApagada = ps.execute();
-                
-                 
-                if (linhaApagada == false) {
-                    //Remove a linha da jTable
-                    DefaultTableModel model = (DefaultTableModel) this.agendaExameTabela.getModel();
-                    model.removeRow(linhaSelecionada);
-                    JOptionPane.showMessageDialog(this,
-                            "Registro excluido com sucesso!!");
-                
-                } else {
-                    JOptionPane.showMessageDialog(this,
-                            "Nenhum registro encontrado para excluir.");
-                }
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this,
-                        "Erro ao excluir o registro: " + ex.getMessage());
-                ex.printStackTrace();
-            } finally {
-                return;
-            }
-        }
-    }//GEN-LAST:event_botaoExcluirActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable agendaExameTabela;
     private javax.swing.JButton botaoAgendar;
     private javax.swing.JButton botaoClinicas;
-    private javax.swing.JButton botaoExcluir;
     private javax.swing.JFormattedTextField campoDataExame;
     private javax.swing.JTextArea campoDescricaoExame;
     private javax.swing.JTextField campoNomePaciente;

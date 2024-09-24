@@ -9,6 +9,7 @@ import br.com.telemedicina.subtelas.AgendaConsulta;
 import br.com.telemedicina.subtelas.AgendaExame;
 import br.com.telemedicina.subtelas.HistoricoConsulta;
 import br.com.telemedicina.subtelas.HistoricoExame;
+import br.com.telemedicina.subtelas.HistoricoPagamento;
 import br.com.telemedicina.subtelas.HistoricoPrescricao;
 import br.com.telemedicina.subtelas.NovaPrescricao;
 import br.com.telemedicina.subtelas.TelaInicio;
@@ -81,6 +82,8 @@ public class Main extends javax.swing.JFrame {
         prescricoesMenu = new javax.swing.JMenu();
         historicoPrescricao = new javax.swing.JMenuItem();
         novaPrescricao = new javax.swing.JMenuItem();
+        pagamentosMenu = new javax.swing.JMenu();
+        historicoPagamento = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -397,6 +400,19 @@ public class Main extends javax.swing.JFrame {
 
         menuBar.add(prescricoesMenu);
 
+        pagamentosMenu.setText("Pagamentos");
+        pagamentosMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        historicoPagamento.setText("Histórico de Pagamentos");
+        historicoPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historicoPagamentoActionPerformed(evt);
+            }
+        });
+        pagamentosMenu.add(historicoPagamento);
+
+        menuBar.add(pagamentosMenu);
+
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -679,6 +695,12 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botaoExcluirPacActionPerformed
 
+    private void historicoPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoPagamentoActionPerformed
+        HistoricoPagamento hpg = new HistoricoPagamento();
+        this.desktopPane.add(hpg);
+        hpg.setVisible(true);
+    }//GEN-LAST:event_historicoPagamentoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -725,6 +747,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenu examesMenu;
     private javax.swing.JMenuItem historicoConsulta;
     private javax.swing.JMenuItem historicoExame;
+    private javax.swing.JMenuItem historicoPagamento;
     private javax.swing.JMenuItem historicoPrescricao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
@@ -747,6 +770,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel nomePacienteLabel;
     private javax.swing.JMenuItem novaConsulta;
     private javax.swing.JMenuItem novaPrescricao;
+    private javax.swing.JMenu pagamentosMenu;
     private javax.swing.JMenu prescricoesMenu;
     private javax.swing.JLabel statusLabel;
     private javax.swing.JLabel statusLabelPaciente;
