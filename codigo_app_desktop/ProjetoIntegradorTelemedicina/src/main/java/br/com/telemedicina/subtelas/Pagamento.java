@@ -267,6 +267,12 @@ public class Pagamento extends javax.swing.JDialog {
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
+        numeroCartaoCampo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numeroCartaoCampoActionPerformed(evt);
+            }
+        });
+
         try {
             cvvCampo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###")));
         } catch (java.text.ParseException ex) {
@@ -603,6 +609,64 @@ public class Pagamento extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_cvvDebitoCampoActionPerformed
 
+    private void numeroCartaoCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroCartaoCampoActionPerformed
+        
+    }//GEN-LAST:event_numeroCartaoCampoActionPerformed
+
+    //validação do número do cartão usando o algoritmo luhn
+    private static boolean validarCartao(String numeroCartao) {
+        //Remover espaços em branco
+        numeroCartao = numeroCartao.replaceAll("\\s+", "");
+        
+        //Verifica se o número do cartão é válido
+        if (!numeroCartao.matches("\\d+")) {
+            return false; //Número não é válido
+        }
+        
+        int soma = 0;
+        boolean alternar = false;
+        
+        //Vai ler a quantidade de dígitos que foi inserido e fazer a soma da trás pra frente
+        for (int i = numeroCartao.length() - 1; i>=0; i--) {
+            int digito = Character.getNumericValue(numeroCartao.charAt(i));
+            
+            //Verifica se o segundo dígito deve ser multiplicado
+            if (alternar) {
+                digito *= 2; //Se sim, ele duplica o dígito atual
+                if (digito > 9) {
+                    digito-= 9; //Se o dígito multiplicado for maior que 9, ele subtrai 9 deles equvalente a somar os dígitos restantes
+                }
+            }
+            
+            soma += digito;
+            alternar = !alternar;
+        }
+        
+        return soma % 10 == 0;
+    }
+    
+    //Método para identificar a bandeira do cartão
+    private static String identificarBandeira(String numeroCartao) {
+        if (numeroCartao.startsWith("4")) {
+            return "VISA";
+        } else if (numeroCartao.startsWith("5")) {
+            return "MASTERCARD";
+        } else if (numeroCartao.startsWith("3")) {
+            if (numeroCartao.length() == 15) {
+                return "AMERICAN EXPRESS";
+            } else {
+                return "DINERS CLUB";
+            }
+            
+        } else if (numeroCartao.startsWith("6")) {
+            return "DISCOVERY";
+        } else if (numeroCartao.startsWith("37")) {
+            return "AMERICAN EXPRESS";
+        } else {
+            return "DESCONHECIDO";
+        }
+    }
+    
     //Validação De Escolha
     private boolean validaEscolha() {
          // Verifica se algum dos RadioButtons foi selecionado

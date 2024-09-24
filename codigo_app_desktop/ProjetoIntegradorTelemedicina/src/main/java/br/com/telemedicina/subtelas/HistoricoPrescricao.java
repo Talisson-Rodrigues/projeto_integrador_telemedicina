@@ -39,10 +39,10 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        statusLabel = new javax.swing.JLabel();
+        tabelaHistoricoPrescricao = new javax.swing.JTable();
         botaoConsulta = new javax.swing.JButton();
         botaoExcluirMed = new javax.swing.JButton();
+        botaoEditar = new javax.swing.JButton();
 
         setClosable(true);
         setForeground(new java.awt.Color(0, 0, 0));
@@ -79,33 +79,30 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Histórico de Prescrições");
 
-        jTable1.setBackground(new java.awt.Color(102, 102, 102));
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaHistoricoPrescricao.setBackground(new java.awt.Color(102, 102, 102));
+        tabelaHistoricoPrescricao.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        tabelaHistoricoPrescricao.setForeground(new java.awt.Color(255, 255, 255));
+        tabelaHistoricoPrescricao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nome Médico", "Nome Paciente", "Data Prescrição"
+                "ID", "Nome Médico", "Nome Paciente", "Data Prescrição"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelaHistoricoPrescricao);
 
-        statusLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        statusLabel.setForeground(new java.awt.Color(0, 204, 0));
-
-        botaoConsulta.setBackground(new java.awt.Color(255, 153, 0));
+        botaoConsulta.setBackground(new java.awt.Color(204, 102, 0));
         botaoConsulta.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        botaoConsulta.setForeground(new java.awt.Color(0, 0, 0));
+        botaoConsulta.setForeground(new java.awt.Color(255, 255, 255));
         botaoConsulta.setText("Consultar");
         botaoConsulta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoConsulta.addActionListener(new java.awt.event.ActionListener() {
@@ -114,14 +111,25 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
             }
         });
 
-        botaoExcluirMed.setBackground(new java.awt.Color(255, 0, 0));
+        botaoExcluirMed.setBackground(new java.awt.Color(204, 0, 0));
         botaoExcluirMed.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        botaoExcluirMed.setForeground(new java.awt.Color(0, 0, 0));
+        botaoExcluirMed.setForeground(new java.awt.Color(255, 255, 255));
         botaoExcluirMed.setText("Excluir");
         botaoExcluirMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoExcluirMed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoExcluirMedActionPerformed(evt);
+            }
+        });
+
+        botaoEditar.setBackground(new java.awt.Color(0, 0, 204));
+        botaoEditar.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        botaoEditar.setForeground(new java.awt.Color(255, 255, 255));
+        botaoEditar.setText("Editar");
+        botaoEditar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botaoEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoEditarActionPerformed(evt);
             }
         });
 
@@ -135,20 +143,17 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(130, 130, 130)
-                                .addComponent(jLabel2))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(statusLabel)))
-                        .addGap(0, 124, Short.MAX_VALUE)))
+                        .addGap(130, 130, 130)
+                        .addComponent(jLabel2)
+                        .addGap(0, 272, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(botaoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botaoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botaoExcluirMed, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botaoExcluirMed, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(botaoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -158,12 +163,11 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(statusLabel)
-                .addGap(18, 18, 18)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoExcluirMed, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botaoExcluirMed, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
@@ -173,7 +177,7 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1230, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,35 +188,30 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConsultaActionPerformed
-         BD banco = new BD();
-        boolean resultado = banco.conectaBD();
-        if(resultado == true) {
-            this.statusLabel.setText("Status: Conectado ao banco de dados!!");
-        } else {
-            this.statusLabel.setText("Status: Não conectado ao banco de dados!!");
-            return;
-        }
+        BD banco = new BD();
+        banco.conectaBD();
         
-        String query = "SELECT me.nomeMed, pa.nome, pr.dataPrescricao FROM Medico me INNER JOIN prescricao pr ON me.ID = pr.ID_MEDICO INNER JOIN Paciente pa ON pa.ID = pr.ID_PACIENTE";
+        String query = "SELECT pr.ID, me.nomeMed, pa.nome, pr.dataPrescricao FROM Medico me INNER JOIN prescricao pr ON me.ID = pr.ID_MEDICO INNER JOIN Paciente pa ON pa.ID = pr.ID_PACIENTE";
         PreparedStatement ps = banco.getPreparedStatement(query);
         
         try {
             ResultSet rs = ps.executeQuery();
             
-            DefaultTableModel model = (DefaultTableModel) this.jTable1.getModel();
+            DefaultTableModel model = (DefaultTableModel) this.tabelaHistoricoPrescricao.getModel();
             if (model.getRowCount() > 0) {
                 model.setNumRows(0);
             }
             
             while (rs.next()) {
-                String[] dados = {  rs.getString("me.nomeMed"),
+                String[] dados = {  rs.getString("pr.ID"),
+                                    rs.getString("me.nomeMed"),
                                     rs.getString("pa.nome"),
                                     rs.getDate("pr.dataPrescricao").toString()};
                 
                 model.addRow(dados);
             }
             
-            this.jTable1.setModel(model);
+            this.tabelaHistoricoPrescricao.setModel(model);
             rs.close();
             ps.close();
             banco.encerrarConexao();
@@ -224,7 +223,7 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
 
     private void botaoExcluirMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirMedActionPerformed
         //Codigo de exclusão de registro de prescrição
-        int linhaSelecionada = this.jTable1.getSelectedRow();
+        int linhaSelecionada = this.tabelaHistoricoPrescricao.getSelectedRow();
         if (linhaSelecionada == -1) {
             JOptionPane.showMessageDialog(this,
                 "Favor selecione um registro para excluir!");
@@ -232,7 +231,7 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
         }
 
         String idPaciente =
-        (String) this.jTable1.getValueAt(linhaSelecionada, 0);
+        (String) this.tabelaHistoricoPrescricao.getValueAt(linhaSelecionada, 0);
 
         int opcao = JOptionPane.showConfirmDialog(this,
             "Deseja realmente excluir a Prescricão " + idPaciente + "?",
@@ -243,7 +242,7 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
             banco.conectaBD();
             
             String query1 = "DELETE FROM Prescricao WHERE ID_MEDICO = (SELECT ID FROM Medico WHERE nomeMed = ?)"; 
-            String query2 = "DELETE FROM Prescricao WHERE medicamento = ?";
+            String query2 = "DELETE FROM Prescricao WHERE ID = ?";
 
             try (PreparedStatement ps =banco.getPreparedStatement(query2)){
                 ps.setString(1, query1);
@@ -252,10 +251,12 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
 
                 if (linhaApagada == false) {
                     //Remove a linha da jTable
-                    DefaultTableModel model = (DefaultTableModel) this.jTable1.getModel();
+                    DefaultTableModel model = (DefaultTableModel) this.tabelaHistoricoPrescricao.getModel();
                     model.removeRow(linhaSelecionada);
                     JOptionPane.showMessageDialog(this,
                         "Histórico excluido com sucesso!!");
+                    
+                    botaoConsultaActionPerformed(evt);
 
                 } else {
                     JOptionPane.showMessageDialog(this,
@@ -271,9 +272,67 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_botaoExcluirMedActionPerformed
 
+    private void botaoEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEditarActionPerformed
+        int linhaSelecionada = this.tabelaHistoricoPrescricao.getSelectedRow();
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(this,
+                    "Favor selecione um registro para editar!!");
+            
+            return;
+        }
+        
+        String ID             = (String) this.tabelaHistoricoPrescricao.getValueAt(linhaSelecionada, 0);
+        String nomeMedico     = (String) this.tabelaHistoricoPrescricao.getValueAt(linhaSelecionada, 1);
+        String nomePaciente   = (String) this.tabelaHistoricoPrescricao.getValueAt(linhaSelecionada, 2);
+        String dataPrescricao = (String) this.tabelaHistoricoPrescricao.getValueAt(linhaSelecionada, 3);
+        
+        String novaDataPrescricao = JOptionPane.showInputDialog(this,
+                "Editar data da Prescrição (YYYY-MM-DD):",
+                dataPrescricao);
+        
+        if(novaDataPrescricao != null) {
+            BD banco = new BD();
+            boolean conectado = banco.conectaBD();
+            
+            if(!conectado) {
+                JOptionPane.showMessageDialog(this,
+                        "Erro ao conectar ao Banco de Dados!!!!");
+                
+                return;
+            }
+            
+            String updatedQuery = "UPDATE Prescricao SET dataPrescricao = ? WHERE ID = ?";
+            
+            try (PreparedStatement ps = banco.getPreparedStatement(updatedQuery)) {
+                ps.setString(1, novaDataPrescricao);
+                ps.setString(2, ID);
+                
+                int rowsUpdated = ps.executeUpdate();
+                
+                if (rowsUpdated > 0) {
+                    JOptionPane.showMessageDialog(this,
+                            "Registro atualizado com sucesso!!");
+                    
+                    botaoConsultaActionPerformed(evt);
+                } else {
+                    JOptionPane.showMessageDialog(this,
+                            "Nenhum registro encontrado para editar!!");
+                }
+                
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this,
+                        "Erro ao atualizar o registro!! Error: " + ex.getMessage());
+            
+            } finally {
+                banco.encerrarConexao();
+            }
+        }
+    }//GEN-LAST:event_botaoEditarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoConsulta;
+    private javax.swing.JButton botaoEditar;
     private javax.swing.JButton botaoExcluirMed;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -281,7 +340,6 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel statusLabel;
+    private javax.swing.JTable tabelaHistoricoPrescricao;
     // End of variables declaration//GEN-END:variables
 }

@@ -39,10 +39,10 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaHistoricoConsulta = new javax.swing.JTable();
         botaoConsulta = new javax.swing.JButton();
-        statusLabel = new javax.swing.JLabel();
         botaoExcluirMed = new javax.swing.JButton();
+        botaoEditar = new javax.swing.JButton();
 
         setClosable(true);
         setForeground(new java.awt.Color(0, 0, 0));
@@ -51,8 +51,6 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
         jSplitPane1.setDividerSize(0);
 
         jPanel1.setBackground(new java.awt.Color(46, 169, 248));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/diagnostico.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -79,31 +77,31 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Histórico de Consultas");
 
-        jTable1.setBackground(new java.awt.Color(102, 102, 102));
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaHistoricoConsulta.setBackground(new java.awt.Color(102, 102, 102));
+        tabelaHistoricoConsulta.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        tabelaHistoricoConsulta.setForeground(new java.awt.Color(255, 255, 255));
+        tabelaHistoricoConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nome Médico", "Data Consulta", "Formato Consulta", "Valor Consulta"
+                "ID", "Nome Médico", "Data Consulta", "Formato Consulta", "Valor Consulta"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setToolTipText("");
-        jScrollPane1.setViewportView(jTable1);
+        tabelaHistoricoConsulta.setToolTipText("");
+        jScrollPane1.setViewportView(tabelaHistoricoConsulta);
 
-        botaoConsulta.setBackground(new java.awt.Color(255, 153, 0));
+        botaoConsulta.setBackground(new java.awt.Color(204, 102, 0));
         botaoConsulta.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        botaoConsulta.setForeground(new java.awt.Color(0, 0, 0));
+        botaoConsulta.setForeground(new java.awt.Color(255, 255, 255));
         botaoConsulta.setText("Consultar");
         botaoConsulta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoConsulta.addActionListener(new java.awt.event.ActionListener() {
@@ -112,17 +110,25 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
             }
         });
 
-        statusLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        statusLabel.setForeground(new java.awt.Color(0, 204, 0));
-
-        botaoExcluirMed.setBackground(new java.awt.Color(255, 0, 0));
+        botaoExcluirMed.setBackground(new java.awt.Color(204, 0, 0));
         botaoExcluirMed.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        botaoExcluirMed.setForeground(new java.awt.Color(0, 0, 0));
+        botaoExcluirMed.setForeground(new java.awt.Color(255, 255, 255));
         botaoExcluirMed.setText("Excluir");
         botaoExcluirMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoExcluirMed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoExcluirMedActionPerformed(evt);
+            }
+        });
+
+        botaoEditar.setBackground(new java.awt.Color(0, 0, 204));
+        botaoEditar.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        botaoEditar.setForeground(new java.awt.Color(255, 255, 255));
+        botaoEditar.setText("Editar");
+        botaoEditar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botaoEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoEditarActionPerformed(evt);
             }
         });
 
@@ -142,15 +148,13 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel2))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(botaoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(botaoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(botaoExcluirMed, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(botaoExcluirMed, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(botaoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 201, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(statusLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,12 +162,11 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(statusLabel)
-                .addGap(18, 18, 18)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoExcluirMed, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botaoExcluirMed, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
 
@@ -187,27 +190,22 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
 
     private void botaoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConsultaActionPerformed
         BD banco = new BD();
-        boolean resultado = banco.conectaBD();
-        if(resultado == true) {
-            this.statusLabel.setText("Status: Conectado ao banco de dados!!");
-        } else {
-            this.statusLabel.setText("Status: Não conectado ao banco de dados!!");
-            return;
-        }
-        
-        String query = "SELECT m.nomeMed, cs.dataConsulta, cs.formatoConsulta, cs.pagamentoConsulta FROM Medico m INNER JOIN Consulta cs ON m.ID = cs.ID_MEDICO";
+        banco.conectaBD();
+      
+        String query = "SELECT cs.ID, m.nomeMed, cs.dataConsulta, cs.formatoConsulta, cs.pagamentoConsulta FROM Medico m INNER JOIN Consulta cs ON m.ID = cs.ID_MEDICO";
         PreparedStatement ps = banco.getPreparedStatement(query);
         
         try {
             ResultSet rs = ps.executeQuery();
             
-            DefaultTableModel model = (DefaultTableModel) this.jTable1.getModel();
+            DefaultTableModel model = (DefaultTableModel) this.tabelaHistoricoConsulta.getModel();
             if (model.getRowCount() > 0) {
                 model.setNumRows(0);
             }
             
             while (rs.next()) {
-                String[] dados = { rs.getString("m.nomeMed"),
+                String[] dados = { rs.getString("cs.ID"),
+                                   rs.getString("m.nomeMed"),
                                    rs.getDate("cs.dataConsulta").toString(),
                                    rs.getString("cs.formatoConsulta"),
                                    rs.getString("cs.pagamentoConsulta")};
@@ -215,7 +213,7 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
                 model.addRow(dados);
             }
             
-            this.jTable1.setModel(model);
+            this.tabelaHistoricoConsulta.setModel(model);
             rs.close();
             ps.close();
             banco.encerrarConexao();
@@ -226,7 +224,7 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botaoConsultaActionPerformed
 
     private void botaoExcluirMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirMedActionPerformed
-        int linhaSelecionada = this.jTable1.getSelectedRow();
+        int linhaSelecionada = this.tabelaHistoricoConsulta.getSelectedRow();
         if (linhaSelecionada == -1) {
             JOptionPane.showMessageDialog(this,
                 "Favor selecione um histórico para excluir!");
@@ -234,7 +232,7 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
         }
 
         String idPaciente =
-        (String) this.jTable1.getValueAt(linhaSelecionada, 0);
+        (String) this.tabelaHistoricoConsulta.getValueAt(linhaSelecionada, 0);
 
         int opcao = JOptionPane.showConfirmDialog(this,
             "Deseja realmente excluir a Consulta " + idPaciente + "?",
@@ -244,20 +242,23 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
             BD banco = new BD();
             banco.conectaBD();
 
-            String query3 = "DELETE FROM Consulta WHERE ID_MEDICO = (SELECT ID FROM Medico WHERE m.nomeMed = ?)";
-            String query = "DELETE FROM Consulta WHERE areaProcura = ?";
+            String query3 = "DELETE FROM Consulta cs WHERE cs.ID_MEDICO = (SELECT ID FROM Medico m WHERE m.nomeMed = ?)";
+            String query = "DELETE FROM Consulta cs WHERE cs.ID = ?";
 
             try (PreparedStatement ps =banco.getPreparedStatement(query)){
                 ps.setString(1, query3);
                 ps.setString(1, query);
+                ps.setString(1, idPaciente);
                 boolean linhaApagada = ps.execute();
 
                 if (linhaApagada == false) {
                     //Remove a linha da jTable
-                    DefaultTableModel model = (DefaultTableModel) this.jTable1.getModel();
+                    DefaultTableModel model = (DefaultTableModel) this.tabelaHistoricoConsulta.getModel();
                     model.removeRow(linhaSelecionada);
                     JOptionPane.showMessageDialog(this,
                         "Histórico excluido com sucesso!!");
+                    
+                    botaoConsultaActionPerformed(evt);
 
                 } else {
                     JOptionPane.showMessageDialog(this,
@@ -273,9 +274,81 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_botaoExcluirMedActionPerformed
 
+    private void botaoEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEditarActionPerformed
+        int linhaSelecionada = this.tabelaHistoricoConsulta.getSelectedRow();
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(this,
+                    "Favor selecione um registro para editar!!!");
+            
+            return;
+        }
+        
+        String ID              = (String) this.tabelaHistoricoConsulta.getValueAt(linhaSelecionada, 0);
+        String nomeMedico      = (String) this.tabelaHistoricoConsulta.getValueAt(linhaSelecionada, 1);
+        String dataConsulta    = (String) this.tabelaHistoricoConsulta.getValueAt(linhaSelecionada, 2);
+        String formatoConsulta = (String) this.tabelaHistoricoConsulta.getValueAt(linhaSelecionada, 3);
+        String valorConsulta   = (String) this.tabelaHistoricoConsulta.getValueAt(linhaSelecionada, 4);
+        
+        String novaDataConsulta    = JOptionPane.showInputDialog(this,
+                "Editar a data da consulta (YYYY_MM-DD):",
+                dataConsulta);
+        
+        String novoFormatoConsulta = JOptionPane.showInputDialog(this,
+                "Editar o formato da consulta (Presencial ou Telemedicina):",
+                formatoConsulta);
+        
+        String novoValorConsulta   = JOptionPane.showInputDialog(this,
+                "Editar o valor da consulta (00.0):",
+                valorConsulta);
+        
+        if (novaDataConsulta    != null ||
+            novoFormatoConsulta != null ||
+            novoValorConsulta   != null) {
+            
+            BD banco = new BD();
+            boolean conectado = banco.conectaBD();
+            
+            if (!conectado) {
+                JOptionPane.showMessageDialog(this,
+                        "Erro ao conectar ao banco de dados!!!");
+                
+                return;
+            }
+            
+            String updatedQuery = "UPDATE Consulta SET dataConsulta = ?, formatoConsulta = ?, pagamentoConsulta = ? WHERE ID = ?";
+            
+            try (PreparedStatement ps = banco.getPreparedStatement(updatedQuery)) {
+                ps.setString(1, novaDataConsulta);
+                ps.setString(2, novoFormatoConsulta);
+                ps.setString(3, novoValorConsulta);
+                ps.setString(4, ID);
+                
+                int rowsUpdated = ps.executeUpdate();
+                
+                if (rowsUpdated > 0) {
+                    JOptionPane.showMessageDialog(this,
+                            "Registro editado com sucesso!!!");
+                    
+                    botaoConsultaActionPerformed(evt);
+                } else {
+                    JOptionPane.showMessageDialog(this,
+                            "Nenhum registro encontrado para editar!!!");
+                }
+            
+            } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this,
+                            "Erro ao atualizar o registro!! Error: " + ex.getMessage());
+            
+            } finally {
+                banco.encerrarConexao();
+            }
+        }
+    }//GEN-LAST:event_botaoEditarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoConsulta;
+    private javax.swing.JButton botaoEditar;
     private javax.swing.JButton botaoExcluirMed;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -283,7 +356,6 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel statusLabel;
+    private javax.swing.JTable tabelaHistoricoConsulta;
     // End of variables declaration//GEN-END:variables
 }

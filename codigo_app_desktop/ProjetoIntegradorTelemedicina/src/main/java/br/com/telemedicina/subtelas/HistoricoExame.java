@@ -39,7 +39,6 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaHistoricoExames = new javax.swing.JTable();
         botaoConsulta = new javax.swing.JButton();
-        statusLabel = new javax.swing.JLabel();
         botaoExcluirMed = new javax.swing.JButton();
         BotaoEditar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -87,9 +86,6 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
             }
         });
 
-        statusLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        statusLabel.setForeground(new java.awt.Color(0, 204, 0));
-
         botaoExcluirMed.setBackground(new java.awt.Color(204, 0, 0));
         botaoExcluirMed.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         botaoExcluirMed.setForeground(new java.awt.Color(0, 0, 0));
@@ -117,7 +113,7 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(98, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(188, 188, 188))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -125,14 +121,11 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(statusLabel)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(botaoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(botaoExcluirMed, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(BotaoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botaoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botaoExcluirMed, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(BotaoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -142,9 +135,7 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(statusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoExcluirMed, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -155,8 +146,6 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
         jSplitPane1.setRightComponent(jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(46, 169, 248));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/telemedicina.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -193,13 +182,7 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
 
     private void botaoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConsultaActionPerformed
         BD banco = new BD();
-        boolean resultado = banco.conectaBD();
-        if(resultado == true) {
-            this.statusLabel.setText("Status: Conectado ao banco de dados!!");
-        } else {
-            this.statusLabel.setText("Status: Não conectado ao banco de dados!!");
-            return;
-        }
+        banco.conectaBD();
 
         String query = "SELECT ex.ID, cl.nomeClinica, ex.descricaoExame, ex.dataExame, ex.statusExame, ex.diagnosticoExame, ex.valorExame FROM Clinica cl INNER JOIN Exame ex ON cl.ID = ex.ID_CLINICA";
         PreparedStatement ps = banco.getPreparedStatement(query);
@@ -253,12 +236,13 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
             BD banco = new BD();
             banco.conectaBD();
 
-            String query2 = "DELETE FROM Exame WHERE ID_CLINICA = (SELECT ID FROM Medico WHERE nomeClinica = ?)";
-            String query = "DELETE FROM Exame WHERE ID = ?";
+            String query2 = "DELETE FROM Exame ex WHERE ex.ID_CLINICA = (SELECT ID FROM Medico m WHERE m.nomeClinica = ?)";
+            String query = "DELETE FROM Exame ex WHERE ex.ID = ?";
 
             try (PreparedStatement ps =banco.getPreparedStatement(query)){
                 ps.setString(1, query2);
                 ps.setString(1, query);
+                ps.setString(1, idPaciente);
                 boolean linhaApagada = ps.execute();
 
                 if (linhaApagada == false) {
@@ -267,6 +251,8 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
                     model.removeRow(linhaSelecionada);
                     JOptionPane.showMessageDialog(this,
                         "Histórico excluido com sucesso!!");
+                    
+                    botaoConsultaActionPerformed(evt);
                     
                 } else {
                     JOptionPane.showMessageDialog(this,
@@ -297,13 +283,17 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
         //Obtendo os dados da linha selecionada
         String ID               = (String) this.tabelaHistoricoExames.getValueAt(linhaSelecionada, 0);
         String nomeClinica      = (String) this.tabelaHistoricoExames.getValueAt(linhaSelecionada, 1);
-        String descricaoClinica = (String) this.tabelaHistoricoExames.getValueAt(linhaSelecionada, 2);
+        String descricaoExame   = (String) this.tabelaHistoricoExames.getValueAt(linhaSelecionada, 2);
         String dataExame        = (String) this.tabelaHistoricoExames.getValueAt(linhaSelecionada, 3);
         String statusExame      = (String) this.tabelaHistoricoExames.getValueAt(linhaSelecionada, 4);
         String diagnosticoExame = (String) this.tabelaHistoricoExames.getValueAt(linhaSelecionada, 5);
         String valorExame       = (String) this.tabelaHistoricoExames.getValueAt(linhaSelecionada, 6);
         
         //Solicitando a nova informação
+        String novaDescricaoExame = JOptionPane.showInputDialog(this,
+                "Editar a descrição do exame:",
+                descricaoExame);
+        
         String novaDataExame = JOptionPane.showInputDialog(this,
                 "Editar a data do Exame (YYYY-MM-DD):",
                 dataExame);
@@ -317,10 +307,11 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
                 diagnosticoExame);
         
         String novoValorExame = JOptionPane.showInputDialog(this,
-                "Editar o Valor do Exame (0.00):",
+                "Editar o Valor do Exame (00.0):",
                 valorExame);
         
-        if (novaDataExame        != null ||
+        if (novaDescricaoExame   != null ||
+            novaDataExame        != null ||
             novoStatusExame      != null ||
             novoDiagnosticoExame != null ||
             novoValorExame       != null) {
@@ -336,14 +327,15 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
             }
             
             //Atualiza data, status, diagnostico, valor
-            String updateQuery = "UPDATE Exame SET statusExame = ?, dataExame = ?, descricaoExame = ?, valorExame = ? WHERE ID = ?";
+            String updateQuery = "UPDATE Exame SET diagnosticoExame = ?, statusExame = ?, dataExame = ?, descricaoExame = ?, valorExame = ? WHERE ID = ?";
             
             try (PreparedStatement ps = banco.getPreparedStatement(updateQuery)) {
-                ps.setString(1, novoStatusExame);
-                ps.setString(2,novaDataExame);
-                ps.setString(3, novoDiagnosticoExame);
-                ps.setString(4, novoValorExame);
-                ps.setString(5, ID);
+                ps.setString(1,novoDiagnosticoExame);
+                ps.setString(2,novoStatusExame);
+                ps.setString(3,novaDataExame);
+                ps.setString(4, novaDescricaoExame);
+                ps.setString(5, novoValorExame);
+                ps.setString(6, ID);
                 
                 int rowsUpdated = ps.executeUpdate();
                 
@@ -378,7 +370,6 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JLabel statusLabel;
     private javax.swing.JTable tabelaHistoricoExames;
     // End of variables declaration//GEN-END:variables
 }
