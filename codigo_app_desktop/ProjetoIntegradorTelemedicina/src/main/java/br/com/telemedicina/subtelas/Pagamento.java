@@ -16,6 +16,9 @@ import java.util.UUID;
 import java.util.regex.Pattern;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 
 /**
  *
@@ -77,6 +80,7 @@ public class Pagamento extends javax.swing.JDialog {
         numeroParcelasCredito = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         tituloLabel = new javax.swing.JLabel();
+        errorLabel = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         nomeDebitoLabel = new javax.swing.JLabel();
         nomePagamentoDebitoCampo = new javax.swing.JTextField();
@@ -320,6 +324,9 @@ public class Pagamento extends javax.swing.JDialog {
         tituloLabel.setForeground(new java.awt.Color(0, 0, 0));
         tituloLabel.setText("CARTÃO DE CRÉDITO");
 
+        errorLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        errorLabel.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -359,14 +366,20 @@ public class Pagamento extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(tituloLabel)
-                .addGap(26, 26, 26))
+                .addGap(28, 28, 28))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(errorLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(14, 14, 14)
                 .addComponent(tituloLabel)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(errorLabel)
+                .addGap(67, 67, 67)
                 .addComponent(nomeCreditoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nomePagamentoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -391,7 +404,7 @@ public class Pagamento extends javax.swing.JDialog {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cvvCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(323, Short.MAX_VALUE))
+                .addContainerGap(293, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Crédito", jPanel4);
@@ -609,8 +622,37 @@ public class Pagamento extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_cvvDebitoCampoActionPerformed
 
-    private void numeroCartaoCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroCartaoCampoActionPerformed
+    private static void limitaCaracteres(JTextField numeroCartaoCampo, int maxCaracteres) {
+        // Limitar o número de caracteres
+        ((PlainDocument) numeroCartaoCampo.getDocument()).setDocumentFilter(new javax.swing.text.DocumentFilter() {
+            @Override
+            public void insertString(FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
+                if (string != null && (fb.getDocument().getLength() + string.length() <= 16)) {
+                    super.insertString(fb, offset, string, attr);
+                }
+            }
+
+            @Override
+            public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                if (text != null && (fb.getDocument().getLength() + text.length() - length <= 16)) {
+                    super.replace(fb, offset, length, text, attrs);
+                }
+            }
+        });
         
+    }
+    
+    private void numeroCartaoCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroCartaoCampoActionPerformed
+        limitaCaracteres(numeroCartaoCampo, 16);
+        jPanel4.add(numeroCartaoCampo);
+        
+        String numeroCartao = numeroCartaoCampo.getText();
+        if(validarCartao(numeroCartao)) {
+            
+            //Mostrar a bandeira do cartao
+        } else {
+            errorLabel.setText("Número do cartão invalido.");
+        }
     }//GEN-LAST:event_numeroCartaoCampoActionPerformed
 
     //validação do número do cartão usando o algoritmo luhn
@@ -752,6 +794,7 @@ public class Pagamento extends javax.swing.JDialog {
     private javax.swing.JLabel cvvCreditoLabel;
     private javax.swing.JFormattedTextField cvvDebitoCampo;
     private javax.swing.JLabel cvvDebitoLabel;
+    private javax.swing.JLabel errorLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
