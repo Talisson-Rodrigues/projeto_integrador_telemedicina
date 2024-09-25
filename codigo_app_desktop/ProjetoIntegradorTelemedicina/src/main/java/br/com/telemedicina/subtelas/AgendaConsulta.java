@@ -8,9 +8,11 @@ import br.com.telemedicina.bd.BD;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -455,8 +457,10 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         if(!validaCampos()) {
             return;
         }
+        
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("Consulta.txt", true))) {
             
+            //Captura os dados dos campos
             String nomePaciente   = this.campoNome.getText();
             String dataNascimento = this.campoDataNascimento.getText();
             String genero         = (String) this.selecionaGenero.getSelectedItem();
@@ -465,27 +469,170 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
             String cpf            = this.campoCpf.getText();
             String dataConsulta   = this.campoDataConsulta.getText();
             int linhaSelecionada  = this.tabelaConsulta.getSelectedRow();
-            String Consulta       = (String) this.tabelaConsulta.getValueAt(linhaSelecionada, 5);
+            String consulta       = (String) this.tabelaConsulta.getValueAt(linhaSelecionada, 5);
             
+            //Escreve no arquivo os textos do campo
             bw.write(nomePaciente + ", " + dataNascimento + ", " + genero + ", " +
                      telefone + ", " + rg + ", " + cpf + ", " + 
-                    dataConsulta + ", " + Consulta + "\n");
+                    dataConsulta + ", " + consulta + "\n");
             
-            JOptionPane.showMessageDialog(this,
+            BD banco = new BD();
+            banco.conectaBD();
+            
+            String query = "INSERT INTO Consulta (dataConsulta, formatoConsulta, ID_PACIENTE, ID_MEDICO, ID_CLINICA, pagamentoConsulta, areaProcura) "
+                           + "VALUES (?,?,?,?,?,?,?)";
+            
+            // Obtenha os IDs do paciente, médico e clínica de acordo com a lógica
+            int idPaciente = getIdPaciente(); //Obtem o id do paciente pelo cpf
+            int idMedico   = getIdMedico(); //Obtem o id do medico pelo nome do médico na tabela
+            int idClinica  = getIdClinica(); //Obtem o id da clinica pelo nome da clinica na tabela
+            
+            try {
+                PreparedStatement ps = banco.getPreparedStatement(query);
+                
+               String pattern = "yyyy-MM-dd";
+               SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+               String date = simpleDateFormat.format(new java.util.Date(dataConsulta));
+                
+                
+                ps.setDate(1, java.sql.Date.valueOf(date)); // Converte String para data
+                ps.setString(2, (String) this.escolhaFormato.getSelectedItem()); // Formato da consulta
+                ps.setInt(3, idPaciente);
+                ps.setInt(4, idMedico);
+                ps.setInt(5, idClinica);
+                ps.setFloat(6, Float.parseFloat(consulta)); // Valor da Consulta
+                ps.setString(7, (String) this.escolhaEspecializacao.getSelectedItem()); //Área da consulta
+                
+                ps.executeUpdate();
+                
+                JOptionPane.showMessageDialog(this,
                     "Cadastro de Consulta Concluído!!");
+                
+                //Fecha a conexão
+                ps.close();
+                banco.encerrarConexao();
+                
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this,
+                        "Erro ao salvar no BD!! Error: " + ex.getMessage());
+                
+            }
             
+            
+            //Abre a tela de pagamento
             Pagamento pg = new Pagamento(null, true);
-            pg.setInformacoesPagamento(Float.parseFloat(Consulta));
+            pg.setInformacoesPagamento(Float.parseFloat(consulta));
             pg.setVisible(true);
             
+            //Fecha essa tela
             this.setVisible(false);
                     
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this,
                     "Erro ao cadastrar Consulta!! Error: " + e.getMessage());
+        
         }
+        
     }//GEN-LAST:event_botaoAgendarConsultaActionPerformed
-
+    
+    public int getIdPaciente() {
+        String cpf = this.campoCpf.getText();
+        int idPaciente = 0;
+        BD banco = new BD();
+        banco.conectaBD();
+        
+        String query = "SELECT ID FROM Paciente WHERE cpf LIKE ?";
+        
+        
+        try {
+            PreparedStatement ps = banco.getPreparedStatement(query);
+            ps.setString(1, cpf);
+            
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+                idPaciente = rs.getInt("ID");
+            }
+            
+            rs.close();
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this,
+                    "Erro ao buscar o id do Paciente!! Error: " + ex.getMessage());
+        
+        } finally {
+            banco.encerrarConexao();
+        
+        }
+        
+        return idPaciente;
+    }
+    
+    public int getIdMedico() {
+        int linhaSelecionada = this.tabelaConsulta.getSelectedRow();
+        String idMed = (String) this.tabelaConsulta.getValueAt(linhaSelecionada, 0);
+        int idMedico = 0;
+        BD banco = new BD();
+        banco.conectaBD();
+        
+        String query = "SELECT ID FROM Medico WHERE nomeMed LIKE ?";
+        
+        try {
+            PreparedStatement ps = banco.getPreparedStatement(query);
+            ps.setString(1, idMed);
+            
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                idMedico = rs.getInt("ID");
+            }
+            
+            rs.close();
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this,
+                    "Erro ao buscar o id do Médico!! Error: " + ex.getMessage());
+            
+        } finally {
+            banco.encerrarConexao();
+        }
+        
+        return idMedico;
+    }
+    
+    public int getIdClinica() {
+        int linhaSelecionada = this.tabelaConsulta.getSelectedRow();
+        String idCli = (String) this.tabelaConsulta.getValueAt(linhaSelecionada, 3);
+        int idClinica = 0;
+        BD banco = new BD();
+        banco.conectaBD();
+        
+        String query = "SELECT ID FROM Clinica WHERE nomeClinica LIKE ?";
+        
+        try {
+            PreparedStatement ps = banco.getPreparedStatement(query);
+            ps.setString(1, idCli);
+            
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+                idClinica = rs.getInt("ID");
+            }
+            
+            rs.close();
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this,
+                    "Erro ao buscar o id do Clínica!! Error: " + ex.getMessage());
+            
+        } finally {
+            banco.encerrarConexao();
+            
+        }
+        
+        return idClinica;
+    }
+    
     private void botaoConsultaBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConsultaBancoActionPerformed
         BD banco = new BD();
         banco.conectaBD();
@@ -497,7 +644,9 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
 
         // Verifica se pelo menos um filtro foi selecionado
         if(estado.equals("Selecione") && especializacao.equals("Selecione") && formato.equals("Selecione")) {
-            JOptionPane.showMessageDialog(this, "Escolha pelo menos uma das opções!");
+            JOptionPane.showMessageDialog(this,
+                    "Escolha pelo menos uma das opções!");
+            
             return; // Sai do método caso nenhum filtro tenha sido selecionado
         }
 
@@ -565,7 +714,8 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
             banco.encerrarConexao();
 
         } catch (SQLException se) {
-            JOptionPane.showMessageDialog(this, "Não foi possível realizar a consulta no BD!! Error: " + se.getMessage());
+            JOptionPane.showMessageDialog(this,
+                    "Não foi possível realizar a consulta no BD!! Error: " + se.getMessage());
         }
         
     }//GEN-LAST:event_botaoConsultaBancoActionPerformed
