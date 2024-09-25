@@ -5,7 +5,9 @@
 package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.bd.BD;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.PreparedStatement;
@@ -295,6 +297,13 @@ public class AgendaExame extends javax.swing.JInternalFrame {
             
             bw.write(nomePaciente + ", " + descricaoExame + ", " + dataExame);
             
+            BD banco = new BD();
+            banco.conectaBD();
+            
+            String query = "";
+            
+            
+            
             JOptionPane.showMessageDialog(this,
                     "Cadastro de exame Concluído!!");
             this.setVisible(false);
@@ -305,6 +314,72 @@ public class AgendaExame extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_botaoAgendarActionPerformed
 
+    public int getIdPaciente() {
+        String nome = this.campoNomePaciente.getText();
+        int idPaciente = 0;
+        BD banco = new BD();
+        banco.conectaBD();
+        
+        String query = "SELECT ID FROM Paciente WHERE nome LIKE ?";
+        
+        try {
+            PreparedStatement ps = banco.getPreparedStatement(query);
+            ps.setString(1, nome);
+            
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+                idPaciente = rs.getInt("ID");
+            }
+            
+            rs.close();
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this,
+                    "Erro ao buscar o ID do Paciente!! Error: " + ex.getMessage());
+            
+        } finally {
+            banco.encerrarConexao();
+            
+        }
+        return idPaciente;
+    }
+    
+    public int getIdMedico() {
+        int idMedico = 0;
+        
+        try (BufferedReader br = new BufferedReader(new FileReader("sessao"))) {
+            
+            String linha;
+            String[] dados = {};
+            
+            while ((linha = br.readLine()) != null) {
+                dados = linha.split(",");
+            }
+            
+            String email = dados[0];
+            
+            BD banco = new BD();
+            banco.conectaBD();
+            
+            String query = "SELECT ID FROM Medico WHERE emailMed LIKE ?";
+            
+            try {
+                PreparedStatement ps = banco.getPreparedStatement(query);
+                ps.setString(1, email);
+                
+            } catch (SQLException se) {
+                
+            } finally {
+                
+            }
+            
+        } catch (IOException ie) {
+            
+        }
+        return idMedico;
+    }
+    
     private boolean validaCampos() {
         if (this.campoNomePaciente.getText().equals("") ||
             this.campoDescricaoExame.getText().equals("") ||
