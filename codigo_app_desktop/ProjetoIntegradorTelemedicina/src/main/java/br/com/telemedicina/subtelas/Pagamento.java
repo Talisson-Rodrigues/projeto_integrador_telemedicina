@@ -5,6 +5,7 @@
 package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.bd.BD;
+import br.com.telemedicina.utils.LimitaCaracter;
 import java.sql.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -127,6 +128,11 @@ public class Pagamento extends javax.swing.JDialog {
                 cartaoDRadioButtonMouseClicked(evt);
             }
         });
+        cartaoDRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cartaoDRadioButtonActionPerformed(evt);
+            }
+        });
 
         cartaoCRadioButton.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(cartaoCRadioButton);
@@ -191,7 +197,7 @@ public class Pagamento extends javax.swing.JDialog {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setForeground(new java.awt.Color(0, 0, 0));
 
-        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
@@ -269,8 +275,9 @@ public class Pagamento extends javax.swing.JDialog {
             }
         });
 
-        jPanel4.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
+        numeroCartaoCampo.setDocument(new LimitaCaracter(19));
         numeroCartaoCampo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numeroCartaoCampoActionPerformed(evt);
@@ -409,7 +416,7 @@ public class Pagamento extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Crédito", jPanel4);
 
-        jPanel5.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         nomeDebitoLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         nomeDebitoLabel.setForeground(new java.awt.Color(0, 0, 0));
@@ -588,10 +595,12 @@ public class Pagamento extends javax.swing.JDialog {
 
     private void cartaoDRadioButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartaoDRadioButtonMouseClicked
         this.jTabbedPane1.addTab("Débito", jPanel5);
+        this.jTabbedPane1.removeTabAt(0);
     }//GEN-LAST:event_cartaoDRadioButtonMouseClicked
 
     private void cartaoCRadioButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartaoCRadioButtonMouseClicked
         this.jTabbedPane1.addTab("Crédito", jPanel4);
+        this.jTabbedPane1.removeTabAt(1);
     }//GEN-LAST:event_cartaoCRadioButtonMouseClicked
 
     private void cvvCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cvvCampoActionPerformed
@@ -621,31 +630,8 @@ public class Pagamento extends javax.swing.JDialog {
     private void cvvDebitoCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cvvDebitoCampoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cvvDebitoCampoActionPerformed
-
-    private static void limitaCaracteres(JTextField numeroCartaoCampo, int maxCaracteres) {
-        // Limitar o número de caracteres
-        ((PlainDocument) numeroCartaoCampo.getDocument()).setDocumentFilter(new javax.swing.text.DocumentFilter() {
-            @Override
-            public void insertString(FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
-                if (string != null && (fb.getDocument().getLength() + string.length() <= 16)) {
-                    super.insertString(fb, offset, string, attr);
-                }
-            }
-
-            @Override
-            public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
-                if (text != null && (fb.getDocument().getLength() + text.length() - length <= 16)) {
-                    super.replace(fb, offset, length, text, attrs);
-                }
-            }
-        });
-        
-    }
     
     private void numeroCartaoCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroCartaoCampoActionPerformed
-        limitaCaracteres(numeroCartaoCampo, 16);
-        jPanel4.add(numeroCartaoCampo);
-        
         String numeroCartao = numeroCartaoCampo.getText();
         if(validarCartao(numeroCartao)) {
             
@@ -654,6 +640,10 @@ public class Pagamento extends javax.swing.JDialog {
             errorLabel.setText("Número do cartão invalido.");
         }
     }//GEN-LAST:event_numeroCartaoCampoActionPerformed
+
+    private void cartaoDRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartaoDRadioButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cartaoDRadioButtonActionPerformed
 
     //validação do número do cartão usando o algoritmo luhn
     private static boolean validarCartao(String numeroCartao) {

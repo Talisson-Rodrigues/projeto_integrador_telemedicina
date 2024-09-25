@@ -12,6 +12,7 @@ import br.com.telemedicina.subtelas.HistoricoExame;
 import br.com.telemedicina.subtelas.HistoricoPagamento;
 import br.com.telemedicina.subtelas.HistoricoPrescricao;
 import br.com.telemedicina.subtelas.NovaPrescricao;
+import br.com.telemedicina.subtelas.Pagamento;
 import br.com.telemedicina.subtelas.TelaInicio;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -84,6 +85,7 @@ public class Main extends javax.swing.JFrame {
         novaPrescricao = new javax.swing.JMenuItem();
         pagamentosMenu = new javax.swing.JMenu();
         historicoPagamento = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -411,6 +413,14 @@ public class Main extends javax.swing.JFrame {
         });
         pagamentosMenu.add(historicoPagamento);
 
+        jMenuItem1.setText("Pagamento");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        pagamentosMenu.add(jMenuItem1);
+
         menuBar.add(pagamentosMenu);
 
         setJMenuBar(menuBar);
@@ -705,6 +715,11 @@ public class Main extends javax.swing.JFrame {
         hpg.setVisible(true);
     }//GEN-LAST:event_historicoPagamentoActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        Pagamento pg = new Pagamento(this, true);
+        pg.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -756,6 +771,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
