@@ -5,6 +5,9 @@
 package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.bd.BD;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -46,11 +49,30 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setForeground(new java.awt.Color(0, 0, 0));
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
+            }
+        });
 
         jSplitPane1.setDividerLocation(280);
         jSplitPane1.setDividerSize(0);
 
         jPanel1.setBackground(new java.awt.Color(46, 169, 248));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imagemHistoricoConsulta.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -64,9 +86,9 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(112, 112, 112)
-                .addComponent(jLabel1)
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addGap(82, 82, 82)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(153, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -344,6 +366,25 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_botaoEditarActionPerformed
+
+    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+        try (BufferedReader br = new BufferedReader(new FileReader("sessao"))) {
+            //lê o arquivo para saber se é paciente ou médico
+            String linha;
+            String[] dados = {};
+            
+            while ((linha = br.readLine()) != null) {
+                dados = linha.split(",");
+            }
+            
+            if (dados[1].equals("Paciente")) {
+                this.botaoEditar.setVisible(false);
+            }
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this,
+                    "Erro ao ler o arquivo!! Error: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_formInternalFrameOpened
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -487,60 +489,89 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
     private void botaoConsultaBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConsultaBancoActionPerformed
         BD banco = new BD();
         banco.conectaBD();
-        
+
+        // Captura as escolhas do usuário
         String estado         = (String) this.escolhaEstados.getSelectedItem();
         String especializacao = (String) this.escolhaEspecializacao.getSelectedItem();
         String formato        = (String) this.escolhaFormato.getSelectedItem();
-  
-        String query = "SELECT m.nomeMed, m.especializacao, ta.formato, cl.nomeClinica, cl.enderecoClinica, ta.valorConsulta FROM Medico m INNER JOIN Atende ate ON m.ID =ate.ID_MEDICO INNER JOIN Clinica cl ON cl.ID = ate.ID_CLINICA INNER JOIN TipoAtendimento ta ON ta.ID_MEDICO = m.ID WHERE cl.enderecoClinica LIKE ? AND m.especializacao LIKE ? AND ta.formato LIKE ?";
-        
-        PreparedStatement ps  = banco.getPreparedStatement(query);
-        
-        if(estado.equals("Selecione") || especializacao.equals("Selecione") || formato.equals("Selecione")) {
-           JOptionPane.showMessageDialog(this,
-                    "Escolha as três opções!!!");
+
+        // Verifica se pelo menos um filtro foi selecionado
+        if(estado.equals("Selecione") && especializacao.equals("Selecione") && formato.equals("Selecione")) {
+            JOptionPane.showMessageDialog(this, "Escolha pelo menos uma das opções!");
+            return; // Sai do método caso nenhum filtro tenha sido selecionado
         }
-        
+
+        // Construção da query dinâmica
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("SELECT m.nomeMed, m.especializacao, ta.formato, cl.nomeClinica, cl.enderecoClinica, ta.valorConsulta ");
+        queryBuilder.append("FROM Medico m ");
+        queryBuilder.append("INNER JOIN Atende ate ON m.ID = ate.ID_MEDICO ");
+        queryBuilder.append("INNER JOIN Clinica cl ON cl.ID = ate.ID_CLINICA ");
+        queryBuilder.append("INNER JOIN TipoAtendimento ta ON ta.ID_MEDICO = m.ID ");
+        queryBuilder.append("WHERE 1=1 "); // Condição sempre verdadeira, facilita a adição de outras cláusulas
+
+        // Verifica quais filtros foram selecionados e adiciona as condições correspondentes
+        List<String> conditions = new ArrayList<>();
+
+        if (!estado.equals("Selecione")) {
+            queryBuilder.append("AND cl.enderecoClinica LIKE ? ");
+            conditions.add("%" + estado + "%"); // '%' é para permitir buscas por partes do nome do estado
+        }
+
+        if (!especializacao.equals("Selecione")) {
+            queryBuilder.append("AND m.especializacao LIKE ? ");
+            conditions.add("%" + especializacao + "%"); // '%' é para permitir buscas por partes da especialização
+        }
+
+        if (!formato.equals("Selecione")) {
+            queryBuilder.append("AND ta.formato LIKE ? ");
+            conditions.add("%" + formato + "%"); // '%' é para permitir buscas por partes do formato
+        }
+
+        // Agora podemos criar o PreparedStatement com a query montada
         try {
-            ps.setString(1, "%" + estado);
-            ps.setString(2, especializacao);
-            ps.setString(3, formato);
-            
+            PreparedStatement ps = banco.getPreparedStatement(queryBuilder.toString());
+
+            // Preenche os valores dos parâmetros dinamicamente
+            for (int i = 0; i < conditions.size(); i++) {
+                ps.setString(i + 1, conditions.get(i)); // Os parâmetros começam em 1 no PreparedStatement
+            }
+
             ResultSet rs = ps.executeQuery();
-            
+
+            // Limpa a tabela antes de adicionar os resultados
             DefaultTableModel model = (DefaultTableModel) this.tabelaConsulta.getModel();
             if (model.getRowCount() > 0) {
                 model.setRowCount(0);
             }
-            
+
+            // Adiciona os resultados na tabela
             while (rs.next()) {
                 String[] dados = {
-                        rs.getString("m.nomeMed"),
-                        rs.getString("m.especializacao"),
-                        rs.getString("ta.formato"),
-                        rs.getString("cl.nomeClinica"),
-                        rs.getString("cl.enderecoClinica"),
-                        rs.getString("ta.valorConsulta")
+                    rs.getString("m.nomeMed"),
+                    rs.getString("m.especializacao"),
+                    rs.getString("ta.formato"),
+                    rs.getString("cl.nomeClinica"),
+                    rs.getString("cl.enderecoClinica"),
+                    rs.getString("ta.valorConsulta")
                 };
-                
+
                 model.addRow(dados);
             }
-            
+
             this.tabelaConsulta.setModel(model);
             rs.close();
             ps.close();
             banco.encerrarConexao();
+
         } catch (SQLException se) {
-            JOptionPane.showMessageDialog(this,
-                    "Não foi possível realizar a consulta no BD!! Error: " + se.getMessage());
-            
+            JOptionPane.showMessageDialog(this, "Não foi possível realizar a consulta no BD!! Error: " + se.getMessage());
         }
-        
         
     }//GEN-LAST:event_botaoConsultaBancoActionPerformed
 
     private void escolhaEstadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escolhaEstadosActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_escolhaEstadosActionPerformed
 
        private boolean validaCampos() {

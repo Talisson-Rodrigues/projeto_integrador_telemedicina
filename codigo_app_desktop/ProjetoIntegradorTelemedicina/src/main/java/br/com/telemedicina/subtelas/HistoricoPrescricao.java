@@ -5,6 +5,9 @@
 package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.bd.BD;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -46,6 +49,23 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setForeground(new java.awt.Color(0, 0, 0));
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
+            }
+        });
 
         jSplitPane1.setDividerLocation(350);
         jSplitPane1.setDividerSize(0);
@@ -328,6 +348,25 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_botaoEditarActionPerformed
+
+    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+        try (BufferedReader br = new BufferedReader(new FileReader("sessao"))) {
+            //lê o arquivo para saber se é paciente ou médico
+            String linha;
+            String[] dados = {};
+            
+            while ((linha = br.readLine()) != null) {
+                dados = linha.split(",");
+            }
+            
+            if (dados[1].equals("Paciente")) {
+                this.botaoEditar.setVisible(false);
+            }
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this,
+                    "Erro ao ler o arquivo!! Error: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_formInternalFrameOpened
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

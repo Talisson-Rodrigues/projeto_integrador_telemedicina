@@ -468,6 +468,9 @@ public class Main extends javax.swing.JFrame {
            if(dados[1].equals("Médico")) {
                 //ativar a aba correspondente
                 this.jTabbedPane1.removeTabAt(1);
+                
+                //remove historico de pagamento
+                this.pagamentosMenu.remove(historicoPagamento);
                  
                 //Inicia a tabela junto ao sistema
                 String query  = "SELECT nome, cpf, dataNascimento FROM Paciente WHERE ID <= 10";
@@ -526,6 +529,7 @@ public class Main extends javax.swing.JFrame {
                 //Remove as opções de menu para Agendar exame e Nova prescrição
                 this.examesMenu.remove(agendaExame);
                 this.prescricoesMenu.remove(novaPrescricao);
+                
                 
                 //Inicia a tabela junto ao sistema
                 String query = "SELECT m.nomeMed, cs.dataConsulta, cs.formatoConsulta FROM Medico m INNER JOIN Consulta cs ON m.ID = cs.ID_MEDICO WHERE m.enderecoMed LIKE '%DF'";
