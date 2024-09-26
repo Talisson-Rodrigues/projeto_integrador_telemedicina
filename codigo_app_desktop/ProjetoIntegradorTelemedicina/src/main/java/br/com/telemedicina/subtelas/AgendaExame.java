@@ -54,7 +54,7 @@ public class AgendaExame extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         botaoClinicas = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        agendaExameTabela = new javax.swing.JTable();
+        tabelaAgendaExame = new javax.swing.JTable();
         statusLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         escolhaEstado = new javax.swing.JComboBox<>();
@@ -199,11 +199,11 @@ public class AgendaExame extends javax.swing.JInternalFrame {
             }
         });
 
-        agendaExameTabela.setBackground(new java.awt.Color(102, 102, 102));
-        agendaExameTabela.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        agendaExameTabela.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        agendaExameTabela.setForeground(new java.awt.Color(255, 255, 255));
-        agendaExameTabela.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaAgendaExame.setBackground(new java.awt.Color(102, 102, 102));
+        tabelaAgendaExame.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tabelaAgendaExame.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        tabelaAgendaExame.setForeground(new java.awt.Color(255, 255, 255));
+        tabelaAgendaExame.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -219,7 +219,7 @@ public class AgendaExame extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(agendaExameTabela);
+        jScrollPane2.setViewportView(tabelaAgendaExame);
 
         statusLabel.setBackground(new java.awt.Color(255, 255, 255));
         statusLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -294,6 +294,7 @@ public class AgendaExame extends javax.swing.JInternalFrame {
             String nomePaciente   = this.campoNomePaciente.getText();
             String descricaoExame = this.campoDescricaoExame.getText();
             String dataExame      = this.campoDataExame.getText();
+            int linhaSelecionada  = 
             
             bw.write(nomePaciente + ", " + descricaoExame + ", " + dataExame);
             
@@ -380,6 +381,38 @@ public class AgendaExame extends javax.swing.JInternalFrame {
         return idMedico;
     }
     
+    public int getIdClinica() {
+        int linhaSelecionada = this.tabelaAgendaExame.getSelectedRow();
+        String idCli = (String) this.tabelaAgendaExame.getValueAt(linhaSelecionada, 0);
+        int idClinica = 0;
+        BD banco = new BD();
+        banco.conectaBD();
+        
+        String query = "SELECT ID FROM Clinica WHERE nomeClinica LIKE ?";
+        
+        try {
+            PreparedStatement ps = banco.getPreparedStatement(query);
+            ps.setString(1, idCli);
+            
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                idClinica = rs.getInt("ID");
+            }
+            
+            rs.close();
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this,
+                    "Erro ao buscar o ID da Clinica!! Error: " + ex.getMessage());
+            
+        } finally {
+            banco.encerrarConexao();
+            
+        }
+        return idClinica;
+    }
+    
     private boolean validaCampos() {
         if (this.campoNomePaciente.getText().equals("") ||
             this.campoDescricaoExame.getText().equals("") ||
@@ -416,7 +449,7 @@ public class AgendaExame extends javax.swing.JInternalFrame {
             ps.setString(1, "%" + estado);
            ResultSet rs = ps.executeQuery();
            
-           DefaultTableModel model = (DefaultTableModel) this.agendaExameTabela.getModel();
+           DefaultTableModel model = (DefaultTableModel) this.tabelaAgendaExame.getModel();
            if (model.getRowCount() > 0) {
                model.setRowCount(0);
            }
@@ -429,7 +462,7 @@ public class AgendaExame extends javax.swing.JInternalFrame {
                model.addRow(dados);
            }
            
-           this.agendaExameTabela.setModel(model);
+           this.tabelaAgendaExame.setModel(model);
            rs.close();
            ps.close();
            banco.encerrarConexao();
@@ -442,7 +475,6 @@ public class AgendaExame extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable agendaExameTabela;
     private javax.swing.JButton botaoAgendar;
     private javax.swing.JButton botaoClinicas;
     private javax.swing.JFormattedTextField campoDataExame;
@@ -462,5 +494,6 @@ public class AgendaExame extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel statusLabel;
+    private javax.swing.JTable tabelaAgendaExame;
     // End of variables declaration//GEN-END:variables
 }
