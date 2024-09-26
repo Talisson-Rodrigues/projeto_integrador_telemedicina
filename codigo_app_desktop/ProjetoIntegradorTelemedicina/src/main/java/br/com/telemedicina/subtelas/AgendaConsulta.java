@@ -5,6 +5,9 @@
 package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.bd.BD;
+import br.com.telemedicina.repository.ClinicaRepository;
+import br.com.telemedicina.repository.MedicoRepository;
+import br.com.telemedicina.repository.PacienteRepository;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -31,6 +34,11 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+     PacienteRepository pacRepo   = new PacienteRepository();
+     
+     MedicoRepository   medRepo   = new MedicoRepository();
+     
+     ClinicaRepository  clnRepo   = new ClinicaRepository();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -483,8 +491,8 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
                            + "VALUES (?,?,?,?,?,?,?)";
             
             // Obtenha os IDs do paciente, médico e clínica de acordo com a lógica
-            int idPaciente = getIdPaciente(); //Obtem o id do paciente pelo cpf
-            int idMedico   = getIdMedico(); //Obtem o id do medico pelo nome do médico na tabela
+            int idPaciente = pacRepo.getIdByCpf(cpf);//Obtem o id do paciente pelo cpf
+            int idMedico   = medRepo.getIdbyEmail(); //Obtem o id do medico pelo nome do médico na tabela
             int idClinica  = getIdClinica(); //Obtem o id da clinica pelo nome da clinica na tabela
             
             try {

@@ -4,7 +4,10 @@
  */
 package br.com.telemedicina.subtelas;
 
+import br.com.telemedicina.repository.ClinicaRepository;
 import br.com.telemedicina.bd.BD;
+import br.com.telemedicina.repository.MedicoRepository;
+import br.com.telemedicina.repository.PacienteRepository;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -29,7 +32,11 @@ public class AgendaExame extends javax.swing.JInternalFrame {
     public AgendaExame() {
         initComponents();
     }
-
+    ClinicaRepository clnRepo  = new ClinicaRepository();
+    
+    MedicoRepository medRepo   = new MedicoRepository();
+    
+    PacienteRepository pacRepo = new PacienteRepository();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,7 +82,7 @@ public class AgendaExame extends javax.swing.JInternalFrame {
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
         errorLabel.setToolTipText("");
 
-        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/4430167.png"))); // NOI18N
+        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imagemTelaAgendaExame.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -297,6 +304,7 @@ public class AgendaExame extends javax.swing.JInternalFrame {
             String dataExame      = this.campoDataExame.getText();
             int linhaSelecionada  = this.tabelaAgendaExame.getSelectedRow();
             String valorExame     = (String) this.tabelaAgendaExame.getValueAt(linhaSelecionada, 2);
+            String nomeClinica    = (String) this.tabelaAgendaExame.getValueAt(linhaSelecionada, 0);
             
             bw.write(nomePaciente + ", " + descricaoExame + ", " + dataExame + 
                     ", " + linhaSelecionada + ", " + valorExame);
@@ -304,10 +312,12 @@ public class AgendaExame extends javax.swing.JInternalFrame {
             BD banco = new BD();
             banco.conectaBD();
             
+            
+            
             String query = "INSERT INTO Exame (ID_PACIENTE, ID_MEDICO, ID_CLINICA, dataExame, descricaoExame, valorExame) VALUES (?,?,?,?,?,?)";
-            int idPaciente = getIdPaciente(); //Obtem o id do Paciente
-            int idMedico   = getIdMedico(); //Obtem o id do Médico
-            int idClinica  = getIdClinica(); //Obtem o id da Clínica
+            int idPaciente = pacRepo.getIdByNome(nomePaciente); //Obtem o id do Paciente
+            int idMedico   = medRepo.getIdbyEmail(); //Obtem o id do Médico
+            int idClinica  = clnRepo.getIdByNome(nomeClinica); //Obtem o id da Clínica
             
             try {
                 PreparedStatement ps = banco.getPreparedStatement(query);
@@ -345,104 +355,6 @@ public class AgendaExame extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_botaoAgendarActionPerformed
 
-    public int getIdPaciente() {
-        String nome = this.campoNomePaciente.getText();
-        int idPaciente = 0;
-        BD banco = new BD();
-        banco.conectaBD();
-        
-        String query = "SELECT ID FROM Paciente WHERE nome LIKE ?";
-        
-        try {
-            PreparedStatement ps = banco.getPreparedStatement(query);
-            ps.setString(1, nome);
-            
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()) {
-                idPaciente = rs.getInt("ID");
-            }
-            
-            rs.close();
-            ps.close();
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this,
-                    "Erro ao buscar o ID do Paciente!! Error: " + ex.getMessage());
-            
-        } finally {
-            banco.encerrarConexao();
-            
-        }
-        return idPaciente;
-    }
-    
-    public int getIdMedico() {
-        int idMedico = 0;
-        
-        try (BufferedReader br = new BufferedReader(new FileReader("sessao"))) {
-            
-            String linha;
-            String[] dados = {};
-            
-            while ((linha = br.readLine()) != null) {
-                dados = linha.split(",");
-            }
-            
-            String email = dados[0];
-            
-            BD banco = new BD();
-            banco.conectaBD();
-            
-            String query = "SELECT ID FROM Medico WHERE emailMed LIKE ?";
-            
-            try {
-                PreparedStatement ps = banco.getPreparedStatement(query);
-                ps.setString(1, email);
-                
-            } catch (SQLException se) {
-                
-            } finally {
-                
-            }
-            
-        } catch (IOException ie) {
-            
-        }
-        return idMedico;
-    }
-    
-    public int getIdClinica() {
-        int linhaSelecionada = this.tabelaAgendaExame.getSelectedRow();
-        String idCli = (String) this.tabelaAgendaExame.getValueAt(linhaSelecionada, 0);
-        int idClinica = 0;
-        BD banco = new BD();
-        banco.conectaBD();
-        
-        String query = "SELECT ID FROM Clinica WHERE nomeClinica LIKE ?";
-        
-        try {
-            PreparedStatement ps = banco.getPreparedStatement(query);
-            ps.setString(1, idCli);
-            
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                idClinica = rs.getInt("ID");
-            }
-            
-            rs.close();
-            ps.close();
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this,
-                    "Erro ao buscar o ID da Clinica!! Error: " + ex.getMessage());
-            
-        } finally {
-            banco.encerrarConexao();
-            
-        }
-        return idClinica;
-    }
-    
     private boolean validaCampos() {
         if (this.campoNomePaciente.getText().equals("") ||
             this.campoDescricaoExame.getText().equals("") ||
