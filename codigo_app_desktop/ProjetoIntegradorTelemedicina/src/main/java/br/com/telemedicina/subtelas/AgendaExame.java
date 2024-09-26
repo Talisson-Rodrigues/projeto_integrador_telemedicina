@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -294,20 +295,49 @@ public class AgendaExame extends javax.swing.JInternalFrame {
             String nomePaciente   = this.campoNomePaciente.getText();
             String descricaoExame = this.campoDescricaoExame.getText();
             String dataExame      = this.campoDataExame.getText();
-            int linhaSelecionada  = 
+            int linhaSelecionada  = this.tabelaAgendaExame.getSelectedRow();
+            String valorExame     = (String) this.tabelaAgendaExame.getValueAt(linhaSelecionada, 2);
             
-            bw.write(nomePaciente + ", " + descricaoExame + ", " + dataExame);
+            bw.write(nomePaciente + ", " + descricaoExame + ", " + dataExame + 
+                    ", " + linhaSelecionada + ", " + valorExame);
             
             BD banco = new BD();
             banco.conectaBD();
             
-            String query = "";
+            String query = "INSERT INTO Exame (ID_PACIENTE, ID_MEDICO, ID_CLINICA, dataExame, descricaoExame, valorExame) VALUES (?,?,?,?,?,?)";
+            int idPaciente = getIdPaciente(); //Obtem o id do Paciente
+            int idMedico   = getIdMedico(); //Obtem o id do Médico
+            int idClinica  = getIdClinica(); //Obtem o id da Clínica
             
-            
-            
-            JOptionPane.showMessageDialog(this,
+            try {
+                PreparedStatement ps = banco.getPreparedStatement(query);
+                
+                String pattern = "yyyy-MM-dd";
+                SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+                String date = sdf.format(new java.util.Date(dataExame));
+                
+                ps.setInt(1, idPaciente);
+                ps.setInt(2, idMedico);
+                ps.setInt(3,idClinica);
+                ps.setDate(4, java.sql.Date.valueOf(date));
+                ps.setString(5, descricaoExame);
+                ps.setFloat(6, Float.parseFloat(valorExame));
+                
+                ps.executeUpdate();
+                
+                JOptionPane.showMessageDialog(this,
                     "Cadastro de exame Concluído!!");
-            this.setVisible(false);
+                
+                ps.close();
+                banco.encerrarConexao();
+                
+                this.setVisible(false);
+                                
+            } catch (SQLException ex){
+                JOptionPane.showMessageDialog(this,
+                        "Erro ao salvar no BD!! Error: " + ex.getMessage());
+                
+            }
                     
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this,

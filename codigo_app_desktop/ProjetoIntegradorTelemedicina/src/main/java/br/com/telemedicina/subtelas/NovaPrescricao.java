@@ -4,9 +4,14 @@
  */
 package br.com.telemedicina.subtelas;
 
+import br.com.telemedicina.bd.BD;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
 /**
@@ -255,15 +260,113 @@ public class NovaPrescricao extends javax.swing.JInternalFrame {
             bw.write(nomeMed + ", " + nomePac + ", " +
                      medicamento + ", " + observacoes + ", " +
                      dataPrescricao);
-            JOptionPane.showMessageDialog(this,
+            
+            BD banco = new BD();
+            banco.conectaBD();
+            
+            String query = "INSERT INTO Prescricao (medicamento, observacao, ID_PACIENTE, ID_MEDICO, dataPrescricao) VALUES (?,?,?,?,?)";
+            
+            int idPaciente = getIdPaciente(); //Obtem o id do Paciente
+            int idMedico   = getIdMedico(); //Obtem o id do Médico
+            
+            try {
+                PreparedStatement ps = banco.getPreparedStatement(query);
+                
+                String pattern = "yyyy-MM-dd";
+                SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+                String date = sdf.format(new java.util.Date(dataPrescricao));
+                
+                ps.setString(1, medicamento);
+                ps.setString(2, observacoes);
+                ps.setInt(3, idPaciente);
+                ps.setInt(4, idMedico);
+                ps.setDate(5, java.sql.Date.valueOf(date));
+                
+                ps.executeUpdate();
+                
+                JOptionPane.showMessageDialog(this,
                     "Prescrição feita com Sucesso!!");
-            this.setVisible(false);    
+                
+                ps.close();
+                banco.encerrarConexao();
+                
+            this.setVisible(false);
+            
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this,
+                        "Erro ao salvar no BD!! Error: " + ex.getMessage());
+                
+            }
+                
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this,
                     "Não foi possível realizar a Prescrição!! Error: " + ex.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public int getIdPaciente() {
+        int idPaciente = 0;
+        String nomePac = this.campoNomePac.getText();
+        BD banco = new BD();
+        banco.conectaBD();
+        
+        String query = "SELECT ID FROM Paciente WHERE nome LIKE ?";
+        
+        try {
+            PreparedStatement ps = banco.getPreparedStatement(query);
+            ps.setString(1, nomePac);
+            
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                idPaciente = rs.getInt("ID");
+            }
+            
+            rs.close();
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this,
+                    "Erro ao buscar o ID do Paciente!! Error: " + ex.getMessage());
+            
+        } finally {
+            banco.encerrarConexao();
+        }
+        
+        return idPaciente;
+    }
+    
+    public int getIdMedico() {
+        int idMedico = 0;
+        String nomeMed = this.campoNomeMed.getText();
+        BD banco = new BD();
+        banco.conectaBD();
+        
+        String query = "SELECT ID FROM Medico WHERE nomeMed LIKE ?";
+        
+        try {
+            PreparedStatement ps = banco.getPreparedStatement(query);
+            ps.setString(1, nomeMed);
+            
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                idMedico = rs.getInt("ID");
+            }
+            
+            rs.close();
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this,
+                    "Erro ao buscar o ID do Médico!!! Error: " + ex.getMessage());
+            
+        } finally {
+            banco.encerrarConexao();
+            
+        }
+        
+        return idMedico;
+    }
+    
     private boolean validaCampos() {
         if (this.campoNomeMed.getText().equals("")      ||
             this.campoNomePac.getText().equals("") ||
