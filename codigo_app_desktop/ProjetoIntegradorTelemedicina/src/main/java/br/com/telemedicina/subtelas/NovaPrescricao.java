@@ -5,6 +5,8 @@
 package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.bd.BD;
+import br.com.telemedicina.repository.MedicoRepository;
+import br.com.telemedicina.repository.PacienteRepository;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -26,7 +28,10 @@ public class NovaPrescricao extends javax.swing.JInternalFrame {
     public NovaPrescricao() {
         initComponents();
     }
-
+    
+    PacienteRepository pacRepo   = new PacienteRepository();
+    
+    MedicoRepository   medRepo   = new MedicoRepository();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -266,8 +271,8 @@ public class NovaPrescricao extends javax.swing.JInternalFrame {
             
             String query = "INSERT INTO Prescricao (medicamento, observacao, ID_PACIENTE, ID_MEDICO, dataPrescricao) VALUES (?,?,?,?,?)";
             
-            int idPaciente = getIdPaciente(); //Obtem o id do Paciente
-            int idMedico   = getIdMedico(); //Obtem o id do Médico
+            int idPaciente = pacRepo.getIdByNome(nomePac); //Obtem o id do Paciente
+            int idMedico   = medRepo.getIdByNome(nomeMed); //Obtem o id do Médico
             
             try {
                 PreparedStatement ps = banco.getPreparedStatement(query);
@@ -304,69 +309,6 @@ public class NovaPrescricao extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    public int getIdPaciente() {
-        int idPaciente = 0;
-        String nomePac = this.campoNomePac.getText();
-        BD banco = new BD();
-        banco.conectaBD();
-        
-        String query = "SELECT ID FROM Paciente WHERE nome LIKE ?";
-        
-        try {
-            PreparedStatement ps = banco.getPreparedStatement(query);
-            ps.setString(1, nomePac);
-            
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                idPaciente = rs.getInt("ID");
-            }
-            
-            rs.close();
-            ps.close();
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this,
-                    "Erro ao buscar o ID do Paciente!! Error: " + ex.getMessage());
-            
-        } finally {
-            banco.encerrarConexao();
-        }
-        
-        return idPaciente;
-    }
-    
-    public int getIdMedico() {
-        int idMedico = 0;
-        String nomeMed = this.campoNomeMed.getText();
-        BD banco = new BD();
-        banco.conectaBD();
-        
-        String query = "SELECT ID FROM Medico WHERE nomeMed LIKE ?";
-        
-        try {
-            PreparedStatement ps = banco.getPreparedStatement(query);
-            ps.setString(1, nomeMed);
-            
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                idMedico = rs.getInt("ID");
-            }
-            
-            rs.close();
-            ps.close();
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this,
-                    "Erro ao buscar o ID do Médico!!! Error: " + ex.getMessage());
-            
-        } finally {
-            banco.encerrarConexao();
-            
-        }
-        
-        return idMedico;
-    }
-    
     private boolean validaCampos() {
         if (this.campoNomeMed.getText().equals("")      ||
             this.campoNomePac.getText().equals("") ||

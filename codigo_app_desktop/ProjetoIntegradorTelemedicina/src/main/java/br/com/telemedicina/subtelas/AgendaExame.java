@@ -316,7 +316,7 @@ public class AgendaExame extends javax.swing.JInternalFrame {
             
             String query = "INSERT INTO Exame (ID_PACIENTE, ID_MEDICO, ID_CLINICA, dataExame, descricaoExame, valorExame) VALUES (?,?,?,?,?,?)";
             int idPaciente = pacRepo.getIdByNome(nomePaciente); //Obtem o id do Paciente
-            int idMedico   = medRepo.getIdbyEmail(); //Obtem o id do Médico
+            int idMedico   = medRepo.getIdbyEmailArquivo(); //Obtem o id do Médico
             int idClinica  = clnRepo.getIdByNome(nomeClinica); //Obtem o id da Clínica
             
             try {

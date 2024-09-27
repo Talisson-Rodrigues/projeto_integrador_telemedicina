@@ -38,7 +38,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
      
      MedicoRepository   medRepo   = new MedicoRepository();
      
-     ClinicaRepository  clnRepo   = new ClinicaRepository();
+     ClinicaRepository  cliRepo   = new ClinicaRepository();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -478,6 +478,8 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
             String dataConsulta   = this.campoDataConsulta.getText();
             int linhaSelecionada  = this.tabelaConsulta.getSelectedRow();
             String consulta       = (String) this.tabelaConsulta.getValueAt(linhaSelecionada, 5);
+            String nomeMed        = (String) this.tabelaConsulta.getValueAt(linhaSelecionada, 0);
+            String nomeClinica    = (String) this.tabelaConsulta.getValueAt(linhaSelecionada, 3);
             
             //Escreve no arquivo os textos do campo
             bw.write(nomePaciente + ", " + dataNascimento + ", " + genero + ", " +
@@ -492,8 +494,8 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
             
             // Obtenha os IDs do paciente, médico e clínica de acordo com a lógica
             int idPaciente = pacRepo.getIdByCpf(cpf);//Obtem o id do paciente pelo cpf
-            int idMedico   = medRepo.getIdbyEmail(); //Obtem o id do medico pelo nome do médico na tabela
-            int idClinica  = getIdClinica(); //Obtem o id da clinica pelo nome da clinica na tabela
+            int idMedico   = medRepo.getIdByNome(nomeMed); //Obtem o id do medico pelo nome do médico na tabela
+            int idClinica  = cliRepo.getIdByNome(nomeClinica); //Obtem o id da clinica pelo nome da clinica na tabela
             
             try {
                 PreparedStatement ps = banco.getPreparedStatement(query);
@@ -542,104 +544,6 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
         }
         
     }//GEN-LAST:event_botaoAgendarConsultaActionPerformed
-    
-    public int getIdPaciente() {
-        String cpf = this.campoCpf.getText();
-        int idPaciente = 0;
-        BD banco = new BD();
-        banco.conectaBD();
-        
-        String query = "SELECT ID FROM Paciente WHERE cpf LIKE ?";
-        
-        
-        try {
-            PreparedStatement ps = banco.getPreparedStatement(query);
-            ps.setString(1, cpf);
-            
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()) {
-                idPaciente = rs.getInt("ID");
-            }
-            
-            rs.close();
-            ps.close();
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this,
-                    "Erro ao buscar o id do Paciente!! Error: " + ex.getMessage());
-        
-        } finally {
-            banco.encerrarConexao();
-        
-        }
-        
-        return idPaciente;
-    }
-    
-    public int getIdMedico() {
-        int linhaSelecionada = this.tabelaConsulta.getSelectedRow();
-        String idMed = (String) this.tabelaConsulta.getValueAt(linhaSelecionada, 0);
-        int idMedico = 0;
-        BD banco = new BD();
-        banco.conectaBD();
-        
-        String query = "SELECT ID FROM Medico WHERE nomeMed LIKE ?";
-        
-        try {
-            PreparedStatement ps = banco.getPreparedStatement(query);
-            ps.setString(1, idMed);
-            
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                idMedico = rs.getInt("ID");
-            }
-            
-            rs.close();
-            ps.close();
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this,
-                    "Erro ao buscar o id do Médico!! Error: " + ex.getMessage());
-            
-        } finally {
-            banco.encerrarConexao();
-        }
-        
-        return idMedico;
-    }
-    
-    public int getIdClinica() {
-        int linhaSelecionada = this.tabelaConsulta.getSelectedRow();
-        String idCli = (String) this.tabelaConsulta.getValueAt(linhaSelecionada, 3);
-        int idClinica = 0;
-        BD banco = new BD();
-        banco.conectaBD();
-        
-        String query = "SELECT ID FROM Clinica WHERE nomeClinica LIKE ?";
-        
-        try {
-            PreparedStatement ps = banco.getPreparedStatement(query);
-            ps.setString(1, idCli);
-            
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()) {
-                idClinica = rs.getInt("ID");
-            }
-            
-            rs.close();
-            ps.close();
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this,
-                    "Erro ao buscar o id do Clínica!! Error: " + ex.getMessage());
-            
-        } finally {
-            banco.encerrarConexao();
-            
-        }
-        
-        return idClinica;
-    }
     
     private void botaoConsultaBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConsultaBancoActionPerformed
         BD banco = new BD();

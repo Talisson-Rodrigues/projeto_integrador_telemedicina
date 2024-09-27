@@ -5,6 +5,7 @@
 package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.bd.BD;
+import br.com.telemedicina.repository.PacienteRepository;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -26,7 +27,9 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
     public HistoricoExame() {
         initComponents();
     }
-
+    
+    PacienteRepository pacRepo = new PacienteRepository();
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -203,40 +206,60 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConsultaActionPerformed
-        BD banco = new BD();
-        banco.conectaBD();
-
-        String query = "SELECT ex.ID, cl.nomeClinica, ex.descricaoExame, ex.dataExame, ex.statusExame, ex.diagnosticoExame, ex.valorExame FROM Clinica cl INNER JOIN Exame ex ON cl.ID = ex.ID_CLINICA";
-        PreparedStatement ps = banco.getPreparedStatement(query);
-
-        try {
-            ResultSet rs = ps.executeQuery();
-
-            DefaultTableModel model = (DefaultTableModel) this.tabelaHistoricoExames.getModel();
-            if (model.getRowCount() > 0) {
-                model.setNumRows(0);
-            }
-
-            while (rs.next()) {
-                String[] dados = {  rs.getString("ex.ID"),
-                                    rs.getString("cl.nomeClinica"),
-                                    rs.getString("ex.descricaoExame"),
-                                    rs.getDate("ex.dataExame").toString(),
-                                    rs.getString("ex.statusExame"),
-                                    rs.getString("ex.diagnosticoExame"),
-                                    rs.getString("ex.valorExame")};
-
-                model.addRow(dados);
-            }
-
-            this.tabelaHistoricoExames.setModel(model);
-            rs.close();
-            ps.close();
-            banco.encerrarConexao();
-        } catch (SQLException ex) {
+        //Obtem o ID do paciente pelo email
+        int idPaciente = pacRepo.getIdByEmailArquivo();
+        
+        //Verifica se o ID foi encontrado
+        if (idPaciente != 0) {
+            BD banco = new BD();
+            banco.conectaBD();
+            
+            //Consulta modificada para filtrar pelo ID do Paciente
+            String query = "SELECT ex.ID, cl.nomeClinica, ex.descricaoExame, ex.dataExame, ex.statusExame, ex.diagnosticoExame, ex.valorExame "
+                           + "FROM Clinica cl "
+                           + "INNER JOIN Exame ex ON cl.ID = ex.ID_CLINICA "
+                           + "WHERE ex.ID_PACIENTE = ?";
+            
+            try {
+                PreparedStatement ps = banco.getPreparedStatement(query);
+                //Define o ID do paciente
+                ps.setInt(1, idPaciente);
+                
+                ResultSet rs = ps.executeQuery();
+                
+                DefaultTableModel model = (DefaultTableModel) this.tabelaHistoricoExames.getModel();
+                if (model.getRowCount() > 0) {
+                    model.setNumRows(0);
+                }
+                
+                while (rs.next()) {
+                    String[] dados = {  rs.getString("ex.ID"),
+                                        rs.getString("cl.nomeClinica"),
+                                        rs.getString("ex.descricaoExame"),
+                                        rs.getDate("ex.dataExame").toString(),
+                                        rs.getString("ex.statusExame"),
+                                        rs.getString("ex.diagnosticoExame"),
+                                        rs.getString("ex.valorExame")};
+                    
+                    model.addRow(dados);
+                    
+                }
+                this.tabelaHistoricoExames.setModel(model);
+                
+                rs.close();
+                ps.close();
+                banco.encerrarConexao();
+            
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this,
+                "Erro na consulta ao BD! Error: " + ex.getMessage());
+                
+            } 
+            
+        } else {
             JOptionPane.showMessageDialog(this,
-                "Não foi possível fazer a Consulta no BD!!!! Error: " + ex.getMessage());
-        }
+                    "Paciente não encontrado!!");
+        } 
     }//GEN-LAST:event_botaoConsultaActionPerformed
 
     private void botaoExcluirMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirMedActionPerformed

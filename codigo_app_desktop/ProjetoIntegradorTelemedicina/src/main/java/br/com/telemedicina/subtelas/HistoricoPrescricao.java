@@ -5,6 +5,7 @@
 package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.bd.BD;
+import br.com.telemedicina.repository.PacienteRepository;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -26,7 +27,9 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
     public HistoricoPrescricao() {
         initComponents();
     }
-
+    
+    PacienteRepository pacRepo = new PacienteRepository();
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -208,36 +211,54 @@ public class HistoricoPrescricao extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConsultaActionPerformed
-        BD banco = new BD();
-        banco.conectaBD();
+        //Obtem o ID do paciente
+        int idPaciente = pacRepo.getIdByEmailArquivo();
         
-        String query = "SELECT pr.ID, me.nomeMed, pa.nome, pr.dataPrescricao FROM Medico me INNER JOIN prescricao pr ON me.ID = pr.ID_MEDICO INNER JOIN Paciente pa ON pa.ID = pr.ID_PACIENTE";
-        PreparedStatement ps = banco.getPreparedStatement(query);
-        
-        try {
-            ResultSet rs = ps.executeQuery();
+        //Verifica se o ID do paciente foi encontrado
+        if (idPaciente != 0) {
+            BD banco = new BD();
+            banco.conectaBD();
             
-            DefaultTableModel model = (DefaultTableModel) this.tabelaHistoricoPrescricao.getModel();
-            if (model.getRowCount() > 0) {
-                model.setNumRows(0);
-            }
+            String query = "SELECT pr.ID, m.nomeMed, pa.nome, pr.dataPrescricao "
+                    + "FROM Prescricao pr "
+                    + "INNER JOIN Medico m ON m.ID = pr.ID_MEDICO "
+                    + "INNER JOIN Paciente pa ON pa.ID = pr.ID_PACIENTE "
+                    + "WHERE pr.ID_PACIENTE = ?";
             
-            while (rs.next()) {
-                String[] dados = {  rs.getString("pr.ID"),
-                                    rs.getString("me.nomeMed"),
-                                    rs.getString("pa.nome"),
-                                    rs.getDate("pr.dataPrescricao").toString()};
+            try {
+                PreparedStatement ps = banco.getPreparedStatement(query);
+                ps.setInt(1, idPaciente);
                 
-                model.addRow(dados);
-            }
-            
-            this.tabelaHistoricoPrescricao.setModel(model);
-            rs.close();
-            ps.close();
-            banco.encerrarConexao();
-        } catch (SQLException ex) {
+                ResultSet rs = ps.executeQuery();
+                
+                DefaultTableModel model = (DefaultTableModel) this.tabelaHistoricoPrescricao.getModel();
+                if (model.getRowCount() > 0) {
+                    model.setNumRows(0);
+                }
+                
+                while (rs.next()) {
+                    String[] dados = {  rs.getString("pr.ID"),
+                                        rs.getString("m.nomeMed"),
+                                        rs.getString("pa.nome"),
+                                        rs.getDate("pr.dataPrescricao").toString()};
+                    
+                    model.addRow(dados);
+                    
+                }
+                this.tabelaHistoricoPrescricao.setModel(model);
+                
+                rs.close();
+                ps.close();
+                banco.encerrarConexao();
+                
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this,
+                        "Erro na consulta ao BD! Error: " + ex.getMessage());
+                
+            }    
+        } else {
             JOptionPane.showMessageDialog(this,
-                    "Não foi possível fazer a Consulta no BD!!!! Error: " + ex.getMessage());
+                    "Paciente não encontrado");
         }
     }//GEN-LAST:event_botaoConsultaActionPerformed
 

@@ -5,6 +5,9 @@
 package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.bd.BD;
+import br.com.telemedicina.repository.ClinicaRepository;
+import br.com.telemedicina.repository.MedicoRepository;
+import br.com.telemedicina.repository.PacienteRepository;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -26,7 +29,13 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
     public HistoricoConsulta() {
         initComponents();
     }
-
+    
+    PacienteRepository pacRepo = new PacienteRepository();
+    
+    MedicoRepository   medRepo = new MedicoRepository();
+    
+    ClinicaRepository  cliRepo = new ClinicaRepository();
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -211,37 +220,55 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConsultaActionPerformed
-        BD banco = new BD();
-        banco.conectaBD();
-      
-        String query = "SELECT cs.ID, m.nomeMed, cs.dataConsulta, cs.formatoConsulta, cs.pagamentoConsulta FROM Medico m INNER JOIN Consulta cs ON m.ID = cs.ID_MEDICO";
-        PreparedStatement ps = banco.getPreparedStatement(query);
+        int idPaciente = pacRepo.getIdByEmailArquivo(); //Obtem o ID do paciente pelo email no arquivo
         
-        try {
-            ResultSet rs = ps.executeQuery();
+        if (idPaciente != 0) { //Verifica se o id foi encontrado
+            BD banco = new BD();
+            banco.conectaBD();
             
-            DefaultTableModel model = (DefaultTableModel) this.tabelaHistoricoConsulta.getModel();
-            if (model.getRowCount() > 0) {
-                model.setNumRows(0);
-            }
+            //Consulta modificada para filtrar pelo ID do Paciente
+            String query = "SELECT cs.ID, m.nomeMed, cs.dataConsulta, cs.formatoConsulta, cs.pagamentoConsulta " +
+                           "FROM Medico m " +
+                           "INNER JOIN Consulta cs ON m.ID = cs.ID_MEDICO " +
+                           "WHERE cs.ID_PACIENTE = ?";
             
-            while (rs.next()) {
-                String[] dados = { rs.getString("cs.ID"),
-                                   rs.getString("m.nomeMed"),
-                                   rs.getDate("cs.dataConsulta").toString(),
-                                   rs.getString("cs.formatoConsulta"),
-                                   rs.getString("cs.pagamentoConsulta")};
+            
+            
+            try {
+                PreparedStatement ps = banco.getPreparedStatement(query);
+                ps.setInt(1, idPaciente); //Define o ID do paciente como parâmetro da consulta
+            
+                ResultSet rs = ps.executeQuery();
                 
-                model.addRow(dados);
+                DefaultTableModel model = (DefaultTableModel) this.tabelaHistoricoConsulta.getModel();
+                if (model.getRowCount() > 0) {
+                    model.setNumRows(0);
+                }
+                
+                while (rs.next()) {
+                    String[] dados = {  rs.getString("cs.ID"),
+                                        rs.getString("m.nomeMed"),
+                                        rs.getDate("cs.dataConsulta").toString(),
+                                        rs.getString("cs.formatoConsulta"),
+                                        rs.getString("cs.pagamentoConsulta")};
+                    
+                    model.addRow(dados);
+                }
+                
+                this.tabelaHistoricoConsulta.setModel(model);
+                rs.close();
+                ps.close();
+                banco.encerrarConexao();
+                
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this,
+                        "Não foi possível fazer a consulta no BD! Error: " + ex.getMessage());
+                
             }
             
-            this.tabelaHistoricoConsulta.setModel(model);
-            rs.close();
-            ps.close();
-            banco.encerrarConexao();
-        } catch (SQLException ex) {
+        } else {
             JOptionPane.showMessageDialog(this,
-                    "Não foi possível fazer a Consulta no BD!!!! Error: " + ex.getMessage());
+                    "Paciente não encontrado");
         }
     }//GEN-LAST:event_botaoConsultaActionPerformed
 

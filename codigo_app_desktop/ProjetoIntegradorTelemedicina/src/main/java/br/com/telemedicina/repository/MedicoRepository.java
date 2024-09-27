@@ -19,14 +19,14 @@ import javax.swing.JOptionPane;
  */
 public class MedicoRepository {
    
-    public int getIdbyEmail() {
+    public int getIdbyEmailArquivo() {
         String email = lerArquivoSessao();
         if (email == null) {
             return 0; //Retorna 0 se o email não foi encontrado
             
         }
         
-        return obterIdPorEmail(email);
+        return getIdPorEmail(email);
     }
     
     private String lerArquivoSessao() {
@@ -47,7 +47,7 @@ public class MedicoRepository {
         return null; //Retorna null se ocorrer um erro
     }
     
-    private int obterIdPorEmail(String email) {
+    private int getIdPorEmail(String email) {
         String query = "SELECT ID FROM Medico WHERE emailMed LIKE ?";
         return realizaConsulta(query, email);
         
@@ -86,7 +86,7 @@ public class MedicoRepository {
         JOptionPane.showMessageDialog(null, mensagem, "Erro", JOptionPane.ERROR_MESSAGE);
     }
     
-    private int getIdByNome(String nomeMed) {
+    public int getIdByNome(String nomeMed) {
         String query = "SELECT ID FROM Medico WHERE nomeMed LIKE ?";
         return realizaConsulta(query, nomeMed);
     }

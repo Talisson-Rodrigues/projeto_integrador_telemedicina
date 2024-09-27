@@ -21,3 +21,5 @@ SELECT cl.nomeClinica, cl.enderecoClinica, ex.valorExame FROM Clinica cl INNER J
 UPDATE Exame SET descricaoExame = 'Raio-X' WHERE descricaoExame = 'Exame de sangue';
 
 SELECT pg.tipoPagamento, pg.notaFiscal, pg.codigoPagamento, ta.valorConsulta FROM TipoAtendimento ta INNER JOIN Pagamento pg ON ta.ID = pg.ID_TipoAtendimento;
+
+SELECT cs.ID, m.nomeMed, cs.dataConsulta, cs.formatoConsulta, cs.pagamentoConsulta FROM Consulta cs INNER JOIN Medico m ON m.ID = cs.ID_MEDICO;

@@ -5,6 +5,7 @@
 package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.bd.BD;
+import br.com.telemedicina.repository.PacienteRepository;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,7 +24,8 @@ public class HistoricoPagamento extends javax.swing.JInternalFrame {
     public HistoricoPagamento() {
         initComponents();
     }
-
+    
+    PacienteRepository pacRepo = new PacienteRepository();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -177,38 +179,55 @@ public class HistoricoPagamento extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void consultarBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarBotaoActionPerformed
-        BD banco = new BD();
-        banco.conectaBD();
+        //Obtem o ID do Paciente
+        int idPaciente = pacRepo.getIdByEmailArquivo();
         
-        String query = "SELECT pg.ID, pg.tipoPagamento, pg.notaFiscal, pg.codigoPagamento, ta.valorConsulta FROM TipoAtendimento ta INNER JOIN Pagamento pg ON ta.ID = pg.ID_TipoAtendimento;";
-        PreparedStatement ps = banco.getPreparedStatement(query);
-        
-        try {
-            ResultSet rs = ps.executeQuery();
+        //Verifica se o ID do paciente foi encontrado
+        if (idPaciente != 0) {
+            BD banco = new BD();
+            banco.conectaBD();
             
-            DefaultTableModel model = (DefaultTableModel) this.tabelaHistoricoPagamento.getModel();
-            if (model.getRowCount() > 0) {
-                model.setNumRows(0);
-            }
+            String query = "SELECT pg.ID, pg.tipoPagamento, pg.notaFiscal, pg.codigoPagamento, ta.valorConsulta "
+                           + "FROM Pagamento pg "
+                           + "INNER JOIN TipoAtendimento ta ON ta.ID = pg.ID_TipoAtendimento "
+                           + "WHERE pg.ID_PACIENTE = ?";
             
-            while (rs.next()) {
-                String[] dados = {  rs.getString("pg.ID"),
-                                    rs.getString("pg.tipoPagamento"),
-                                    rs.getString("pg.notaFiscal"),
-                                    rs.getString("pg.codigoPagamento"),
-                                    rs.getString("ta.valorConsulta")};
+            try {
+                PreparedStatement ps = banco.getPreparedStatement(query);
+                ps.setInt(1, idPaciente);
                 
-                model.addRow(dados);
+                ResultSet rs = ps.executeQuery();
+                
+                DefaultTableModel model = (DefaultTableModel) this.tabelaHistoricoPagamento.getModel();
+                if (model.getRowCount() > 0) {
+                    model.setNumRows(0);
+                }
+                
+                while (rs.next()) {
+                    String[] dados = {  rs.getString("pg.ID"),
+                                        rs.getString("pg.tipoPagamento"),
+                                        rs.getString("pg.notaFiscal"),
+                                        rs.getString("pg.codigoPagamento"),
+                                        rs.getString("ta.valorConsulta")};
+                    
+                    model.addRow(dados);
+                    
+                }
+                this.tabelaHistoricoPagamento.setModel(model);
+                
+                rs.close();
+                ps.close();
+                banco.encerrarConexao();
+                        
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this,
+                        "Erro ao consulta no BD! Error: " + ex.getMessage());
+                
             }
             
-            this.tabelaHistoricoPagamento.setModel(model);
-            rs.close();
-            ps.close();
-            banco.encerrarConexao();
-            
-        } catch (SQLException ex) {
+        } else {
             JOptionPane.showMessageDialog(this,
-                    "Não foi possível realizar a Consulta!! Error: " + ex.getMessage());
+                    "Paciente não encontrado!!");
         }
     }//GEN-LAST:event_consultarBotaoActionPerformed
 
