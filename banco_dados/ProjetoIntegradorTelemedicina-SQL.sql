@@ -103,7 +103,8 @@ CREATE TABLE Pagamento
     tipoPagamento VARCHAR(20),
     notaFiscal VARCHAR(100),
     codigoPagamento VARCHAR(100),
-    ID_TipoAtendimento INT
+    ID_TipoAtendimento INT,
+    ID_PACIENTE INT
 );
 
 
@@ -119,3 +120,4 @@ ALTER TABLE Atende ADD FOREIGN KEY(ID_MEDICO) REFERENCES Medico (ID);
 ALTER TABLE Atende ADD FOREIGN KEY(ID_CLINICA) REFERENCES Clinica (ID);
 ALTER TABLE TipoAtendimento ADD FOREIGN KEY(ID_MEDICO) REFERENCES Medico (ID);
 ALTER TABLE Pagamento ADD FOREIGN KEY(ID_TipoAtendimento) REFERENCES TipoAtendimento (ID);
+ALTER TABLE Pagamento ADD FOREIGN KEY(ID_PACIENTE) REFERENCES Paciente (ID);
