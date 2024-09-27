@@ -5,6 +5,7 @@
 package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.bd.BD;
+import br.com.telemedicina.repository.PdfRepository;
 import br.com.telemedicina.utils.LimitaCaracter;
 import java.sql.*;
 import javax.swing.*;
@@ -622,6 +623,14 @@ public class Pagamento extends javax.swing.JDialog {
         } else {
             JOptionPane.showMessageDialog(this,
                     "Outra Opção Escolhida!");
+        }
+        
+        //Quando seleciona a opção de pagar pelo boleto, ele gera um arquivo PDF e envia para pasta Download
+        if(this.boletoRadioButton.isSelected()) {
+            PdfRepository pdfBoleto = new PdfRepository();
+            String home = System.getProperty("user.home");
+            String filePath = home + "/Downloads/boleto.pdf";
+            pdfBoleto.gerarPDF(filePath);
         }
         
         this.dispose();
