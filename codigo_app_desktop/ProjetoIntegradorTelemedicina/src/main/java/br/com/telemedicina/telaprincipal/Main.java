@@ -5,6 +5,8 @@
 package br.com.telemedicina.telaprincipal;
 
 import br.com.telemedicina.bd.BD;
+import br.com.telemedicina.repository.MedicoRepository;
+import br.com.telemedicina.repository.PacienteRepository;
 import br.com.telemedicina.subtelas.AgendaConsulta;
 import br.com.telemedicina.subtelas.AgendaExame;
 import br.com.telemedicina.subtelas.HistoricoConsulta;
@@ -39,6 +41,10 @@ public class Main extends javax.swing.JFrame {
         TelaInicio inicio = new TelaInicio(this, true);
         inicio.setVisible(true);
     }
+    
+    PacienteRepository pacRepo = new PacienteRepository();
+    
+    MedicoRepository medRepo   = new MedicoRepository();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -98,7 +104,7 @@ public class Main extends javax.swing.JFrame {
         desktopPane.setAutoscrolls(true);
         desktopPane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jSplitPane1.setDividerLocation(350);
+        jSplitPane1.setDividerLocation(400);
         jSplitPane1.setDividerSize(0);
         jSplitPane1.setOneTouchExpandable(true);
 
@@ -116,11 +122,11 @@ public class Main extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome Paciente", "CPF", "Data nascimento"
+                "Nome Paciente", "CPF", "Data nascimento", "Data Consulta"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -148,7 +154,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 85, Short.MAX_VALUE)
+                        .addGap(0, 135, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
@@ -233,7 +239,7 @@ public class Main extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome Médico", "Horário Marcado", "Modelo de Consulta"
+                "Nome Médico", "Data Consulta", "Modelo de Consulta"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -471,6 +477,9 @@ public class Main extends javax.swing.JFrame {
                dados = linha.split(",");
            }
            
+           int idPaciente = pacRepo.getIdByEmailArquivo();
+           int idMedico   = medRepo.getIdbyEmailArquivo();
+           
            BD banco = new BD();
            banco.conectaBD();
            
@@ -483,11 +492,16 @@ public class Main extends javax.swing.JFrame {
                 this.pagamentosMenu.remove(historicoPagamento);
                  
                 //Inicia a tabela junto ao sistema
-                String query  = "SELECT nome, cpf, dataNascimento FROM Paciente WHERE ID <= 10";
-                String query2 = "SELECT nomeMed FROM Medico WHERE emailMed LIKE ?";
+                String query = "SELECT pa.nome, pa.cpf, pa.dataNascimento, cs.dataConsulta "
+                             + "From Consulta cs "
+                             + "INNER JOIN Paciente pa ON pa.ID = cs.ID_PACIENTE "
+                             + "INNER JOIN Medico m ON m.ID = cs.ID_MEDICO "                        
+                             + "WHERE cs.ID_MEDICO = ?";
                 PreparedStatement ps = banco.getPreparedStatement(query);
 
                 try {
+                    ps.setInt(1, idMedico);
+                    
                     ResultSet rs = ps.executeQuery();
 
                     DefaultTableModel model = (DefaultTableModel) this.jTableMedico.getModel();
@@ -499,7 +513,8 @@ public class Main extends javax.swing.JFrame {
                     while (rs.next()) {
                        String[] dadosMedico = { rs.getString("nome"),
                                           rs.getString("cpf"),
-                                          rs.getDate("dataNascimento").toString()}; 
+                                          rs.getDate("dataNascimento").toString(),
+                                          rs.getDate("cs.dataConsulta").toString()}; 
 
                        model.addRow(dadosMedico);
                     }
@@ -507,7 +522,7 @@ public class Main extends javax.swing.JFrame {
                     //Termina carregamento da tabela
                     
                     //Coloca o nome no Jlabel
-                    ps = banco.getPreparedStatement(query2);
+                    ps = banco.getPreparedStatement(query);
                     
                     ps.setString(1, dados[0]);
                     
@@ -542,11 +557,16 @@ public class Main extends javax.swing.JFrame {
                 
                 
                 //Inicia a tabela junto ao sistema
-                String query = "SELECT m.nomeMed, cs.dataConsulta, cs.formatoConsulta FROM Medico m INNER JOIN Consulta cs ON m.ID = cs.ID_MEDICO WHERE m.enderecoMed LIKE '%DF'";
-                String query2 = "SELECT nome FROM Paciente WHERE email LIKE ?";
+                String query = "SELECT m.nomeMed, cs.dataConsulta, cs.formatoConsulta "
+                             + "FROM Consulta cs "
+                             + "INNER JOIN Medico m ON m.ID = cs.ID_MEDICO "
+                             + "INNER JOIN Paciente pa ON pa.ID = cs.ID_PACIENTE "
+                             + "WHERE cs.ID_PACIENTE = ?";
+                
                 PreparedStatement ps = banco.getPreparedStatement(query);
         
                 try {
+                    ps.setInt(1, idPaciente);
                     ResultSet rs = ps.executeQuery();
 
                     DefaultTableModel model = (DefaultTableModel) this.jTablePaciente.getModel();
@@ -564,7 +584,7 @@ public class Main extends javax.swing.JFrame {
                     }
                     this.jTablePaciente.setModel(model);
                     
-                    ps = banco.getPreparedStatement(query2);
+                    ps = banco.getPreparedStatement(query);
                     
                     ps.setString(1, dados[0]);
                     
