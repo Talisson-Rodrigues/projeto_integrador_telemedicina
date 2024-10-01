@@ -620,19 +620,16 @@ public class Pagamento extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, 
                     "O pix copía e cola foi Gerado: \n" +
                     pixCopiaCola);
-        } else {
-            JOptionPane.showMessageDialog(this,
-                    "Outra Opção Escolhida!");
-        }
-        
-        //Quando seleciona a opção de pagar pelo boleto, ele gera um arquivo PDF e envia para pasta Download
-        if(this.boletoRadioButton.isSelected()) {
+        } else if(this.boletoRadioButton.isSelected()) { //Quando seleciona a opção de pagar pelo boleto, ele gera um arquivo PDF e envia para pasta Download
             PdfRepository pdfBoleto = new PdfRepository();
             String home = System.getProperty("user.home");
             String filePath = home + "/Downloads/boleto.pdf";
             pdfBoleto.gerarPDF(filePath);
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Outra Opção Escolhida!");
         }
-        
+       
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
