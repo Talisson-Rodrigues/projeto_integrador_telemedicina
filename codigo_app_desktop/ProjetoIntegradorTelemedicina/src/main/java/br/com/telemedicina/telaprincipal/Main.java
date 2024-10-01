@@ -14,6 +14,8 @@ import br.com.telemedicina.subtelas.HistoricoPrescricao;
 import br.com.telemedicina.subtelas.NovaPrescricao;
 import br.com.telemedicina.subtelas.Pagamento;
 import br.com.telemedicina.subtelas.TelaInicio;
+import br.com.telemedicina.estilo.ModoClaroEscuro;
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -21,8 +23,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -86,6 +87,9 @@ public class Main extends javax.swing.JFrame {
         pagamentosMenu = new javax.swing.JMenu();
         historicoPagamento = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        modoMenu = new javax.swing.JMenu();
+        modoEscuroButton = new javax.swing.JRadioButtonMenuItem();
+        modoClaroButton = new javax.swing.JRadioButtonMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -423,6 +427,29 @@ public class Main extends javax.swing.JFrame {
 
         menuBar.add(pagamentosMenu);
 
+        modoMenu.setText("Modo");
+        modoMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        modoEscuroButton.setSelected(true);
+        modoEscuroButton.setText("Modo Escuro");
+        modoEscuroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modoEscuroButtonActionPerformed(evt);
+            }
+        });
+        modoMenu.add(modoEscuroButton);
+
+        modoClaroButton.setSelected(true);
+        modoClaroButton.setText("Modo Claro");
+        modoClaroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modoClaroButtonActionPerformed(evt);
+            }
+        });
+        modoMenu.add(modoClaroButton);
+
+        menuBar.add(modoMenu);
+
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -441,7 +468,9 @@ public class Main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private boolean isDarkMode = false;
+    
     private void historicoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoConsultaActionPerformed
         HistoricoConsulta histoConsulta = new HistoricoConsulta();
         this.desktopPane.add(histoConsulta);
@@ -720,6 +749,33 @@ public class Main extends javax.swing.JFrame {
         pg.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void modoClaroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoClaroButtonActionPerformed
+        isDarkMode = false;
+        applyCurrentMode();
+    }//GEN-LAST:event_modoClaroButtonActionPerformed
+
+    private void modoEscuroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoEscuroButtonActionPerformed
+        isDarkMode = true;
+        applyCurrentMode();
+    }//GEN-LAST:event_modoEscuroButtonActionPerformed
+    
+    private void applyCurrentMode() {
+        Color backgroundColor;
+        Color textColor;
+        Color blueColor;
+
+        if (isDarkMode) {
+            backgroundColor = ModoClaroEscuro.darkBackground;
+            textColor = ModoClaroEscuro.darkForeground;
+            blueColor = ModoClaroEscuro.darkblueBackground;
+        } else {
+            backgroundColor = ModoClaroEscuro.lightBackground;
+            textColor = ModoClaroEscuro.lightForeground;
+            blueColor = ModoClaroEscuro.lightblueBackground;
+        }
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -786,6 +842,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel labelBemVindo;
     private javax.swing.JLabel labelBemVindo1;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JRadioButtonMenuItem modoClaroButton;
+    private javax.swing.JRadioButtonMenuItem modoEscuroButton;
+    private javax.swing.JMenu modoMenu;
     private javax.swing.JLabel nomeMedLabel;
     private javax.swing.JLabel nomePacienteLabel;
     private javax.swing.JMenuItem novaConsulta;
