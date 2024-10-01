@@ -23,3 +23,5 @@ UPDATE Exame SET descricaoExame = 'Raio-X' WHERE descricaoExame = 'Exame de sang
 SELECT pg.tipoPagamento, pg.notaFiscal, pg.codigoPagamento, ta.valorConsulta FROM TipoAtendimento ta INNER JOIN Pagamento pg ON ta.ID = pg.ID_TipoAtendimento;
 
 SELECT cs.ID, m.nomeMed, cs.dataConsulta, cs.formatoConsulta, cs.pagamentoConsulta FROM Consulta cs INNER JOIN Medico m ON m.ID = cs.ID_MEDICO;
+
+SELECT pa.nome, pa.cpf, pa.dataNascimento, cs.dataConsulta FROM Consulta cs INNER JOIN Medico m ON m.ID = cs.ID_MEDICO INNER JOIN Paciente pa ON pa.ID = cs.ID_PACIENTE WHERE cs.ID_MEDICO LIKE ?;

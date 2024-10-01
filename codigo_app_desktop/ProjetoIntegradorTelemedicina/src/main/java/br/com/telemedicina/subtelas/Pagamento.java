@@ -5,12 +5,17 @@
 package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.bd.BD;
+import br.com.telemedicina.repository.PacienteRepository;
+import br.com.telemedicina.repository.PdfRepository;
+import br.com.telemedicina.repository.TipoAtendimentoRepository;
 import br.com.telemedicina.utils.LimitaCaracter;
 import java.sql.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
 import java.util.UUID;
@@ -67,7 +72,7 @@ public class Pagamento extends javax.swing.JDialog {
         labelNf = new javax.swing.JLabel();
         labelCodigoPagamento = new javax.swing.JLabel();
         labelValor = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        botaoPagar = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         numeroCartaoCampo = new javax.swing.JTextField();
@@ -264,14 +269,14 @@ public class Pagamento extends javax.swing.JDialog {
                 .addComponent(labelValor, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Pagar");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botaoPagar.setBackground(new java.awt.Color(0, 153, 0));
+        botaoPagar.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        botaoPagar.setForeground(new java.awt.Color(0, 0, 0));
+        botaoPagar.setText("Pagar");
+        botaoPagar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botaoPagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botaoPagarActionPerformed(evt);
             }
         });
 
@@ -525,13 +530,14 @@ public class Pagamento extends javax.swing.JDialog {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botaoPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -541,7 +547,7 @@ public class Pagamento extends javax.swing.JDialog {
                     .addComponent(jTabbedPane1)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botaoPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -594,38 +600,126 @@ public class Pagamento extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowOpened
 
     private void cartaoDRadioButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartaoDRadioButtonMouseClicked
+        if (this.jTabbedPane1.getTabCount() > 0) {
+            this.jTabbedPane1.removeAll();
+        }
+        
         this.jTabbedPane1.addTab("Débito", jPanel5);
-        this.jTabbedPane1.removeTabAt(0);
     }//GEN-LAST:event_cartaoDRadioButtonMouseClicked
 
     private void cartaoCRadioButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartaoCRadioButtonMouseClicked
+        if (this.jTabbedPane1.getTabCount() > 0) {
+            this.jTabbedPane1.removeAll();
+        }
+        
         this.jTabbedPane1.addTab("Crédito", jPanel4);
-        this.jTabbedPane1.removeTabAt(1);
     }//GEN-LAST:event_cartaoCRadioButtonMouseClicked
 
     private void cvvCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cvvCampoActionPerformed
 
     }//GEN-LAST:event_cvvCampoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Valida se te uma escolha
-        if(!validaEscolha()) {
+    private void botaoPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPagarActionPerformed
+        //Valida a sua escolha
+        if (!validaEscolha()) {
             return;
+            
         }
         
-        //Faz o Código Pix Copia e Cola
-        String pixCopiaCola = gerarCodigoPix();
-        if(this.pixRadioButton.isSelected()) {
-            JOptionPane.showMessageDialog(this, 
-                    "O pix copía e cola foi Gerado: \n" +
-                    pixCopiaCola);
-        } else {
+        TipoAtendimentoRepository tatRepo = new TipoAtendimentoRepository();
+        
+        PacienteRepository        pacRepo = new PacienteRepository();
+        
+        
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("pagamento.txt"))) {
+            
+            //Captura as opções selecionadas
+            boolean pix            = this.pixRadioButton.isSelected();
+            boolean cartaoC        = this.cartaoCRadioButton.isSelected();
+            boolean cartaoD        = this.cartaoDRadioButton.isSelected();
+            boolean boleto         = this.boletoRadioButton.isSelected();
+            String notaFiscal      = this.labelNf.getText();
+            String codigoPagamento = this.labelCodigoPagamento.getText();
+            String valor           = this.labelValor.getText();
+            int idTipoAtendimento  = tatRepo.getIdByValor(valor);
+            int idPaciente         = pacRepo.getIdByEmailArquivo();
+            
+            //Conecta no Banco de Dados
+            BD banco = new BD();
+            banco.conectaBD();
+            
+            //Variáveis para os valores a serem inseridos no banco de dados
+            String tipoPagamento = "";
+            String pixCopiaCola = null;
+            
+            //Verifica a opção selecionada e executa a lógica correspondente
+            if (pix) {
+                tipoPagamento = "PIX";
+                pixCopiaCola = gerarCodigoPix(); //Gerar código Copia e Cola
+                JOptionPane.showMessageDialog(this,
+                        "O pix copia e cola foi gerado: \n" + pixCopiaCola);
+                
+            } else if (boleto) {
+                tipoPagamento = "Boleto";
+                PdfRepository pdfBoleto = new PdfRepository();
+                String home = System.getProperty("user.home");
+                String filePath = home + "/Downloads/boleto.pdf";
+                pdfBoleto.gerarPDF(filePath);
+                
+            } else if (cartaoC) {
+                tipoPagamento = "Cartão de Crédito";
+                JOptionPane.showMessageDialog(this,
+                        "Pagamento via Cartão de Crédito selecionado!!");
+                
+            } else if (cartaoD) {
+                tipoPagamento = "Cartão de Débito";
+                JOptionPane.showMessageDialog(this,
+                        "Pagamento via Cartão de Débito selecionado!!");
+            }
+            
+            //Se algum tipo de pagamento foi selecionado, insere no banco de dados
+            if (!tipoPagamento.isEmpty()) {
+                //Cria a query de inserção
+                String query = "INSERT INTO Pagamento (tipoPagamento, notaFiscal, codigoPagamento, ID_TipoAtendimento, ID_PACIENTE) VALUES (?,?,?,?,?)";
+                PreparedStatement ps = banco.getPreparedStatement(query);
+                
+                //Define os parâmetros da query
+                ps.setString(1, tipoPagamento);
+                ps.setString(2, notaFiscal);
+                ps.setString(3, codigoPagamento);
+                ps.setInt(4, idTipoAtendimento);
+                ps.setInt(5, idPaciente);
+                
+                //executa a query
+                int rowsAffected = ps.executeUpdate();
+                
+                //Verifica se a inserção foi bem-sucedida
+                if (rowsAffected > 0) {
+                    JOptionPane.showMessageDialog(this,
+                            "Pagamento salvo com sucesso no banco de dados!!");
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this,
+                            "Erro ao salvar o pagamento!!");
+                    
+                }
+                
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
             JOptionPane.showMessageDialog(this,
-                    "Outra Opção Escolhida!");
+                    "Erro de conexão com o banco de dados: " + ex.getMessage());
+           
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this,
+                    "Erro ao salvar o arquivo de pagamento: " + ex.getMessage());
+            
         }
         
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botaoPagarActionPerformed
 
     private void cvvDebitoCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cvvDebitoCampoActionPerformed
         // TODO add your handling code here:
@@ -777,6 +871,7 @@ public class Pagamento extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton boletoRadioButton;
+    private javax.swing.JButton botaoPagar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton cartaoCRadioButton;
     private javax.swing.JRadioButton cartaoDRadioButton;
@@ -785,7 +880,6 @@ public class Pagamento extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField cvvDebitoCampo;
     private javax.swing.JLabel cvvDebitoLabel;
     private javax.swing.JLabel errorLabel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

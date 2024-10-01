@@ -228,8 +228,8 @@ public class HistoricoConsulta extends javax.swing.JInternalFrame {
             
             //Consulta modificada para filtrar pelo ID do Paciente
             String query = "SELECT cs.ID, m.nomeMed, cs.dataConsulta, cs.formatoConsulta, cs.pagamentoConsulta " +
-                           "FROM Medico m " +
-                           "INNER JOIN Consulta cs ON m.ID = cs.ID_MEDICO " +
+                           "FROM Consulta cs " +
+                           "INNER JOIN Medico m ON m.ID = cs.ID_MEDICO " +
                            "WHERE cs.ID_PACIENTE = ?";
             
             

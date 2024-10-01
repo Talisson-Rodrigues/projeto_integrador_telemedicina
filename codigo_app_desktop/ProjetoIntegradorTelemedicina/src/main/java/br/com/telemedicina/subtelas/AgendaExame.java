@@ -6,6 +6,7 @@ package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.repository.ClinicaRepository;
 import br.com.telemedicina.bd.BD;
+import br.com.telemedicina.repository.DataRepository;
 import br.com.telemedicina.repository.MedicoRepository;
 import br.com.telemedicina.repository.PacienteRepository;
 import java.io.BufferedReader;
@@ -321,6 +322,13 @@ public class AgendaExame extends javax.swing.JInternalFrame {
             
             try {
                 PreparedStatement ps = banco.getPreparedStatement(query);
+                
+                if (!DataRepository.validaData(dataExame)) {
+                    JOptionPane.showMessageDialog(this,
+                       "Use o formato de data válido!! Use o formato dd/MM/yyyy!!",
+                       "Erro: ", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 
                 String pattern = "yyyy-MM-dd";
                 SimpleDateFormat sdf = new SimpleDateFormat(pattern);

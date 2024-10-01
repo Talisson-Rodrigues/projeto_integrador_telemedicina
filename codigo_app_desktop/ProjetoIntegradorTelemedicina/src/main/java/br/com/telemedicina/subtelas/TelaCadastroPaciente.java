@@ -5,6 +5,7 @@
 package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.bd.BD;
+import br.com.telemedicina.repository.DataRepository;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -352,6 +353,13 @@ public class TelaCadastroPaciente extends javax.swing.JDialog {
            String endereco = campoEndereco.getText();
            String genero = (String) selecionaGenero.getSelectedItem();
            char[] senha = this.campoCriaSenha.getPassword();
+           
+           if (!DataRepository.validaData(dataNascimento)) {
+               JOptionPane.showMessageDialog(this,
+                       "Use o formato de data válido!! Use o formato dd/MM/yyyy!!",
+                       "Erro: ", JOptionPane.ERROR_MESSAGE);
+               return;
+           }
            
            SimpleDateFormat formatoEntrada = new SimpleDateFormat("dd/MM/yyyy");
            SimpleDateFormat formatoSaida = new SimpleDateFormat("yyyy-MM-dd");

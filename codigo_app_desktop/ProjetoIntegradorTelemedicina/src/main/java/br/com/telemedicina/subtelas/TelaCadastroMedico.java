@@ -5,6 +5,7 @@
 package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.bd.BD;
+import br.com.telemedicina.repository.DataRepository;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -614,24 +615,26 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
             char[] senhaMed          = this.campoCriaSenha.getPassword();
             String registroMed       = this.campoRegistroMed.getText();
             
-            SimpleDateFormat formatoEntrada = new SimpleDateFormat("dd/MM/yyyy");
-            SimpleDateFormat formatoSaida = new SimpleDateFormat("yyyy-MM-dd");
+            if (!DataRepository.validaData(dataNascMed) || !DataRepository.validaData(conclusaoGrad)) {
+                JOptionPane.showMessageDialog(this,
+                        "Formato de data inválido. use DD/MM/YYYY!!",
+                        "Erro: ", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             
-            String dataNascimentoFormatada = null;
-            String dataConclusaoGraduacao = null;
+            String dataNascFormatada = null;
+            String dataConcGradFormatada = null;
             
             try {
-                Date data = formatoEntrada.parse(dataNascMed);
-                dataNascimentoFormatada = formatoSaida.format(data);
-                
-                Date dataGrad = formatoEntrada.parse(conclusaoGrad);
-                dataConclusaoGraduacao = formatoSaida.format(dataGrad);
-            } catch (ParseException e) {
+                SimpleDateFormat formatoEntrada = new SimpleDateFormat("dd/MM/yyyy");
+                SimpleDateFormat formatoSaida   = new SimpleDateFormat("yyyy/MM/dd");
+
+                formatoSaida.format(formatoEntrada.parse(dataNascMed));
+                formatoSaida.format(formatoEntrada.parse(conclusaoGrad));
+            
+            } catch (ParseException ex) {
                 JOptionPane.showMessageDialog(this,
-                        "Formato de data inválido. Use DD/MM/YYYY.",
-                        "Erro: ", JOptionPane.ERROR_MESSAGE);
-                e.printStackTrace();
-                return;
+                        "Erro ao formatar as datas!! Error: " + ex.getMessage());
             }
             
             String sql = "INSERT INTO Medico (nomeMed, cpfMed, nascimentoMed, generoMed, telefoneMed, enderecoMed, emailMed, rgMed, registroMed, especializacao, instituicaoEnsino, conclusaoGrad, certificacao, areaInteresse, credenciais, experiencias, senhaMed) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -640,7 +643,7 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
             
             ps.setString(1, nomeMed);
             ps.setString(2, cpfMed);
-            ps.setString(3, dataNascimentoFormatada);
+            ps.setString(3, dataNascFormatada);
             ps.setString(4, generoMed);
             ps.setString(5, telefoneMed);
             ps.setString(6, enderecoMed);
@@ -649,7 +652,7 @@ public class TelaCadastroMedico extends javax.swing.JDialog {
             ps.setString(9, registroMed);
             ps.setString(10, especializacao);
             ps.setString(11, instituicaoEnsino);
-            ps.setString(12, dataConclusaoGraduacao);
+            ps.setString(12, dataConcGradFormatada);
             ps.setString(13, certificacao);
             ps.setString(14, areaAtuacao);
             ps.setString(15, credenciais);
