@@ -771,7 +771,12 @@ public class Main extends javax.swing.JFrame {
 
     private void modoClaroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoClaroButtonActionPerformed
         isDarkMode = false;
-        applyCurrentMode();
+        jPanel2.setBackground(applyCurrentMode());
+        nomeMedLabel.setForeground(applyCurrentMode());
+        labelBemVindo.setForeground(applyCurrentMode());
+        jPanel4.setBackground(applyCurrentMode());
+        nomePacienteLabel.setForeground(applyCurrentMode());
+        labelBemVindo1.setForeground(applyCurrentMode());
     }//GEN-LAST:event_modoClaroButtonActionPerformed
 
     private void modoEscuroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoEscuroButtonActionPerformed
@@ -779,11 +784,15 @@ public class Main extends javax.swing.JFrame {
         applyCurrentMode();
     }//GEN-LAST:event_modoEscuroButtonActionPerformed
     
-    private void applyCurrentMode() {
+    private Color applyCurrentMode() {
         Color backgroundColor;
         Color textColor;
         Color blueColor;
-
+        
+        backgroundColor = getBackground();
+        textColor = getForeground();
+        blueColor = getBackground();
+        
         if (isDarkMode) {
             backgroundColor = ModoClaroEscuro.darkBackground;
             textColor = ModoClaroEscuro.darkForeground;
