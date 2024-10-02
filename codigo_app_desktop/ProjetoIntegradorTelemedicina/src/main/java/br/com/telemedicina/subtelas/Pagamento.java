@@ -9,6 +9,7 @@ import br.com.telemedicina.repository.PacienteRepository;
 import br.com.telemedicina.repository.PdfRepository;
 import br.com.telemedicina.repository.TipoAtendimentoRepository;
 import br.com.telemedicina.utils.LimitaCaracter;
+import java.awt.Image;
 import java.sql.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -72,10 +73,9 @@ public class Pagamento extends javax.swing.JDialog {
         labelNf = new javax.swing.JLabel();
         labelCodigoPagamento = new javax.swing.JLabel();
         labelValor = new javax.swing.JLabel();
-        botaoPagar = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
-        numeroCartaoCampo = new javax.swing.JTextField();
+        numeroCartaoCreCampo = new javax.swing.JTextField();
         nomePagamentoCampo = new javax.swing.JTextField();
         cvvCampo = new javax.swing.JFormattedTextField();
         nomeCreditoLabel = new javax.swing.JLabel();
@@ -87,6 +87,7 @@ public class Pagamento extends javax.swing.JDialog {
         jComboBox1 = new javax.swing.JComboBox<>();
         tituloLabel = new javax.swing.JLabel();
         errorLabel = new javax.swing.JLabel();
+        imagemBandeira = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         nomeDebitoLabel = new javax.swing.JLabel();
         nomePagamentoDebitoCampo = new javax.swing.JTextField();
@@ -97,6 +98,7 @@ public class Pagamento extends javax.swing.JDialog {
         cvvDebitoCampo = new javax.swing.JFormattedTextField();
         cvvDebitoLabel = new javax.swing.JLabel();
         tituloDebitoLabel = new javax.swing.JLabel();
+        botaoPagar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -194,7 +196,7 @@ public class Pagamento extends javax.swing.JDialog {
                 .addComponent(cartaoCRadioButton)
                 .addGap(35, 35, 35)
                 .addComponent(boletoRadioButton)
-                .addContainerGap(515, Short.MAX_VALUE))
+                .addContainerGap(368, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -202,7 +204,7 @@ public class Pagamento extends javax.swing.JDialog {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setForeground(new java.awt.Color(0, 0, 0));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
@@ -236,26 +238,25 @@ public class Pagamento extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelNf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelCodigoPagamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelCodigoPagamento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(labelNf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(46, 46, 46))
+                        .addComponent(labelValor, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelValor, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addContainerGap(47, Short.MAX_VALUE))
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel10))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(48, 48, 48)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelNf, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -266,26 +267,16 @@ public class Pagamento extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelValor, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(labelValor, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(83, Short.MAX_VALUE))
         );
-
-        botaoPagar.setBackground(new java.awt.Color(0, 153, 0));
-        botaoPagar.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        botaoPagar.setForeground(new java.awt.Color(0, 0, 0));
-        botaoPagar.setText("Pagar");
-        botaoPagar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botaoPagar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoPagarActionPerformed(evt);
-            }
-        });
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        numeroCartaoCampo.setDocument(new LimitaCaracter(19));
-        numeroCartaoCampo.addActionListener(new java.awt.event.ActionListener() {
+        numeroCartaoCreCampo.setDocument(new LimitaCaracter(19));
+        numeroCartaoCreCampo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numeroCartaoCampoActionPerformed(evt);
+                numeroCartaoCreCampoActionPerformed(evt);
             }
         });
 
@@ -344,45 +335,48 @@ public class Pagamento extends javax.swing.JDialog {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(numeroCartaoCampo, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(numeroCreditoLabel)))
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(vencimentoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(vencimentoCreditoLabel))))
-                    .addComponent(nomePagamentoCampo)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addComponent(nomeCreditoLabel)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cvvCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(55, 55, 55)
-                                .addComponent(cvvCreditoLabel)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(numeroParcelasCredito)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(14, 14, 14))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addComponent(tituloLabel)
                 .addGap(28, 28, 28))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addComponent(errorLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(nomePagamentoCampo, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(nomeCreditoLabel)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(numeroCartaoCreCampo)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(0, 0, 0)
+                                .addComponent(numeroCreditoLabel)))
+                        .addGap(172, 172, 172))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(cvvCreditoLabel))
+                            .addComponent(cvvCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(imagemBandeira)
+                                        .addGap(2, 2, 2))
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(numeroParcelasCredito)
+                                        .addComponent(vencimentoCreditoLabel)
+                                        .addComponent(vencimentoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(14, 14, 14))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -396,27 +390,25 @@ public class Pagamento extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nomePagamentoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(numeroCreditoLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(numeroCartaoCreCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(imagemBandeira))
+                .addGap(29, 29, 29)
+                .addComponent(vencimentoCreditoLabel)
+                .addGap(18, 18, 18)
+                .addComponent(vencimentoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(numeroParcelasCredito)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(numeroParcelasCredito)
-                        .addGap(48, 48, 48))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(numeroCreditoLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(numeroCartaoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(vencimentoCreditoLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(vencimentoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
                         .addComponent(cvvCreditoLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cvvCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(293, Short.MAX_VALUE))
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cvvCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Crédito", jPanel4);
@@ -519,10 +511,21 @@ public class Pagamento extends javax.swing.JDialog {
                 .addComponent(cvvDebitoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cvvDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(349, Short.MAX_VALUE))
+                .addContainerGap(170, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Débito", jPanel5);
+
+        botaoPagar.setBackground(new java.awt.Color(0, 153, 0));
+        botaoPagar.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        botaoPagar.setForeground(new java.awt.Color(0, 0, 0));
+        botaoPagar.setText("Pagar");
+        botaoPagar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botaoPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoPagarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -531,24 +534,24 @@ public class Pagamento extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botaoPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75))
+                .addGap(25, 25, 25))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(72, 72, 72)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTabbedPane1)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(botaoPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel2);
@@ -557,7 +560,7 @@ public class Pagamento extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1156, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -725,15 +728,14 @@ public class Pagamento extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_cvvDebitoCampoActionPerformed
     
-    private void numeroCartaoCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroCartaoCampoActionPerformed
-        String numeroCartao = numeroCartaoCampo.getText();
+    private void numeroCartaoCreCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroCartaoCreCampoActionPerformed
+        String numeroCartao = numeroCartaoCreCampo.getText();
         if(validarCartao(numeroCartao)) {
-            
-            //Mostrar a bandeira do cartao
+            identificarBandeira(numeroCartao);
         } else {
             errorLabel.setText("Número do cartão invalido.");
         }
-    }//GEN-LAST:event_numeroCartaoCampoActionPerformed
+    }//GEN-LAST:event_numeroCartaoCreCampoActionPerformed
 
     private void cartaoDRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartaoDRadioButtonActionPerformed
         // TODO add your handling code here:
@@ -772,25 +774,40 @@ public class Pagamento extends javax.swing.JDialog {
     }
     
     //Método para identificar a bandeira do cartão
-    private static String identificarBandeira(String numeroCartao) {
+    private String identificarBandeira(String numeroCartao) {
+        String bandeira = "DESCONHECIDO"; //Valor Padrão
+        String caminhoImagem = ""; //Caminho para a imagem da bandeira
+        
         if (numeroCartao.startsWith("4")) {
-            return "VISA";
+            bandeira = "VISA";
+            caminhoImagem = "src/main/resources/images/visa.png";
         } else if (numeroCartao.startsWith("5")) {
-            return "MASTERCARD";
+            bandeira = "MASTERCARD";
+            caminhoImagem = "src/main/resources/images/mastercard.jpg";
         } else if (numeroCartao.startsWith("3")) {
             if (numeroCartao.length() == 15) {
-                return "AMERICAN EXPRESS";
+                bandeira = "AMERICA EXPRESS";
+                caminhoImagem = "src/main/resources/images/amex.jpeg";
             } else {
-                return "DINERS CLUB";
+                bandeira = "DINERS CLUB";
+                caminhoImagem = "src/main/resources/images/dinersClub.png";
             }
             
         } else if (numeroCartao.startsWith("6")) {
-            return "DISCOVERY";
+            bandeira = "DISCOVER";
+            caminhoImagem = "src/main/resources/images/discover.png";
         } else if (numeroCartao.startsWith("37")) {
-            return "AMERICAN EXPRESS";
-        } else {
-            return "DESCONHECIDO";
+            bandeira = "AMERICAN EXPRESS";
+            caminhoImagem = "src/main/resources/images/amex.jpeg";
         }
+        
+        //Verifica se o caminho da imagem não está vazio e define a imagem no label
+        if (!caminhoImagem.isEmpty()) {
+            ImageIcon iconeBandeira = new ImageIcon(caminhoImagem);
+            imagemBandeira.setIcon(iconeBandeira);
+        }
+        
+        return bandeira;
     }
     
     //Validação De Escolha
@@ -880,6 +897,7 @@ public class Pagamento extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField cvvDebitoCampo;
     private javax.swing.JLabel cvvDebitoLabel;
     private javax.swing.JLabel errorLabel;
+    private javax.swing.JLabel imagemBandeira;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -900,7 +918,7 @@ public class Pagamento extends javax.swing.JDialog {
     private javax.swing.JLabel nomeDebitoLabel;
     private javax.swing.JTextField nomePagamentoCampo;
     private javax.swing.JTextField nomePagamentoDebitoCampo;
-    private javax.swing.JTextField numeroCartaoCampo;
+    private javax.swing.JTextField numeroCartaoCreCampo;
     private javax.swing.JTextField numeroCartaoDebitoCampo;
     private javax.swing.JLabel numeroCreditoLabel;
     private javax.swing.JLabel numeroDebitoLabel;
