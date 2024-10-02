@@ -19,6 +19,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -113,6 +114,11 @@ public class TelaLogin extends javax.swing.JDialog {
         campoSenha.setBackground(new java.awt.Color(102, 102, 102));
         campoSenha.setForeground(new java.awt.Color(255, 255, 255));
         campoSenha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        campoSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoSenhaActionPerformed(evt);
+            }
+        });
         campoSenha.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 campoSenhaKeyPressed(evt);
@@ -310,32 +316,41 @@ public class TelaLogin extends javax.swing.JDialog {
             banco.conectaBD();
             
             String sql = "";
+            String senhaHash = null; //Variavel para armazenar senha hash recuperada
             
             if (tipo.equals("Paciente")) {
-                sql = "SELECT * FROM paciente WHERE email = ? AND senha = ?";
+                sql = "SELECT senha FROM Paciente WHERE email = ?";
             } else if (tipo.equals("Médico")) {
-                sql = "SELECT * FROM medico WHERE emailMed = ? AND senhaMed = ?";
+                sql = "SELECT senhaMed FROM Medico WHERE emailMed = ?";
             }
             
             try (PreparedStatement statement = banco.getPreparedStatement(sql)) {
                 statement.setString(1, usuario);
-                statement.setString(2, senha);
                 
                 try (ResultSet rs = statement.executeQuery()) {
                     if (rs.next()) {
-                        try (BufferedWriter bw = new BufferedWriter(new FileWriter("sessao"))) {
-                             bw.write(usuario + "," + tipo);
-                        } catch (IOException ex) {
-                            JOptionPane.showMessageDialog(this,
-                                    "Não foi possível iniciar o sistema!! Error: " + ex.getMessage());
-                        }
-                        this.parentMain.setVisible(false);
-                        this.setVisible(false); 
-                    } else {
-                        this.labelErro.setText("Usuário/Senha incorretos!");
+                       if (tipo.equals("Paciente")) {
+                           senhaHash = rs.getString("senha");
+                       } else if (tipo.equals("Medico")) {
+                           senhaHash = rs.getString("senhaMed");
+                       }
                     }
                 }
-            }      
+            }
+            
+            //Verifica se a senha fornecida corresponde a senha hash
+            if (senhaHash != null && BCrypt.checkpw(senha, senhaHash)) {
+                try (BufferedWriter bw = new BufferedWriter(new FileWriter("sessao"))) {
+                    bw.write(usuario + "," + tipo);
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(this,
+                        "Não foi possível iniciar o sistema!! Error: " + ex.getMessage());
+                }
+                this.parentMain.setVisible(false);
+                this.setVisible(false);                
+            } else {
+                this.labelErro.setText("Usuário/Senha incorretos!");
+            }
             
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this,
@@ -371,6 +386,10 @@ public class TelaLogin extends javax.swing.JDialog {
     private void campoSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoSenhaKeyPressed
         adicionarListeners();
     }//GEN-LAST:event_campoSenhaKeyPressed
+
+    private void campoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoSenhaActionPerformed
+        //
+    }//GEN-LAST:event_campoSenhaActionPerformed
 
     /**
      * @param args the command line arguments

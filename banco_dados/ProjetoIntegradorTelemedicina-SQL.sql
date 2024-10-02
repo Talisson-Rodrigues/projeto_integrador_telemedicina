@@ -13,7 +13,7 @@ CREATE TABLE Paciente
  endereco VARCHAR(200),  
  email VARCHAR(100),  
  rg VARCHAR(16),
- senha VARCHAR(12)
+ senha VARCHAR(60)
 ); 
 
 CREATE TABLE Medico 

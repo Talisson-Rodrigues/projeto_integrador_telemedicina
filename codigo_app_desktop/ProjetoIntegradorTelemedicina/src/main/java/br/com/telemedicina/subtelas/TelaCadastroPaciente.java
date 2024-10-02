@@ -15,6 +15,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -183,6 +184,11 @@ public class TelaCadastroPaciente extends javax.swing.JDialog {
         campoCriaSenha.setBackground(new java.awt.Color(102, 102, 102));
         campoCriaSenha.setForeground(new java.awt.Color(255, 255, 255));
         campoCriaSenha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        campoCriaSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoCriaSenhaActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -377,6 +383,9 @@ public class TelaCadastroPaciente extends javax.swing.JDialog {
             return;
            }
            
+           //Criptografar senha
+           String senhaHash = BCrypt.hashpw(new String (senha), BCrypt.gensalt());
+           
            String sql = "INSERT INTO paciente (nome, cpf, email, dataNascimento, rg, telefone, endereco, genero, senha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
            
            PreparedStatement statement = banco.getPreparedStatement(sql);
@@ -389,7 +398,7 @@ public class TelaCadastroPaciente extends javax.swing.JDialog {
            statement.setString(6, telefone);
            statement.setString(7, endereco);
            statement.setString(8, genero);
-           statement.setString(9, new String(senha));
+           statement.setString(9, senhaHash);
            
            statement.execute();
            
@@ -406,6 +415,10 @@ public class TelaCadastroPaciente extends javax.swing.JDialog {
            e.printStackTrace();
        }
     }//GEN-LAST:event_botaoCadastrarActionPerformed
+
+    private void campoCriaSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCriaSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoCriaSenhaActionPerformed
 
     private boolean validaCampos() {
         
