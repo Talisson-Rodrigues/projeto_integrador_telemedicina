@@ -17,7 +17,7 @@ import br.com.telemedicina.subtelas.NovaPrescricao;
 import br.com.telemedicina.subtelas.Pagamento;
 import br.com.telemedicina.subtelas.TelaInicio;
 import br.com.telemedicina.estilo.ModoClaroEscuro;
-import java.awt.*;
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -94,8 +94,7 @@ public class Main extends javax.swing.JFrame {
         historicoPagamento = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         modoMenu = new javax.swing.JMenu();
-        modoEscuroButton = new javax.swing.JRadioButtonMenuItem();
-        modoClaroButton = new javax.swing.JRadioButtonMenuItem();
+        modoEscuroMenuItem = new javax.swing.JCheckBoxMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -436,23 +435,14 @@ public class Main extends javax.swing.JFrame {
         modoMenu.setText("Modo");
         modoMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        modoEscuroButton.setSelected(true);
-        modoEscuroButton.setText("Modo Escuro");
-        modoEscuroButton.addActionListener(new java.awt.event.ActionListener() {
+        modoEscuroMenuItem.setSelected(true);
+        modoEscuroMenuItem.setText("Modo Escuro");
+        modoEscuroMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modoEscuroButtonActionPerformed(evt);
+                modoEscuroMenuItemActionPerformed(evt);
             }
         });
-        modoMenu.add(modoEscuroButton);
-
-        modoClaroButton.setSelected(true);
-        modoClaroButton.setText("Modo Claro");
-        modoClaroButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modoClaroButtonActionPerformed(evt);
-            }
-        });
-        modoMenu.add(modoClaroButton);
+        modoMenu.add(modoEscuroMenuItem);
 
         menuBar.add(modoMenu);
 
@@ -474,8 +464,6 @@ public class Main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    private boolean isDarkMode = false;
     
     private void historicoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoConsultaActionPerformed
         HistoricoConsulta histoConsulta = new HistoricoConsulta();
@@ -771,20 +759,10 @@ public class Main extends javax.swing.JFrame {
         pg.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void modoClaroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoClaroButtonActionPerformed
-        isDarkMode = false;
-        jPanel2.setBackground(applyCurrentMode());
-        nomeMedLabel.setForeground(applyCurrentMode());
-        labelBemVindo.setForeground(applyCurrentMode());
-        jPanel4.setBackground(applyCurrentMode());
-        nomePacienteLabel.setForeground(applyCurrentMode());
-        labelBemVindo1.setForeground(applyCurrentMode());
-    }//GEN-LAST:event_modoClaroButtonActionPerformed
-
-    private void modoEscuroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoEscuroButtonActionPerformed
-        isDarkMode = true;
-        applyCurrentMode();
-    }//GEN-LAST:event_modoEscuroButtonActionPerformed
+    private void modoEscuroMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoEscuroMenuItemActionPerformed
+        ModoClaroEscuro.setDarkMode(modoEscuroMenuItem.isSelected());
+        updateColors();
+    }//GEN-LAST:event_modoEscuroMenuItemActionPerformed
     
     private Color applyCurrentMode() {
         Color backgroundColor;
@@ -794,6 +772,7 @@ public class Main extends javax.swing.JFrame {
         backgroundColor = getBackground();
         textColor = getForeground();
         blueColor = getBackground();
+        boolean isDarkMode = false;
         
         if (isDarkMode) {
             backgroundColor = ModoClaroEscuro.darkBackground;
@@ -805,7 +784,15 @@ public class Main extends javax.swing.JFrame {
             blueColor = ModoClaroEscuro.lightblueBackground;
         }
         
-        return null;   
+        return null; 
+    }
+    private void updateColors() {
+        jPanel2.setBackground(ModoClaroEscuro.getBackgroundColor());
+        nomeMedLabel.setForeground(ModoClaroEscuro.getForegroundColor());
+        labelBemVindo.setForeground(ModoClaroEscuro.getForegroundColor());
+        jPanel4.setBackground(ModoClaroEscuro.getBackgroundColor());
+        nomePacienteLabel.setForeground(ModoClaroEscuro.getForegroundColor());
+        labelBemVindo1.setForeground(ModoClaroEscuro.getForegroundColor());
     }
     
     /**
@@ -874,8 +861,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel labelBemVindo;
     private javax.swing.JLabel labelBemVindo1;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JRadioButtonMenuItem modoClaroButton;
-    private javax.swing.JRadioButtonMenuItem modoEscuroButton;
+    private javax.swing.JCheckBoxMenuItem modoEscuroMenuItem;
     private javax.swing.JMenu modoMenu;
     private javax.swing.JLabel nomeMedLabel;
     private javax.swing.JLabel nomePacienteLabel;

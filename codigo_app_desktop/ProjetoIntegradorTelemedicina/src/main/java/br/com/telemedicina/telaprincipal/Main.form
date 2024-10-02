@@ -134,22 +134,13 @@
             </Property>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JRadioButtonMenuItem" name="modoEscuroButton">
+            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="modoEscuroMenuItem">
               <Properties>
                 <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Modo Escuro"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modoEscuroButtonActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JRadioButtonMenuItem" name="modoClaroButton">
-              <Properties>
-                <Property name="selected" type="boolean" value="true"/>
-                <Property name="text" type="java.lang.String" value="Modo Claro"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modoClaroButtonActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modoEscuroMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
