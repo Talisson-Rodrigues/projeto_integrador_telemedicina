@@ -551,7 +551,8 @@ public class Main extends javax.swing.JFrame {
                     //Termina carregamento da tabela
                     
                     //Coloca o nome no Jlabel
-                    ps = banco.getPreparedStatement(query);
+                    String query1 = "SELECT nomeMed FROM Medico WHERE emailMed = ?";
+                    ps = banco.getPreparedStatement(query1);
                     
                     ps.setString(1, dados[0]);
                     
@@ -613,7 +614,8 @@ public class Main extends javax.swing.JFrame {
                     }
                     this.jTablePaciente.setModel(model);
                     
-                    ps = banco.getPreparedStatement(query);
+                    String query1 = "SELECT nome FROM Paciente WHERE email = ?";
+                    ps = banco.getPreparedStatement(query1);
                     
                     ps.setString(1, dados[0]);
                     
@@ -803,6 +805,7 @@ public class Main extends javax.swing.JFrame {
             blueColor = ModoClaroEscuro.lightblueBackground;
         }
         
+        return null;   
     }
     
     /**

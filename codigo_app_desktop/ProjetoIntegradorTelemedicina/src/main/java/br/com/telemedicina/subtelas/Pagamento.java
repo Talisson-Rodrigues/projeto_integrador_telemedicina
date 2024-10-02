@@ -6,27 +6,21 @@ package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.bd.BD;
 import br.com.telemedicina.repository.PacienteRepository;
-import br.com.telemedicina.repository.PdfRepository;
 import br.com.telemedicina.repository.TipoAtendimentoRepository;
 import br.com.telemedicina.utils.LimitaCaracter;
-import java.awt.Image;
 import java.sql.*;
 import javax.swing.*;
-import java.awt.event.*;
-import java.io.BufferedReader;
+import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
 import java.util.UUID;
-import java.util.regex.Pattern;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.PlainDocument;
-
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
 /**
  *
  * @author Talisson53899806
@@ -98,6 +92,7 @@ public class Pagamento extends javax.swing.JDialog {
         cvvDebitoCampo = new javax.swing.JFormattedTextField();
         cvvDebitoLabel = new javax.swing.JLabel();
         tituloDebitoLabel = new javax.swing.JLabel();
+        imagemBandeira1 = new javax.swing.JLabel();
         botaoPagar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -159,6 +154,11 @@ public class Pagamento extends javax.swing.JDialog {
         boletoRadioButton.setForeground(new java.awt.Color(0, 0, 0));
         boletoRadioButton.setText("Boleto");
         boletoRadioButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        boletoRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boletoRadioButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -353,9 +353,7 @@ public class Pagamento extends javax.swing.JDialog {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(numeroCartaoCreCampo)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(0, 0, 0)
-                                .addComponent(numeroCreditoLabel)))
+                            .addComponent(numeroCreditoLabel))
                         .addGap(172, 172, 172))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -419,6 +417,12 @@ public class Pagamento extends javax.swing.JDialog {
         nomeDebitoLabel.setForeground(new java.awt.Color(0, 0, 0));
         nomeDebitoLabel.setText("NOME COMPLETO");
 
+        numeroCartaoDebitoCampo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numeroCartaoDebitoCampoActionPerformed(evt);
+            }
+        });
+
         numeroDebitoLabel.setBackground(new java.awt.Color(0, 0, 0));
         numeroDebitoLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         numeroDebitoLabel.setForeground(new java.awt.Color(0, 0, 0));
@@ -463,30 +467,35 @@ public class Pagamento extends javax.swing.JDialog {
                 .addGap(132, 132, 132)
                 .addComponent(nomeDebitoLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(numeroCartaoDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addComponent(numeroDebitoLabel)))
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(vencimentoDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(vencimentoDebitoLabel)))
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cvvDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addGap(59, 59, 59)
-                            .addComponent(cvvDebitoLabel))
-                        .addComponent(nomePagamentoDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(tituloDebitoLabel)
                 .addGap(37, 37, 37))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(numeroDebitoLabel)
+                            .addComponent(numeroCartaoDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cvvDebitoLabel)
+                            .addComponent(cvvDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(vencimentoDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(vencimentoDebitoLabel))
+                        .addGap(56, 56, 56))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(265, 265, 265)
+                                .addComponent(imagemBandeira1)
+                                .addGap(90, 90, 90))
+                            .addComponent(nomePagamentoDebitoCampo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(15, Short.MAX_VALUE))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -497,21 +506,21 @@ public class Pagamento extends javax.swing.JDialog {
                 .addComponent(nomeDebitoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nomePagamentoDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(24, 24, 24)
+                .addComponent(numeroDebitoLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(numeroCartaoDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(imagemBandeira1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cvvDebitoLabel)
+                    .addComponent(vencimentoDebitoLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(numeroDebitoLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numeroCartaoDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(vencimentoDebitoLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(vencimentoDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cvvDebitoLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cvvDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(170, Short.MAX_VALUE))
+                    .addComponent(vencimentoDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cvvDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Débito", jPanel5);
@@ -659,15 +668,15 @@ public class Pagamento extends javax.swing.JDialog {
             if (pix) {
                 tipoPagamento = "PIX";
                 pixCopiaCola = gerarCodigoPix(); //Gerar código Copia e Cola
+                
+                //Exibe o código pix Copia e Cola no JOptionPane
                 JOptionPane.showMessageDialog(this,
-                        "O pix copia e cola foi gerado: \n" + pixCopiaCola);
+                        "O pix copia e cola foi gerado: \n" + pixCopiaCola + "\n",
+                        "Pix Copia e Cola",
+                        JOptionPane.OK_OPTION,
+                        exibiQRCode(pixCopiaCola)); 
                 
             } else if (boleto) {
-                tipoPagamento = "Boleto";
-                PdfRepository pdfBoleto = new PdfRepository();
-                String home = System.getProperty("user.home");
-                String filePath = home + "/Downloads/boleto.pdf";
-                pdfBoleto.gerarPDF(filePath);
                 
             } else if (cartaoC) {
                 tipoPagamento = "Cartão de Crédito";
@@ -724,6 +733,32 @@ public class Pagamento extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_botaoPagarActionPerformed
 
+    //Método para gerar o QR Code
+    private BufferedImage gerarQRCode(String dados, int largura, int altura) {
+        QRCodeWriter qrCodeWriter = new QRCodeWriter();
+        BufferedImage imagemQRCode = null;
+        
+        try {
+            BitMatrix bitMatrix = qrCodeWriter.encode(dados, BarcodeFormat.QR_CODE, largura,altura);
+            imagemQRCode = MatrixToImageWriter.toBufferedImage(bitMatrix);
+            
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+        
+        return imagemQRCode;
+    }
+    
+    private ImageIcon exibiQRCode(String codigoPix) {
+        //Gera o QR Code com 200x200 pixels
+        BufferedImage qrCodeImage = gerarQRCode(codigoPix, 200, 200);
+        
+        //Converte a imagem em ImageIcon
+        ImageIcon qrCodeIcon = new ImageIcon(qrCodeImage);
+        
+        return qrCodeIcon;
+    }
+    
     private void cvvDebitoCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cvvDebitoCampoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cvvDebitoCampoActionPerformed
@@ -740,6 +775,19 @@ public class Pagamento extends javax.swing.JDialog {
     private void cartaoDRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartaoDRadioButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cartaoDRadioButtonActionPerformed
+
+    private void boletoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boletoRadioButtonActionPerformed
+        this.jTabbedPane1.removeAll();
+    }//GEN-LAST:event_boletoRadioButtonActionPerformed
+
+    private void numeroCartaoDebitoCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroCartaoDebitoCampoActionPerformed
+        String numeroCartao = numeroCartaoDebitoCampo.getText();
+        if(validarCartao(numeroCartao)) {
+            identificarBandeira(numeroCartao);
+        } else {
+            errorLabel.setText("Número do cartão invalido.");
+        }
+    }//GEN-LAST:event_numeroCartaoDebitoCampoActionPerformed
 
     //validação do número do cartão usando o algoritmo luhn
     private static boolean validarCartao(String numeroCartao) {
@@ -805,6 +853,7 @@ public class Pagamento extends javax.swing.JDialog {
         if (!caminhoImagem.isEmpty()) {
             ImageIcon iconeBandeira = new ImageIcon(caminhoImagem);
             imagemBandeira.setIcon(iconeBandeira);
+            imagemBandeira1.setIcon(iconeBandeira);
         }
         
         return bandeira;
@@ -898,6 +947,7 @@ public class Pagamento extends javax.swing.JDialog {
     private javax.swing.JLabel cvvDebitoLabel;
     private javax.swing.JLabel errorLabel;
     private javax.swing.JLabel imagemBandeira;
+    private javax.swing.JLabel imagemBandeira1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
