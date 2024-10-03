@@ -14,8 +14,6 @@ import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.PageSize;
 import com.lowagie.text.Paragraph;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import java.awt.Graphics2D;
@@ -24,6 +22,9 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Random;
 import net.sourceforge.barbecue.Barcode;
 import net.sourceforge.barbecue.BarcodeException;
 import net.sourceforge.barbecue.BarcodeFactory;
@@ -48,16 +49,23 @@ public class BoletoPDF {
             //Informações do beneficiário e pagador
             adicionarInformacoes(document, nome, cpf, endereco);
             
-            //Informações do Boleto
-            adicionarInformacoesBoleto(document, valor);
+            //Calcula a data de vencimento (dois dias após a data atual)
+            LocalDate dataAtual = LocalDate.now();
+            LocalDate dataVencimento = dataAtual.plusDays(2);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            String dataVencimentoFormatada = dataVencimento.format(formatter);
+            
+            //Informações do Boleto com a data de vencimento calculada
+            adicionarInformacoesBoleto(document, valor, dataVencimentoFormatada);
             
             //Gera o QR Code
             BufferedImage qrCodeImage = gerarQRCode("00020126480014BR.GOV.BCB.PIX0114+55119876543265802BR5925Fulano de Tal6009SAO PAULO62070503***6304B6D2", 200, 200);
             adicionarQRCode(document, qrCodeImage);
             
             //Gera o código de barras
-            BufferedImage codigoBarras = gerarCodigoDeBarras("34191.09008 12345.678901 12345.678904 1 12345678901234");
-            adicionarCodigoDeBarras(document, writer, codigoBarras);
+            String codigoDeBarras = gerarCodigoDeBarrasAleatorio();
+            BufferedImage codigoBarras = gerarCodigoDeBarras(codigoDeBarras);
+            adicionarCodigoDeBarras(document, codigoBarras);
             
             document.close();
         } catch (DocumentException | IOException ex) {
@@ -90,11 +98,11 @@ public class BoletoPDF {
     }
     
     //Método para adicionar informações do boleto
-    private void adicionarInformacoesBoleto(Document document, String valor) throws DocumentException {
+    private void adicionarInformacoesBoleto(Document document, String valor, String dataVencimento) throws DocumentException {
         PdfPTable boletoTable = new PdfPTable(4);
         boletoTable.setWidthPercentage(100);
         boletoTable.addCell("Data de Vencimento: ");
-        boletoTable.addCell("01/10/2024");
+        boletoTable.addCell(dataVencimento);
         boletoTable.addCell("Valor: ");
         boletoTable.addCell(valor);
         
@@ -167,7 +175,7 @@ public class BoletoPDF {
     }
     
     //Método para adicionar o código de barras ao PDF
-    private void adicionarCodigoDeBarras(Document document, PdfWriter writer, BufferedImage codigoBarras) throws DocumentException, IOException {
+    private void adicionarCodigoDeBarras(Document document, BufferedImage codigoBarras) throws DocumentException, IOException {
         ImageIO.write(codigoBarras, "png", new FileOutputStream("codigo_barras.png"));
         Paragraph codigoBarrasLabel = new Paragraph("Código de barras: ");
         codigoBarrasLabel.setAlignment(Element.ALIGN_CENTER);
@@ -176,5 +184,32 @@ public class BoletoPDF {
         img.setAlignment(Element.ALIGN_CENTER);
         document.add(img);
         document.add(new Paragraph(" "));
-    } 
+    }
+    
+    private String gerarCodigoDeBarrasAleatorio() {
+        Random random = new Random();
+        
+        //Segmentos fixos (como o banco "341", etc.)
+        String banco = "341"; //Código do banco, por exemplo, banco Itaú
+        String moeda = "9"; //Moeda (geralmente 9 para real)
+        String fatorVencimento = "09008"; //Pode ser relacionado à data de vencimento
+        
+        //Gerando segmentos aleatórios
+        String segmento1 = String.format("%05d", random.nextInt(10000)); //Gera um número de 5 dígitos
+        String segmento2 = String.format("%06d", random.nextInt(100000)); //Gera um número de 6 dígitos
+        String segmento3 = String.format("%05d", random.nextInt(10000)); //Gera um número de 5 dígitos
+        String segmento4 = String.format("%06d", random.nextInt(100000)); //Gera um número de 6 dígitos
+        
+        //Campo livre, dígito fixo e mais 14 digitos aleatórios
+        String digitoVerificador = "1"; //Este é fixo em muitos casos
+        String campoLivre = String.format("%014d", random.nextLong() % 10000000000000L); //14 dígitos aleatórios
+        
+        //Monta o código de barras completo
+        return String.format("%s%s.%s %s.%s %s.%s %s %s",
+                             banco, moeda, fatorVencimento,
+                             segmento1, segmento2,
+                             segmento3, segmento4,
+                             digitoVerificador, campoLivre);
+        
+    }
 }

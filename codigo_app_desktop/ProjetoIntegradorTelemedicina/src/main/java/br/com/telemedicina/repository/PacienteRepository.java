@@ -77,6 +77,64 @@ public class PacienteRepository {
         return resultado;
     }
     
+     public String realizaConsultas(String query, String parametro) {
+        String resultado = "";
+        BD banco = new BD();
+        banco.conectaBD();
+        
+        try (PreparedStatement ps = banco.getPreparedStatement(query)) {
+            //Define o parâmetro para a consulta no SQL
+            ps.setString(1, parametro);
+            
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    resultado = rs.getString("cpf");
+                }
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,
+                    "Erro ao realizar a consulta: " + ex.getMessage(),
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+            
+        } finally {
+            banco.encerrarConexao();
+            
+        }
+        
+        return resultado;
+    }
+     
+      public String realizarConsultas(String query, String parametro) {
+        String resultado = "";
+        BD banco = new BD();
+        banco.conectaBD();
+        
+        try (PreparedStatement ps = banco.getPreparedStatement(query)) {
+            //Define o parâmetro para a consulta no SQL
+            ps.setString(1, parametro);
+            
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    resultado = rs.getString("endereco");
+                }
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,
+                    "Erro ao realizar a consulta: " + ex.getMessage(),
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+            
+        } finally {
+            banco.encerrarConexao();
+            
+        }
+        
+        return resultado;
+    }
+    
     private String lerArquivoSessao() {
         try (BufferedReader br = new BufferedReader(new FileReader("sessao"))) {
             String linha;
@@ -134,12 +192,12 @@ public class PacienteRepository {
     
     public String getCpfByEmail(String email) {
         String query = "SELECT cpf FROM Paciente WHERE email LIKE ?";
-        return realizarConsulta(query, email);
+        return realizaConsultas(query, email);
     }
     
     public String getEnderecoByEmail(String email) {
         String query = "SELECT endereco FROM Paciente WHERE email LIKE ?";
-        return realizarConsulta(query, email);
+        return realizarConsultas(query, email);
     }
     
     public String getNomeByEmailArquivo() {
