@@ -6,9 +6,6 @@ package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.bd.BD;
 import br.com.telemedicina.repository.DataRepository;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -383,8 +380,6 @@ public class TelaCadastroPaciente extends javax.swing.JDialog {
             return;
            }
            
-           //Criptografar senha
-           String senhaHash = BCrypt.hashpw(new String (senha), BCrypt.gensalt());
            
            String sql = "INSERT INTO paciente (nome, cpf, email, dataNascimento, rg, telefone, endereco, genero, senha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
            
@@ -398,7 +393,7 @@ public class TelaCadastroPaciente extends javax.swing.JDialog {
            statement.setString(6, telefone);
            statement.setString(7, endereco);
            statement.setString(8, genero);
-           statement.setString(9, senhaHash);
+           statement.setString(9, new String(senha));
            
            statement.execute();
            

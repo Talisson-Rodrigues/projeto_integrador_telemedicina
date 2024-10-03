@@ -31,12 +31,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jSplitPane1" alignment="0" pref="1156" max="32767" attributes="0"/>
+          <Component id="jSplitPane1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jSplitPane1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jSplitPane1" alignment="0" pref="718" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -104,7 +104,7 @@
                       <Component id="cartaoCRadioButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="boletoRadioButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="368" max="32767" attributes="0"/>
+                      <EmptySpace pref="345" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -242,14 +242,14 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="jTabbedPane1" min="-2" pref="421" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="11" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="jPanel3" min="-2" pref="391" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="botaoPagar" min="-2" pref="130" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="354" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -257,13 +257,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTabbedPane1" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jTabbedPane1" max="32767" attributes="0"/>
+                          <Component id="jPanel3" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace pref="49" max="32767" attributes="0"/>
                       <Component id="botaoPagar" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace pref="19" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -279,23 +279,30 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabel7" min="-2" pref="339" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
-                              <Component id="labelNf" alignment="0" max="32767" attributes="0"/>
-                              <Component id="labelCodigoPagamento" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="labelValor" min="-2" pref="326" max="-2" attributes="0"/>
-                                  <EmptySpace min="46" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="labelNf" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="labelCodigoPagamento" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelValor" alignment="0" min="-2" pref="326" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -304,9 +311,9 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                           <Component id="jLabel7" min="-2" pref="69" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="labelNf" min="-2" pref="81" max="-2" attributes="0"/>
@@ -318,7 +325,7 @@
                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="labelValor" min="-2" pref="77" max="-2" attributes="0"/>
-                          <EmptySpace pref="83" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -426,56 +433,58 @@
                               <Component id="tituloLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                              <Component id="errorLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="nomePagamentoCampo" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                                      <Component id="errorLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Component id="nomeCreditoLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="numeroCartaoCreCampo" max="32767" attributes="0"/>
-                                          <Component id="numeroCreditoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                              <Component id="cvvCreditoLabel" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="cvvCampo" alignment="0" min="-2" pref="152" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jComboBox1" max="32767" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="imagemBandeira" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="numeroParcelasCredito" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="vencimentoCreditoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="vencimentoCampo" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="numeroCreditoLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="vencimentoCreditoLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="campoVencimentoCredito" min="-2" pref="141" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="campoNomeCredito" alignment="0" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="campoNumeroCartaoCredito" min="-2" pref="250" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="imagemBandeira" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="cvvCreditoLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="numeroParcelasCredito" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="campoCvvCredito" min="-2" pref="152" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="escolhaNumeroParcelas" min="-2" pref="219" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -486,57 +495,58 @@
                               <Component id="tituloLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="errorLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                               <Component id="nomeCreditoLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="nomePagamentoCampo" min="-2" pref="40" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="campoNomeCredito" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="numeroCreditoLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="numeroCartaoCreCampo" min="-2" pref="42" max="-2" attributes="0"/>
-                                  <Component id="imagemBandeira" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="vencimentoCreditoLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="vencimentoCampo" min="-2" pref="42" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="numeroParcelasCredito" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="cvvCreditoLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jComboBox1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                          <Component id="cvvCampo" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Component id="campoNumeroCartaoCredito" min="-2" pref="42" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="imagemBandeira" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="vencimentoCreditoLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="campoVencimentoCredito" min="-2" pref="42" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="cvvCreditoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="numeroParcelasCredito" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="campoCvvCredito" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="escolhaNumeroParcelas" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="41" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JTextField" name="numeroCartaoCreCampo">
+                    <Component class="javax.swing.JTextField" name="campoNumeroCartaoCredito">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="numeroCartaoCreCampoActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoNumeroCartaoCreditoActionPerformed"/>
                       </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="numeroCartaoCreCampo.setDocument(new LimitaCaracter(19));"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="campoNumeroCartaoCredito.setDocument(new LimitaCaracter(19));"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="nomePagamentoCampo">
+                    <Component class="javax.swing.JTextField" name="campoNomeCredito">
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="cvvCampo">
+                    <Component class="javax.swing.JFormattedTextField" name="campoCvvCredito">
                       <Properties>
                         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                           <Format format="###" subtype="-1" type="5"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cvvCampoActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoCvvCreditoActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="nomeCreditoLabel">
@@ -592,7 +602,7 @@
                         <Property name="text" type="java.lang.String" value="N&#xb0; DO CART&#xc3;O"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="vencimentoCampo">
+                    <Component class="javax.swing.JFormattedTextField" name="campoVencimentoCredito">
                       <Properties>
                         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                           <Format format="##/##" subtype="-1" type="5"/>
@@ -612,30 +622,6 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="N&#xb0; DE PARCELAS"/>
                       </Properties>
-                    </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox1">
-                      <Properties>
-                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="13">
-                            <StringItem index="0" value="Selecione"/>
-                            <StringItem index="1" value="1x"/>
-                            <StringItem index="2" value="2x"/>
-                            <StringItem index="3" value="3x"/>
-                            <StringItem index="4" value="4x"/>
-                            <StringItem index="5" value="5x"/>
-                            <StringItem index="6" value="6x"/>
-                            <StringItem index="7" value="7x"/>
-                            <StringItem index="8" value="8x"/>
-                            <StringItem index="9" value="9x"/>
-                            <StringItem index="10" value="10x"/>
-                            <StringItem index="11" value="11x"/>
-                            <StringItem index="12" value="12x"/>
-                          </StringArray>
-                        </Property>
-                      </Properties>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="tituloLabel">
                       <Properties>
@@ -660,6 +646,30 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="imagemBandeira">
                     </Component>
+                    <Component class="javax.swing.JComboBox" name="escolhaNumeroParcelas">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="13">
+                            <StringItem index="0" value="Selecione"/>
+                            <StringItem index="1" value="1x"/>
+                            <StringItem index="2" value="2x"/>
+                            <StringItem index="3" value="3x"/>
+                            <StringItem index="4" value="4x"/>
+                            <StringItem index="5" value="5x"/>
+                            <StringItem index="6" value="6x"/>
+                            <StringItem index="7" value="7x"/>
+                            <StringItem index="8" value="8x"/>
+                            <StringItem index="9" value="9x"/>
+                            <StringItem index="10" value="10x"/>
+                            <StringItem index="11" value="11x"/>
+                            <StringItem index="12" value="12x"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
+                    </Component>
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="jPanel5">
@@ -679,48 +689,50 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
-                              <Component id="nomeDebitoLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="tituloDebitoLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace pref="14" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="campoNumeroCartaoDebito" min="-2" pref="216" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="imagemBandeira1" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="campoNomeDebito" alignment="0" min="-2" pref="392" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace pref="15" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="nomeDebitoLabel" min="-2" max="-2" attributes="0"/>
                                           <Component id="numeroDebitoLabel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="numeroCartaoDebitoCampo" min="-2" pref="216" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="cvvDebitoLabel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cvvDebitoCampo" min="-2" pref="152" max="-2" attributes="0"/>
+                                          <Component id="campoCvvDebito" min="-2" pref="152" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="vencimentoDebitoCampo" min="-2" pref="141" max="-2" attributes="0"/>
-                                          <Component id="vencimentoDebitoLabel" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <EmptySpace min="-2" pref="265" max="-2" attributes="0"/>
-                                              <Component id="imagemBandeira1" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="vencimentoDebitoLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="nomePagamentoDebitoCampo" alignment="0" min="-2" pref="392" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="campoVencimentoDebito" min="-2" pref="141" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace pref="15" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -729,18 +741,23 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="tituloDebitoLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="nomeDebitoLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="nomePagamentoDebitoCampo" min="-2" pref="40" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <Component id="campoNomeDebito" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="numeroDebitoLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="numeroCartaoDebitoCampo" alignment="0" min="-2" pref="42" max="-2" attributes="0"/>
-                                  <Component id="imagemBandeira1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="imagemBandeira1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="campoNumeroCartaoDebito" min="-2" pref="42" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -748,11 +765,11 @@
                                   <Component id="vencimentoDebitoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="vencimentoDebitoCampo" min="-2" pref="42" max="-2" attributes="0"/>
-                                  <Component id="cvvDebitoCampo" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="campoCvvDebito" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="campoVencimentoDebito" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="185" max="32767" attributes="0"/>
+                              <EmptySpace pref="152" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -769,11 +786,11 @@
                         <Property name="text" type="java.lang.String" value="NOME COMPLETO"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="nomePagamentoDebitoCampo">
+                    <Component class="javax.swing.JTextField" name="campoNomeDebito">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="numeroCartaoDebitoCampo">
+                    <Component class="javax.swing.JTextField" name="campoNumeroCartaoDebito">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="numeroCartaoDebitoCampoActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoNumeroCartaoDebitoActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="numeroDebitoLabel">
@@ -804,21 +821,21 @@
                         <Property name="text" type="java.lang.String" value="VENCIMENTO"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="vencimentoDebitoCampo">
+                    <Component class="javax.swing.JFormattedTextField" name="campoVencimentoDebito">
                       <Properties>
                         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                           <Format format="##/##" subtype="-1" type="5"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="cvvDebitoCampo">
+                    <Component class="javax.swing.JFormattedTextField" name="campoCvvDebito">
                       <Properties>
                         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                           <Format format="###" subtype="-1" type="5"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cvvDebitoCampoActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoCvvDebitoActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="cvvDebitoLabel">
