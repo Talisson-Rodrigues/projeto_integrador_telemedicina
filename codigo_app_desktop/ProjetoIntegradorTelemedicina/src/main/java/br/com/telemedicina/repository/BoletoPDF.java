@@ -77,7 +77,7 @@ public class BoletoPDF {
     //Método para adicionar o cabeçalho
     private void adicionarCabecalho(Document document) throws DocumentException {
         Font titleFont = new Font(Font.HELVETICA, 14, Font.BOLD);
-        Paragraph titulo = new Paragraph("BOLETO BÁNCARIO", titleFont);
+        Paragraph titulo = new Paragraph("BOLETO BANCÁRIO", titleFont);
         titulo.setAlignment(Element.ALIGN_CENTER);
         document.add(titulo);
         document.add(new Paragraph(" "));
