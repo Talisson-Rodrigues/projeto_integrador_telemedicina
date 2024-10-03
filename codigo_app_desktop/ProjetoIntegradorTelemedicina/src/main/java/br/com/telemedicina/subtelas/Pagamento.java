@@ -5,6 +5,7 @@
 package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.bd.BD;
+import br.com.telemedicina.repository.BoletoPDF;
 import br.com.telemedicina.repository.PacienteRepository;
 import br.com.telemedicina.repository.TipoAtendimentoRepository;
 import br.com.telemedicina.utils.LimitaCaracter;
@@ -509,7 +510,7 @@ public class Pagamento extends javax.swing.JDialog {
                 .addGap(24, 24, 24)
                 .addComponent(numeroDebitoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(numeroCartaoDebitoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(imagemBandeira1))
                 .addGap(18, 18, 18)
@@ -677,6 +678,19 @@ public class Pagamento extends javax.swing.JDialog {
                         exibiQRCode(pixCopiaCola)); 
                 
             } else if (boleto) {
+                try {
+                    tipoPagamento = "Boleto";
+                    String filePath = System.getProperty("user.home") + "/Downloads/boleto.pdf";
+                    BoletoPDF boletoPDF = new BoletoPDF();
+                    boletoPDF.gerarBoleto(filePath);
+                    JOptionPane.showMessageDialog(this, "Boleto gerado com sucesso em: " + filePath);
+                    
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this,
+                            "Erro ao gerar o boleto: " + e.getMessage(),
+                            "Erro",
+                            JOptionPane.ERROR_MESSAGE);
+                }
                 
             } else if (cartaoC) {
                 tipoPagamento = "Cartão de Crédito";

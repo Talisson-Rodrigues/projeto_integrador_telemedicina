@@ -738,9 +738,9 @@
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Component id="numeroDebitoLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="numeroCartaoDebitoCampo" alignment="0" min="-2" pref="42" max="-2" attributes="0"/>
-                                  <Component id="imagemBandeira1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="imagemBandeira1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">

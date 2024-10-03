@@ -6,7 +6,6 @@ package br.com.telemedicina.repository;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
-import com.google.zxing.client.j2se.BarcodeWriter;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.lowagie.text.Document;
@@ -19,11 +18,16 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
+import java.awt.Graphics2D;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import net.sourceforge.barbecue.Barcode;
+import net.sourceforge.barbecue.BarcodeException;
+import net.sourceforge.barbecue.BarcodeFactory;
+import net.sourceforge.barbecue.output.OutputException;
 
 /**
  *
@@ -32,7 +36,7 @@ import java.io.IOException;
 public class BoletoPDF {
     
     //Método Principal para gerar o boleto
-    public void gerarBoleto(String filePath) {
+    public void gerarBoleto(String filePath) throws WriterException, BarcodeException {
         Document document = new Document(PageSize.A4);
         try {
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(filePath));
@@ -89,33 +93,89 @@ public class BoletoPDF {
     private void adicionarInformacoesBoleto(Document document) throws DocumentException {
         PdfPTable boletoTable = new PdfPTable(4);
         boletoTable.setWidthPercentage(100);
-        boletoTable.addCell("");
-        boletoTable.addCell("");
-        boletoTable.addCell("");
-        boletoTable.addCell("");
+        boletoTable.addCell("Data de Vencimento: ");
+        boletoTable.addCell("01/10/2024");
+        boletoTable.addCell("Valor: ");
+        boletoTable.addCell("R$ 150,00");
         
-        boletoTable.addCell("");
-        boletoTable.addCell("");
-        boletoTable.addCell("");
-        boletoTable.addCell("");
+        boletoTable.addCell("Agência/Código Beneficiário: ");
+        boletoTable.addCell("1234/0000001");
+        boletoTable.addCell("Nosso Número: ");
+        boletoTable.addCell("12345678-9");
         
-        boletoTable.addCell("");
-        boletoTable.addCell("");
-        boletoTable.addCell("");
-        boletoTable.addCell("");
+        boletoTable.addCell("Carteira: ");
+        boletoTable.addCell("109");
+        boletoTable.addCell("Número do Documento: ");
+        boletoTable.addCell("0000012345");
         
-        boletoTable.addCell("");
-        boletoTable.addCell("");
-        boletoTable.addCell("");
-        boletoTable.addCell("");
+        boletoTable.addCell("Espécie: ");
+        boletoTable.addCell("R$ ");
+        boletoTable.addCell("Quantidade: ");
+        boletoTable.addCell("1");
         
         document.add(boletoTable);
         document.add(new Paragraph(" "));
     }
     
     //Método para gerar o codigo de barras
-    private BufferedImage gerarCodigoDeBarras(String dados) throws WriterException {
-        BitMatrix bitMatrix = new com.google.zxing.BarcodeWriter.encode(dados, BarcodeFormat.CODE_128, 400, 50);
+
+    private BufferedImage gerarCodigoDeBarras(String dados) throws BarcodeException{
+        try {
+            //Cria o código de barras usando o formato Code128
+            Barcode barcode = BarcodeFactory.createCode128(dados);
+            
+            //Define a altura e a largura das barras
+            barcode.setBarHeight(60); //Altura das barras
+            barcode.setBarWidth(2); //Largura das barras
+            
+            //Cria uma imagem com as dimensões corretas para o código de barras
+            BufferedImage barcodeImage = new BufferedImage(barcode.getWidth(), barcode.getHeight(), BufferedImage.TYPE_INT_ARGB);
+            
+            //Obtem o objeto Graphics2D da imagem
+            Graphics2D g2d = barcodeImage.createGraphics();
+            
+            //Desenha o código de barras na imagem
+            barcode.draw(g2d, 0, 0);
+            
+            //libera o objeto Graphics2D após o uso
+            g2d.dispose();
+            
+            //Retorna a imagem gerada
+            return barcodeImage;
+            
+        } catch (OutputException | IllegalArgumentException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    //Método para adicionar o código de barras ao PDF
+    private void adicionarCodigoDeBarras(Document document, PdfWriter writer, BufferedImage codigoBarras) throws DocumentException, IOException {
+        ImageIO.write(codigoBarras, "png", new FileOutputStream("codigo_barras.png"));
+        Paragraph codigoBarrasLabel = new Paragraph("Código de barras: ");
+        codigoBarrasLabel.setAlignment(Element.ALIGN_CENTER);
+        document.add(codigoBarrasLabel);
+        com.lowagie.text.Image img = com.lowagie.text.Image.getInstance("codigo_barras.png");
+        img.setAlignment(Element.ALIGN_CENTER);
+        document.add(img);
+        document.add(new Paragraph(" "));
+    }
+    
+    //Método para gerar QR Code
+    private BufferedImage gerarQRCode(String dados, int altura, int largura) throws WriterException {
+        BitMatrix bitMatrix = new com.google.zxing.qrcode.QRCodeWriter().encode(dados, BarcodeFormat.QR_CODE, largura, altura);
         return MatrixToImageWriter.toBufferedImage(bitMatrix);
     }
+    
+    //Método para adicionar QR Code ao PDF
+    private void adicionarQRCode(Document document, BufferedImage qrCodeImage) throws DocumentException, IOException {
+        ImageIO.write(qrCodeImage, "png", new FileOutputStream("qrcode.png"));
+        Paragraph qrCodeLabel = new Paragraph("QR Code");
+        qrCodeLabel.setAlignment(Element.ALIGN_CENTER);
+        document.add(qrCodeLabel);
+        com.lowagie.text.Image img = com.lowagie.text.Image.getInstance("qrcode.png");
+        img.setAlignment(Element.ALIGN_CENTER);
+        document.add(img);
+    }
+    
 }
