@@ -36,7 +36,7 @@ import net.sourceforge.barbecue.output.OutputException;
 public class BoletoPDF {
     
     //Método Principal para gerar o boleto
-    public void gerarBoleto(String filePath) throws WriterException, BarcodeException {
+    public void gerarBoleto(String filePath, String nome, String cpf, String endereco, String valor) throws WriterException, BarcodeException {
         Document document = new Document(PageSize.A4);
         try {
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(filePath));
@@ -46,18 +46,18 @@ public class BoletoPDF {
             adicionarCabecalho(document);
             
             //Informações do beneficiário e pagador
-            adicionarInformacoes(document);
+            adicionarInformacoes(document, nome, cpf, endereco);
             
             //Informações do Boleto
-            adicionarInformacoesBoleto(document);
-            
-            //Gera o código de barras
-            BufferedImage codigoBarras = gerarCodigoDeBarras("34191.09008 12345.678901 12345.678904 1 12345678901234");
-            adicionarCodigoDeBarras(document, writer, codigoBarras);
+            adicionarInformacoesBoleto(document, valor);
             
             //Gera o QR Code
             BufferedImage qrCodeImage = gerarQRCode("00020126480014BR.GOV.BCB.PIX0114+55119876543265802BR5925Fulano de Tal6009SAO PAULO62070503***6304B6D2", 200, 200);
             adicionarQRCode(document, qrCodeImage);
+            
+            //Gera o código de barras
+            BufferedImage codigoBarras = gerarCodigoDeBarras("34191.09008 12345.678901 12345.678904 1 12345678901234");
+            adicionarCodigoDeBarras(document, writer, codigoBarras);
             
             document.close();
         } catch (DocumentException | IOException ex) {
@@ -76,27 +76,27 @@ public class BoletoPDF {
     }
     
     //Método para adicionar as informações do boleto
-    private void adicionarInformacoes(Document document/*, String nome, String cpf, String endereco*/) throws DocumentException {
+    private void adicionarInformacoes(Document document, String nome, String cpf, String endereco) throws DocumentException {
         PdfPTable infoTable = new PdfPTable(2);
         infoTable.setWidthPercentage(100);
         infoTable.addCell("Beneficiário: Empresa Exemplo LTDA");
-        infoTable.addCell("Pagador: João da Silva");
+        infoTable.addCell("Pagador: " + nome);
         infoTable.addCell("CPF/CNPJ: 00.000.000/0001-00");
-        infoTable.addCell("CPF/CNPJ: 123.456.789-00");
+        infoTable.addCell("CPF/CNPJ: " + cpf);
         infoTable.addCell("Endereço: Rua Exemplo, 123, São Paulo - SP");
-        infoTable.addCell("Endereço: Av. Teste, 456, Rio de Janeiro - RJ");
+        infoTable.addCell("Endereço: " + endereco);
         document.add(infoTable);
         document.add(new Paragraph(" "));  
     }
     
     //Método para adicionar informações do boleto
-    private void adicionarInformacoesBoleto(Document document) throws DocumentException {
+    private void adicionarInformacoesBoleto(Document document, String valor) throws DocumentException {
         PdfPTable boletoTable = new PdfPTable(4);
         boletoTable.setWidthPercentage(100);
         boletoTable.addCell("Data de Vencimento: ");
         boletoTable.addCell("01/10/2024");
         boletoTable.addCell("Valor: ");
-        boletoTable.addCell("R$ 150,00");
+        boletoTable.addCell(valor);
         
         boletoTable.addCell("Agência/Código Beneficiário: ");
         boletoTable.addCell("1234/0000001");
@@ -115,6 +115,23 @@ public class BoletoPDF {
         
         document.add(boletoTable);
         document.add(new Paragraph(" "));
+    }
+    
+     //Método para gerar QR Code
+    private BufferedImage gerarQRCode(String dados, int altura, int largura) throws WriterException {
+        BitMatrix bitMatrix = new com.google.zxing.qrcode.QRCodeWriter().encode(dados, BarcodeFormat.QR_CODE, largura, altura);
+        return MatrixToImageWriter.toBufferedImage(bitMatrix);
+    }
+    
+    //Método para adicionar QR Code ao PDF
+    private void adicionarQRCode(Document document, BufferedImage qrCodeImage) throws DocumentException, IOException {
+        ImageIO.write(qrCodeImage, "png", new FileOutputStream("qrcode.png"));
+        Paragraph qrCodeLabel = new Paragraph("QR Code");
+        qrCodeLabel.setAlignment(Element.ALIGN_CENTER);
+        document.add(qrCodeLabel);
+        com.lowagie.text.Image img = com.lowagie.text.Image.getInstance("qrcode.png");
+        img.setAlignment(Element.ALIGN_CENTER);
+        document.add(img);
     }
     
     //Método para gerar o codigo de barras
@@ -159,23 +176,5 @@ public class BoletoPDF {
         img.setAlignment(Element.ALIGN_CENTER);
         document.add(img);
         document.add(new Paragraph(" "));
-    }
-    
-    //Método para gerar QR Code
-    private BufferedImage gerarQRCode(String dados, int altura, int largura) throws WriterException {
-        BitMatrix bitMatrix = new com.google.zxing.qrcode.QRCodeWriter().encode(dados, BarcodeFormat.QR_CODE, largura, altura);
-        return MatrixToImageWriter.toBufferedImage(bitMatrix);
-    }
-    
-    //Método para adicionar QR Code ao PDF
-    private void adicionarQRCode(Document document, BufferedImage qrCodeImage) throws DocumentException, IOException {
-        ImageIO.write(qrCodeImage, "png", new FileOutputStream("qrcode.png"));
-        Paragraph qrCodeLabel = new Paragraph("QR Code");
-        qrCodeLabel.setAlignment(Element.ALIGN_CENTER);
-        document.add(qrCodeLabel);
-        com.lowagie.text.Image img = com.lowagie.text.Image.getInstance("qrcode.png");
-        img.setAlignment(Element.ALIGN_CENTER);
-        document.add(img);
-    }
-    
+    } 
 }

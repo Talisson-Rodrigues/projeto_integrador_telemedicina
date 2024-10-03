@@ -48,6 +48,35 @@ public class PacienteRepository {
         return resultado;
     }
     
+    public String realizarConsulta(String query, String parametro) {
+        String resultado = "";
+        BD banco = new BD();
+        banco.conectaBD();
+        
+        try (PreparedStatement ps = banco.getPreparedStatement(query)) {
+            //Define o parâmetro para a consulta no SQL
+            ps.setString(1, parametro);
+            
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    resultado = rs.getString("nome");
+                }
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,
+                    "Erro ao realizar a consulta: " + ex.getMessage(),
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+            
+        } finally {
+            banco.encerrarConexao();
+            
+        }
+        
+        return resultado;
+    }
+    
     private String lerArquivoSessao() {
         try (BufferedReader br = new BufferedReader(new FileReader("sessao"))) {
             String linha;
@@ -96,5 +125,47 @@ public class PacienteRepository {
         }
         
         return getIdByEmail(email);
+    }
+    
+    public String getNomeByEmail(String email) {
+        String query = "SELECT nome FROM Paciente WHERE email LIKE ?";
+        return realizarConsulta(query, email);
+    }
+    
+    public String getCpfByEmail(String email) {
+        String query = "SELECT cpf FROM Paciente WHERE email LIKE ?";
+        return realizarConsulta(query, email);
+    }
+    
+    public String getEnderecoByEmail(String email) {
+        String query = "SELECT endereco FROM Paciente WHERE email LIKE ?";
+        return realizarConsulta(query, email);
+    }
+    
+    public String getNomeByEmailArquivo() {
+        String email = lerArquivoSessao();
+        if (email == null) {
+            return "";
+        }
+        
+        return getNomeByEmail(email);
+    }
+    
+    public String getCpfByEmailArquivo() {
+        String email = lerArquivoSessao();
+        if (email == null) {
+            return "";
+        }
+        
+        return getCpfByEmail(email);
+    }
+    
+    public String getEnderecoByEmailArquivo() {
+        String email = lerArquivoSessao();
+        if (email == null) {
+            return "";
+        }
+        
+        return getEnderecoByEmail(email);
     }
 }

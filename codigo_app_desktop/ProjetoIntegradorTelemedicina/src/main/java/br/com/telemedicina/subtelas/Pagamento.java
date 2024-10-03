@@ -656,6 +656,9 @@ public class Pagamento extends javax.swing.JDialog {
             String valor           = this.labelValor.getText();
             int idTipoAtendimento  = tatRepo.getIdByValor(valor);
             int idPaciente         = pacRepo.getIdByEmailArquivo();
+            String nomePaciente    = pacRepo.getNomeByEmailArquivo();
+            String cpfPaciente     = pacRepo.getCpfByEmailArquivo();
+            String enderecoPac     = pacRepo.getEnderecoByEmailArquivo();
             
             //Conecta no Banco de Dados
             BD banco = new BD();
@@ -682,7 +685,7 @@ public class Pagamento extends javax.swing.JDialog {
                     tipoPagamento = "Boleto";
                     String filePath = System.getProperty("user.home") + "/Downloads/boleto.pdf";
                     BoletoPDF boletoPDF = new BoletoPDF();
-                    boletoPDF.gerarBoleto(filePath);
+                    boletoPDF.gerarBoleto(filePath, nomePaciente, cpfPaciente, enderecoPac, valor);
                     JOptionPane.showMessageDialog(this, "Boleto gerado com sucesso em: " + filePath);
                     
                 } catch (Exception e) {
