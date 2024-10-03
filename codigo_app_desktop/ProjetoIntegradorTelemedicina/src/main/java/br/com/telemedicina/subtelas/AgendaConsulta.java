@@ -574,25 +574,25 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
                     .append("FROM Medico m ")
                     .append("INNER JOIN Atende ate ON m.ID = ate.ID_MEDICO ")
                     .append("INNER JOIN Clinica cl ON cl.ID = ate.ID_CLINICA ")
-                    .append("INNER JOIN TipoAtendimento ta ON ta.ID_MEDICO = m.ID ")
-                    .append("WHERE 1=1 ");
+                    .append("INNER JOIN TipoAtendimento ta ON m.ID = ta.ID_MEDICO ")
+                    .append("WHERE 1 = 1");
         
         //Lista de condições
         List<String> conditions = new ArrayList<>();
         
         //Adiciona as condições dinamicamente
         if (!estado.equals("Selecione")) {
-            queryBuilder.append("AND cl.enderecoClinica LIKE ?");
+            queryBuilder.append(" AND cl.enderecoClinica LIKE ?");
             conditions.add("%" + estado + "%"); //"%" é para permitir buscas por partes do nome do estado
         }
         
         if (!especializacao.equals("Selecione")) {
-            queryBuilder.append("AND m.especializacao LIKE ?");
+            queryBuilder.append(" AND m.especializacao LIKE ?");
             conditions.add("%" + especializacao + "%");
         }
         
         if (!formato.equals("Selecione")) {
-            queryBuilder.append("AND ta.formato LIKE ?");
+            queryBuilder.append(" AND ta.formato LIKE ?");
             conditions.add("%" + formato + "%");
         }
         
