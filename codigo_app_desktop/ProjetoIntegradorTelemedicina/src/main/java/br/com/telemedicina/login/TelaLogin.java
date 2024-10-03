@@ -7,11 +7,7 @@ package br.com.telemedicina.login;
 import br.com.telemedicina.bd.BD;
 import br.com.telemedicina.subtelas.TelaCadastroMedico;
 import br.com.telemedicina.subtelas.TelaCadastroPaciente;
-import br.com.telemedicina.telaprincipal.Main;
-import java.awt.Frame;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.PreparedStatement;
@@ -19,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import org.mindrot.jbcrypt.BCrypt;
+
 
 /**
  *
@@ -302,8 +298,8 @@ public class TelaLogin extends javax.swing.JDialog {
 
     private void botaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLoginActionPerformed
         String usuario = this.campoUsuario.getText();
-        String senha = new String (this.campoSenha.getPassword());
-        String tipo = (String) this.tipoUsuario.getSelectedItem();
+        String senha   = new String(this.campoSenha.getPassword());
+        String tipo    = (String) this.tipoUsuario.getSelectedItem();
         
         if (!validaCampos()) {
             return;
@@ -316,47 +312,40 @@ public class TelaLogin extends javax.swing.JDialog {
             banco.conectaBD();
             
             String sql = "";
-            String senhaHash = null; //Variavel para armazenar senha hash recuperada
             
             if (tipo.equals("Paciente")) {
-                sql = "SELECT senha FROM Paciente WHERE email = ?";
+                sql = "SELECT * FROM Paciente WHERE email = ? AND senha = ?";
             } else if (tipo.equals("Médico")) {
-                sql = "SELECT senhaMed FROM Medico WHERE emailMed = ?";
+                sql = "SELECT * FROM Medico WHERE emailMed = ? AND senhaMed = ?";
             }
             
             try (PreparedStatement statement = banco.getPreparedStatement(sql)) {
                 statement.setString(1, usuario);
+                statement.setString(2, senha);
                 
                 try (ResultSet rs = statement.executeQuery()) {
                     if (rs.next()) {
-                       if (tipo.equals("Paciente")) {
-                           senhaHash = rs.getString("senha");
-                       } else if (tipo.equals("Medico")) {
-                           senhaHash = rs.getString("senhaMed");
-                       }
+                        try (BufferedWriter bw = new BufferedWriter(new FileWriter("sessao"))) {
+                            bw.write(usuario + "," + tipo);
+                        } catch (IOException ex) {
+                            JOptionPane.showMessageDialog(this,
+                                    "Não foi possível iniciar o sistema!! Error: " + ex.getMessage());
+                            
+                        }
+                        this.parentMain.setVisible(false);
+                        this.setVisible(false);
+                        
+                    } else {
+                        this.labelErro.setText("Usuário/senha incorretos!");
                     }
                 }
+                
             }
             
-            //Verifica se a senha fornecida corresponde a senha hash
-            if (senhaHash != null && BCrypt.checkpw(senha, senhaHash)) {
-                try (BufferedWriter bw = new BufferedWriter(new FileWriter("sessao"))) {
-                    bw.write(usuario + "," + tipo);
-                } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(this,
-                        "Não foi possível iniciar o sistema!! Error: " + ex.getMessage());
-                }
-                this.parentMain.setVisible(false);
-                this.setVisible(false);                
-            } else {
-                this.labelErro.setText("Usuário/Senha incorretos!");
-            }
-            
-        } catch (SQLException e) {
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this,
-                    "Não foi possível iniciar o sistema!! Error: " + e.getMessage());
+                    "Não foi possivel iniciar o sistema!! Error: " + ex.getMessage());
         }
-
     }//GEN-LAST:event_botaoLoginActionPerformed
     
     private boolean validaCampos() {
