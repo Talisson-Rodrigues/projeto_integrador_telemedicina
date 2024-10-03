@@ -764,28 +764,6 @@ public class Main extends javax.swing.JFrame {
         updateColors();
     }//GEN-LAST:event_modoEscuroMenuItemActionPerformed
     
-    private Color applyCurrentMode() {
-        Color backgroundColor;
-        Color textColor;
-        Color blueColor;
-        
-        backgroundColor = getBackground();
-        textColor = getForeground();
-        blueColor = getBackground();
-        boolean isDarkMode = false;
-        
-        if (isDarkMode) {
-            backgroundColor = ModoClaroEscuro.darkBackground;
-            textColor = ModoClaroEscuro.darkForeground;
-            blueColor = ModoClaroEscuro.darkblueBackground;
-        } else {
-            backgroundColor = ModoClaroEscuro.lightBackground;
-            textColor = ModoClaroEscuro.lightForeground;
-            blueColor = ModoClaroEscuro.lightblueBackground;
-        }
-        
-        return null; 
-    }
     private void updateColors() {
         jPanel2.setBackground(ModoClaroEscuro.getBackgroundColor());
         nomeMedLabel.setForeground(ModoClaroEscuro.getForegroundColor());
