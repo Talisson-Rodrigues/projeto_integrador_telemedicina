@@ -7,6 +7,7 @@ package br.com.telemedicina.repository;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.BarcodeWriter;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
@@ -114,7 +115,7 @@ public class BoletoPDF {
     
     //Método para gerar o codigo de barras
     private BufferedImage gerarCodigoDeBarras(String dados) throws WriterException {
-        BitMatrix bitMatrix = new com.google.zxing.BarcodeWriter().encode(dados, BarcodeFormat.CODE_128, 400, 50);
+        BitMatrix bitMatrix = new com.google.zxing.BarcodeWriter.encode(dados, BarcodeFormat.CODE_128, 400, 50);
         return MatrixToImageWriter.toBufferedImage(bitMatrix);
     }
 }
