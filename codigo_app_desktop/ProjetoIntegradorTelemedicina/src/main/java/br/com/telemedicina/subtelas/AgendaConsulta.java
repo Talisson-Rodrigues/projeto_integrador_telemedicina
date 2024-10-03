@@ -5,6 +5,7 @@
 package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.bd.BD;
+import br.com.telemedicina.estilo.ModoClaroEscuro;
 import br.com.telemedicina.repository.ClinicaRepository;
 import br.com.telemedicina.repository.DataRepository;
 import br.com.telemedicina.repository.MedicoRepository;
@@ -662,6 +663,20 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
            this.erroLabel.setText("");
            return true;
        }
+       
+    public void updateColors() {
+        jPanel2.setBackground(ModoClaroEscuro.getBackgroundColor());
+        jLabel1.setForeground(ModoClaroEscuro.getForegroundColor());
+        jLabel3.setForeground(ModoClaroEscuro.getForegroundColor());
+        jLabel4.setForeground(ModoClaroEscuro.getForegroundColor());
+        jLabel5.setForeground(ModoClaroEscuro.getForegroundColor());
+        jLabel6.setForeground(ModoClaroEscuro.getForegroundColor());
+        jLabel7.setForeground(ModoClaroEscuro.getForegroundColor());
+        jLabel8.setForeground(ModoClaroEscuro.getForegroundColor());
+        jLabel10.setForeground(ModoClaroEscuro.getForegroundColor());
+        jPanel4.setBackground(ModoClaroEscuro.getBackgroundColor());
+        jLabel2.setForeground(ModoClaroEscuro.getForegroundColor());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoAgendarConsulta;

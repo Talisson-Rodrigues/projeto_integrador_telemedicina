@@ -13,11 +13,9 @@ import java.awt.Color;
 public class ModoClaroEscuro {
     public static final Color darkBackground = new Color(54,54,54);
     public static final Color darkForeground = new Color(255,255,255);
-    public static final Color darkblueBackground = new Color(46, 107, 214);
-    
+   
     public static final Color lightBackground = new Color(255,255,255);
     public static final Color lightForeground = new Color(0,0,0);
-    public static final Color lightblueBackground = new Color(46,169,248);
 
     private static boolean isDarkMode = false;
 
@@ -31,9 +29,5 @@ public class ModoClaroEscuro {
 
     public static Color getForegroundColor() {
         return isDarkMode ? darkForeground : lightForeground;
-    }
-    
-    public static Color getBlueBackground() {
-        return isDarkMode ? darkblueBackground : lightblueBackground;
     }
 }

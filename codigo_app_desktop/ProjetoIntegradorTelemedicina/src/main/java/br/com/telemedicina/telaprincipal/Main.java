@@ -481,6 +481,7 @@ public class Main extends javax.swing.JFrame {
         AgendaConsulta consulta = new AgendaConsulta();
         this.desktopPane.add(consulta);
         consulta.setVisible(true);
+        updateColors();
     }//GEN-LAST:event_novaConsultaActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -771,6 +772,12 @@ public class Main extends javax.swing.JFrame {
         jPanel4.setBackground(ModoClaroEscuro.getBackgroundColor());
         nomePacienteLabel.setForeground(ModoClaroEscuro.getForegroundColor());
         labelBemVindo1.setForeground(ModoClaroEscuro.getForegroundColor());
+        
+        for (JInternalFrame frame : desktopPane.getAllFrames()) {
+            if (frame instanceof AgendaConsulta) {
+                ((AgendaConsulta) frame).updateColors();  // Chama updateColors() do JInternalFrame
+            }
+        }
     }
     
     /**
