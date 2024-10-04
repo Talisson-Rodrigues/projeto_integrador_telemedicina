@@ -5,6 +5,7 @@
 package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.bd.BD;
+import br.com.telemedicina.estilo.ModoClaroEscuro;
 import br.com.telemedicina.repository.BoletoPDF;
 import br.com.telemedicina.repository.PacienteRepository;
 import br.com.telemedicina.repository.TipoAtendimentoRepository;
@@ -1000,6 +1001,11 @@ public class Pagamento extends javax.swing.JDialog {
         });
     }
 
+    public void updateColors() {
+        jPanel2.setBackground(ModoClaroEscuro.getBackgroundColor());
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton boletoRadioButton;
     private javax.swing.JButton botaoPagar;
