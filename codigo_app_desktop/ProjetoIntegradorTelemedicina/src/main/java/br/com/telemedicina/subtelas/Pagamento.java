@@ -730,15 +730,14 @@ public class Pagamento extends javax.swing.JDialog {
             //Se algum tipo de pagamento foi selecionado, insere no banco de dados
             if (!tipoPagamento.isEmpty()) {
                 //Cria a query de inserção
-                String query = "INSERT INTO Pagamento (tipoPagamento, notaFiscal, codigoPagamento, ID_TipoAtendimento, ID_PACIENTE) VALUES (?,?,?,?,?)";
+                String query = "INSERT INTO Pagamento (tipoPagamento, notaFiscal, codigoPagamento, ID_PACIENTE) VALUES (?,?,?,?)";
                 PreparedStatement ps = banco.getPreparedStatement(query);
                 
                 //Define os parâmetros da query
                 ps.setString(1, tipoPagamento);
                 ps.setString(2, notaFiscal);
                 ps.setString(3, codigoPagamento);
-                ps.setInt(4, idTipoAtendimento);
-                ps.setInt(5, idPaciente);
+                ps.setInt(4, idPaciente);
                 
                 //executa a query
                 int rowsAffected = ps.executeUpdate();

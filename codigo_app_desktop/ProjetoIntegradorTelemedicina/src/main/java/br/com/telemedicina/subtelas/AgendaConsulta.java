@@ -575,7 +575,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
                     .append("FROM Medico m ")
                     .append("INNER JOIN Atende ate ON m.ID = ate.ID_MEDICO ")
                     .append("INNER JOIN Clinica cl ON cl.ID = ate.ID_CLINICA ")
-                    .append("INNER JOIN TipoAtendimento ta ON m.ID = ta.ID_MEDICO ")
+                    .append("INNER JOIN TipoAtendimento ta ON ta.ID_MEDICO = m.ID ")
                     .append("WHERE 1 = 1");
         
         //Lista de condições
