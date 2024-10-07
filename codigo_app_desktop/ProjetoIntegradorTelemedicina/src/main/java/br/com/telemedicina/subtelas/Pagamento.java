@@ -5,6 +5,7 @@
 package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.bd.BD;
+import br.com.telemedicina.estilo.ModoClaroEscuro;
 import br.com.telemedicina.repository.BoletoPDF;
 import br.com.telemedicina.repository.PacienteRepository;
 import br.com.telemedicina.repository.TipoAtendimentoRepository;
@@ -729,15 +730,14 @@ public class Pagamento extends javax.swing.JDialog {
             //Se algum tipo de pagamento foi selecionado, insere no banco de dados
             if (!tipoPagamento.isEmpty()) {
                 //Cria a query de inserção
-                String query = "INSERT INTO Pagamento (tipoPagamento, notaFiscal, codigoPagamento, ID_TipoAtendimento, ID_PACIENTE) VALUES (?,?,?,?,?)";
+                String query = "INSERT INTO Pagamento (tipoPagamento, notaFiscal, codigoPagamento, ID_PACIENTE) VALUES (?,?,?,?)";
                 PreparedStatement ps = banco.getPreparedStatement(query);
                 
                 //Define os parâmetros da query
                 ps.setString(1, tipoPagamento);
                 ps.setString(2, notaFiscal);
                 ps.setString(3, codigoPagamento);
-                ps.setInt(4, idTipoAtendimento);
-                ps.setInt(5, idPaciente);
+                ps.setInt(4, idPaciente);
                 
                 //executa a query
                 int rowsAffected = ps.executeUpdate();
@@ -1000,6 +1000,11 @@ public class Pagamento extends javax.swing.JDialog {
         });
     }
 
+    public void updateColors() {
+        jPanel2.setBackground(ModoClaroEscuro.getBackgroundColor());
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton boletoRadioButton;
     private javax.swing.JButton botaoPagar;

@@ -25,3 +25,5 @@ SELECT pg.tipoPagamento, pg.notaFiscal, pg.codigoPagamento, ta.valorConsulta FRO
 SELECT cs.ID, m.nomeMed, cs.dataConsulta, cs.formatoConsulta, cs.pagamentoConsulta FROM Consulta cs INNER JOIN Medico m ON m.ID = cs.ID_MEDICO;
 
 SELECT pa.nome, pa.cpf, pa.dataNascimento, cs.dataConsulta FROM Consulta cs INNER JOIN Medico m ON m.ID = cs.ID_MEDICO INNER JOIN Paciente pa ON pa.ID = cs.ID_PACIENTE WHERE cs.ID_MEDICO LIKE ?;
+
+SELECT m.nomeMed, m.especializacao FROM Medico m INNER JOIN atende ate ON m.ID = ate.ID_MEDICO;

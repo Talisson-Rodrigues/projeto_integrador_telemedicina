@@ -92,7 +92,6 @@ public class Main extends javax.swing.JFrame {
         novaPrescricao = new javax.swing.JMenuItem();
         pagamentosMenu = new javax.swing.JMenu();
         historicoPagamento = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
         modoMenu = new javax.swing.JMenu();
         modoEscuroMenuItem = new javax.swing.JCheckBoxMenuItem();
 
@@ -422,14 +421,6 @@ public class Main extends javax.swing.JFrame {
         });
         pagamentosMenu.add(historicoPagamento);
 
-        jMenuItem1.setText("Pagamento");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        pagamentosMenu.add(jMenuItem1);
-
         menuBar.add(pagamentosMenu);
 
         modoMenu.setText("Modo");
@@ -469,12 +460,14 @@ public class Main extends javax.swing.JFrame {
         HistoricoConsulta histoConsulta = new HistoricoConsulta();
         this.desktopPane.add(histoConsulta);
         histoConsulta.setVisible(true);
+        updateColors();
     }//GEN-LAST:event_historicoConsultaActionPerformed
 
     private void novaPrescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novaPrescricaoActionPerformed
         NovaPrescricao prescricao = new NovaPrescricao();
         this.desktopPane.add(prescricao);
         prescricao.setVisible(true);
+        updateColors();
     }//GEN-LAST:event_novaPrescricaoActionPerformed
 
     private void novaConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novaConsultaActionPerformed
@@ -637,18 +630,21 @@ public class Main extends javax.swing.JFrame {
         AgendaExame exame = new AgendaExame();
         this.desktopPane.add(exame);
         exame.setVisible(true);
+        updateColors();
     }//GEN-LAST:event_agendaExameActionPerformed
 
     private void historicoExameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoExameActionPerformed
         HistoricoExame histoExame = new HistoricoExame();
         this.desktopPane.add(histoExame);
         histoExame.setVisible(true);
+        updateColors();
     }//GEN-LAST:event_historicoExameActionPerformed
 
     private void historicoPrescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoPrescricaoActionPerformed
         HistoricoPrescricao histoPrescricao = new HistoricoPrescricao();
         this.desktopPane.add(histoPrescricao);
         histoPrescricao.setVisible(true);
+        updateColors();
     }//GEN-LAST:event_historicoPrescricaoActionPerformed
 
     private void botaoExcluirMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirMedActionPerformed
@@ -755,16 +751,12 @@ public class Main extends javax.swing.JFrame {
         hpg.setVisible(true);
     }//GEN-LAST:event_historicoPagamentoActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        Pagamento pg = new Pagamento(this, true);
-        pg.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
     private void modoEscuroMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoEscuroMenuItemActionPerformed
         ModoClaroEscuro.setDarkMode(modoEscuroMenuItem.isSelected());
         updateColors();
     }//GEN-LAST:event_modoEscuroMenuItemActionPerformed
     
+    // Muda as cores de acordo com a Class ModoClaroEscuro
     private void updateColors() {
         jPanel2.setBackground(ModoClaroEscuro.getBackgroundColor());
         nomeMedLabel.setForeground(ModoClaroEscuro.getForegroundColor());
@@ -773,10 +765,34 @@ public class Main extends javax.swing.JFrame {
         nomePacienteLabel.setForeground(ModoClaroEscuro.getForegroundColor());
         labelBemVindo1.setForeground(ModoClaroEscuro.getForegroundColor());
         
+        // Muda as cores das outras telas
         for (JInternalFrame frame : desktopPane.getAllFrames()) {
+            
             if (frame instanceof AgendaConsulta) {
                 ((AgendaConsulta) frame).updateColors();  // Chama updateColors() do JInternalFrame
             }
+            
+            if (frame instanceof HistoricoConsulta) {
+                ((HistoricoConsulta) frame).updateColors();
+            }
+            
+            if (frame instanceof AgendaExame) {
+                ((AgendaExame) frame).updateColors();
+            }
+            
+            if (frame instanceof HistoricoExame) {
+                ((HistoricoExame) frame).updateColors();
+            }
+            
+            if (frame instanceof NovaPrescricao) {
+                ((NovaPrescricao) frame).updateColors();
+            }
+            
+            if (frame instanceof HistoricoPrescricao) {
+                ((HistoricoPrescricao) frame).updateColors();
+            }
+            
+            
         }
     }
     
@@ -831,7 +847,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

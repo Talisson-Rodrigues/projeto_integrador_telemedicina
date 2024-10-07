@@ -5,6 +5,7 @@
 package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.bd.BD;
+import br.com.telemedicina.estilo.ModoClaroEscuro;
 import br.com.telemedicina.repository.DataRepository;
 import br.com.telemedicina.repository.MedicoRepository;
 import br.com.telemedicina.repository.PacienteRepository;
@@ -331,6 +332,16 @@ public class NovaPrescricao extends javax.swing.JInternalFrame {
         return true;
     }
 
+    public void updateColors() {
+        jPanel2.setBackground(ModoClaroEscuro.getBackgroundColor());
+        jLabel1.setForeground(ModoClaroEscuro.getForegroundColor());
+        jLabel2.setForeground(ModoClaroEscuro.getForegroundColor());
+        jLabel3.setForeground(ModoClaroEscuro.getForegroundColor());
+        jLabel4.setForeground(ModoClaroEscuro.getForegroundColor());
+        jLabel5.setForeground(ModoClaroEscuro.getForegroundColor());
+        jLabel6.setForeground(ModoClaroEscuro.getForegroundColor());
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField campoDataPrescricao;
     private javax.swing.JTextField campoMedicamento;

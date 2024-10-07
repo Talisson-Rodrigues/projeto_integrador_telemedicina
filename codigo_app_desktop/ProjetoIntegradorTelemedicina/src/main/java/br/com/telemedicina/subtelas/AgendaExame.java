@@ -6,6 +6,7 @@ package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.repository.ClinicaRepository;
 import br.com.telemedicina.bd.BD;
+import br.com.telemedicina.estilo.ModoClaroEscuro;
 import br.com.telemedicina.repository.DataRepository;
 import br.com.telemedicina.repository.MedicoRepository;
 import br.com.telemedicina.repository.PacienteRepository;
@@ -423,6 +424,10 @@ public class AgendaExame extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_botaoClinicasActionPerformed
 
+    public void updateColors() {
+        jPanel2.setBackground(ModoClaroEscuro.getBackgroundColor());
+        jLabel3.setForeground(ModoClaroEscuro.getForegroundColor());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoAgendar;

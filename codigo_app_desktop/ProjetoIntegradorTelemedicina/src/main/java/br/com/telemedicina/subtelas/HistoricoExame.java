@@ -5,6 +5,7 @@
 package br.com.telemedicina.subtelas;
 
 import br.com.telemedicina.bd.BD;
+import br.com.telemedicina.estilo.ModoClaroEscuro;
 import br.com.telemedicina.repository.PacienteRepository;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -424,6 +425,11 @@ public class HistoricoExame extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_formInternalFrameOpened
 
+    public void updateColors() {
+        jPanel1.setBackground(ModoClaroEscuro.getBackgroundColor());
+        jLabel1.setForeground(ModoClaroEscuro.getForegroundColor());
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoEditar;
     private javax.swing.JButton botaoConsulta;

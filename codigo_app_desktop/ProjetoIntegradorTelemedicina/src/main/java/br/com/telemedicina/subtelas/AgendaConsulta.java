@@ -4,24 +4,25 @@
  */
 package br.com.telemedicina.subtelas;
 
-import br.com.telemedicina.bd.BD;
-import br.com.telemedicina.estilo.ModoClaroEscuro;
-import br.com.telemedicina.repository.ClinicaRepository;
-import br.com.telemedicina.repository.DataRepository;
-import br.com.telemedicina.repository.MedicoRepository;
-import br.com.telemedicina.repository.PacienteRepository;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
+import br.com.telemedicina.bd.BD;
+import br.com.telemedicina.estilo.ModoClaroEscuro;
+import br.com.telemedicina.repository.ClinicaRepository;
+import br.com.telemedicina.repository.DataRepository;
+import br.com.telemedicina.repository.MedicoRepository;
+import br.com.telemedicina.repository.PacienteRepository;
 
 /**
  *
@@ -575,7 +576,7 @@ public class AgendaConsulta extends javax.swing.JInternalFrame {
                     .append("FROM Medico m ")
                     .append("INNER JOIN Atende ate ON m.ID = ate.ID_MEDICO ")
                     .append("INNER JOIN Clinica cl ON cl.ID = ate.ID_CLINICA ")
-                    .append("INNER JOIN TipoAtendimento ta ON m.ID = ta.ID_MEDICO ")
+                    .append("INNER JOIN TipoAtendimento ta ON ta.ID_MEDICO = m.ID ")
                     .append("WHERE 1 = 1");
         
         //Lista de condições
