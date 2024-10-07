@@ -27,7 +27,7 @@ Comandos necessários para executar a aplicação
 Compilando programa em Java
 
 ```bash
-$ javac Programa.java
+$ java -jar ProjetoIntegradorTelemedicina
 ```
 
 🚀 Executando a aplicação
@@ -35,7 +35,7 @@ $ javac Programa.java
 Rodando o programa em Java
 
 ```bash
-$ java Programa
+$ java -jar ProjetoIntegradorTelemedicina-1.0-SNAPSHOT.jar
 ```
 
 
