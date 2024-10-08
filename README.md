@@ -1,6 +1,6 @@
-<img src="https://cdn-icons-png.flaticon.com/512/7228/7228311.png" height="250" width="250">
-
 # Projeto de Telemedicina (SENAC)
+
+<img src="https://cdn-icons-png.flaticon.com/512/7228/7228311.png" height="250" width="250">
 
 Sobre
 =========
