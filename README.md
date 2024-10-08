@@ -35,7 +35,7 @@ Para executar esta aplicação, você precisa ter os seguintes programas instala
 Compilando programa em Java
 
 ```bash
-$ java -jar ProjetoIntegradorTelemedicina
+$ mvn clean install
 ```
 
 🚀 Executando a aplicação
@@ -43,7 +43,7 @@ $ java -jar ProjetoIntegradorTelemedicina
 Rodando o programa em Java
 
 ```bash
-$ java -jar ProjetoIntegradorTelemedicina-1.0-SNAPSHOT.jar
+$ java -jar target/ProjetoIntegradorTelemedicina-1.0-SNAPSHOT.jar
 ```
 
 
@@ -52,11 +52,17 @@ Tecnologias utilizadas
 
 As seguintes tecnologias foram utilizadas na construção do projeto:
 
-- [Java](https://www.oracle.com/br/java/)
-- [Javascript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
-- [MySql](https://www.mysql.com/)
+- [Java](https://www.oracle.com/br/java/) - Linguagem principal para o desenvolvimento da aplicação. 
+- [Javascript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) - Utilizado para o desenvolvimento do frontend.
+- [MySql](https://www.mysql.com/) - Sistema de gerenciamento de banco de dados.
+- [Maven](https://maven.apache.org/) - Gerenciamento de dependências e build.
+- [XAMPP](https://www.apachefriends.org/) - Ferramenta para rodar o servidor Apache e MySQL em ambiente de desenvolvimento.
 
-
+=====
 Autor
 =====
 Projeto feito no Curso Técnico em Desenvolvimento de Sistemas por:<br>
+- Talisson Pontes Rodrigues
+- Josué Gomes Lima
+- Lukas Lima
+- Alex
