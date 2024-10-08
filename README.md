@@ -58,7 +58,7 @@ As seguintes tecnologias foram utilizadas na construção do projeto:
 - [Maven](https://maven.apache.org/) - Gerenciamento de dependências e build.
 - [XAMPP](https://www.apachefriends.org/) - Ferramenta para rodar o servidor Apache e MySQL em ambiente de desenvolvimento.
 
-=====
+
 Autor
 =====
 Projeto feito no Curso Técnico em Desenvolvimento de Sistemas por:<br>
