@@ -31,7 +31,7 @@ Para executar esta aplicação, você precisa ter os seguintes programas instala
 </ul>
 🚀 Compilando a aplicação<br>
 ----------------------<br>
-Compilando programa em Java
+Compilando programa em Java<br>
 
 ```bash
 $ java -jar ProjetoIntegradorTelemedicina
