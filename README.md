@@ -23,11 +23,12 @@ Pré-requisitos
 ==============
 Para executar esta aplicação, você precisa ter os seguintes programas instalados:
 
-º Java JDK 11 ou superior
-Apache Maven para gerenciamento de dependências
-MySQL Server para o banco de dados
-XAMPP (opcional para ambiente de testes)
-
+<ul>
+<li>Java JDK 11 ou superior</li>
+<li>Apache Maven para gerenciamento de dependências</li>
+<li>MySQL Server para o banco de dados</li>
+<li>XAMPP (opcional para ambiente de testes)</li>
+</ul>
 🚀 Compilando a aplicação
 ----------------------
 Compilando programa em Java
