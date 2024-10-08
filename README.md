@@ -1,10 +1,11 @@
-<img src="https://cdn-icons-png.flaticon.com/512/7228/7228311.png" height="150" width="150">
+<img src="https://cdn-icons-png.flaticon.com/512/7228/7228311.png" height="250" width="250">
 
 # Projeto de Telemedicina (SENAC)
 
 Sobre
 =========
-Projeto Integrador implementado na disciplina do curso Técnico em Desenvolvimento do SENAC no ano de 2024.
+Este projeto é o Projeto Integrador do curso Técnico em Desenvolvimento de Sistemas no SENAC, desenvolvido no ano de 2024. 
+Ele tem como objetivo criar uma aplicação de telemedicina que facilita o agendamento de consultas, pagamento e monitoramento de dados clínicos de pacientes.
 
 Tabela de Conteúdos
 -----------------------
@@ -20,7 +21,12 @@ Tabela de Conteúdos
 
 Pré-requisitos
 ==============
-Comandos necessários para executar a aplicação
+Para executar esta aplicação, você precisa ter os seguintes programas instalados:
+
+º Java JDK 11 ou superior
+Apache Maven para gerenciamento de dependências
+MySQL Server para o banco de dados
+XAMPP (opcional para ambiente de testes)
 
 🚀 Compilando a aplicação
 ----------------------
