@@ -5,7 +5,7 @@
 Sobre
 =========
 Este projeto é o Projeto Integrador do curso Técnico em Desenvolvimento de Sistemas no <b>SENAC</b>, desenvolvido no ano de 2024. 
-Ele tem como objetivo criar uma aplicação de telemedicina que facilita o agendamento de consultas, pagamento e monitoramento de dados clínicos de pacientes.
+Ele tem como objetivo criar uma aplicação de <b>telemedicina</b> que facilita o agendamento de consultas, pagamento e monitoramento de dados clínicos de pacientes.
 
 Tabela de Conteúdos
 -----------------------
