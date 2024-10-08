@@ -29,8 +29,8 @@ Para executar esta aplicação, você precisa ter os seguintes programas instala
 <li>MySQL Server para o banco de dados</li>
 <li>XAMPP (opcional para ambiente de testes)</li>
 </ul>
-🚀 Compilando a aplicação
-----------------------
+🚀 Compilando a aplicação<br>
+----------------------<br>
 Compilando programa em Java
 
 ```bash
