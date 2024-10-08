@@ -31,7 +31,7 @@ Para executar esta aplicação, você precisa ter os seguintes programas instala
 </ul>
 
 🚀 Compilando a aplicação
-==========================
+---------------------------
 Compilando programa em Java
 
 ```bash
